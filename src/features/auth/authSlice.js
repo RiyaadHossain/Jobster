@@ -23,7 +23,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        signOut: (state) => {
+        signOutReducer: (state) => {
             state.email = ""
         }
     },
@@ -31,6 +31,7 @@ const authSlice = createSlice({
         builder.addCase(signUpThunk.pending, (state) => {
             state.isLoading = true
             state.isError = false
+            state.error = ''
         }).addCase(signUpThunk.fulfilled, (state, action) => {
             state.isLoading = false
             state.email = action.payload
@@ -41,6 +42,7 @@ const authSlice = createSlice({
         }).addCase(signInThunk.pending, (state) => {
             state.isLoading = true
             state.isError = false
+            state.error = ''
         }).addCase(signInThunk.fulfilled, (state, action) => {
             state.isLoading = false
             state.email = action.payload
@@ -52,5 +54,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { signOut } = authSlice.actions
+export const { signOutReducer } = authSlice.actions
 export default authSlice.reducer
