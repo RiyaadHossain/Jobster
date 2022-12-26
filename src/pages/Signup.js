@@ -27,7 +27,8 @@ const Signup = () => {
   }, [password, confirmPassword]);
 
   const onSubmit = (data) => {
-    dispatch(signUpThunk({email: data.email, password: data.password}))
+    dispatch(signUpThunk({ email: data.email, password: data.password }))
+    reset()
   };
 
   return (
