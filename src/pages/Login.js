@@ -1,27 +1,41 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.svg";
-import { signInThunk } from "../features/auth/authSlice";
+import { signInThunk, toggleLoading } from "../features/auth/authSlice";
 
 const Login = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const authData = useSelector(state => state.auth)
+  const { email, isLoading, isSuccess, isError, error } = useSelector(state => state.auth)
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = ({ email, password }) => {
     dispatch(signInThunk({ email, password }))
+    dispatch(toggleLoading())
     reset()
   };
 
   useEffect(() => {
-    if (authData.email) {
+    if (isLoading) {
+      toast.loading("Logging In", { id: "loading" })
+    }
+
+    if (isSuccess) {
+      toast.success("Logged In", { id: "success" })
+    }
+
+    if (isError) {
+      toast.error(error, { id: "error" })
+    }
+
+    if (email) {
       navigate('/')
     }
-  }, [navigate, authData])
+  }, [navigate, email, isLoading, isSuccess, isError, error])
 
   return (
     <div className='flex h-screen items-center'>

@@ -28,6 +28,9 @@ const authSlice = createSlice({
         },
         signOutReducer: (state) => {
             state.email = ""
+        },
+        toggleLoading: (state) => {
+            state.isLoading = false
         }
     },
     extraReducers: (builder) => {
@@ -42,8 +45,9 @@ const authSlice = createSlice({
                 state.isLoading = false
                 state.email = action.payload
             }).addCase(signUpThunk.rejected, (state, { error }) => {
-                state.isError = true
                 state.email = ''
+                state.isError = true
+                state.isLoading = false
                 state.error = error.message
             })
 
@@ -56,12 +60,13 @@ const authSlice = createSlice({
                 state.isLoading = false
                 state.email = action.payload
             }).addCase(signInThunk.rejected, (state, { error }) => {
-                state.isError = true
                 state.email = ''
+                state.isError = true
+                state.isLoading = false
                 state.error = error.message
             })
     }
 })
 
-export const { signOutReducer, userPersistency } = authSlice.actions
+export const { signOutReducer, userPersistency, toggleLoading } = authSlice.actions
 export default authSlice.reducer
