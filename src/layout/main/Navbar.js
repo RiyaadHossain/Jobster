@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const dispatch = useDispatch()
   const { pathname } = useLocation();
-  const authData = useSelector(state => state.auth)
+  const { email, role } = useSelector(state => state.auth)
 
   const handleLogOut = () => {
     signOut(auth)
@@ -31,7 +31,7 @@ const Navbar = () => {
           </Link>
         </li>
 
-        {authData?.email ? <li>
+        {email ? <li>
           <button
             onClick={handleLogOut}
             className='border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all '
@@ -44,6 +44,21 @@ const Navbar = () => {
             to='/login'
           >
             Login
+          </Link>
+        </li>}
+        {email && role ? <li>
+          <Link
+            className='border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all '
+            to='/dashboard'
+          >
+            Dashboard
+          </Link>
+        </li> : <li>
+          <Link
+            className='border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all '
+            to='/register'
+          >
+            Register
           </Link>
         </li>}
       </ul>

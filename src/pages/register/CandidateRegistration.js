@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
+import { useRegisterCandidateMutation } from "../../features/auth/authAPI";
+import { useSelector } from "react-redux";
 
 const CandidateRegistration = () => {
+
+  const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
   const { handleSubmit, register, control } = useForm();
   const term = useWatch({ control, name: "term" });
-  console.log(term);
-  const navigate = useNavigate();
+  const { email } = useSelector(state => state.auth)
+  const [registerUser, { isError, isLoading, isSuccess, data, error }] = useRegisterCandidateMutation()
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -16,8 +20,22 @@ const CandidateRegistration = () => {
       .then((data) => setCountries(data));
   }, []);
 
+  console.log(data);
+
+  useEffect(() => {
+    if (isLoading) {
+
+    }
+    if (isSuccess) {
+
+    }
+    if (isError) {
+
+    }
+  }, [isLoading, isSuccess, isError, error, data])
+
   const onSubmit = (data) => {
-    console.log(data);
+    registerUser({ ...data, role: "candidate" })
   };
 
   return (
@@ -47,11 +65,11 @@ const CandidateRegistration = () => {
             </label>
             <input type='text' id='lastName' {...register("lastName")} />
           </div>
-          <div className='flex flex-col w-full max-w-xs'>
+          <div className='flex  flex-col w-full max-w-xs'>
             <label className='mb-2' htmlFor='email'>
               Email
             </label>
-            <input type='email' id='email' {...register("email")} />
+            <input value={email} className="bg-slate-200 cursor-not-allowed" disabled type='email' id='email' {...register("email")} />
           </div>
           <div className='flex flex-col w-full max-w-xs'>
             <h1 className='mb-3'>Gender</h1>
@@ -63,7 +81,7 @@ const CandidateRegistration = () => {
                   {...register("gender")}
                   value='male'
                 />
-                <label className='ml-2 text-lg' for='male'>
+                <label className='ml-2 text-lg' htmlFor='male'>
                   Male
                 </label>
               </div>
@@ -74,7 +92,7 @@ const CandidateRegistration = () => {
                   {...register("gender")}
                   value='female'
                 />
-                <label className='ml-2 text-lg' for='female'>
+                <label className='ml-2 text-lg' htmlFor='female'>
                   Female
                 </label>
               </div>
@@ -85,7 +103,7 @@ const CandidateRegistration = () => {
                   {...register("gender")}
                   value='other'
                 />
-                <label className='ml-2 text-lg' for='other'>
+                <label className='ml-2 text-lg' htmlFor='other'>
                   Other
                 </label>
               </div>
@@ -93,14 +111,14 @@ const CandidateRegistration = () => {
           </div>
           <hr className='w-full mt-2 bg-black' />
           <div className='flex flex-col w-full max-w-xs'>
-            <label className='mb-3' for='country'>
+            <label className='mb-3' htmlFor='country'>
               Country
             </label>
             <select {...register("country")} id='country'>
               {countries
                 .sort((a, b) => a?.name?.common?.localeCompare(b?.name?.common))
-                .map(({ name }) => (
-                  <option value={name.common}>{name.common}</option>
+                .map(({ name }, i) => (
+                  <option key={i} value={name.common}>{name.common}</option>
                 ))}
             </select>
           </div>
@@ -131,7 +149,7 @@ const CandidateRegistration = () => {
                 {...register("term")}
                 id='terms'
               />
-              <label for='terms'>I agree to terms and conditions</label>
+              <label htmlFor='terms'>I agree to terms and conditions</label>
             </div>
             <button disabled={!term} className='btn' type='submit'>
               Submit

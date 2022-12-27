@@ -23,7 +23,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        userPersistency: (state, {payload}) => {
+        userPersistency: (state, { payload }) => {
             state.email = payload
         },
         signOutReducer: (state) => {
@@ -31,29 +31,35 @@ const authSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(signUpThunk.pending, (state) => {
-            state.isLoading = true
-            state.isError = false
-            state.error = ''
-        }).addCase(signUpThunk.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.email = action.payload
-        }).addCase(signUpThunk.rejected, (state, {error}) => {
-            state.isError = true
-            state.email = ''
-            state.error = error.message
-        }).addCase(signInThunk.pending, (state) => {
-            state.isLoading = true
-            state.isError = false
-            state.error = ''
-        }).addCase(signInThunk.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.email = action.payload
-        }).addCase(signInThunk.rejected, (state, {error}) => {
-            state.isError = true
-            state.email = ''
-            state.error = error.message
-        })
+        builder
+            
+            /* Sign Up Thunk */
+            .addCase(signUpThunk.pending, (state) => {
+                state.isLoading = true
+                state.isError = false
+                state.error = ''
+            }).addCase(signUpThunk.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.email = action.payload
+            }).addCase(signUpThunk.rejected, (state, { error }) => {
+                state.isError = true
+                state.email = ''
+                state.error = error.message
+            })
+
+            /* Sign In Thunk */
+            .addCase(signInThunk.pending, (state) => {
+                state.isLoading = true
+                state.isError = false
+                state.error = ''
+            }).addCase(signInThunk.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.email = action.payload
+            }).addCase(signInThunk.rejected, (state, { error }) => {
+                state.isError = true
+                state.email = ''
+                state.error = error.message
+            })
     }
 })
 
