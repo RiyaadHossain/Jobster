@@ -23,6 +23,9 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
+        userPersistency: (state, {payload}) => {
+            state.email = payload
+        },
         signOutReducer: (state) => {
             state.email = ""
         }
@@ -54,5 +57,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { signOutReducer } = authSlice.actions
+export const { signOutReducer, userPersistency } = authSlice.actions
 export default authSlice.reducer
