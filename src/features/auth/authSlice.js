@@ -5,7 +5,7 @@ import { auth } from "../../firebase/firebase.config";
 const initialState = {
     isLoading: false,
     isError: false,
-    email: "",
+    user: { email: "", role: "" },
     error: ""
 }
 
@@ -19,15 +19,22 @@ export const signInThunk = createAsyncThunk("auth/signIn", async ({ email, passw
     return data.user.email
 })
 
+export const getUser = createAsyncThunk("auth/getUser", async (email) => {
+    const res = await fetch(`http://localhost:5000/jobboxuserbyemail/${email}`)
+    const data = await res.json()
+    if (data.status) return data
+    return email
+})
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
         userPersistency: (state, { payload }) => {
-            state.email = payload
+            state.user.email = payload
         },
         signOutReducer: (state) => {
-            state.email = ""
+            state.user.email = ""
         },
         toggleLoading: (state) => {
             state.isLoading = false
@@ -35,7 +42,7 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            
+
             /* Sign Up Thunk */
             .addCase(signUpThunk.pending, (state) => {
                 state.isLoading = true
@@ -43,9 +50,9 @@ const authSlice = createSlice({
                 state.error = ''
             }).addCase(signUpThunk.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.email = action.payload
+                state.user.email = action.payload
             }).addCase(signUpThunk.rejected, (state, { error }) => {
-                state.email = ''
+                state.user.email = ''
                 state.isError = true
                 state.isLoading = false
                 state.error = error.message
@@ -58,9 +65,28 @@ const authSlice = createSlice({
                 state.error = ''
             }).addCase(signInThunk.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.email = action.payload
+                state.user.email = action.payload
             }).addCase(signInThunk.rejected, (state, { error }) => {
-                state.email = ''
+                state.user.email = ''
+                state.isError = true
+                state.isLoading = false
+                state.error = error.message
+            })
+
+            /* Get User */
+            .addCase(getUser.pending, (state) => {
+                state.isLoading = true
+                state.isError = false
+                state.error = ''
+            }).addCase(getUser.fulfilled, (state, { payload }) => {
+                state.isLoading = false
+                if (payload.status) {
+                    state.user = payload.data
+                } else {
+                    state.user.email = payload
+                }
+            }).addCase(getUser.rejected, (state, { error }) => {
+                state.user.email = ''
                 state.isError = true
                 state.isLoading = false
                 state.error = error.message

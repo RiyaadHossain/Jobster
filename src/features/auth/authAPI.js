@@ -1,15 +1,24 @@
 import { apiSlice } from "../api/apiSlice";
+import { getUser } from "./authSlice";
 
 const authSlice = apiSlice.injectEndpoints({
     endpoints: (build) => ({
-        registerCandidate: build.mutation({
+        registerEmployee: build.mutation({
             query: (data) => ({
                 url: '/jobboxuser',
                 method: 'POST',
                 body: data
-            })
+            }),
+            async onQueryStarted(data, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled
+                    dispatch(getUser(data.email))
+                } catch (error) {
+                    console.log(error);
+                }
+            }
         })
     })
 })
 
-export const { useRegisterCandidateMutation } = authSlice
+export const { useRegisterEmployeeMutation } = authSlice

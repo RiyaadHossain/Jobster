@@ -4,13 +4,14 @@ import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpThunk } from "../features/auth/authSlice";
+import { toast } from "react-hot-toast";
 
 const Signup = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
-  const authData = useSelector(state => state.auth)
+  const { email, isLoading, isSuccess, isError, error } = useSelector(state => state.auth)
   const { handleSubmit, register, reset, control } = useForm();
   const password = useWatch({ control, name: "password" });
   const confirmPassword = useWatch({ control, name: "confirmPassword" });
@@ -27,11 +28,25 @@ const Signup = () => {
     } else {
       setDisabled(true);
     }
+  }, [password, confirmPassword, navigate]);
 
-    if (authData.email) {
+  useEffect(() => {
+    if (isLoading) {
+      toast.loading("Logging In", { id: "loading" })
+    }
+
+    if (isSuccess) {
+      toast.success("Logged In", { id: "success" })
+    }
+
+    if (isError) {
+      toast.error(error, { id: "error" })
+    }
+
+    if (email) {
       navigate('/')
     }
-  }, [password, confirmPassword, navigate, authData]);
+  }, [navigate, email, isLoading, isSuccess, isError, error])
 
   const onSubmit = (data) => {
     dispatch(signUpThunk({ email: data.email, password: data.password }))
