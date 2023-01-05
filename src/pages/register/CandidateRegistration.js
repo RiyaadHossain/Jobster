@@ -3,6 +3,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { FaChevronLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useRegistrationMutation } from "../../features/auth/authAPI";
 
 const CandidateRegistration = () => {
 
@@ -11,7 +12,7 @@ const CandidateRegistration = () => {
   const { user: { email } } = useSelector(state => state.auth)
   const { handleSubmit, register, control, reset } = useForm({ defaultValues: { email } });
   const term = useWatch({ control, name: "term" });
-  // const [registerCandidate, { isError, isLoading, isSuccess, data, error }] = useRegisterEmployeeMutation()
+  const [registerCandidate, { isError, isLoading, isSuccess, data, error }] = useRegistrationMutation()
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -19,21 +20,21 @@ const CandidateRegistration = () => {
       .then((data) => setCountries(data));
   }, []);
 
-  // useEffect(() => {
-  //   if (isLoading) {
+  useEffect(() => {
+    if (isLoading) {
 
-  //   }
-  //   if (isSuccess) {
+    }
+    if (isSuccess) {
 
-  //   }
-  //   if (isError) {
+    }
+    if (isError) {
 
-  //   }
-  // }, [isLoading, isSuccess, isError, error, data])
+    }
+  }, [isLoading, isSuccess, isError, error, data])
 
   const onSubmit = (data) => {
-    // registerCandidate({ ...data, role: "cadidate" })
-    navigate("/")
+    registerCandidate({ ...data, role: "candidate" })
+    navigate("/jobs")
     reset()
   };
 

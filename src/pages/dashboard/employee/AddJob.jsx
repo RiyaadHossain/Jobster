@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { FiTrash } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import { useAddJobMutation } from "../../../features/job/jobSlice";
 
 const AddJob = () => {
-  const { handleSubmit, register, control } = useForm({
+  const { handleSubmit, register, control, reset } = useForm({
     defaultValues: { companyName: "Programming Hero" },
   });
   const {
@@ -25,6 +26,7 @@ const AddJob = () => {
 
   const [addJob, { isError, isLoading, isSuccess, error, data }] =
     useAddJobMutation();
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isLoading) {
@@ -36,7 +38,9 @@ const AddJob = () => {
   }, [isLoading, isSuccess, isError, error, data]);
 
   const onSubmit = (data) => {
-    addJob(data);
+    addJob({ ...data, queries: [] });
+    reset()
+    navigate("/jobs")
   };
 
   return (
