@@ -10,7 +10,7 @@ const EmployerRegistration = () => {
   const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
   const { user: { email } } = useSelector(state => state.auth)
-  const { handleSubmit, register, control, reset } = useForm({defaultValues: {email}});
+  const { handleSubmit, register, control, reset } = useForm({ defaultValues: { email } });
   const term = useWatch({ control, name: "term" });
   const [registerUser, { isError, isLoading, isSuccess, data, error }] = useRegisterEmployeeMutation()
 
@@ -52,7 +52,7 @@ const EmployerRegistration = () => {
           className='bg-secondary/20 shadow-lg p-10 rounded-2xl flex flex-wrap gap-3 max-w-3xl justify-between'
           onSubmit={handleSubmit(onSubmit)}
         >
-          <h1 className='w-full text-2xl text-primary mb-5'>Candidate</h1>
+          <h1 className='w-full text-2xl text-primary mb-5'>Employee</h1>
           <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-2' htmlFor='firstName'>
               First Name

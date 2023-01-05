@@ -4,7 +4,7 @@ const jobSlice = apiSlice.injectEndpoints({
     endpoints: (build) => ({
         addJob: build.mutation({
             query: (data) => ({
-                url: '/add-job',
+                url: '/job',
                 method: 'POST',
                 body: data
             })

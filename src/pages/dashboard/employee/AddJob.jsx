@@ -4,7 +4,9 @@ import { FiTrash } from "react-icons/fi";
 import { useAddJobMutation } from "../../../features/job/jobSlice";
 
 const AddJob = () => {
-  const { handleSubmit, register, control } = useForm();
+  const { handleSubmit, register, control } = useForm({
+    defaultValues: { companyName: "Programming Hero" },
+  });
   const {
     fields: resFields,
     append: resAppend,
@@ -34,7 +36,6 @@ const AddJob = () => {
   }, [isLoading, isSuccess, isError, error, data]);
 
   const onSubmit = (data) => {
-    console.log(data);
     addJob(data);
   };
 

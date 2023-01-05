@@ -5,7 +5,7 @@ const authSlice = apiSlice.injectEndpoints({
     endpoints: (build) => ({
         registerEmployee: build.mutation({
             query: (data) => ({
-                url: '/jobboxuser',
+                url: '/user',
                 method: 'POST',
                 body: data
             }),

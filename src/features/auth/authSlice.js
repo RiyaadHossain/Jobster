@@ -20,7 +20,7 @@ export const signInThunk = createAsyncThunk("auth/signIn", async ({ email, passw
 })
 
 export const getUser = createAsyncThunk("auth/getUser", async (email) => {
-    const res = await fetch(`http://localhost:5000/jobboxuserbyemail/${email}`)
+    const res = await fetch(`https://elite-recruiting-server.vercel.app/user/${email}`)
     const data = await res.json()
     if (data.status) return data
     return email
