@@ -38,7 +38,7 @@ const AddJob = () => {
   }, [isLoading, isSuccess, isError, error, data]);
 
   const onSubmit = (data) => {
-    addJob({ ...data, queries: [] });
+    addJob({ ...data, queries: [], applicants: [] });
     reset()
     navigate("/jobs")
   };

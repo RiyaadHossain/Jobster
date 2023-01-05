@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Loading from "../components/reusable/Loading";
 import { useAnsQuestionMutation, useAskQuestionMutation, useGetJobByIdQuery } from "../features/job/jobSlice";
 import meeting from "../assets/meeting.jpg"
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
+import Loading from "../components/reusable/Loading";
 
 const JobDetails = () => {
   const { id } = useParams()
   const [replyOne, setReply] = useState("")
   const { register, handleSubmit, reset } = useForm()
-  const { handleSubmit: replyHandleSubmit, reset: replyReset } = useForm()
-  const { isError, isFetching, data, error, isSuccess } = useGetJobByIdQuery(id)
+  const { handleSubmit: replyHandleSubmit } = useForm()
+  const { isError, isFetching, data, error, isSuccess } = useGetJobByIdQuery(id,/*  {pollingInterval: '1000'} */)
   const { user: { email, role, _id: userId } } = useSelector(state => state.auth)
   const [askQuestion, { isSuccess: askQuestionSuccess }] = useAskQuestionMutation()
   const [ansQuestion, { isSuccess: ansQuestionSuccess }] = useAnsQuestionMutation()
@@ -48,9 +48,11 @@ const JobDetails = () => {
     queries
   } = data?.data || {};
 
-  const onReply = (reply) => {
-    ansQuestion(reply)
-    replyReset()
+  const onReply = (replyData) => {
+    const { reply } = replyData
+    if(reply === '') return toast.error("Can't save empty text", {id: 'emt'})
+    ansQuestion(replyData)
+    setReply("")
   }
 
   const onQuest = (formData) => {
@@ -68,7 +70,7 @@ const JobDetails = () => {
         <div className='space-y-5'>
           <div className='flex justify-between items-center mt-5'>
             <h1 className='text-xl font-semibold text-primary'>{position}</h1>
-            <button className='btn'>Apply</button>
+            {role === 'candidate' && <button className='btn'>Apply</button>}
           </div>
           <div>
             <h1 className='text-primary text-lg font-medium mb-3'>Overview</h1>
