@@ -1,19 +1,23 @@
 import React from "react";
 import { signOut } from "firebase/auth";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase.config";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutReducer } from "../../features/auth/authSlice";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { pathname } = useLocation();
   const { user: { email, role } } = useSelector(state => state.auth)
 
   const handleLogOut = () => {
     signOut(auth)
+    toast.success("Sign Out successfully", {id: 'signout'})
     dispatch(signOutReducer())
+    navigate('/')
   }
 
   return (

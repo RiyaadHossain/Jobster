@@ -19,6 +19,7 @@ const Login = () => {
     reset()
   };
 
+  /* UseEffect is not working */
   useEffect(() => {
     if (isLoading) {
       toast.loading("Logging In", { id: "loading" })

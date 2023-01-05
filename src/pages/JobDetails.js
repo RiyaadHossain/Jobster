@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAnsQuestionMutation, useAskQuestionMutation, useGetJobByIdQuery } from "../features/job/jobSlice";
+import { useAnsQuestionMutation, useApplyMutation, useAskQuestionMutation, useGetAppliedJobQuery, useGetJobByIdQuery } from "../features/job/jobSlice";
 import meeting from "../assets/meeting.jpg"
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useForm } from "react-hook-form";
@@ -17,6 +17,8 @@ const JobDetails = () => {
   const { user: { email, role, _id: userId } } = useSelector(state => state.auth)
   const [askQuestion, { isSuccess: askQuestionSuccess }] = useAskQuestionMutation()
   const [ansQuestion, { isSuccess: ansQuestionSuccess }] = useAnsQuestionMutation()
+  const [apply, { isSuccess: applySuccess }] = useApplyMutation()
+  const { data: jobData, isFetching: jobFetching } = useGetAppliedJobQuery(email);
 
   useEffect(() => {
     if (isSuccess) {
@@ -27,11 +29,17 @@ const JobDetails = () => {
     }
   }, [isFetching, isSuccess, isError, error, data])
 
+  if (jobFetching) return <Loading />
+
   if (isFetching) return <Loading />
 
   if (askQuestionSuccess) toast.success("Successfully posted your query", { id: 'ask' })
 
   if (ansQuestionSuccess) toast.success("Successfully posted your reply", { id: 'ans' })
+
+  if (applySuccess) toast.success("Successfully applied for the job", { id: 'apply' })
+
+  console.log(jobData?.data)
 
   const {
     companyName,
@@ -50,7 +58,7 @@ const JobDetails = () => {
 
   const onReply = (replyData) => {
     const { reply } = replyData
-    if(reply === '') return toast.error("Can't save empty text", {id: 'emt'})
+    if (reply === '') return toast.error("Can't save empty text", { id: 'emt' })
     ansQuestion(replyData)
     setReply("")
   }
@@ -59,6 +67,11 @@ const JobDetails = () => {
     const data = { ...formData, userId, email: email, jobId: id }
     askQuestion(data)
     reset()
+  }
+
+  const applyJob = () => {
+    const data = { userId, jobId: id, email }
+    apply(data)
   }
 
   return (
@@ -70,7 +83,9 @@ const JobDetails = () => {
         <div className='space-y-5'>
           <div className='flex justify-between items-center mt-5'>
             <h1 className='text-xl font-semibold text-primary'>{position}</h1>
-            {role === 'candidate' && <button className='btn'>Apply</button>}
+            {(role === 'candidate' && jobData?.data.length === 0) ?
+              <button onClick={applyJob} className='btn'>Apply</button>
+              : <span className="badge">Already Applied</span>}
           </div>
           <div>
             <h1 className='text-primary text-lg font-medium mb-3'>Overview</h1>
@@ -129,7 +144,7 @@ const JobDetails = () => {
                     </p>
                   ))}
 
-                  {role === 'employee' && (<form onSubmit={replyHandleSubmit(() =>onReply({reply: replyOne, userId: id}))}>
+                  {role === 'employee' && (<form onSubmit={replyHandleSubmit(() => onReply({ reply: replyOne, userId: id }))}>
                     <div className='flex gap-3 my-5'>
                       <input placeholder='Reply' type='text' className='w-full' onBlur={e => setReply(e.target.value)} />
                       <button
