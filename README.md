@@ -1,7 +1,11 @@
 ![alt text](/screenshots/Home-Page.png)
 
-# Elite Recuiting 🧑‍💼💼
+# Elite Recuiting 🧑‍💼
 <p>Elite Recruiting - a job hiring website. In this site, recruiter can post their jobs attaching all the details about the job. Moreover, a candidate can find their desired job based on their preference</p>
+
+Live Site: https://elite-recruiting.netlify.app/
+Server Code: https://github.com/RiyaadHossain/EliteRecruiting-Server
+Medium Blog: 
 
 ### Features
 - Developed User Authentication using Firebase
