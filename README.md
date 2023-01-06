@@ -3,8 +3,10 @@
 # Elite Recuiting 🧑‍💼
 <p>Elite Recruiting - a job hiring website. In this site, recruiter can post their jobs attaching all the details about the job. Moreover, a candidate can find their desired job based on their preference</p>
 
-Live Site: https://elite-recruiting.netlify.app/
+Live Site: https://elite-recruiting.netlify.app/ 
+</br>
 Server Code: https://github.com/RiyaadHossain/EliteRecruiting-Server
+</br>
 Medium Blog: 
 
 ### Features
