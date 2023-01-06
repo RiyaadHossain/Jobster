@@ -3,13 +3,16 @@ import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import { useRegistrationMutation } from "../../features/auth/authAPI";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
+import { getUser } from "../../features/auth/authSlice";
 
 const EmployerRegistration = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const [countries, setCountries] = useState([]);
-  const { user: { email } } = useSelector(state => state.auth)
+  const { user: { email, role } } = useSelector(state => state.auth)
   const { handleSubmit, register, control, reset } = useForm({ defaultValues: { email } });
   const term = useWatch({ control, name: "term" });
   const [registerUser, { isError, isLoading, isSuccess, data, error }] = useRegistrationMutation()
@@ -22,19 +25,23 @@ const EmployerRegistration = () => {
 
   useEffect(() => {
     if (isLoading) {
-
+      toast.loading("Processing...", { id: 'pending', duration: 1000 })
     }
     if (isSuccess) {
-
+      toast.success("Successfully Register your account", { id: 'success' })
     }
     if (isError) {
-
+      toast.error("Failed to Register your account", { id: 'fail' })
     }
-  }, [isLoading, isSuccess, isError, error, data])
+
+    if (role) {
+      navigate("/")
+    }
+  }, [isLoading, role, navigate, isSuccess, isError, error, data])
 
   const onSubmit = (data) => {
     registerUser({ ...data, role: "employee" })
-    navigate("/")
+    dispatch(getUser())
     reset()
   };
 

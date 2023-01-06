@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAnsQuestionMutation, useApplyMutation, useAskQuestionMutation, useGetAppliedJobQuery, useGetJobByIdQuery } from "../features/job/jobSlice";
 import meeting from "../assets/meeting.jpg"
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
@@ -10,36 +10,42 @@ import Loading from "../components/reusable/Loading";
 
 const JobDetails = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [replyOne, setReply] = useState("")
   const { register, handleSubmit, reset } = useForm()
   const { handleSubmit: replyHandleSubmit } = useForm()
-  const { isError, isFetching, data, error, isSuccess } = useGetJobByIdQuery(id,/*  {pollingInterval: '1000'} */)
-  const { user: { email, role, _id: userId } } = useSelector(state => state.auth)
-  const [askQuestion, { isSuccess: askQuestionSuccess }] = useAskQuestionMutation()
-  const [ansQuestion, { isSuccess: ansQuestionSuccess }] = useAnsQuestionMutation()
-  const [apply, { isSuccess: applySuccess }] = useApplyMutation()
-  const { data: jobData, isFetching: jobFetching } = useGetAppliedJobQuery(email);
+  const { isError, isFetching, data } = useGetJobByIdQuery(id, { pollingInterval: '100000' })
+  const { user: { email, role, _id: userId, }, /* isLoading */ } = useSelector(state => state.auth)
+  const [askQuestion, { isSuccess: askQuestionSuccess, isError: askError, error: askErr }] = useAskQuestionMutation()
+  const [ansQuestion, { isSuccess: ansQuestionSuccess, isError: ansError, error: ansErr }] = useAnsQuestionMutation()
+  const [apply, { isSuccess: applySuccess, isError: applyError, error: applyErr }] = useApplyMutation()
+  const { data: jobData, isFetching: jobFetching } = useGetAppliedJobQuery({ email, jobId: id });
 
-  useEffect(() => {
-    if (isSuccess) {
-
-    }
-    if (isError) {
-
-    }
-  }, [isFetching, isSuccess, isError, error, data])
+  if (isError) navigate('/')
 
   if (jobFetching) return <Loading />
 
   if (isFetching) return <Loading />
 
+  if (askError) toast.error(askErr, { id: "askErr" })
+
+  if (ansError) toast.error(ansErr, { id: "ansErr" })
+
+  if (applyError) toast.error(applyErr, { id: "applyErr" })
+
   if (askQuestionSuccess) toast.success("Successfully posted your query", { id: 'ask' })
 
   if (ansQuestionSuccess) toast.success("Successfully posted your reply", { id: 'ans' })
 
-  if (applySuccess) toast.success("Successfully applied for the job", { id: 'apply' })
-
-  console.log(jobData?.data)
+  if (applySuccess) toast.success("Successfully applied for the job", {
+    id: "apply",
+    icon: "✅",
+    style: {
+      borderRadius: "15px",
+      background: "#333",
+      color: "#fff",
+    },
+  })
 
   const {
     companyName,
@@ -83,9 +89,15 @@ const JobDetails = () => {
         <div className='space-y-5'>
           <div className='flex justify-between items-center mt-5'>
             <h1 className='text-xl font-semibold text-primary'>{position}</h1>
-            {(role === 'candidate' && jobData?.data.length === 0) ?
+            {
+
+              (role === 'candidate' && jobData?.data?.length === 0) &&
               <button onClick={applyJob} className='btn'>Apply</button>
-              : <span className="badge">Already Applied</span>}
+            }{console.log(jobData?.data)}
+            {
+              (role === 'candidate' && jobData?.data.length > 0) &&
+              <span className=" bg-primary text-sm text-white rounded-full p-1 px-2">Already Applied</span>
+            }
           </div>
           <div>
             <h1 className='text-primary text-lg font-medium mb-3'>Overview</h1>

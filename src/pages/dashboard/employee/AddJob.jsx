@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { FiTrash } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useAddJobMutation } from "../../../features/job/jobSlice";
@@ -26,21 +27,37 @@ const AddJob = () => {
 
   const [addJob, { isError, isLoading, isSuccess, error, data }] =
     useAddJobMutation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoading) {
+      toast.loading("Adding Job with all the details", {
+        id: "jobLoad",
+        duration: 1000,
+      });
     }
     if (isSuccess) {
+      toast.success("Job added successfully", {
+        id: "jobAdd",
+        icon: "✅",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
     if (isError) {
+      toast.error("Failed to add the Job", { id: "jobFail" });
     }
   }, [isLoading, isSuccess, isError, error, data]);
 
   const onSubmit = (data) => {
     addJob({ ...data, queries: [], applicants: [] });
-    reset()
-    navigate("/jobs")
+    reset();
+    setTimeout(() => {
+      navigate("/jobs");
+    }, 3000);
   };
 
   return (

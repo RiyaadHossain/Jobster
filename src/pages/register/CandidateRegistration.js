@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { FaChevronLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -22,13 +23,13 @@ const CandidateRegistration = () => {
 
   useEffect(() => {
     if (isLoading) {
-
+      toast.loading("Processing...", {id: 'pending', duration: 2000})
     }
     if (isSuccess) {
-
+      toast.success("Successfully Register your account", {id: 'success'})
     }
     if (isError) {
-
+      toast.error("Failed to Register your account", {id: 'fail'})
     }
   }, [isLoading, isSuccess, isError, error, data])
 

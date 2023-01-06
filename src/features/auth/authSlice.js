@@ -38,6 +38,9 @@ const authSlice = createSlice({
         },
         toggleLoading: (state) => {
             state.isLoading = false
+        },
+        toggleFalse: (state) => {
+            state.isError = false
         }
     },
     extraReducers: (builder) => {
@@ -93,5 +96,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { signOutReducer, userPersistency, toggleLoading } = authSlice.actions
+export const { signOutReducer, userPersistency, toggleLoading, toggleFalse } = authSlice.actions
 export default authSlice.reducer

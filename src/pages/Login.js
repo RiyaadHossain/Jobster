@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.svg";
-import { signInThunk, toggleLoading } from "../features/auth/authSlice";
+import { signInThunk, toggleFalse, /* toggleLoading */ } from "../features/auth/authSlice";
 
 const Login = () => {
 
@@ -15,17 +15,24 @@ const Login = () => {
 
   const onSubmit = ({ email, password }) => {
     dispatch(signInThunk({ email, password }))
-    dispatch(toggleLoading())
+    // dispatch(toggleLoading())
     reset()
   };
+
+  if (isError) {
+    setTimeout(() => {
+      dispatch(toggleFalse())
+    }, 3000);
+  }
 
   /* UseEffect is not working */
   useEffect(() => {
     if (isLoading) {
-      toast.loading("Logging In", { id: "loading" })
+      toast.loading("Logging In", { id: "loading", duration: 1000 })
     }
 
     if (isSuccess) {
+      console.log("hello");
       toast.success("Logged In", { id: "success" })
     }
 
@@ -34,6 +41,7 @@ const Login = () => {
     }
 
     if (email) {
+      console.log(email)
       navigate('/')
     }
   }, [navigate, email, isLoading, isSuccess, isError, error])

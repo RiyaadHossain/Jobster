@@ -3,7 +3,7 @@ import loginImage from "../assets/login.svg";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpThunk } from "../features/auth/authSlice";
+import { signUpThunk, toggleFalse } from "../features/auth/authSlice";
 import { toast } from "react-hot-toast";
 
 const Signup = () => {
@@ -30,9 +30,15 @@ const Signup = () => {
     }
   }, [password, confirmPassword, navigate]);
 
+  if (isError) {
+    setTimeout(() => {
+      dispatch(toggleFalse())
+    }, 3000);
+  }
+
   useEffect(() => {
     if (isLoading) {
-      toast.loading("Logging In", { id: "loading" })
+      toast.loading("Logging In", { id: "loading", duration: 1000 })
     }
 
     if (isSuccess) {

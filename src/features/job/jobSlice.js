@@ -43,7 +43,7 @@ const jobSlice = apiSlice.injectEndpoints({
             invalidatesTags: ["Job"]
         }),
         getAppliedJob: build.query({
-            query: (email) => `/applied-jobs/${email}`,
+            query: ({email, jobId}) => `/applied-jobs/${email}/job/${jobId}`,
             providesTags: ["Job"]
         })
     })
