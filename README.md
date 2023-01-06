@@ -8,6 +8,8 @@ Live Site: https://elite-recruiting.netlify.app/
 Server Code: https://github.com/RiyaadHossain/EliteRecruiting-Server
 </br>
 Medium Blog: 
+</br>
+Project Video:
 
 ### Features
 - Developed User Authentication using Firebase
