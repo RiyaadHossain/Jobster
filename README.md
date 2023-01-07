@@ -34,4 +34,5 @@ Project Video:
 - Express.js
 - MongoDB
 - React Hook Form
+- React Hot Toast
 - Firebase Authentication
