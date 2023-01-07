@@ -7,7 +7,7 @@ Live Site: https://elite-recruiting.netlify.app/
 </br>
 Server Code: https://github.com/RiyaadHossain/EliteRecruiting-Server
 </br>
-Medium Blog: 
+Medium Blog: https://medium.com/@riyadhossain.dev/how-to-use-redux-toolkit-rtk-query-in-react-7b3ad626772a
 </br>
 Project Video:
 
