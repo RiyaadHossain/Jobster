@@ -8,16 +8,16 @@ export default function AppliedJob() {
   const { email } = useParams();
   const { data, isFetching } = useGetAppliedJobQuery(email);
   if (isFetching) return <Loading />;
-  console.log(email);
-  console.log(data);
 
   return (
-    <div>
-      <h1 className="text-xl py-5">Applied jobs</h1>
+    <div className="pt-12 px-6">
+      <div className="bg-primary/10 p-5 rounded-2xl mb-5">
+        <h1 className="font-semibold text-xl">Applied Jobs</h1>
+      </div>
       {data?.data?.length ? (
         <div className="grid grid-cols-2 gap-5 pb-5">
           {data?.data?.map((job) => (
-            <JobCard jobData={job} />
+            <JobCard key={job._id} jobData={job} />
           ))}
         </div>
       ) : (

@@ -20,14 +20,14 @@ function App() {
   }, [dispatch])
 
   return (
-    <>
+    <div className="px-6">
       <Toaster />
       <RouterProvider router={routes} />
       <div className="grid grid-cols-2">
         <div></div>
         <div></div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAnsQuestionMutation, useApplyMutation, useAskQuestionMutation, useGetAppliedJobQuery, useGetJobByIdQuery } from "../features/job/jobSlice";
+import { useAnsQuestionMutation, useApplyMutation, useAskQuestionMutation, useGetJobByIdQuery, useGetSpecificAppliedJobQuery } from "../features/job/jobSlice";
 import meeting from "../assets/meeting.jpg"
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import Loading from "../components/reusable/Loading";
+import { useGetRegisteredUserQuery } from "../features/auth/authAPI";
 
 const JobDetails = () => {
   const { id } = useParams()
@@ -14,16 +15,26 @@ const JobDetails = () => {
   const [replyOne, setReply] = useState("")
   const { register, handleSubmit, reset } = useForm()
   const { handleSubmit: replyHandleSubmit } = useForm()
+
   const { isError, isFetching, data } = useGetJobByIdQuery(id, { pollingInterval: '100000' })
-  const { user: { email, role, _id: userId, }, /* isLoading */ } = useSelector(state => state.auth)
+
+  const { user: { email, role, _id: userId }, /* isLoading */ } = useSelector(state => state.auth)
+
+  const { data: userData, isFetching: userFetching } = useGetRegisteredUserQuery(email)
+
   const [askQuestion, { isSuccess: askQuestionSuccess, isError: askError, error: askErr }] = useAskQuestionMutation()
+
   const [ansQuestion, { isSuccess: ansQuestionSuccess, isError: ansError, error: ansErr }] = useAnsQuestionMutation()
+
   const [apply, { isSuccess: applySuccess, isError: applyError, error: applyErr }] = useApplyMutation()
-  const { data: jobData, isFetching: jobFetching } = useGetAppliedJobQuery({ email, jobId: id });
+
+  const { data: jobData, isFetching: jobFetching } = useGetSpecificAppliedJobQuery({ email, jobId: id });
 
   if (isError) navigate('/')
 
   if (jobFetching) return <Loading />
+
+  if (userFetching) return <Loading />
 
   if (isFetching) return <Loading />
 
@@ -93,12 +104,21 @@ const JobDetails = () => {
 
               (role === 'candidate' && jobData?.data?.length === 0) &&
               <button onClick={applyJob} className='btn'>Apply</button>
-            }{console.log(jobData?.data)}
+            }
             {
               (role === 'candidate' && jobData?.data.length > 0) &&
               <span className=" bg-primary text-sm text-white rounded-full p-1 px-2">Already Applied</span>
             }
+            {
+              (role === 'employee') &&
+              <p>Total Applied: {" "}<span className=" bg-primary text-sm text-white rounded-full p-1 px-2"> {data.data.applicants?.length}</span></p>
+            }
+
           </div>
+          {
+            (role === 'employee') &&
+            <div className="text-right "><button onClick={() => navigate('/applications')} className="btn w-48 mx-auto">View Applications</button></div>
+          }
           <div>
             <h1 className='text-primary text-lg font-medium mb-3'>Overview</h1>
             <p>{overview}</p>
@@ -218,7 +238,7 @@ const JobDetails = () => {
           </div>
           <div>
             <p>Company Size</p>
-            <h1 className='font-semibold text-lg'>Above 100</h1>
+            <h1 className='font-semibold text-lg'>{userData?.data?.comapnySize}</h1>
           </div>
           <div>
             <p>Founded</p>
@@ -226,16 +246,16 @@ const JobDetails = () => {
           </div>
           <div>
             <p>Email</p>
-            <h1 className='font-semibold text-lg'>company.email@name.com</h1>
+            <h1 className='font-semibold text-sm'>{userData?.data?.companyEmail}</h1>
           </div>
           <div>
             <p>Company Location</p>
-            <h1 className='font-semibold text-lg'>Los Angeles</h1>
+            <h1 className='font-semibold text-lg'>{userData?.data?.companyLocation}</h1>
           </div>
           <div>
             <p>Website</p>
-            <a className='font-semibold text-lg' href='#d'>
-              https://website.com
+            <a className='font-semibold text-sm' href='#d'>
+              {userData?.data?.companySite}
             </a>
           </div>
         </div>

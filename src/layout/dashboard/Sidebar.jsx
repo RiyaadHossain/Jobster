@@ -17,15 +17,33 @@ const Sidebar = () => {
           </Link>
           <h1 className="text-xl">Dashboard</h1>
         </div>
+        <li>
+          <Link
+            className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+            to="/dashboard"
+          >
+            Home
+          </Link>
+        </li>
         {role === "employee" ? (
-          <li>
-            <Link
-              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-              to="add-job"
-            >
-              Add Job
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link
+                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+                to="add-job"
+              >
+                Add Job
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+                to={`my-jobs/${email}`}
+              >
+                My Jobs
+              </Link>
+            </li>
+          </>
         ) : (
           <li>
             <Link

@@ -37,6 +37,14 @@
   }
 }
 
+.stat-card{
+  @apply rounded-md p-5 text-slate-800 text-center
+}
+
+.stat-title{
+  @apply font-semibold text-3xl
+}
+
 .btn {
   @apply px-4 py-2 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
 }

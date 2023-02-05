@@ -14,6 +14,10 @@ const jobSlice = apiSlice.injectEndpoints({
             query: () => "/jobs",
             providesTags: ["Jobs"]
         }),
+        getJobByEmployee: build.query({
+            query: (email) => `/employee-jobs/${email}`,
+            providesTags: ["Jobs"]
+        }),
         getJobById: build.query({
             query: (id) => `/job/${id}`,
             providesTags: ["Job"]
@@ -43,10 +47,14 @@ const jobSlice = apiSlice.injectEndpoints({
             invalidatesTags: ["Job"]
         }),
         getAppliedJob: build.query({
+            query: (email) => `/applied-jobs/${email}`,
+            providesTags: ["Job"]
+        }),
+        getSpecificAppliedJob: build.query({
             query: ({email, jobId}) => `/applied-jobs/${email}/job/${jobId}`,
             providesTags: ["Job"]
         })
     })
 })
 
-export const { useAddJobMutation, useGetJobsQuery, useGetJobByIdQuery, useAskQuestionMutation, useAnsQuestionMutation, useApplyMutation, useGetAppliedJobQuery } = jobSlice
+export const { useAddJobMutation, useGetJobsQuery, useGetJobByEmployeeQuery, useGetJobByIdQuery, useAskQuestionMutation, useAnsQuestionMutation, useApplyMutation, useGetAppliedJobQuery, useGetSpecificAppliedJobQuery } = jobSlice

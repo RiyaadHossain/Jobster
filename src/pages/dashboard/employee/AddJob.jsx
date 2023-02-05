@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { FiTrash } from "react-icons/fi";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useAddJobMutation } from "../../../features/job/jobSlice";
 
 const AddJob = () => {
-  const { handleSubmit, register, control, reset } = useForm({
-    defaultValues: { companyName: "Programming Hero" },
-  });
+  const { handleSubmit, register, control, reset } = useForm();
   const {
     fields: resFields,
     append: resAppend,
@@ -24,6 +23,10 @@ const AddJob = () => {
     append: reqAppend,
     remove: reqRemove,
   } = useFieldArray({ control, name: "requirements" });
+
+  const {
+    user: { _id, email, companyName },
+  } = useSelector((state) => state.auth);
 
   const [addJob, { isError, isLoading, isSuccess, error, data }] =
     useAddJobMutation();
@@ -53,11 +56,17 @@ const AddJob = () => {
   }, [isLoading, isSuccess, isError, error, data]);
 
   const onSubmit = (data) => {
-    addJob({ ...data, queries: [], applicants: [] });
+    addJob({
+      ...data,
+      companyName,
+      queries: [],
+      applicants: [],
+      postedBy: { _id, email },
+    });
     reset();
     setTimeout(() => {
       navigate("/jobs");
-    }, 3000);
+    }, 2500);
   };
 
   return (
@@ -74,18 +83,6 @@ const AddJob = () => {
             Position
           </label>
           <input type="text" id="position" {...register("position")} />
-        </div>
-        <div className="flex flex-col w-full max-w-xs">
-          <label className="mb-2" htmlFor="companyName">
-            Company Name
-          </label>
-          <input
-            disabled
-            className="cursor-not-allowed"
-            type="text"
-            id="companyName"
-            {...register("companyName")}
-          />
         </div>
         <div className="flex flex-col w-full max-w-xs">
           <label className="mb-2" htmlFor="experience">
@@ -115,7 +112,7 @@ const AddJob = () => {
           </label>
           <input type="text" id="salaryRange" {...register("salaryRange")} />
         </div>
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full max-w-xs">
           <label className="mb-2" htmlFor="location">
             Location
           </label>

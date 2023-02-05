@@ -40,7 +40,6 @@ const EmployerRegistration = () => {
   }, [isLoading, role, navigate, isSuccess, isError, error, data])
 
   const onSubmit = (data) => {
-    console.log(data)
     registerUser({ ...data, role: "employee" })
     dispatch(getUser())
     reset()
@@ -158,7 +157,7 @@ const EmployerRegistration = () => {
             </select>
           </div>
           <div className='flex flex-col w-full max-w-xs'>
-            <label className='mb-2' htmlFor='companyLoacation'>
+            <label className='mb-2' htmlFor='companyLocation'>
               Company Location
             </label>
             <input type='text' {...register("companyLoacation")} id='companyLoacation' />
