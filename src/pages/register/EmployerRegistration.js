@@ -40,6 +40,7 @@ const EmployerRegistration = () => {
   }, [isLoading, role, navigate, isSuccess, isError, error, data])
 
   const onSubmit = (data) => {
+    console.log(data)
     registerUser({ ...data, role: "employee" })
     dispatch(getUser())
     reset()
@@ -59,7 +60,7 @@ const EmployerRegistration = () => {
           className='bg-secondary/20 shadow-lg p-10 rounded-2xl flex flex-wrap gap-3 max-w-3xl justify-between'
           onSubmit={handleSubmit(onSubmit)}
         >
-          <h1 className='w-full text-2xl text-primary mb-5'>Employee</h1>
+          <h1 className='w-full text-2xl text-primary mb-5'>Employee:</h1>
           <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-2' htmlFor='firstName'>
               First Name
@@ -116,7 +117,6 @@ const EmployerRegistration = () => {
               </div>
             </div>
           </div>
-          <hr className='w-full mt-2 bg-black' />
           <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-3' htmlFor='country'>
               Country
@@ -131,21 +131,49 @@ const EmployerRegistration = () => {
           </div>
           <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-2' htmlFor='address'>
-              Street Address
+              Address
             </label>
             <input type='text' {...register("address")} id='address' />
           </div>
+
+          <hr className='w-full mt-2 bg-black' />
+
+          <h1 className='w-full text-2xl text-primary mt-3'> Company Info:</h1>
           <div className='flex flex-col w-full max-w-xs'>
-            <label className='mb-2' htmlFor='city'>
-              City
+            <label className='mb-2' htmlFor='companyName'>
+              Company Name
             </label>
-            <input type='text' {...register("city")} id='city' />
+            <input type='text' {...register("companyName")} id='companyName' />
           </div>
           <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-2' htmlFor='postcode'>
-              Postal Code
+              Company Size
             </label>
-            <input type='text' {...register("postcode")} id='postcode' />
+            <select {...register("comapnySize")} id='comapnySize'>
+              <option value="10 - 50">10 - 50</option>
+              <option value="50 - 100">50 - 100</option>
+              <option value="100 - 500">100 - 500</option>
+              <option value="500 - 1000">500 - 1000</option>
+              <option value="1000+">1000+</option>
+            </select>
+          </div>
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='companyLoacation'>
+              Company Location
+            </label>
+            <input type='text' {...register("companyLoacation")} id='companyLoacation' />
+          </div>
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='companyEmail'>
+              Company Email
+            </label>
+            <input type='email' {...register("companyEmail")} id='companyEmail' />
+          </div>
+          <div className='flex flex-col w-full'>
+            <label className='mb-2' htmlFor='companySite'>
+              Company Site
+            </label>
+            <input type='text' {...register("companySite")} id='companySite' />
           </div>
 
           <div className='flex justify-between items-center w-full mt-3'>
