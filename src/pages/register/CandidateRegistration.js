@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useFieldArray, useForm, useWatch } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { FaChevronLeft } from "react-icons/fa";
+import { FiTrash } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useRegistrationMutation } from "../../features/auth/authAPI";
@@ -12,6 +13,22 @@ const CandidateRegistration = () => {
   const [countries, setCountries] = useState([]);
   const { user: { email } } = useSelector(state => state.auth)
   const { handleSubmit, register, control, reset } = useForm({ defaultValues: { email } });
+
+  const {
+    fields: eduFields,
+    append: eduAppend,
+    remove: eduRemove,
+  } = useFieldArray({ control, name: "education" });
+  const {
+    fields: skillFields,
+    append: skillAppend,
+    remove: skillRemove,
+  } = useFieldArray({ control, name: "skills" });
+  const {
+    fields: expFields,
+    append: expAppend,
+    remove: expRemove,
+  } = useFieldArray({ control, name: "experience" });
   const term = useWatch({ control, name: "term" });
   const [registerCandidate, { isError, isLoading, isSuccess, data, error }] = useRegistrationMutation()
 
@@ -23,13 +40,13 @@ const CandidateRegistration = () => {
 
   useEffect(() => {
     if (isLoading) {
-      toast.loading("Processing...", {id: 'pending', duration: 2000})
+      toast.loading("Processing...", { id: 'pending', duration: 2000 })
     }
     if (isSuccess) {
-      toast.success("Successfully Register your account", {id: 'success'})
+      toast.success("Successfully Register your account", { id: 'success' })
     }
     if (isError) {
-      toast.error("Failed to Register your account", {id: 'fail'})
+      toast.error("Failed to Register your account", { id: 'fail' })
     }
   }, [isLoading, isSuccess, isError, error, data])
 
@@ -110,7 +127,6 @@ const CandidateRegistration = () => {
               </div>
             </div>
           </div>
-          <hr className='w-full mt-2 bg-black' />
           <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-3' htmlFor='country'>
               Country
@@ -124,24 +140,169 @@ const CandidateRegistration = () => {
             </select>
           </div>
           <div className='flex flex-col w-full max-w-xs'>
-            <label className='mb-2' htmlFor='address'>
-              Street Address
-            </label>
-            <input type='text' {...register("address")} id='address' />
-          </div>
-          <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-2' htmlFor='city'>
               City
             </label>
             <input type='text' {...register("city")} id='city' />
           </div>
-          <div className='flex flex-col w-full max-w-xs'>
-            <label className='mb-2' htmlFor='postcode'>
-              Postal Code
-            </label>
-            <input type='text' {...register("postcode")} id='postcode' />
-          </div>
 
+          <hr className='w-full mt-2 bg-black' />
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='candidateType'>
+              Experience
+            </label>
+            <select defaultValue="1 - 2" {...register("candidateType")} id='candidateType' >
+              <option defaultChecked value="0 - 1">0 - 1</option>
+              <option value="1 - 2">1 - 2</option>
+              <option value="2 - 5">2 - 5</option>
+              <option value="5 - 10">5 - 10</option>
+              <option value="10+">10+</option>
+            </select>
+          </div>
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='candidateType'>
+              Candidate Type
+            </label>
+            <select defaultValue="Fresher" {...register("candidateType")} id='candidateType' >
+              <option value="Fresher">Fresher</option>
+              <option value="Junior">Junior</option>
+              <option value="Mid-Senior">Mid-Senior</option>
+              <option value="Senior">Senior</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='university'>
+              University
+            </label>
+            <input type='text' {...register("university")} id='university' />
+          </div>
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='profession'>
+              Profession
+            </label>
+            <input placeholder="Software Engineer" type='text' {...register("profession")} id='profession' />
+          </div>
+          <hr className='w-full mt-2 bg-black' />
+          <div className="flex flex-col w-full">
+            <label className="mb-2">Education</label>
+            <div>
+              <div>
+                {eduFields.map((item, index) => {
+                  return (
+                    <div key={index} className=" mb-5 flex items-center gap-3">
+                      <input
+                        placeholder="BBA, Oxford University, 2021"
+                        className="!w-full"
+                        type="text"
+                        {...register(`education[${index}]`)}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => eduRemove(index)}
+                        className="grid place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-11 w-11 group transition-all hover:bg-red-500"
+                      >
+                        <FiTrash
+                          className="text-red-500 group-hover:text-white transition-all"
+                          size="20"
+                        />
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+              <div>
+                <button
+                  type="button"
+                  onClick={() => eduAppend("")}
+                  className="btn"
+                >
+                  Add Education
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col w-full">
+            <label className="mb-2">Skills</label>
+            <div>
+              <div>
+                {skillFields.map((item, index) => {
+                  return (
+                    <div key={index} className="flex items-center gap-3 mb-5">
+                      <input
+                        className="!w-full"
+                        type="text"
+                        {...register(`skills[${index}]`)}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => skillRemove(index)}
+                        className="grid place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-11 w-11 group transition-all hover:bg-red-500"
+                      >
+                        <FiTrash
+                          className="text-red-500 group-hover:text-white transition-all"
+                          size="20"
+                        />
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+              <div>
+                <button
+                  type="button"
+                  onClick={() => skillAppend("")}
+                  className="btn"
+                >
+                  Add Skill
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col w-full">
+            <label className="mb-2">Experience</label>
+            <div>
+              <div>
+                {expFields.map((item, index) => {
+                  return (
+                    <div key={index} className="flex items-center gap-3 mb-5">
+                      <input
+                        placeholder="Junior Software Engineer at Google for 2 Years"
+                        className="!w-full"
+                        type="text"
+                        {...register(`experience[${index}]`)}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => expRemove(index)}
+                        className="grid place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-11 w-11 group transition-all hover:bg-red-500"
+                      >
+                        <FiTrash
+                          className="text-red-500 group-hover:text-white transition-all"
+                          size="20"
+                        />
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+              <div>
+                <button
+                  type="button"
+                  onClick={() => expAppend("")}
+                  className="btn"
+                >
+                  Add Skill
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col w-full">
+            <label className="mb-2" htmlFor="about">
+              About
+            </label>
+            <textarea className="resize-none" rows={7} {...register("about")} id="about" />
+          </div>
           <div className='flex justify-between items-center w-full mt-3'>
             <div className='flex  w-full max-w-xs'>
               <input
