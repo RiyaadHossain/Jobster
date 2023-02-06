@@ -91,7 +91,6 @@ const JobDetails = () => {
     apply(data)
   }
 
-  console.log()
   const isJobHolder = data.data.postedBy.email === email
 
   return (
