@@ -3,13 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const JobCard = ({ jobData }) => {
   const navigate = useNavigate();
-  const {
-    _id,
-    position,
-    companyName,
-    location,
-    /* employmentType, */ applicants,
-  } = jobData || {};
+  const { _id, position, companyName, location, employmentType } = jobData;
 
   return (
     <div
@@ -29,7 +23,9 @@ const JobCard = ({ jobData }) => {
         <p>{location}</p>
       </div>
       <div className="flex justify-between items-center mt-5">
-        <p>Applied: {applicants?.length}</p>
+        <p>
+          { employmentType}
+        </p>
         <button className="btn" onClick={() => navigate(`/job-details/${_id}`)}>
           Details
         </button>

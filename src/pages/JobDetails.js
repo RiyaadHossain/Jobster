@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAnsQuestionMutation, useApplyMutation, useAskQuestionMutation, useGetJobByIdQuery, useGetSpecificAppliedJobQuery } from "../features/job/jobSlice";
+import { useAnsQuestionMutation, useApplyMutation, useAskQuestionMutation, useGetJobByIdQuery, useGetSpecificAppliedJobQuery } from "../features/job/jobAPI";
 import meeting from "../assets/meeting.jpg"
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useForm } from "react-hook-form";
@@ -91,6 +91,9 @@ const JobDetails = () => {
     apply(data)
   }
 
+  console.log()
+  const isJobHolder = data.data.postedBy.email === email
+
   return (
     <div className='pt-14 grid grid-cols-12 gap-5'>
       <div className='col-span-9 mb-10'>
@@ -110,13 +113,13 @@ const JobDetails = () => {
               <span className=" bg-primary text-sm text-white rounded-full p-1 px-2">Already Applied</span>
             }
             {
-              (role === 'employee') &&
-              <p>Total Applied: {" "}<span className=" bg-primary text-sm text-white rounded-full p-1 px-2"> {data.data.applicants?.length}</span></p>
+              (role === 'employee' && isJobHolder) &&
+              <p>Total Applied: {" "}<span className=" bg-primary text-sm text-white rounded-full p-1 px-3"> {data.data.applicants?.length}</span></p>
             }
 
           </div>
           {
-            (role === 'employee') &&
+            (role === 'employee' && isJobHolder) &&
             <div className="text-right "><button onClick={() => navigate('/applications')} className="btn w-48 mx-auto">View Applications</button></div>
           }
           <div>

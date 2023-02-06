@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import JobCard from "../../../components/reusable/JobCard";
 import Loading from "../../../components/reusable/Loading";
-import { useGetJobByEmployeeQuery } from "../../../features/job/jobSlice";
+import { useGetJobByEmployeeQuery } from "../../../features/job/jobAPI";
 
 export default function MyJobs() {
   const { email } = useParams();

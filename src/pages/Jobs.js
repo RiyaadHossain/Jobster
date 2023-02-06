@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import JobCard from "../components/reusable/JobCard";
 import Loading from "../components/reusable/Loading";
-import { useGetJobsQuery } from "../features/job/jobSlice";
+import { useGetJobsQuery } from "../features/job/jobAPI";
 
 const Jobs = () => {
   const { isError, isFetching, isSuccess, error, data } = useGetJobsQuery()

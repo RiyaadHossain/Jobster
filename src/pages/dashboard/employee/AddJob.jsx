@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { FiTrash } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAddJobMutation } from "../../../features/job/jobSlice";
+import { useAddJobMutation } from "../../../features/job/jobAPI";
 
 const AddJob = () => {
   const { handleSubmit, register, control, reset } = useForm();
@@ -100,11 +100,11 @@ const AddJob = () => {
           <label className="mb-2" htmlFor="employmentType">
             Employment Type
           </label>
-          <input
-            type="text"
-            id="employmentType"
-            {...register("employmentType")}
-          />
+          <select {...register("employmentType")} id="employmentType">
+            <option value="Full Time">Full Time</option>
+            <option value="Part Time">Part Time</option>
+            <option value="Contractual">Contractual</option>
+          </select>
         </div>
         <div className="flex flex-col w-full max-w-xs">
           <label className="mb-2" htmlFor="salaryRange">
@@ -114,9 +114,13 @@ const AddJob = () => {
         </div>
         <div className="flex flex-col w-full max-w-xs">
           <label className="mb-2" htmlFor="location">
-            Location
+            Job Type
           </label>
-          <input type="text" id="location" {...register("location")} />
+          <select {...register("location")} id="location">
+            <option value="On Site">On Site</option>
+            <option value="Remote">Remote</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
         </div>
         <hr className="w-full mt-2 bg-black" />
         <div className="flex flex-col w-full">

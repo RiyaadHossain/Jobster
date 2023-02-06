@@ -1,6 +1,6 @@
 import { apiSlice } from "../api/apiSlice";
 
-const jobSlice = apiSlice.injectEndpoints({
+const jobAPI = apiSlice.injectEndpoints({
     endpoints: (build) => ({
         addJob: build.mutation({
             query: (data) => ({
@@ -57,4 +57,4 @@ const jobSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const { useAddJobMutation, useGetJobsQuery, useGetJobByEmployeeQuery, useGetJobByIdQuery, useAskQuestionMutation, useAnsQuestionMutation, useApplyMutation, useGetAppliedJobQuery, useGetSpecificAppliedJobQuery } = jobSlice
+export const { useAddJobMutation, useGetJobsQuery, useGetJobByEmployeeQuery, useGetJobByIdQuery, useAskQuestionMutation, useAnsQuestionMutation, useApplyMutation, useGetAppliedJobQuery, useGetSpecificAppliedJobQuery } = jobAPI
