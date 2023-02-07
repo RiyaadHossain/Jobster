@@ -7,9 +7,9 @@ Live Site: https://elite-recruiting.netlify.app/
 </br>
 Server Code: https://github.com/RiyaadHossain/EliteRecruiting-Server
 </br>
-Medium Blog: https://medium.com/@riyadhossain.dev/how-to-use-redux-toolkit-rtk-query-in-react-7b3ad626772a
+Medium Blog: https://cutt.ly/w3t9vVk
 </br>
-Project Video: [Link](https://www.linkedin.com/posts/riyaad-hossain_react-redux-reactredux-activity-7017770597350875136-WAMi?utm_source=share&utm_medium=member_desktop)
+Project Video: https://cutt.ly/L3t9o0O
 
 ### Features
 - Developed User Authentication using Firebase
