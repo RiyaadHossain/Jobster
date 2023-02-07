@@ -92,6 +92,34 @@ const CandidateRegistration = () => {
             <input className="bg-slate-200 cursor-not-allowed" disabled type='email' id='email' {...register("email", { required: true })} />
             {errors.email && <span className="field-error">Email is Required</span>}
           </div>
+          <div className='flex  flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='img'>
+              Image URL
+            </label>
+            <input className="" type='text' id='img' {...register("img", { required: true })} />
+            {errors.img && <span className="field-error">Image URL is Required</span>}
+          </div>
+
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-3' htmlFor='country'>
+              Country
+            </label>
+            <select {...register("country", { required: true })} id='country'>
+              {countries
+                .sort((a, b) => a?.name?.common?.localeCompare(b?.name?.common))
+                .map(({ name }, i) => (
+                  <option key={i} value={name.common}>{name.common}</option>
+                ))}
+            </select>
+            {errors.country && <span className="field-error">Country is Required</span>}
+          </div>
+          <div className='flex flex-col w-full max-w-xs'>
+            <label className='mb-2' htmlFor='city'>
+              City
+            </label>
+            <input type='text' {...register("city", { required: true })} id='city' />
+            {errors.city && <span className="field-error">City is Required</span>}
+          </div>
           <div className='flex flex-col w-full max-w-xs'>
             <h1 className='mb-3'>Gender</h1>
             <div className='flex gap-3'>
@@ -130,27 +158,6 @@ const CandidateRegistration = () => {
               </div>
             </div>
           </div>
-          <div className='flex flex-col w-full max-w-xs'>
-            <label className='mb-3' htmlFor='country'>
-              Country
-            </label>
-            <select {...register("country", { required: true })} id='country'>
-              {countries
-                .sort((a, b) => a?.name?.common?.localeCompare(b?.name?.common))
-                .map(({ name }, i) => (
-                  <option key={i} value={name.common}>{name.common}</option>
-                ))}
-            </select>
-            {errors.country && <span className="field-error">Country is Required</span>}
-          </div>
-          <div className='flex flex-col w-full max-w-xs'>
-            <label className='mb-2' htmlFor='city'>
-              City
-            </label>
-            <input type='text' {...register("city", { required: true })} id='city' />
-            {errors.city && <span className="field-error">City is Required</span>}
-          </div>
-
           <hr className='w-full mt-2 bg-black' />
           <div className='flex flex-col w-full max-w-xs'>
             <label className='mb-2' htmlFor='experienceYear'>

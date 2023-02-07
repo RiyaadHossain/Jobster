@@ -32,6 +32,7 @@ export default function MyProfile() {
     linkedin,
     github,
     portfolio,
+    img
   } = data?.data || {};
 
   return (
@@ -154,7 +155,7 @@ export default function MyProfile() {
         </div>
         <div className="col-span-3">
           <div className="h-80 rounded-xl overflow-hidden">
-            <img className="h-full w-full object-cover" src={person} alt="" />
+            <img className="h-full w-full object-cover" src={img || person} alt="" />
           </div>
         </div>
       </div>

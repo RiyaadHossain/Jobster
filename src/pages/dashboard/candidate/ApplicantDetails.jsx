@@ -32,6 +32,7 @@ export default function ApplicantDetails() {
     linkedin,
     github,
     portfolio,
+    img
   } = data?.data || {};
 
   return (
@@ -157,7 +158,7 @@ export default function ApplicantDetails() {
         </div>
         <div className="col-span-3">
           <div className="h-96 rounded-md overflow-hidden border border-primary">
-            <img className="h-full w-full object-cover" src={person} alt="" />
+            <img className="h-full w-full object-cover" src={img || person} alt="" />
           </div>
         </div>
       </div>
