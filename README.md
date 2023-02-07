@@ -16,8 +16,12 @@ Project Video: [Link](https://www.linkedin.com/posts/riyaad-hossain_react-redux-
 - Build Role Based Authorization
 - Employee can post Job attaching all the details
 - Candidate can apply for any preferred Job
-- In 'Job Details' page Questions can be asked by Candidate
-- Employee can ans those Questions asked by Candidate
+- Candidate can visualize his applied jobs
+- Candidate can see his profile
+- Employee can see applied candidates List and Candidate Details
+- Employee can visualize his posted Job
+- In 'Job Details' page, Questions can be asked by Candidate
+- Employee can answer those Questions asked by Candidate
 
 ### Technologies
 - HTML
