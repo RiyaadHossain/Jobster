@@ -1,13 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import Loading from '../../components/reusable/Loading'
-import { useGetUserQuery } from '../../features/user/userAPI'
+import { useGetUsersQuery } from '../../features/user/userAPI'
 import { useGetJobByEmployeeQuery, useGetJobsQuery, useGetAppliedJobQuery } from '../../features/job/jobAPI'
 
 export default function DashboardHome() {
 
   const { email, role } = useParams()
-  const { data, isFetching } = useGetUserQuery()
+  const { data, isFetching } = useGetUsersQuery()
   const { data: jobs, isFetching: jobFetching } = useGetJobsQuery()
   const { data: myJobs, isFetching: myJobFetching } = useGetJobByEmployeeQuery(email)
   const { data: appliedJobs, isFetching: appliedJobsFetching } = useGetAppliedJobQuery(email)

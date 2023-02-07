@@ -14,6 +14,7 @@ import MyJobs from "../pages/dashboard/employee/MyJobs";
 import DashboardHome from "../layout/dashboard/DashboardHome";
 import Applications from "../pages/applications/Applications";
 import ApplicantDetails from "../pages/dashboard/candidate/ApplicantDetails";
+import MyProfile from "../pages/dashboard/candidate/MyProfile";
 
 const routes = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const routes = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/applications",
+        path: "/applications/:id",
         element: <Applications />,
       },
       {
@@ -49,7 +50,7 @@ const routes = createBrowserRouter([
         ),
       },
       {
-        path: "/applicant-details/:id",
+        path: "/applicant-details/:email",
         element: (
           <PrivateRoute>
             <ApplicantDetails />
@@ -93,6 +94,10 @@ const routes = createBrowserRouter([
       {
         path: "applied-job/:email",
         element: <AppliedJob />
+      },
+      {
+        path: "my-profile/:email",
+        element: <MyProfile />
       }
     ]
   },

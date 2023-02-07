@@ -59,6 +59,7 @@ const JobDetails = () => {
   })
 
   const {
+    _id,
     companyName,
     position,
     location,
@@ -70,7 +71,8 @@ const JobDetails = () => {
     requirements,
     responsibilities,
     overview,
-    queries
+    queries,
+    applicants
   } = data?.data || {};
 
   const onReply = (replyData) => {
@@ -113,13 +115,13 @@ const JobDetails = () => {
             }
             {
               (role === 'employee' && isJobHolder) &&
-              <p>Total Applied: {" "}<span className=" bg-primary text-sm text-white rounded-full p-1 px-3"> {data.data.applicants?.length}</span></p>
+              <p>Total Applied: {" "}<span className=" bg-primary text-sm text-white rounded-full p-1 px-3"> {applicants?.length}</span></p>
             }
 
           </div>
           {
-            (role === 'employee' && isJobHolder) &&
-            <div className="text-right "><button onClick={() => navigate('/applications')} className="btn w-48 mx-auto">View Applications</button></div>
+            (role === 'employee' && isJobHolder && applicants?.length) ?
+              <div className="text-right "><button onClick={() => navigate(`/applications/${_id}`)} className="btn w-48 mx-auto">View Applications</button></div> : null
           }
           <div>
             <h1 className='text-primary text-lg font-medium mb-3'>Overview</h1>

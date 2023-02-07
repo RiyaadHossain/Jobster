@@ -20,7 +20,7 @@ const Sidebar = () => {
         <li>
           <Link
             className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-            to="/dashboard"
+            to={`/dashboard/${email}/${role}`}
           >
             Home
           </Link>
@@ -45,14 +45,24 @@ const Sidebar = () => {
             </li>
           </>
         ) : (
-          <li>
-            <Link
-              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-              to={`applied-job/${email}`}
-            >
-              Applied Job
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link
+                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+                to={`applied-job/${email}`}
+              >
+                Applied Job
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+                to={`my-profile/${email}`}
+              >
+                My Profile
+              </Link>
+            </li>
+          </>
         )}
       </ul>
     </div>

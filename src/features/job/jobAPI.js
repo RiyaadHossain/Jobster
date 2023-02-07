@@ -51,10 +51,13 @@ const jobAPI = apiSlice.injectEndpoints({
             providesTags: ["Job"]
         }),
         getSpecificAppliedJob: build.query({
-            query: ({email, jobId}) => `/applied-jobs/${email}/job/${jobId}`,
+            query: ({ email, jobId }) => `/applied-jobs/${email}/job/${jobId}`,
             providesTags: ["Job"]
+        }),
+        getCandidatesByJob: build.query({
+            query: (id) => `/candidates/${id}`
         })
     })
 })
 
-export const { useAddJobMutation, useGetJobsQuery, useGetJobByEmployeeQuery, useGetJobByIdQuery, useAskQuestionMutation, useAnsQuestionMutation, useApplyMutation, useGetAppliedJobQuery, useGetSpecificAppliedJobQuery } = jobAPI
+export const { useAddJobMutation, useGetJobsQuery, useGetJobByEmployeeQuery, useGetJobByIdQuery, useAskQuestionMutation, useAnsQuestionMutation, useApplyMutation, useGetAppliedJobQuery, useGetSpecificAppliedJobQuery, useGetCandidatesByJobQuery } = jobAPI
