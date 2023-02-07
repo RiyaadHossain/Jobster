@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ApplicantCard from "../../components/reusable/ApplicantCard";
 import Loading from "../../components/reusable/Loading";
+import PreviousBtn from "../../components/reusable/PreviousBtn";
 import {
   useGetCandidatesByJobQuery,
   useGetJobByIdQuery,
@@ -12,15 +13,15 @@ export default function Applications() {
   const { data, isFetching } = useGetJobByIdQuery(id);
   const { data: users, isFetching: usersFetching } =
     useGetCandidatesByJobQuery(id);
-  console.log({id, data, users})
-  
+  console.log({ id, data, users });
+
   if (isFetching || usersFetching) return <Loading />;
 
   const { applicants } = data?.data || {};
   console.log(users);
 
   return (
-    <div className=" pt-24">
+    <div className=" pt-24 ">
       <div className="bg-primary/10 p-5 rounded-2xl flex items-center justify-between">
         <p className="font-semibold text-xl">React Job</p>
         <h1 className="font-semibold text-xl">
@@ -34,6 +35,9 @@ export default function Applications() {
         {users?.data?.map((candidate, i) => (
           <ApplicantCard key={i} candidate={candidate} />
         ))}
+      </div>
+      <div className="relative bottom-4 mt-10">
+        <PreviousBtn />
       </div>
     </div>
   );

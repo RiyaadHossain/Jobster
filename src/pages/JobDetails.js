@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import Loading from "../components/reusable/Loading";
 import { useGetRegisteredUserQuery } from "../features/auth/authAPI";
+import PreviousBtn from "../components/reusable/PreviousBtn";
 
 const JobDetails = () => {
   const { id } = useParams()
@@ -161,8 +162,9 @@ const JobDetails = () => {
               ))}
             </ul>
           </div>
+          <hr className='my-5' />
+          <PreviousBtn />
         </div>
-        <hr className='my-5' />
 
         {(queries.length || role === 'candidate') && <div>
           <div>
