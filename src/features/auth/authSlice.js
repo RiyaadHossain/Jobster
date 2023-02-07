@@ -5,6 +5,7 @@ import { auth } from "../../firebase/firebase.config";
 const initialState = {
     isLoading: false,
     isError: false,
+    isSuccess: false,
     user: { email: "", role: "" },
     error: ""
 }
@@ -65,14 +66,17 @@ const authSlice = createSlice({
             .addCase(signInThunk.pending, (state) => {
                 state.isLoading = true
                 state.isError = false
+                state.isSuccess = false
                 state.error = ''
             }).addCase(signInThunk.fulfilled, (state, action) => {
                 state.isLoading = false
+                state.isSuccess = true
                 state.user.email = action.payload
             }).addCase(signInThunk.rejected, (state, { error }) => {
                 state.user.email = ''
                 state.isError = true
                 state.isLoading = false
+                state.isSuccess = false
                 state.error = error.message
             })
 
