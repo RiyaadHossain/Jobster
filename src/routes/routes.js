@@ -1,20 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layout/dashboard/Dashboard";
 import Main from "../layout/main/Main";
-import AccountCreator from "../pages/register/AccountCreator";
-import Home from "../pages/home/Home";
-import JobDetails from "../pages/JobDetails";
-import Jobs from "../pages/Jobs";
-import Login from "../pages/Login";
-import Signup from "../pages/Signup";
-import PrivateRoute from "../utils/PrivateRoute";
-import AddJob from "../pages/dashboard/employee/AddJob";
-import AppliedJob from "../pages/dashboard/candidate/AppliedJob";
-import MyJobs from "../pages/dashboard/employee/MyJobs";
+import AccountCreator from "../pages/Register/AccountCreator";
+import Home from "../pages/Home/Home";
+import JobDetails from "../pages/Job/JobDetails";
+import Jobs from "../pages/Job/Jobs";
+import Login from "../pages/Login/Login";
+import Signup from "../pages/Signup/Signup";
+import PrivateRoute from "./PrivateRoute";
+import AddJob from "../pages/Dashboard/employee/AddJob";
+import AppliedJob from "../pages/Dashboard/candidate/AppliedJob";
+import MyJobs from "../pages/Dashboard/employee/MyJobs";
 import DashboardHome from "../layout/dashboard/DashboardHome";
-import Applications from "../pages/applications/Applications";
-import ApplicantDetails from "../pages/dashboard/candidate/ApplicantDetails";
-import MyProfile from "../pages/dashboard/candidate/MyProfile";
+import Applications from "../pages/Applications/Applications";
+import ApplicantDetails from "../pages/Dashboard/candidate/ApplicantDetails";
+import MyProfile from "../pages/Dashboard/candidate/MyProfile";
 
 const routes = createBrowserRouter([
   {
@@ -81,25 +81,25 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/dashboard/:email/:role",
-        element: <DashboardHome />
+        element: <DashboardHome />,
       },
       {
         path: "add-job",
-        element: <AddJob />
+        element: <AddJob />,
       },
       {
         path: "my-jobs/:email",
-        element: <MyJobs />
+        element: <MyJobs />,
       },
       {
         path: "applied-job/:email",
-        element: <AppliedJob />
+        element: <AppliedJob />,
       },
       {
         path: "my-profile/:email",
-        element: <MyProfile />
-      }
-    ]
+        element: <MyProfile />,
+      },
+    ],
   },
 ]);
 

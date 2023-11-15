@@ -7,6 +7,10 @@
     font-family: "Poppins", sans-serif;
   }
 
+  section {
+    @apply py-[75px];
+  }
+
   [type="text"],
   [type="email"],
   [type="url"],
@@ -45,10 +49,47 @@
   @apply font-semibold text-3xl;
 }
 
-.field-error{
-  @apply text-sm text-rose-600 mt-1
+.field-error {
+  @apply text-sm text-rose-600 mt-1;
+}
+
+.section_title {
+  @apply font-[700] text-5xl mb-4;
+}
+
+.section_subtitle {
+  @apply text-lg font-light text-slate-500;
 }
 
 .btn {
   @apply px-4 py-2 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
+}
+
+/* Utility Classes */
+.flex_cen {
+  @apply flex items-center justify-center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    @apply w-full;
+  }
+
+  section {
+    @apply py-[35px];
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .section_title {
+    @apply font-[700] text-3xl mb-4;
+  }
+
+  .section_subtitle {
+    @apply text-lg font-light text-slate-500;
+  }
+
+  .text__para {
+    @apply text-[16px] leading-7 mt-3;
+  }
 }
