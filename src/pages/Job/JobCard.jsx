@@ -4,8 +4,8 @@ import { BiCode, BiGlobe } from "react-icons/bi";
 
 export default function JobCard() {
   return (
-    <div className="border rounded-[30px] p-8 w-[336px] h-[337px] text-black]">
-      <div className="flex items-center gap-2 group  transition-all">
+    <div className="border hover:shadow-lg hover:shadow-primary/10 transition-all rounded-[30px] p-8 w-[356px] h-[310px] text-black]">
+      <div className="flex items-center gap-2 group transition-all">
         <div className="bg-primary/20 group-hover:bg-primary transition-all p-[1px] rounded-md">
           <BiCode className="text-[26px] group-hover:text-white  transition-all" />
         </div>
@@ -13,7 +13,7 @@ export default function JobCard() {
           Finance
         </span>
       </div>
-      <p className="text-[20px] font-semibold leading-7 mt-10 mb-5 hover:text-primary transition-colors">
+      <p className="text-[20px] font-semibold leading-7 mt-10 mb-4 hover:text-primary transition-colors">
         Financial Analyst
       </p>
       <div className="flex gap-8">
@@ -23,7 +23,7 @@ export default function JobCard() {
         </div>
         <span className="text-[15px]  font-light leading-5">Full Time</span>
       </div>
-      <div className="flex items-center justify-between mt-14">
+      <div className="flex items-center justify-between mt-8">
         <div>
           <span className="text-[13px] font-light leading-5 text-accent">
             June 8, 2022 by

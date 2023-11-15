@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "./Banner";
 import FeaturedJob from "./FeaturedJob";
-// import Category from "./Category";
+import Category from "./Category";
 // import Testimonial from "./Testimonial";
 
 const Home = () => {
@@ -9,8 +9,8 @@ const Home = () => {
     <>
       <Banner />
       <FeaturedJob />
-      {/* <Category />
-      <Testimonial /> */}
+      <Category />
+      {/*<Testimonial /> */}
     </>
   );
 };

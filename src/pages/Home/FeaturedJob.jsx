@@ -11,7 +11,7 @@ export default function FeaturedJob() {
         title="Featured Job Offers"
         subtitle="Search your career opportunity through 12,800 jobs"
       />
-      <div className="flex flex-wrap justify-center gap-6 mt-5">
+      <div className="flex flex-wrap justify-center gap-6">
         {array.map((el) => (
           <JobCard key={el} />
         ))}
