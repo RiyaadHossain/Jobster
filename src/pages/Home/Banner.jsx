@@ -139,7 +139,7 @@ const Landing = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-between ">
+          <div className="lg:flex flex-col justify-between hidden">
             <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[80%]">
               <div>
                 <span className="text-2xl font-bold">319 </span>

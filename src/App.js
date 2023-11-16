@@ -20,7 +20,7 @@ function App() {
   }, [dispatch])
 
   return (
-    <div className="px-6">
+    <div className="">
       <Toaster />
       <RouterProvider router={routes} />
     </div>
