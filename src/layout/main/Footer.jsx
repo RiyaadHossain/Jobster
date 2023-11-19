@@ -10,7 +10,9 @@ export default function Footer() {
       <div className="bg-third py-24 ">
         <div className="max-w-[1600px] mx-auto px-6 flex flex-col lg:flex-row justify-between gap-y-14">
           <div className="flex flex-col gap-7">
-            <h3 className="font-bold text-3xl">Elite Recruiting</h3>
+            <h3 className="font-bold text-3xl">
+              <span className="text-blue-600">J</span>obster
+            </h3>
             <p className="text-base font-semibold leading-5">Call us</p>
             <p className="text-[22px] font-medium leading-8 text-primary">
               (123) 456-7890
@@ -45,7 +47,7 @@ export default function Footer() {
       <div className="bg-fourth py-[70px]">
         <div className="max-w-[1600px] mx-auto px-6 flex justify-between">
           <p className="font-light text-sm text-accent">
-            © 2022 Elite Recruiting. All Right Reserved.
+            © 2022 Jobster. All Right Reserved.
           </p>
           <div className="flex gap-8 text-accent text-xl ">
             <div>

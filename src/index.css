@@ -41,6 +41,14 @@
   }
 }
 
+.nav-white {
+  @apply bg-white shadow-md transition-colors duration-300;
+}
+
+.sidebar_item {
+  @apply hover:text-gray-600 transition-colors cursor-pointer;
+}
+
 .stat-card {
   @apply rounded-md p-5 text-slate-800 text-center;
 }
@@ -65,6 +73,10 @@
   @apply px-4 py-2 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
 }
 
+.btn-secondary {
+  @apply px-6 py-3 border font-semibold border-primary bg-primary text-white rounded-full  transition-all hover:px-10 hover:tracking-wider disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
+}
+
 /* Utility Classes */
 .flex_cen {
   @apply flex items-center justify-center;
@@ -86,6 +98,10 @@
   .section_subtitle {
     @apply text-lg font-light text-slate-500;
   }
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 768px) {

@@ -81,7 +81,7 @@ const Landing = () => {
 
   return (
     <div ref={el} className="h-screen">
-      <div className="max-w-2xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0">
+      <div className="hidden md_lg:block max-w-2xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0">
         <img
           id="hero1"
           src={hero1}
@@ -103,7 +103,7 @@ const Landing = () => {
       </div>
       <div className="h-[90%] w-full flex items-center z-10 relative">
         <div className="flex w-full">
-          <div className="w-1/2 flex flex-col items-start">
+          <div className="w-full md_lg:w-1/2 flex flex-col items-start">
             <h1 id="hero-title" className="heroElement font-bold text-7xl">
               Find the perfect <br /> job for you
             </h1>
@@ -139,7 +139,7 @@ const Landing = () => {
               </div>
             </div>
           </div>
-          <div className="lg:flex flex-col justify-between hidden">
+          <div className="lg:flex hidden flex-col justify-between ">
             <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[80%]">
               <div>
                 <span className="text-2xl font-bold">319 </span>

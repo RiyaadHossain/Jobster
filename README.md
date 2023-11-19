@@ -1,9 +1,10 @@
 ![alt text](/screenshots/Home-Page.png)
 
-# Elite Recuiting 🧑‍💼
-<p>Elite Recruiting - a job hiring website. In this site, recruiter can post their jobs attaching all the details about the job. Moreover, a candidate can find their desired job based on their preference. Besides, Candidate can ask any question related to any posted Job and the Employee who posted the job can reply.</p>
+# Jobster 🧑‍💼
 
-Live Site: https://elite-recruiting.netlify.app/ 
+<p>Jobster - a job hiring website. In this site, recruiter can post their jobs attaching all the details about the job. Moreover, a candidate can find their desired job based on their preference. Besides, Candidate can ask any question related to any posted Job and the Employee who posted the job can reply.</p>
+
+Live Site: https://elite-recruiting.netlify.app/
 </br>
 Server Code: https://github.com/RiyaadHossain/EliteRecruiting-Server
 </br>
@@ -12,6 +13,7 @@ Medium Blog: https://cutt.ly/w3t9vVk
 Project Video: https://cutt.ly/L3t9o0O
 
 ### Features
+
 - Developed User Authentication using Firebase
 - Build Role Based Authorization
 - Employee can post Job attaching all the details
@@ -24,6 +26,7 @@ Project Video: https://cutt.ly/L3t9o0O
 - Employee can answer those Questions asked by Candidate
 
 ### Technologies
+
 - HTML
 - CSS
 - Tailwind
