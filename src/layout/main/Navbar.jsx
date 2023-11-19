@@ -6,13 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { signOutReducer } from "../../features/auth/authSlice";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { toast } from "react-hot-toast";
-import { RxCross1 } from "react-icons/rx";
+import Sidebar from "./Sidebar";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const navbarRef = useRef(null);
-  // const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
   const {
     user: { email, role },
@@ -63,11 +62,11 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
               </div>
             </div>
           </li>
-          <li>
+          {/* <li>
             <Link className="hover:text-primary" to="/jobs">
               Jobs
             </Link>
-          </li>
+          </li> */}
 
           {email ? (
             <li>
@@ -112,35 +111,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
       </div>
 
       {/* Sidebar Menu */}
-      <div
-        className={`fixed top-0 h-screen bg-gray-200 min-w-[400px] z-[101] ${
-          menuOpen ? "left-0" : "-left-[32rem]"
-        } transition-all duration-500 `}
-      >
-        <div className="flex justify-end p-5">
-          <RxCross1 className="text-2xl" onClick={toggleMenu} />
-        </div>
-        <div className="mt-5 ml-10">
-          <ul className="flex flex-col gap-6 font-semibold text-lg">
-            <li className=" sidebar_item">
-              <Link to="/">Find Jobs</Link>
-            </li>
-            <li className=" sidebar_item">
-              <Link to="/">Companies</Link>
-            </li>
-            <li className=" sidebar_item">
-              <Link to="/">Candidates</Link>
-            </li>
-            {/* <li className=""> <Link to="/">Blog</Link></li> */}
-            <li className=" sidebar_item">
-              <Link to="/">About</Link>
-            </li>
-            <li className=" sidebar_item">
-              <Link to="/">Contact</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <Sidebar menuOpen={menuOpen} toggleMenu={toggleMenu} />
 
       <div
         className={`w-screen h-screen bg-black opacity-50 ${
