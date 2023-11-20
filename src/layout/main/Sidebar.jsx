@@ -1,15 +1,8 @@
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { navbarItems } from "../../constants/navbarItems";
 
 export default function Sidebar({ menuOpen, toggleMenu }) {
-  const items = [
-    { display: "Find Jobs", link: "/" },
-    { display: "Companies", link: "/" },
-    { display: "Candidates", link: "/" },
-    { display: "About", link: "/" },
-    { display: "Contact", link: "/" },
-  ];
-
   return (
     <div
       className={`fixed top-0 h-screen bg-gray-200 min-w-[400px] z-[101] ${
@@ -21,7 +14,7 @@ export default function Sidebar({ menuOpen, toggleMenu }) {
       </div>
       <div className="mt-6 ml-12">
         <ul className="flex flex-col gap-6 font-semibold text-lg">
-          {items.map((item) => (
+          {navbarItems.map((item) => (
             <li key={item.display}>
               <Link to={item.link}>{item.display}</Link>
             </li>

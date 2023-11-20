@@ -4,7 +4,6 @@ import Main from "../layout/main/Main";
 import AccountCreator from "../pages/register/AccountCreator";
 import Home from "../pages/home/Home";
 import JobDetails from "../pages/job/JobDetails";
-import Jobs from "../pages/job/Jobs";
 import Login from "../pages/login/Login";
 import Signup from "../pages/signup/Signup";
 import PrivateRoute from "./PrivateRoute";
@@ -15,6 +14,7 @@ import DashboardHome from "../layout/dashboard/DashboardHome";
 import Applications from "../pages/applications/Applications";
 import ApplicantDetails from "../pages/dashboard/candidate/ApplicantDetails";
 import MyProfile from "../pages/dashboard/candidate/MyProfile";
+import JobListing from "../pages/job/JobListing";
 
 const routes = createBrowserRouter([
   {
@@ -26,8 +26,8 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/jobs",
-        element: <Jobs />,
+        path: "/job-listing",
+        element: <JobListing />,
       },
       {
         path: "/login",
