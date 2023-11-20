@@ -66,13 +66,19 @@ const Login = () => {
                 <label htmlFor="email" className="ml-5">
                   Email
                 </label>
-                <input type="email" {...register("email")} id="email" />
+                <input
+                  placeholder="Your Email"
+                  type="email"
+                  {...register("email")}
+                  id="email"
+                />
               </div>
               <div className="flex flex-col items-start">
                 <label htmlFor="password" className="ml-5">
                   Password
                 </label>
                 <input
+                  placeholder="Type Password"
                   type="password"
                   id="password"
                   {...register("password")}

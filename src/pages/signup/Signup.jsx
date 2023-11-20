@@ -84,6 +84,7 @@ const Signup = () => {
                   Email
                 </label>
                 <input
+                placeholder="Your Email"
                   type="email"
                   name="email"
                   id="email"
@@ -96,6 +97,7 @@ const Signup = () => {
                   Password
                 </label>
                 <input
+                placeholder="Type Password"
                   type="password"
                   name="password"
                   id="password"
@@ -107,6 +109,7 @@ const Signup = () => {
                   Confirm Password
                 </label>
                 <input
+                placeholder="Re-type Password"
                   type="password"
                   id="confirm-password"
                   {...register("confirmPassword")}
