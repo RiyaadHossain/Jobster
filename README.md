@@ -6,11 +6,10 @@
 
 Live Site: https://elite-recruiting.netlify.app/
 </br>
-Server Code: https://github.com/RiyaadHossain/EliteRecruiting-Server
+Server Code: https://github.com/RiyaadHossain/Jobster-Server
 </br>
 Medium Blog: https://cutt.ly/w3t9vVk
 </br>
-Project Video: https://cutt.ly/L3t9o0O
 
 ### Features
 

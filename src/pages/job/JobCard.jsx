@@ -4,8 +4,7 @@ import { BiCode, BiGlobe } from "react-icons/bi";
 
 export default function JobCard() {
   return (
-    <div className="border hover:shadow-lg transition-all rounded-[30px] p-8 w-full max-w-full text-black">
-
+    <div className="border hover:shadow-lg transition-all rounded-[30px] p-8 text-black h-fit">
       <div className="flex items-center gap-2 group transition-all">
         <div className="bg-primary/20 group-hover:bg-primary transition-all p-[1px] rounded-md">
           <BiCode className="text-[26px] group-hover:text-white  transition-all" />
@@ -40,7 +39,6 @@ export default function JobCard() {
           <img className="w-20 h-20 rounded-2xl" src={companyLogo} alt="" />
         </div>
       </div>
-
     </div>
   );
 }

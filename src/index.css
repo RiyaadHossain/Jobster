@@ -25,7 +25,7 @@
   [type="week"],
   select,
   select[multiple] {
-    @apply text-lg py-4 px-5  border-0 shadow-md focus:border-primary focus:ring-primary rounded-full font-light;
+    @apply text-lg py-4 px-5  border border-primary shadow-md focus:border-primary focus:ring-primary rounded-full font-light;
   }
 
   textarea {
@@ -81,9 +81,21 @@
   @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all hover:px-10 hover:tracking-wider disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed hover:bg-[#002745];
 }
 
+.pagination_btn {
+  @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-gray-400 bg-transparent p-0 text-sm text-black transition duration-150 ease-in-out hover:bg-third;
+}
+
+.pagination_btn_active {
+  @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-primary p-0 text-sm text-white shadow-md transition duration-150 ease-in-out;
+}
+
 /* Utility Classes */
 .flex_cen {
   @apply flex items-center justify-center;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -102,10 +114,6 @@
   .section_subtitle {
     @apply text-lg font-light text-slate-500;
   }
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 @media only screen and (max-width: 768px) {
@@ -128,31 +136,61 @@
     max-width: 540px;
   }
 }
+
 @media (min-width: 768px) {
   .max_container {
     max-width: 720px;
   }
+  .job_card_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .job_listing_card_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
 @media (min-width: 900px) {
   .max_container {
     max-width: 780px;
   }
 }
+
 @media (min-width: 992px) {
   .max_container {
     max-width: 960px;
   }
+  .job_card_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
+@media (min-width: 1024px) {
+  .job_listing_card_container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 @media (min-width: 1200px) {
   .max_container {
     max-width: 1140px;
   }
+  .job_listing_card_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
 @media (min-width: 1400px) {
   .max_container {
     max-width: 1320px;
   }
+  .job_card_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .job_listing_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
 @media (min-width: 1680px) {
   .max_container {
     max-width: 1600px;

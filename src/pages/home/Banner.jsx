@@ -115,7 +115,7 @@ const Landing = () => {
               className="bg-white rounded-full p-3 flex w-full max-w-xl overflow-hidden mt-5  shadow-lg"
             >
               <input
-                className="flex-auto text-lg p-2 border-none outline-none focus:ring-0"
+                className="flex-auto text-lg p-2 border-none shadow-none outline-none focus:ring-0"
                 type="text"
                 name="search"
                 id="search"
