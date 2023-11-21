@@ -5,7 +5,7 @@ export default function Category() {
   const array = [1, 2, 3, 4, 5];
 
   return (
-    <section>
+    <section className="max_container">
       <SectionHeader
         title="Search by Category"
         subtitle="Search your career opportunity with our categories"

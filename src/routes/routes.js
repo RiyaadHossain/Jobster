@@ -15,6 +15,10 @@ import Applications from "../pages/applications/Applications";
 import ApplicantDetails from "../pages/dashboard/candidate/ApplicantDetails";
 import MyProfile from "../pages/dashboard/candidate/MyProfile";
 import JobListing from "../pages/job/JobListing";
+import CompanyListing from "../pages/company/CompanyListing";
+import CompanyDetails from "../pages/company/CompanyDetails";
+import CandidateListing from "../pages/candidate/CandidateListing";
+import CandidateDetails from "../pages/candidate/CandidateDetails";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +32,26 @@ const routes = createBrowserRouter([
       {
         path: "/job-listing",
         element: <JobListing />,
+      },
+      {
+        path: "/jobs/:id",
+        element: <JobDetails />,
+      },
+      {
+        path: "/company-listing",
+        element: <CompanyListing />,
+      },
+      {
+        path: "/companys/:id",
+        element: <CompanyDetails />,
+      },
+      {
+        path: "/candidate-listing",
+        element: <CandidateListing />,
+      },
+      {
+        path: "/candidates/:id",
+        element: <CandidateDetails />,
       },
       {
         path: "/login",

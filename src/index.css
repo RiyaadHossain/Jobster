@@ -8,7 +8,7 @@
   }
 
   section {
-    @apply py-[75px];
+    @apply py-[85px];
   }
 
   [type="text"],
@@ -89,6 +89,10 @@
   @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-primary p-0 text-sm text-white shadow-md transition duration-150 ease-in-out;
 }
 
+.sidebar_container{
+  @apply w-full
+}
+
 /* Utility Classes */
 .flex_cen {
   @apply flex items-center justify-center;
@@ -100,7 +104,7 @@
 
 @media only screen and (max-width: 1024px) {
   section {
-    @apply py-[45px];
+    @apply py-[65px];
   }
 
   .container {
@@ -117,6 +121,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+  section {
+    @apply py-[45px];
+  }
+  
   .section_title {
     @apply font-[700] text-3xl mb-4;
   }
@@ -162,6 +170,7 @@
   .job_card_container {
     grid-template-columns: repeat(3, 1fr);
   }
+  
 }
 
 @media (min-width: 1024px) {
@@ -177,6 +186,9 @@
   .job_listing_card_container {
     grid-template-columns: repeat(2, 1fr);
   }
+  .sidebar_container{
+    @apply min-w-[33%]
+  }
 }
 
 @media (min-width: 1400px) {
@@ -188,6 +200,9 @@
   }
   .job_listing_container {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .sidebar_container{
+    @apply w-1/4
   }
 }
 

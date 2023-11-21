@@ -9,7 +9,7 @@ const JobListing = () => {
     <div className="my-20">
       <PageHeader
         title="Find Jobs"
-        subtitle=" Search your career opportunity through 12,800 jobs"
+        subtitle="Search your career opportunity through 12,800 jobs"
       />
 
       <div className="flex flex-col lg:flex-row mt-28 px-8 gap-6 max_container">

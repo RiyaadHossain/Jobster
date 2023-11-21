@@ -10,6 +10,9 @@ module.exports = {
         fourth: "#FFF0EB",
         black: "#17171d",
         accent: "#606065",
+        job: "#3B3940",
+        company: "#FFF0EB",
+        candidate: "#FFF0EB",
       },
     },
     screens: {

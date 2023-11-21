@@ -1,13 +1,13 @@
 import React from "react";
 import SectionHeader from "../../components/reusable/SectionHeader";
 import JobCard from "../job/JobCard";
-import { IoIosArrowForward } from "react-icons/io";
+import SectionBottomBtn from "../../components/reusable/SectionBottomBtn";
 
 export default function FeaturedJob() {
   const array = [1, 2, 3, 4, 5];
 
   return (
-    <section>
+    <section className="max_container">
       <SectionHeader
         title="Featured Job Offers"
         subtitle="Search your career opportunity through 12,800 jobs"
@@ -17,11 +17,7 @@ export default function FeaturedJob() {
           <JobCard key={el} />
         ))}
       </div>
-      <div className="flex justify-center items-center mt-12">
-        <button className="btn-secondary flex gap-1 items-center">
-          <span> All Job Offers</span> <IoIosArrowForward />
-        </button>
-      </div>
+      <SectionBottomBtn display="All Job Offers" link="/job-listing" />
     </section>
   );
 }
