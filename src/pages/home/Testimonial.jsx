@@ -8,7 +8,7 @@ import customer6 from "../../assets/customer-6.png";
 
 export default function Testimonial() {
   return (
-    <section>
+    <section className="max_container">
       <SectionHeader
         title="Why Customers Love Us"
         subtitle="What our customers say about us"

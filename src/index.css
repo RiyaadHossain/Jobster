@@ -74,7 +74,7 @@
 }
 
 .btn {
-  @apply px-6 py-4 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
+  @apply px-6 py-3 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
 }
 
 .btn-secondary {
@@ -92,6 +92,7 @@
 .sidebar_container{
   @apply w-full
 }
+
 
 /* Utility Classes */
 .flex_cen {

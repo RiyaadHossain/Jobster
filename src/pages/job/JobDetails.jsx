@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  useAnsQuestionMutation,
   useApplyMutation,
-  useAskQuestionMutation,
   useGetJobByIdQuery,
   useGetSpecificAppliedJobQuery,
 } from "../../features/job/jobAPI";
 import meeting from "../../assets/meeting.jpg";
-import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
-import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import Loading from "../../components/loader/Loading";
 import { useGetRegisteredUserQuery } from "../../features/auth/authAPI";
 import PreviousBtn from "../../components/reusable/PreviousBtn";
+import companyLogo from "../../assets/company-logo-5.png";
+import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
+import "../../style/jobDetails.css";
+import { AiOutlineLineChart } from "react-icons/ai";
+import { RxDotFilled } from "react-icons/rx";
+import JobQueries from "./jobDetails/JobQueries";
+import JobSidebar from "./jobDetails/JobSidebar";
 
 const JobDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [replyOne, setReply] = useState("");
-  const { register, handleSubmit, reset } = useForm();
-  const { handleSubmit: replyHandleSubmit } = useForm();
 
   const { isError, isFetching, data } = useGetJobByIdQuery(id, {
     pollingInterval: "100000",
@@ -33,16 +33,6 @@ const JobDetails = () => {
 
   const { data: userData, isFetching: userFetching } =
     useGetRegisteredUserQuery(email);
-
-  const [
-    askQuestion,
-    { isSuccess: askQuestionSuccess, isError: askError, error: askErr },
-  ] = useAskQuestionMutation();
-
-  const [
-    ansQuestion,
-    { isSuccess: ansQuestionSuccess, isError: ansError, error: ansErr },
-  ] = useAnsQuestionMutation();
 
   const [
     apply,
@@ -60,17 +50,7 @@ const JobDetails = () => {
 
   if (isFetching) return <Loading />;
 
-  if (askError) toast.error(askErr, { id: "askErr" });
-
-  if (ansError) toast.error(ansErr, { id: "ansErr" });
-
   if (applyError) toast.error(applyErr, { id: "applyErr" });
-
-  if (askQuestionSuccess)
-    toast.success("Successfully posted your query", { id: "ask" });
-
-  if (ansQuestionSuccess)
-    toast.success("Successfully posted your reply", { id: "ans" });
 
   if (applySuccess)
     toast.success("Successfully applied for the job", {
@@ -100,18 +80,14 @@ const JobDetails = () => {
     applicants,
   } = data?.data || {};
 
-  const onReply = (replyData) => {
-    const { reply } = replyData;
-    if (reply === "")
-      return toast.error("Can't save empty text", { id: "emt" });
-    ansQuestion(replyData);
-    setReply("");
-  };
-
-  const onQuest = (formData) => {
-    const data = { ...formData, userId, email: email, jobId: id };
-    askQuestion(data);
-    reset();
+  const companyInfo = {
+    experience,
+    workLevel,
+    employmentType,
+    salaryRange,
+    location,
+    companyLogo,
+    companyName,
   };
 
   const applyJob = () => {
@@ -122,210 +98,145 @@ const JobDetails = () => {
   const isJobHolder = data.data.postedBy.email === email;
 
   return (
-    <div className="pt-14 grid grid-cols-12 gap-5">
-      <div className="col-span-9 mb-10">
-        <div className="h-80 rounded-xl overflow-hidden">
-          <img className="h-full w-full object-cover" src={meeting} alt="" />
-        </div>
-        <div className="space-y-5">
-          <div className="flex justify-between items-center mt-5">
-            <h1 className="text-xl font-semibold text-primary">{position}</h1>
-            {role === "candidate" && jobData?.data?.length === 0 && (
-              <button onClick={applyJob} className="btn">
-                Apply
-              </button>
-            )}
-            {role === "candidate" && jobData?.data.length > 0 && (
-              <span className=" bg-primary text-sm text-white rounded-full p-1 px-2">
-                Already Applied
-              </span>
-            )}
-            {role === "employee" && isJobHolder && (
-              <p>
-                Total Applied:{" "}
-                <span className=" bg-primary text-sm text-white rounded-full p-1 px-3">
-                  {" "}
-                  {applicants?.length}
-                </span>
-              </p>
-            )}
-          </div>
-          {role === "employee" && isJobHolder && applicants?.length ? (
-            <div className="text-right ">
-              <button
-                onClick={() => navigate(`/applications/${_id}`)}
-                className="btn w-48 mx-auto"
-              >
-                View Applications
-              </button>
+    <div className="max_container my-14">
+      <div className="pt-14 grid grid-cols-12 gap-5 ">
+        {/* --------------- Main Content --------------- */}
+        <div className="col-span-12 lg:col-span-8 xl:col-span-9 mb-10">
+          {/* -------------- Comapany Images -------------- */}
+          <div className="relative">
+            <div className="h-96 rounded-xl overflow-hidden">
+              <img
+                className="h-full w-full object-cover"
+                src={meeting}
+                alt=""
+              />
             </div>
-          ) : null}
-          <div>
-            <h1 className="text-primary text-lg font-medium mb-3">Overview</h1>
-            <p>{overview}</p>
+            <div className="p-1 bg-white absolute left-[6%] bottom-[-20%]  company_logo">
+              <img src={companyLogo} alt="" className="rounded-2xl" />
+            </div>
           </div>
-          <div>
-            <h1 className="text-primary text-lg font-medium mb-3">Skills</h1>
-            <ul>
-              {skills.map((skill, i) => (
-                <li key={i} className="flex items-center">
-                  <BsArrowRightShort /> <span>{skill}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h1 className="text-primary text-lg font-medium mb-3">
-              Requirements
-            </h1>
-            <ul>
-              {requirements.map((skill, i) => (
-                <li key={i} className="flex items-center">
-                  <BsArrowRightShort /> <span>{skill}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h1 className="text-primary text-lg font-medium mb-3">
-              Responsibilities
-            </h1>
-            <ul>
-              {responsibilities.map((skill, i) => (
-                <li key={i} className="flex items-center">
-                  <BsArrowRightShort /> <span>{skill}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <hr className="my-5" />
-          <PreviousBtn />
-        </div>
 
-        {(queries.length || role === "candidate") && (
-          <div>
-            <div>
-              <h1 className="text-xl font-semibold text-primary mb-5">
-                General Q&A
-              </h1>
-              <div className="text-primary my-2">
-                {queries?.map(({ question, email, reply, id }, i) => (
-                  <div key={i}>
-                    <small>{email}</small>
-                    <p className="text-lg font-medium">{question}</p>
-                    {reply?.map((item, i) => (
-                      <p
-                        key={i}
-                        className="flex items-center gap-2 relative left-5"
-                      >
-                        <BsArrowReturnRight /> {item}
-                      </p>
-                    ))}
-
-                    {role === "employee" && (
-                      <form
-                        onSubmit={replyHandleSubmit(() =>
-                          onReply({ reply: replyOne, userId: id })
-                        )}
-                      >
-                        <div className="flex gap-3 my-5">
-                          <input
-                            placeholder="Reply"
-                            type="text"
-                            className="w-full"
-                            onBlur={(e) => setReply(e.target.value)}
-                          />
-                          <button
-                            className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
-                            type="submit"
-                          >
-                            <BsArrowRightShort size={30} />
-                          </button>
-                        </div>
-                      </form>
-                    )}
-                  </div>
-                ))}
+          {/* -------------- Job Title & Info -------------- */}
+          <div className="space-y-5 mt-24">
+            <div className="flex justify-between items-center mt-5">
+              <div>
+                <h1 className="text-3xl bold font-bold">{position}</h1>
+                <h5 className="text-accent font-light text-base">
+                  by{" "}
+                  <span className="text-primary font-medium">
+                    {companyName}
+                  </span>{" "}
+                  in <span className="text-primary font-light">{location}</span>
+                </h5>
               </div>
-              {role === "candidate" && (
-                <form onSubmit={handleSubmit(onQuest)}>
-                  <div className="flex gap-3 my-5">
-                    <input
-                      placeholder="Ask a question..."
-                      type="text"
-                      className="w-full"
-                      {...register("question")}
-                    />
-                    <button
-                      className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
-                      type="submit"
-                    >
-                      <BsArrowRightShort size={30} />
-                    </button>
-                  </div>
-                </form>
-              )}
+
+              <div>
+                <div className="flex items-center gap-5">
+                  <span className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
+                    <IoHeartOutline className="text-2xl group-hover:text-white" />
+                  </span>
+                  <span className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
+                    <IoShareSocialOutline className="text-2xl group-hover:text-white" />
+                  </span>
+                  <button onClick={applyJob} className="btn">
+                    Apply
+                  </button>
+                </div>
+
+                {role === "candidate" && jobData?.data?.length === 0 && (
+                  <button onClick={applyJob} className="btn">
+                    Apply
+                  </button>
+                )}
+                {role === "candidate" && jobData?.data.length > 0 && (
+                  <span className=" bg-primary text-sm text-white rounded-full p-1 px-2">
+                    Already Applied
+                  </span>
+                )}
+                {/* {role === "employee" && isJobHolder && (
+                <p>
+                  Total Applied:{" "}
+                  <span className=" bg-primary text-sm text-white rounded-full p-1 px-3">
+                    {" "}
+                    {applicants?.length}
+                  </span>
+                </p>
+              )} */}
+              </div>
             </div>
-          </div>
-        )}
-      </div>
-      <div className="col-span-3">
-        <div className="rounded-xl bg-primary/10 p-5 text-primary space-y-5">
-          <div>
-            <p>Experience</p>
-            <h1 className="font-semibold text-lg">{experience}</h1>
-          </div>
-          <div>
-            <p>Work Level</p>
-            <h1 className="font-semibold text-lg">{workLevel}</h1>
-          </div>
-          <div>
-            <p>Employment Type</p>
-            <h1 className="font-semibold text-lg">{employmentType}</h1>
-          </div>
-          <div>
-            <p>Salary Range</p>
-            <h1 className="font-semibold text-lg">{salaryRange}</h1>
-          </div>
-          <div>
-            <p>Location</p>
-            <h1 className="font-semibold text-lg">{location}</h1>
+
+            <div className="flex justify-between items-center mt-6">
+              <div className="flex items-center gap-2 group transition-all">
+                <div className="bg-primary/20 group-hover:bg-primary transition-all p-[3px] rounded-md">
+                  <AiOutlineLineChart className="text-[20px] group-hover:text-white  transition-all" />
+                </div>
+                <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
+                  Finance
+                </span>
+              </div>
+              <span className="font-light text-accent">June 8, 2022</span>
+            </div>
+
+            {/* -------------- View Applicants Btn -------------- */}
+            {role === "employee" && isJobHolder && applicants?.length ? (
+              <div className="text-right ">
+                <button
+                  onClick={() => navigate(`/applications/${_id}`)}
+                  className="btn w-48 mx-auto"
+                >
+                  View Applications
+                </button>
+              </div>
+            ) : null}
+
+            {/* -------------- Job Description -------------- */}
+            <div className="pt-10">
+              <h1 className="job_info_section_header">Overview</h1>
+              <p className="job_info_section_content">{overview}</p>
+            </div>
+            <div>
+              <h1 className="job_info_section_header">Skills</h1>
+              <ul className="job_info_section_content ml-6">
+                {skills.map((item, i) => (
+                  <li key={i} className="flex items-center">
+                    <RxDotFilled className="text-base" /> <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h1 className="job_info_section_header">Requirements</h1>
+              <ul className="job_info_section_content ml-6">
+                {requirements.map((item, i) => (
+                  <li key={i} className="flex items-center">
+                    <RxDotFilled className="text-base" /> <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h1 className="job_info_section_header">Responsibilities</h1>
+              <ul className="job_info_section_content ml-6">
+                {responsibilities.map((item, i) => (
+                  <li key={i} className="flex items-center">
+                    <RxDotFilled className="text-base" /> <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <hr className="my-5" />
+            <PreviousBtn />
           </div>
         </div>
-        <div className="mt-5 rounded-xl bg-primary/10 p-5 text-primary space-y-5">
-          <div>
-            <h1 className="font-semibold text-lg">{companyName}</h1>
-          </div>
-          <div>
-            <p>Company Size</p>
-            <h1 className="font-semibold text-lg">
-              {userData?.data?.comapnySize}
-            </h1>
-          </div>
-          <div>
-            <p>Founded</p>
-            <h1 className="font-semibold text-lg">2001</h1>
-          </div>
-          <div>
-            <p>Email</p>
-            <h1 className="font-semibold text-sm">
-              {userData?.data?.companyEmail}
-            </h1>
-          </div>
-          <div>
-            <p>Company Location</p>
-            <h1 className="font-semibold text-lg">
-              {userData?.data?.companyLocation}
-            </h1>
-          </div>
-          <div>
-            <p>Website</p>
-            <a className="font-semibold text-sm" href="#d">
-              {userData?.data?.companySite}
-            </a>
-          </div>
+
+        {/* --------------- Sidebar Content --------------- */}
+        <div className="col-span-12 lg:col-span-4 xl:col-span-3">
+          <JobSidebar companyInfo={companyInfo} userData={userData} />
         </div>
       </div>
+
+      {/* -------------- Queries -------------- */}
+      <JobQueries queries={queries} jobId={id} />
     </div>
   );
 };

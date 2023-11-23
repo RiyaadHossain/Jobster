@@ -9,7 +9,7 @@ export default function Pagination() {
     <nav>
       <ul className="flex justify-center">
         {pages.map((num) => (
-          <li>
+          <li key={num}>
             <span
               className={`${
                 page === num ? "pagination_btn_active" : "pagination_btn"

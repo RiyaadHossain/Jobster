@@ -8,9 +8,9 @@ export default function PreviousBtn() {
   return (
     <button
       onClick={() => navigate(-1)}
-      className="flex items-center gap-2 bg-slate-600 w-28 justify-center rounded-md py-2 text-white mt-8"
+      className="flex items-center gap-2 bg-primary/90 w-28 justify-center rounded-md py-2 text-white mt-8"
     >
-      <BsFillArrowLeftCircleFill /> Back
+      <BsFillArrowLeftCircleFill className="text-base" /> Back
     </button>
   );
 }
