@@ -12,9 +12,14 @@ export default function FeaturedJob() {
         title="Featured Job Offers"
         subtitle="Search your career opportunity through 12,800 jobs"
       />
-      <div className="grid job_card_container gap-6">
+      <div className="grid grid-cols-12 gap-6">
         {array.map((el) => (
-          <JobCard key={el} />
+          <div
+            key={el}
+            className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
+          >
+            <JobCard />
+          </div>
         ))}
       </div>
       <SectionBottomBtn display="All Job Offers" link="/job-listing" />

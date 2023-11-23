@@ -12,9 +12,11 @@ export default function FeaturedCompany() {
       />
 
       <div className="max_container">
-        <div className="grid gap-5 job_card_container">
+        <div className="grid gap-5 grid-cols-12">
           {[1, 2, 3, 4].map((el) => (
-            <CompanyCard key={el} />
+            <div key={el} className="col-span-12 md:col-span-6 lg:col-span-4">
+              <CompanyCard />
+            </div>
           ))}
         </div>
       </div>

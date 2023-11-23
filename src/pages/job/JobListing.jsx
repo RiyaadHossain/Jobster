@@ -13,7 +13,7 @@ const JobListing = () => {
       />
 
       <div className="flex flex-col lg:flex-row mt-28 px-8 gap-6 max_container">
-        {/* SideBar */}
+        {/* SideBar________________ */}
         <div className="">
           <div className="bg-third p-6 rounded-xl lg:max-w-md">
             <div className="mb-6">
@@ -86,7 +86,7 @@ const JobListing = () => {
           </div>
         </div>
 
-        {/* Job Cards */}
+        {/* Job Cards________________ */}
         <div className="flex-auto">
           <h3 className="font-bold text-gray-600 text-xl mb-6">
             Showing <span className="text-primary">9</span> Jobs
@@ -96,11 +96,10 @@ const JobListing = () => {
               <JobCard key={el} />
             ))}
           </div>
-        <div className="mt-20 items-end text-center">
-          <Pagination />
+          <div className="mt-20 items-end text-center">
+            <Pagination />
+          </div>
         </div>
-        </div>
-        
       </div>
     </div>
   );
