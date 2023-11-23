@@ -49,11 +49,11 @@ export default function CompanyListing() {
           <h3 className="font-bold text-gray-600 text-xl mb-6">
             Showing <span className="text-primary">9</span> Companies
           </h3>
-            <div className="grid gap-5 job_listing_card_container">
-              {[1, 2, 3, 4, 5].map((el) => (
-                <CompanyCard key={el} border={true} />
-              ))}
-            </div>
+          <div className="grid gap-5 job_listing_card_container">
+            {[1, 2, 3, 4, 5].map((el) => (
+              <CompanyCard key={el} border={true} />
+            ))}
+          </div>
           <div className="mt-20 items-end text-center">
             <Pagination />
           </div>

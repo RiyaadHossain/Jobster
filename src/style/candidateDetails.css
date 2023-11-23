@@ -1,0 +1,3 @@
+.exp_disk {
+  @apply after:border-dotted after:border-r-primary after:absolute after:top-3 after:left-[5px] after:bottom-[-3px] after:-z-10 after:last:border-r-0;
+}

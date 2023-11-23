@@ -81,6 +81,10 @@
   @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all hover:px-10 hover:tracking-wider disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed hover:bg-[#002745];
 }
 
+.btn_sm {
+  @apply px-[10px] py-[2px] bg-primary text-white rounded-full text-xs hover:bg-[#002745] transition-all disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
+}
+
 .pagination_btn {
   @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-gray-400 bg-transparent p-0 text-sm text-black transition duration-150 ease-in-out hover:bg-third;
 }
@@ -89,10 +93,9 @@
   @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-primary p-0 text-sm text-white shadow-md transition duration-150 ease-in-out;
 }
 
-.sidebar_container{
-  @apply w-full
+.sidebar_container {
+  @apply w-full;
 }
-
 
 /* Utility Classes */
 .flex_cen {
@@ -125,7 +128,7 @@
   section {
     @apply py-[45px];
   }
-  
+
   .section_title {
     @apply font-[700] text-3xl mb-4;
   }
@@ -171,7 +174,6 @@
   .job_card_container {
     grid-template-columns: repeat(3, 1fr);
   }
-  
 }
 
 @media (min-width: 1024px) {
@@ -187,8 +189,8 @@
   .job_listing_card_container {
     grid-template-columns: repeat(2, 1fr);
   }
-  .sidebar_container{
-    @apply min-w-[33%]
+  .sidebar_container {
+    @apply min-w-[33%];
   }
 }
 
@@ -202,8 +204,8 @@
   .job_listing_container {
     grid-template-columns: repeat(3, 1fr);
   }
-  .sidebar_container{
-    @apply w-1/4
+  .sidebar_container {
+    @apply w-1/4;
   }
 }
 
