@@ -8,6 +8,7 @@ const JobListing = () => {
   return (
     <div className="my-20">
       <PageHeader
+        className="bg-third"
         title="Find Jobs"
         subtitle="Search your career opportunity through 12,800 jobs"
       />

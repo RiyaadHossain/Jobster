@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineLineChart } from "react-icons/ai";
 import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
 import { RxDotFilled } from "react-icons/rx";
@@ -136,7 +135,7 @@ export default function JobInfo({
           <h1 className="job_info_section_header">Skills</h1>
           <ul className="job_info_section_content ml-6">
             {skills.map((item, i) => (
-              <li key={i} className="flex items-center">
+              <li key={i} className="flex items-center gap-1">
                 <RxDotFilled className="text-base" /> <span>{item}</span>
               </li>
             ))}
@@ -146,7 +145,7 @@ export default function JobInfo({
           <h1 className="job_info_section_header">Requirements</h1>
           <ul className="job_info_section_content ml-6">
             {requirements.map((item, i) => (
-              <li key={i} className="flex items-center">
+              <li key={i} className="flex items-center gap-1">
                 <RxDotFilled className="text-base" /> <span>{item}</span>
               </li>
             ))}
@@ -156,7 +155,7 @@ export default function JobInfo({
           <h1 className="job_info_section_header">Responsibilities</h1>
           <ul className="job_info_section_content ml-6">
             {responsibilities.map((item, i) => (
-              <li key={i} className="flex items-center">
+              <li key={i} className="flex items-center gap-1">
                 <RxDotFilled className="text-base" /> <span>{item}</span>
               </li>
             ))}

@@ -11,8 +11,7 @@ module.exports = {
         black: "#17171d",
         accent: "#606065",
         job: "#3B3940",
-        company: "#FFF0EB",
-        candidate: "#FFF0EB",
+        fifth: "#FFF0EB",
       },
     },
     screens: {

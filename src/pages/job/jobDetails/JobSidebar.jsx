@@ -1,5 +1,6 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
+import SocialIcons from "../../../components/ui/SocialIcons";
 
 export default function JobSidebar({ companyInfo, userData }) {
   const {
@@ -36,6 +37,7 @@ export default function JobSidebar({ companyInfo, userData }) {
           <h1 className="sidebar_content_info">{location}</h1>
         </div>
       </div>
+
       <div className="mt-5 rounded-xl bg-third p-5 space-y-5">
         <div className="flex  gap-2">
           <div>
@@ -48,6 +50,7 @@ export default function JobSidebar({ companyInfo, userData }) {
             </Link>
           </div>
         </div>
+
         <div>
           <p className="sidebar_item_title">Company Size</p>
           <h1 className="sidebar_content_info">
@@ -75,6 +78,10 @@ export default function JobSidebar({ companyInfo, userData }) {
           <a className="font-semibold text-sm text-primary" href="#d">
             {userData?.data?.companySite}
           </a>
+        </div>
+
+        <div className="mt-4">
+          <SocialIcons className="gap-6" />
         </div>
       </div>
     </>

@@ -6,6 +6,7 @@ export default function CompanyListing() {
   return (
     <div className="my-20">
       <PageHeader
+        className="bg-fifth"
         title="Companies"
         subtitle="Work for the best companies in the world"
       />

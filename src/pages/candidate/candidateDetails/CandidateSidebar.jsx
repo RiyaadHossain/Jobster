@@ -5,7 +5,7 @@ export default function CandidateSidebar() {
 
   return (
     <>
-      <div className="bg-candidate p-8 rounded-xl">
+      <div className="bg-fifth p-8 rounded-xl">
         <div className="mb-5">
           <div className="text-[13px] font-light leading-5 opacity-[0.7]">
             Email

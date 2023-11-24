@@ -1,6 +1,6 @@
 import Badge from "../../../components/reusable/Badge";
 import { FaDotCircle } from "react-icons/fa";
-import "../../../style/candidateDetails.css";
+import "../style/style.css";
 
 export default function CandidateInfo() {
   const skills = ["Leadership", "Planning", "Public Speaking", "Teamwork"];

@@ -42,7 +42,7 @@ const routes = createBrowserRouter([
         element: <CompanyListing />,
       },
       {
-        path: "/companys/:id",
+        path: "/companies/:id",
         element: <CompanyDetails />,
       },
       {

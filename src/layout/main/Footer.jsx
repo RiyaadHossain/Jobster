@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import SocialIcons from "../../components/ui/SocialIcons";
 
 export default function Footer() {
   const { pathname } = useLocation();
@@ -49,20 +49,7 @@ export default function Footer() {
           <p className="font-light text-sm text-accent">
             © 2022 Jobster. All Right Reserved.
           </p>
-          <div className="flex gap-8 text-accent text-xl ">
-            <div>
-              <FaFacebook className="hover:text-primary transition-colors" />
-            </div>
-            <div>
-              <FaTwitter className="hover:text-primary transition-colors" />
-            </div>
-            <div>
-              <FaInstagram className="hover:text-primary transition-colors" />
-            </div>
-            <div>
-              <FaLinkedin className="hover:text-primary transition-colors" />
-            </div>
-          </div>
+          <SocialIcons />
         </div>
       </div>
     </footer>

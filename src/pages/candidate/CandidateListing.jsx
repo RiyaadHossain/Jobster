@@ -6,6 +6,7 @@ export default function CandidateListing() {
   return (
     <div className="my-20">
       <PageHeader
+        className="bg-fifth"
         title="Candidates"
         subtitle="Work with the most talented candidates in the world"
       />

@@ -11,7 +11,10 @@ export default function CandidateDetails() {
         <div className="col-span-12 lg:col-span-8 xl:col-span-9">
           {/* +++ Bannder +++ */}
           <div className="relative mb-12">
-            <div className="absolute w-full rounded-xl h-full bg-black opacity-50"></div>
+            <div
+              style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+              className="absolute w-full rounded-xl h-full"
+            ></div>
             <div className="h-96 rounded-xl overflow-hidden">
               <img className="h-full w-full object-cover" src={banner} alt="" />
             </div>
