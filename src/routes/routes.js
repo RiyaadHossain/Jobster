@@ -19,6 +19,8 @@ import CompanyListing from "../pages/company/CompanyListing";
 import CompanyDetails from "../pages/company/CompanyDetails";
 import CandidateListing from "../pages/candidate/CandidateListing";
 import CandidateDetails from "../pages/candidate/CandidateDetails";
+import NotFound from "../components/404/NotFound";
+import ContactPage from "../pages/contact/ContactPage";
 
 const routes = createBrowserRouter([
   {
@@ -97,6 +99,10 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/contact",
+        element: <ContactPage />,
+      },
     ],
   },
   {
@@ -124,6 +130,10 @@ const routes = createBrowserRouter([
         element: <MyProfile />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

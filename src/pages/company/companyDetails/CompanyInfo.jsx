@@ -34,7 +34,7 @@ export default function CompanyInfo() {
 
       {/* +++ Gallery +++ */}
       <div className="my-4">
-        <figure className="grid grid-cols-12 gap-2">
+        <div className="grid grid-cols-12 gap-2">
           <figure className="col-span-12 md:col-span-6 lg:col-span-4">
             <img
               className="rounded-2xl h-[300px] w-full object-cover"
@@ -77,7 +77,7 @@ export default function CompanyInfo() {
               alt=""
             />
           </figure>
-        </figure>
+        </div>
       </div>
 
       <p className="text-sm font-light leading-[23px]">

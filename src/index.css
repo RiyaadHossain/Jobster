@@ -29,7 +29,7 @@
   }
 
   textarea {
-    @apply text-lg py-2 px-5  border border-gray-300 focus:border-primary focus:ring-primary rounded-3xl;
+    @apply text-lg py-2 px-5  border-primary border focus:border-primary focus:ring-primary rounded-3xl;
   }
 
   [type="checkbox"],
