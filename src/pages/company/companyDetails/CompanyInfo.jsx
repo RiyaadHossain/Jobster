@@ -1,4 +1,11 @@
 import JobCard from "../../job/JobCard";
+import companyHero1 from "../../../assets/company-hero-1.jpg";
+import companyHero2 from "../../../assets/company-hero-2.jpg";
+import companyHero3 from "../../../assets/company-hero-3.jpg";
+import companyHero4 from "../../../assets/company-hero-4.jpg";
+import companyHero5 from "../../../assets/company-hero-5.jpg";
+import companyHero6 from "../../../assets/company-hero-6.jpg";
+import "../style/style.css";
 
 export default function CompanyInfo() {
   return (
@@ -26,7 +33,52 @@ export default function CompanyInfo() {
       </div>
 
       {/* +++ Gallery +++ */}
-      <div className="my-4"></div>
+      <div className="my-4">
+        <figure className="grid grid-cols-12 gap-2">
+          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+            <img
+              className="rounded-2xl h-[300px] w-full object-cover"
+              src={companyHero6}
+              alt=""
+            />
+          </figure>
+          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+            <img
+              className="rounded-2xl h-[300px] w-full object-cover"
+              src={companyHero5}
+              alt=""
+            />
+          </figure>
+          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+            <img
+              className="rounded-2xl h-[580px] lg:h-[300px] w-full object-cover"
+              src={companyHero4}
+              alt=""
+            />
+          </figure>
+          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+            <img
+              className="rounded-2xl h-[580px] w-full object-cover"
+              src={companyHero3}
+              alt=""
+            />
+          </figure>
+          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+            <img
+              className="rounded-2xl h-[300px]  lg:h-[580px] w-full object-cover"
+              src={companyHero2}
+              alt=""
+            />
+          </figure>
+          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+            <img
+              className="rounded-2xl h-[300px] lg:h-[580px] w-full object-cover"
+              src={companyHero1}
+              alt=""
+            />
+          </figure>
+        </figure>
+      </div>
 
       <p className="text-sm font-light leading-[23px]">
         Artistre Studio, Inc. is an American multinational corporation that is
@@ -36,9 +88,19 @@ export default function CompanyInfo() {
       </p>
 
       {/* +++ Video & Info +++ */}
-      <div className="mt-7">
-        <div></div>
-        <div>
+      <div className="mt-7 flex gap-6 flex-col md:flex-row">
+        <div className="flex-1">
+          <div className="iframe_container">
+            <iframe
+              className="rounded-2xl responsive_iframe"
+              src="https://www.youtube.com/embed/d1EaFyBqH5o?si=V3g3HZQHEm4U4bJh"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+        <div className="flex-1">
           <p className="text-sm font-light leading-[23px]">
             In 2020 the brand alone was valued in excess of $32 billion, making
             it the most valuable brand among sports businesses. Previously, in
@@ -53,19 +115,16 @@ export default function CompanyInfo() {
       </div>
 
       {/* +++ Available Jobs +++ */}
-      <div className="mt-28">
+      <div className="mt-16">
         <h2 className="text-3xl font-bold leading-8 tracking-tight">
-          Avaialbe Jobs
+          Available Jobs
         </h2>
         <p className="text-base font-light leading-6 mt-2 opacity-[0.7]">
           Jobs posted by Artistre Studio
         </p>
         <div className="grid grid-cols-12 gap-5 mt-8">
           {[1, 2].map((el) => (
-            <div
-              key={el}
-              className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
-            >
+            <div key={el} className="col-span-12 md:col-span-6 xl:col-span-4">
               <JobCard />
             </div>
           ))}
