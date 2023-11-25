@@ -50,16 +50,11 @@ export default function ContactPage() {
               <h1 className="mb-10 font-medium text-2xl">Sent Us Mail</h1>
               <form>
                 <div className="space-y-4">
-                  <div className="flex flex-col items-start w-full">
+                  <div className="flex flex-col items-start ">
                     <label htmlFor="email" className="ml-5 mb-1">
                       Email
                     </label>
-                    <input
-                      placeholder="Your Email"
-                      type="email"
-                      id="email"
-                      className="w-full"
-                    />
+                    <input placeholder="Your Email" type="email" id="email" />
                   </div>
                   <div className="flex flex-col items-start">
                     <label htmlFor="subject" className="ml-5 mb-1">
