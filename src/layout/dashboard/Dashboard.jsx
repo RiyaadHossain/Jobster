@@ -5,6 +5,7 @@ import ProfileMenu from "../main/ProfileMenu";
 import avatar from "../../assets/person.png";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import { IoMdNotifications } from "react-icons/io";
 
 const Dashboard = () => {
   const [openProfile, setOpenProfile] = useState(false);
@@ -39,7 +40,8 @@ const Dashboard = () => {
       <Sidebar />
       <div className=" col-span-12 ml-80">
         <div className=" h-full w-full mx-auto">
-          <div className="py-8 flex justify-end bg-fifth w-full pr-8">
+          <div className="py-8 flex items-center gap-4 justify-end bg-fifth w-full pr-8">
+            <IoMdNotifications className="text-2xl" />
             <ProfileMenu
               props={{
                 toggleProfile,
@@ -52,7 +54,7 @@ const Dashboard = () => {
               }}
             />
           </div>
-          <div className="rounded-t-2xl bg-white h-screen py-5 px-10">
+          <div className="rounded-t-2xl bg-white h-screen p-14">
             <Outlet />
           </div>
         </div>

@@ -1,57 +1,51 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import Loading from "../../components/loader/Loading";
-import { useGetUsersQuery } from "../../features/user/userAPI";
-import {
-  useGetJobByEmployeeQuery,
-  useGetJobsQuery,
-  useGetAppliedJobQuery,
-} from "../../features/job/jobAPI";
+import DashboardHomeCard from "../../components/dashboard/DashboardHomeCard";
+import DashboardHeader from "../../components/reusable/DashboardHeader";
+import { IoDocumentText } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { MdMailOutline } from "react-icons/md";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 export default function DashboardHome() {
-  const { email, role } = useParams();
-  const { data, isFetching } = useGetUsersQuery();
-  const { data: jobs, isFetching: jobFetching } = useGetJobsQuery();
-  const { data: myJobs, isFetching: myJobFetching } =
-    useGetJobByEmployeeQuery(email);
-  const { data: appliedJobs, isFetching: appliedJobsFetching } =
-    useGetAppliedJobQuery(email);
-
-  if (isFetching || jobFetching || myJobFetching || appliedJobsFetching)
-    return <Loading />;
-
-  const candidates = data.data.filter((user) => user.role === "candidate");
-  const employees = data.data.filter((user) => user.role === "employee");
+  const cardItems = [
+    {
+      title: "Job Applications",
+      quantity: 1,
+      icon: <IoDocumentText className="text-[#0D6EFD]" />,
+      bg: "bg-[#E6F0FF]",
+    },
+    {
+      title: "Profile Visitors",
+      quantity: 11,
+      icon: <CgProfile className="text-[#198754]" />,
+      bg: "bg-[#E8F3EE]",
+    },
+    {
+      title: "Unread Messages",
+      quantity: 5,
+      icon: <MdMailOutline className="text-[#FFC43F]" />,
+      bg: "bg-[#FFF9E6]",
+    },
+    {
+      title: "Notifications",
+      quantity: 0,
+      icon: <IoMdNotificationsOutline className="text-[#DC3545]" />,
+      bg: "bg-[#FBEAEC]",
+    },
+  ];
 
   return (
     <div className="">
-      <h2 className="text-center text-3xl font-semibold mt-10">
-        Welcome to {"Employee"} Dashboard
-      </h2>
-      <div className="mt-12 grid grid-cols-4 gap-5">
-        <div className="bg-orange-300 stat-card">
-          <h3 className="stat-title">{jobs?.data?.length}</h3>
-          <p>Total Jobs</p>
-        </div>
-        {role === "employee" ? (
-          <div className="bg-sky-300 stat-card">
-            <h3 className="stat-title">{myJobs?.data?.length}</h3>
-            <p>My Jobs</p>
-          </div>
-        ) : (
-          <div className="bg-sky-300 stat-card">
-            <h3 className="stat-title">{appliedJobs.data.length}</h3>
-            <p>My Application</p>
-          </div>
-        )}
-        <div className="bg-red-300 stat-card">
-          <h3 className="stat-title">{employees.length}</h3>
-          <p>Total Employee</p>
-        </div>
-        <div className="bg-red-300 stat-card">
-          <h3 className="stat-title">{candidates.length}</h3>
-          <p>Total Candidates</p>
-        </div>
+      <DashboardHeader title="Dashboard" subtitle="Welcome, Riyad Hossain!" />
+      <div className="mt-12 grid grid-cols-4 gap-6">
+        {cardItems.map((item) => (
+          <DashboardHomeCard
+            title={item.title}
+            quantity={item.quantity}
+            icon={item.icon}
+            bg={item.bg}
+            color={item.color}
+          />
+        ))}
       </div>
     </div>
   );
