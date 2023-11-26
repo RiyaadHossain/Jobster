@@ -24,7 +24,7 @@ export default function DashboardHome() {
   const employees = data.data.filter((user) => user.role === "employee");
 
   return (
-    <div className="px-10">
+    <div className="">
       <h2 className="text-center text-3xl font-semibold mt-10">
         Welcome to {"Employee"} Dashboard
       </h2>

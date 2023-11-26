@@ -70,7 +70,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex h-screen items-center pt-14">
+    <div className="flex items-center py-20">
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>

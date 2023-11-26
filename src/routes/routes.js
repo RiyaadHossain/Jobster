@@ -11,7 +11,6 @@ import AddJob from "../pages/dashboard/employee/AddJob";
 import AppliedJob from "../pages/dashboard/candidate/AppliedJob";
 import MyJobs from "../pages/dashboard/employee/MyJobs";
 import DashboardHome from "../layout/dashboard/DashboardHome";
-import Applications from "../pages/applications/Applications";
 import ApplicantDetails from "../pages/dashboard/candidate/ApplicantDetails";
 import MyProfile from "../pages/dashboard/candidate/MyProfile";
 import JobListing from "../pages/job/JobListing";
@@ -21,6 +20,12 @@ import CandidateListing from "../pages/candidate/CandidateListing";
 import CandidateDetails from "../pages/candidate/CandidateDetails";
 import NotFound from "../components/404/NotFound";
 import ContactPage from "../pages/contact/ContactPage";
+import EditProfile from "../pages/dashboard/candidate/EditProfile";
+import FavouriteJobs from "../pages/dashboard/candidate/FavouriteJobs";
+import ChangePassword from "../pages/dashboard/common/ChangePassword";
+import Inbox from "../pages/dashboard/common/Inbox";
+import Notification from "../pages/dashboard/common/Notification";
+import Applications from "../pages/dashboard/candidate/Applications";
 
 const routes = createBrowserRouter([
   {
@@ -63,10 +68,10 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
-      {
-        path: "/applications/:id",
-        element: <Applications />,
-      },
+      // {
+      //   path: "/applications/:id",
+      //   element: <Applications />,
+      // },
       {
         path: "/job-details/:id",
         element: (
@@ -110,7 +115,7 @@ const routes = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "/dashboard/:email/:role",
+        path: "",
         element: <DashboardHome />,
       },
       {
@@ -128,6 +133,30 @@ const routes = createBrowserRouter([
       {
         path: "my-profile/:email",
         element: <MyProfile />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "applications",
+        element: <Applications />,
+      },
+      {
+        path: "favourite-jobs",
+        element: <FavouriteJobs />,
+      },
+      {
+        path: "change-password",
+        element: <ChangePassword />,
+      },
+      {
+        path: "inbox",
+        element: <Inbox />,
+      },
+      {
+        path: "notifications",
+        element: <Notification />,
       },
     ],
   },

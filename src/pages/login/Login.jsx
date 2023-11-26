@@ -53,7 +53,7 @@ const Login = () => {
   }, [navigate, email, isLoading, isSuccess, isError, error]);
 
   return (
-    <div className="flex h-screen items-center">
+    <div className="flex items-center py-20">
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>

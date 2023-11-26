@@ -1,70 +1,58 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import "./style/style.css";
+import {
+  dashboardSidebardItem,
+  dashboardSidebardItemInsights,
+} from "../../constants/sidebarItems";
+
 const Sidebar = () => {
-  const {
-    user: { email, role },
-  } = useSelector((state) => state.auth);
+  const [selectedTab, setSelectedTab] = useState("/dashboard");
 
   return (
-    <div className="bg-primary/10 col-span-2 h-screen sticky top-0">
-      <ul className="flex flex-col gap-2 w-full h-full  p-3">
-        <div className="flex justify-between items-center text-primary my-1">
-          <Link to="/" className="flex items-center">
-            <FaChevronLeft />
-            <h1>Back</h1>
-          </Link>
-          <h1 className="text-xl">Dashboard</h1>
-        </div>
-        <li>
-          <Link
-            className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-            to={`/dashboard/${email}/${role}`}
-          >
-            Home
-          </Link>
-        </li>
-        {role === "employee" ? (
-          <>
-            <li>
-              <Link
-                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-                to="add-job"
+    <div className="bg-fifth col-span-2 p-10 fixed h-screen w-80 top-0">
+      <Link to="/" className="font-extrabold text-2xl">
+        <span className="text-blue-600 ">J</span>obster
+      </Link>
+      <div className=" mt-8">
+        <h4 className="text-sm font-light leading-5 text-accent mb-2 ">
+          Admin Tools
+        </h4>
+        <ul className="flex flex-col gap-2 w-full h-full">
+          {dashboardSidebardItem.map((item, i) => (
+            <li key={i} onClick={() => setSelectedTab(item.link)}>
+              <NavLink
+                className={`sidebar_item ${
+                  selectedTab === item.link && "sidebar_item_active"
+                }`}
+                to={item.link}
               >
-                Add Job
+                {item.display}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className=" mt-8">
+        <h4 className="text-sm font-light leading-5 text-accent mb-2 ">
+          Insights
+        </h4>
+        <ul className="flex flex-col gap-2 w-full h-full">
+          {dashboardSidebardItemInsights.map((item, i) => (
+            <li key={i} onClick={() => setSelectedTab(item.display)}>
+              <Link
+                className={`sidebar_item ${
+                  selectedTab === item.display && "sidebar_item_active"
+                }`}
+                to={item.link}
+              >
+                {item.display}
               </Link>
             </li>
-            <li>
-              <Link
-                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-                to={`my-jobs/${email}`}
-              >
-                My Jobs
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link
-                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-                to={`applied-job/${email}`}
-              >
-                Applied Job
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
-                to={`my-profile/${email}`}
-              >
-                My Profile
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
