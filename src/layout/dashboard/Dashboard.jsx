@@ -54,7 +54,7 @@ const Dashboard = () => {
               }}
             />
           </div>
-          <div className="rounded-t-2xl bg-white h-screen p-14">
+          <div className="rounded-t-2xl bg-white min-h-screen p-14">
             <Outlet />
           </div>
         </div>

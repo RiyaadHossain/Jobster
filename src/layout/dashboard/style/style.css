@@ -2,6 +2,10 @@
   @apply hover:text-[#44195d] transition-all w-full block py-4 px-6 rounded-full font-medium text-[15px] leading-[18px];
 }
 
-.sidebar_item_active{
-    @apply bg-[#44195d] text-white hover:text-white
+.sidebar_item_active {
+  @apply bg-[#44195d] text-white hover:text-white;
+}
+
+.home_section_title {
+  @apply text-2xl font-semibold mb-6 tracking-tight;
 }
