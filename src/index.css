@@ -25,7 +25,7 @@
   [type="week"],
   select,
   select[multiple] {
-    @apply text-lg py-4 px-5  border border-primary shadow-md focus:border-primary focus:ring-primary rounded-full font-light;
+    @apply text-lg py-4 px-5  border border-primary shadow focus:border-primary focus:ring-primary rounded-full font-light;
   }
 
   textarea {
