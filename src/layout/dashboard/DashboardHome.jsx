@@ -4,7 +4,7 @@ import { IoDocumentText } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { MdMailOutline } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import AreaChartJob from "../../components/dashboard/AreaChartJob";
+import JobsterAreaChart from "../../components/dashboard/JobsterAreaChart";
 import { applicationData, profileVisitorData } from "../../constants/statData";
 import Table from "../../components/dashboard/Table";
 
@@ -56,7 +56,7 @@ export default function DashboardHome() {
       {/* Info Charts */}
       <div className="mt-12 grid grid-cols-12 gap-12">
         <div className="col-span-6">
-          <AreaChartJob
+          <JobsterAreaChart
             quantity={321}
             data={profileVisitorData}
             syncId="profile-visitor"
@@ -65,7 +65,7 @@ export default function DashboardHome() {
           />
         </div>
         <div className="col-span-6">
-          <AreaChartJob
+          <JobsterAreaChart
             quantity={125}
             syncId="applications"
             data={applicationData}
