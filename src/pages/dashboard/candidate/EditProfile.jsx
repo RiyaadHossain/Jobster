@@ -1,17 +1,16 @@
 import DashboardHeader from "../../../components/reusable/DashboardHeader";
 import { useState } from "react";
+import { industries, location } from "../../../constants/jobInfo";
+import FormInput from "../../../components/form/FormInput";
+import FormTextarea from "../../../components/form/FormTextarea";
+import FormSelect from "../../../components/form/FormSelect";
+import FormImg from "../../../components/form/FormImg";
+import "./style/style.css";
+import AddSkill from "../../../components/dashboard/AddSkill";
 
 export default function EditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
-
-  const setPreviewImage = (e) => {
-    const id = e.target.id;
-    const url = URL.createObjectURL(e.target.files[0]);
-    console.log(typeof id);
-    console.log(url);
-    setImgUrl({ ...imgUrl, [id]: url });
-    console.log(imgUrl);
-  };
+  const [skills, setSkills] = useState([]);
 
   return (
     <div>
@@ -24,115 +23,87 @@ export default function EditProfile() {
         <form>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
-              <div className="flex flex-col items-start mb-4">
-                <label htmlFor="name" className="ml-5">
-                  Name
-                </label>
-                <input
-                  placeholder="Your Name"
-                  type="email"
-                  id="name"
-                  className="w-full"
-                />
-              </div>
+              <FormInput
+                id="name"
+                label="Name"
+                placeholder="Your Name"
+                type="text"
+              />
               <div className="flex gap-5">
-                <div className="flex flex-col items-start mb-4 w-1/2 flex-grow">
-                  <label htmlFor="email" className="ml-5">
-                    Email
-                  </label>
-                  <input
-                    placeholder="Type Email"
-                    type="password"
-                    id="email"
-                    className="w-full"
-                  />
-                </div>
-                <div className="flex flex-col items-start mb-4 w-1/2 flex-grow">
-                  <label htmlFor="phone" className="ml-5">
-                    Phone
-                  </label>
-                  <input
-                    placeholder="Type Phone"
-                    type="number"
-                    id="phone"
-                    className="w-full"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col items-start mb-4">
-                <label htmlFor="title" className="ml-5">
-                  Title
-                </label>
-                <input
-                  placeholder="Type Title"
-                  type="text"
-                  id="title"
-                  className="w-full"
+                <FormInput
+                  id="email"
+                  label="Email"
+                  placeholder="Your Email"
+                  type="email"
+                  divClass=" w-1/2 flex-grow"
+                />
+                <FormInput
+                  id="phone"
+                  label="Phone"
+                  placeholder="Your Phone"
+                  type="number"
+                  divClass=" w-1/2 flex-grow"
                 />
               </div>
-              <div className="flex flex-col items-start mb-4">
-                <label htmlFor="about" className="ml-5">
-                  About
-                </label>
-                <textarea
-                  rows={5}
-                  placeholder="Bio"
-                  id="about"
-                  className="w-full resize-none"
-                />
-              </div>
+              <FormInput
+                id="title"
+                label="Title"
+                placeholder="Your Title"
+                type="text"
+              />
+              <FormTextarea
+                rows={6}
+                id="about"
+                label="About"
+                placeholder="Bio"
+                inputClass="resize-none"
+              />
             </div>
-            <div className="col-span-4">
-              <div className="h-40 rounded-3xl mt-6 relative ">
-                <label
-                  htmlFor="banner"
-                  className="w-full border border-accent border-dashed h-full rounded-3xl inline-block"
-                >
-                  <span className="flex_cen h-full text-[13px] font-medium">
-                    Upload cover photo
-                  </span>
-                </label>
-                <input
-                  type="file"
-                  name=""
-                  id="banner"
-                  className="hidden"
-                  onChange={setPreviewImage}
-                />
-                <img
-                  src={imgUrl.banner}
-                  alt=""
-                  className={`absolute top-0 w-full h-full rounded-3xl object-cover ${
-                    !imgUrl.banner && "hidden"
-                  }`}
-                />
-              </div>
 
-              <div className="h-32 w-32 rounded-3xl mt-6 relative">
-                <label
-                  htmlFor="avatar"
-                  className="w-full border border-accent border-dashed h-full rounded-3xl inline-block"
-                >
-                  <span className="flex_cen h-full text-[13px] font-medium">
-                    Upload Image
-                  </span>
-                </label>
-                <input
-                  type="file"
-                  name=""
-                  id="avatar"
-                  className="hidden"
-                  onChange={setPreviewImage}
-                />
-                <img
-                  src={imgUrl.avatar}
-                  alt=""
-                  className={`absolute top-0 w-full h-full rounded-3xl object-cover ${
-                    !imgUrl.avatar && "hidden"
-                  }`}
-                />
-              </div>
+            <div className="col-span-4">
+              <FormImg
+                label="Upload cover photo"
+                id="banner"
+                name="banner"
+                height="h-40"
+                width="w-full"
+                imgUrl={imgUrl}
+                setImgUrl={setImgUrl}
+              />
+
+              <FormImg
+                label="Upload Image"
+                id="avatar"
+                name="avatar"
+                height="h-32"
+                width="w-32"
+                imgUrl={imgUrl}
+                setImgUrl={setImgUrl}
+              />
             </div>
+          </div>
+
+          <div className="flex gap-5 mb-8">
+            <FormSelect
+              options={industries}
+              label="Industry"
+              placeholder="Select Industry"
+              divClass="w-1/2 flex-grow"
+            />
+            <FormSelect
+              options={location}
+              label="Location"
+              placeholder="Select Location"
+              divClass="w-1/2 flex-grow"
+            />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
+              Skills
+            </h2>
+
+            <AddSkill skills={skills} setSkills={setSkills} />
           </div>
         </form>
       </div>
