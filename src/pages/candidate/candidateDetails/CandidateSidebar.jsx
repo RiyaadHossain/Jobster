@@ -40,7 +40,7 @@ export default function CandidateSidebar() {
           </div>
         </div>
         <div className="">
-          <button className="btn-secondary w-full">Download Resume</button>
+          <button className="btn_secondary w-full">Download Resume</button>
         </div>
       </div>
     </>

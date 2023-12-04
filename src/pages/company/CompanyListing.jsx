@@ -40,7 +40,7 @@ export default function CompanyListing() {
               </select>
             </div>
             <div className="">
-              <div className="btn-secondary text-center">Find Companies</div>
+              <div className="btn_secondary text-center">Find Companies</div>
             </div>
           </div>
         </div>

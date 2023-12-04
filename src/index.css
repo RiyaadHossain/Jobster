@@ -81,9 +81,12 @@ input:focus {
   @apply px-6 py-3 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
 }
 
-
-.btn-secondary {
+.btn_secondary {
   @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all hover:px-10 hover:tracking-wider disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed hover:bg-[#002745];
+}
+
+.btn_accent {
+  @apply px-6 py-4 font-semibold bg-light text-deep rounded-full transition-all hover:text-white hover:bg-primary;
 }
 
 .btn_sm {

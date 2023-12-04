@@ -17,25 +17,25 @@ export default function AddSkill({ skills, setSkills }) {
 
   return (
     <div>
-      {skills.length && (
+      {skills.length ? (
         <div className="mb-4 flex gap-2">
           {skills.map((skill, i) => (
             <div
               key={i}
-              className={`bg-primary/10 font-light w-fit px-[17px] py-[7px] rounded-full text-primary text-[13px] flex items-center gap-2`}
+              className={`bg-primary/10 font-light w-fit px-[16px] py-[6px] rounded-full text-deep text-[13px] flex items-center gap-2`}
             >
               <p>{skill}</p>
               <IoTrashOutline
                 onClick={() =>
                   setSkills(skills.filter((item) => item !== skill))
                 }
-                className="text-primary cursor-pointer group-hover:text-white transition-all"
+                className="cursor-pointer"
                 size="13"
               />
             </div>
           ))}
         </div>
-      )}
+      ) : null}
       <div className="relative">
         <input
           type="text"

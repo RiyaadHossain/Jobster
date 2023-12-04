@@ -42,7 +42,7 @@ const JobListing = () => {
               </select>
             </div>
             <div className="">
-              <div className="btn-secondary text-center">Find Jobs</div>
+              <div className="btn_secondary text-center">Find Jobs</div>
             </div>
           </div>
 

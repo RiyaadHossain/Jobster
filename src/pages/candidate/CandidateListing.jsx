@@ -40,7 +40,7 @@ export default function CandidateListing() {
               </select>
             </div>
             <div className="">
-              <div className="btn-secondary text-center">Find Candidates</div>
+              <div className="btn_secondary text-center">Find Candidates</div>
             </div>
           </div>
         </div>

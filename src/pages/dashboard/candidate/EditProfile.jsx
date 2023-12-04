@@ -7,6 +7,8 @@ import FormSelect from "../../../components/form/FormSelect";
 import FormImg from "../../../components/form/FormImg";
 import "./style/style.css";
 import AddSkill from "../../../components/dashboard/AddSkill";
+import AddExp from "../../../components/dashboard/AddExp";
+import AddEducation from "../../../components/dashboard/AddEducation";
 
 export default function EditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
@@ -104,6 +106,22 @@ export default function EditProfile() {
             </h2>
 
             <AddSkill skills={skills} setSkills={setSkills} />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
+              Work Experience
+            </h2>
+
+            <AddExp />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
+              Education & Training
+            </h2>
+
+            <AddEducation />
           </div>
         </form>
       </div>
