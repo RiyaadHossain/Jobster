@@ -98,6 +98,15 @@ export const companySidebardItems = [
     ),
     link: "company/candidates",
   },
+  {
+    display: (
+      <div className="flex items-center gap-2">
+        <IoIosLock className="text-lg" />
+        <span>Change Password</span>
+      </div>
+    ),
+    link: "change-password",
+  },
 ];
 
 export const dashboardSidebardItemInsights = [

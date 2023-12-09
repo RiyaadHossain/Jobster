@@ -34,39 +34,31 @@ export default function ManageJobs() {
           <FaGlobeAsia /> San Diego, CA
         </div>
       </td>
-      <td className="text-sm font-light leading-5 ">
-        Construction
-      </td>
+      <td className="text-sm font-light leading-5 ">Construction</td>
       <td className="text-sm font-medium leading-5">Internship</td>
       <td className="text-sm font-light leading-5 text-primary">
         2 candidates
       </td>
       <td className="text-[13px] font-light leading-5">
-        <span className="bg-green-700 inline-block px-2 py-[1px] mb-1 text-white rounded-full font-medium">
+        <span className="bg-green-700 text-xs inline-block px-2 py-[1px] mb-1 text-white rounded-full font-medium">
           Published
         </span>
         <div>2023/11/26 at 1:57 am</div>
       </td>
       <td>
         <div className="flex gap-2">
-          <Link
-            to="/jobs/63e11077c942dd2644639864"
-            className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
-          >
+          <button className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer">
             <RiEdit2Fill />
-          </Link>
+          </button>
           <Link
             to="/jobs/63e11077c942dd2644639864"
             className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
           >
             <FaEye />
           </Link>
-          <Link
-            to="/jobs/63e11077c942dd2644639864"
-            className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
-          >
+          <button className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer">
             <IoTrashOutline />
-          </Link>
+          </button>
         </div>
       </td>
     </tr>
