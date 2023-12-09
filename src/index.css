@@ -34,7 +34,7 @@
 
   [type="checkbox"],
   [type="radio"] {
-    @apply text-primary border border-opacity-20 focus:border-opacity-60 focus:ring-0 h-5 w-5;
+    @apply text-primary border border-opacity-20 focus:border-opacity-0 focus:ring-0 h-4 w-4;
   }
   [type="checkbox"] {
     @apply rounded;

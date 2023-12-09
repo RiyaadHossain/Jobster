@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./style/style.css";
 import {
-  // candidateSidebardItems,
+  candidateSidebardItems,
   companySidebardItems,
   dashboardSidebardItemInsights,
 } from "../../constants/sidebarItems";
+import { USER_ROLE } from "../../enum/userRole";
 
 const Sidebar = () => {
   const [selectedTab, setSelectedTab] = useState("/dashboard");
+
+  const role = "company";
+  const sidebarItems =
+    role === USER_ROLE.candidate
+      ? candidateSidebardItems
+      : companySidebardItems;
 
   return (
     <div className="bg-fifth col-span-2 p-10 fixed h-screen w-80 top-0">
@@ -20,7 +27,7 @@ const Sidebar = () => {
           Admin Tools
         </h4>
         <ul className="flex flex-col gap-2 w-full h-full">
-          {companySidebardItems.map((item, i) => (
+          {sidebarItems.map((item, i) => (
             <li key={i} onClick={() => setSelectedTab(item.link)}>
               <NavLink
                 className={`sidebar_item ${

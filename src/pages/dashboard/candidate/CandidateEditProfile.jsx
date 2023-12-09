@@ -130,6 +130,10 @@ export default function CandidateEditProfile() {
 
             <AddEducation />
           </div>
+
+          <div className="mt-12">
+            <button className="btn_secondary">Update Profile</button>
+          </div>
         </form>
       </div>
     </div>

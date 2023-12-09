@@ -31,18 +31,21 @@ export default function NotificationToltip() {
         <div className="absolute bg-slate-50 rounded-xl -right-1 border top-[50px] shadow-md w-80 z-30">
           <ul className="[&>*]:px-5 [&>*]:py-2 [&>*]:text-sm [&>*]:opacity-[0.8] [&>*]:text-accent py-3">
             <li>
-              <Link to={"/candidates/1"} className="text-black font-medium">
+              <Link to={"/candidates/1"} className="text-black font-medium hover:text-accent">
                 Riyad Hossain{" "}
               </Link>
               sent you a message
               <span className="ml-2 text-xs text-slate-400">1h</span>
             </li>
             <li>
-              <Link to={"/candidates/1"} className="text-black font-medium">
+              <Link
+                to={"/candidates/1"}
+                className="text-black font-medium hover:text-accent"
+              >
                 Riyad Hossain{" "}
               </Link>
               applied for{" "}
-              <Link to={"/jobs/1"} className="text-black font-medium">
+              <Link to={"/jobs/1"} className="text-black font-medium hover:text-accent">
                 Frontend
               </Link>
               <span className="ml-2 text-xs text-slate-400">1h</span>
@@ -52,7 +55,7 @@ export default function NotificationToltip() {
 
           <Link
             to={`/dashboard/notifications`}
-            className="text-primary font-semibold inline-block px-5 py-3"
+            className="text-primary font-semibold inline-block px-5 py-3 hover:text-opacity-70"
           >
             Read All
           </Link>
