@@ -1,10 +1,10 @@
-import { FaHome } from "react-icons/fa";
+import { FaBriefcase, FaHome, FaUserCircle } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 import { FaRegHeart } from "react-icons/fa";
 import { IoIosLock, IoMdMail, IoMdNotifications } from "react-icons/io";
 import { IoDocumentTextOutline } from "react-icons/io5";
 
-export const dashboardSidebardItem = [
+export const candidateSidebardItems = [
   {
     display: (
       <div className="flex items-center gap-2">
@@ -21,7 +21,7 @@ export const dashboardSidebardItem = [
         <span>Edit Profile</span>
       </div>
     ),
-    link: "edit-profile",
+    link: "candidate/edit-profile",
   },
   {
     display: (
@@ -49,6 +49,54 @@ export const dashboardSidebardItem = [
       </div>
     ),
     link: "change-password",
+  },
+];
+
+export const companySidebardItems = [
+  {
+    display: (
+      <div className="flex items-center gap-2">
+        <FaHome className="text-lg" />
+        <span>Dashboard</span>
+      </div>
+    ),
+    link: "/dashboard",
+  },
+  {
+    display: (
+      <div className="flex items-center gap-2">
+        <RiEdit2Fill className="text-lg" />
+        <span>Edit Profile</span>
+      </div>
+    ),
+    link: "company/edit-profile",
+  },
+  {
+    display: (
+      <div className="flex items-center gap-2">
+        <IoDocumentTextOutline className="text-lg" />
+        <span>New Job Offers</span>
+      </div>
+    ),
+    link: "company/new-job-offers",
+  },
+  {
+    display: (
+      <div className="flex items-center gap-2">
+        <FaBriefcase className="text-lg" />
+        <span>Manage Jobs</span>
+      </div>
+    ),
+    link: "company/manage-jobs",
+  },
+  {
+    display: (
+      <div className="flex items-center gap-2">
+        <FaUserCircle className="text-lg" />
+        <span>Candidates</span>
+      </div>
+    ),
+    link: "company/candidates",
   },
 ];
 

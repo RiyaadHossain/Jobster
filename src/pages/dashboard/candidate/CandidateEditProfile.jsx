@@ -10,7 +10,7 @@ import AddSkill from "../../../components/dashboard/AddSkill";
 import AddExp from "../../../components/dashboard/AddExp";
 import AddEducation from "../../../components/dashboard/AddEducation";
 
-export default function EditProfile() {
+export default function CandidateEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
   const [skills, setSkills] = useState([]);
 
@@ -21,7 +21,7 @@ export default function EditProfile() {
         subtitle="Edit your candidate profile page info."
       />
 
-      <div className="mt-12">
+      <div className="">
         <form>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
@@ -30,6 +30,7 @@ export default function EditProfile() {
                 label="Name"
                 placeholder="Your Name"
                 type="text"
+                mandatory={true}
               />
               <div className="flex gap-5">
                 <FormInput
@@ -37,6 +38,7 @@ export default function EditProfile() {
                   label="Email"
                   placeholder="Your Email"
                   type="email"
+                  mandatory={true}
                   divClass=" w-1/2 flex-grow"
                 />
                 <FormInput
@@ -44,6 +46,7 @@ export default function EditProfile() {
                   label="Phone"
                   placeholder="Your Phone"
                   type="number"
+                  mandatory={true}
                   divClass=" w-1/2 flex-grow"
                 />
               </div>
@@ -52,12 +55,14 @@ export default function EditProfile() {
                 label="Title"
                 placeholder="Your Title"
                 type="text"
+                mandatory={true}
               />
               <FormTextarea
                 rows={6}
                 id="about"
                 label="About"
                 placeholder="Bio"
+                mandatory={true}
                 inputClass="resize-none"
               />
             </div>
@@ -89,6 +94,7 @@ export default function EditProfile() {
             <FormSelect
               options={industries}
               label="Industry"
+              mandatory={true}
               placeholder="Select Industry"
               divClass="w-1/2 flex-grow"
             />
@@ -96,6 +102,7 @@ export default function EditProfile() {
               options={location}
               label="Location"
               placeholder="Select Location"
+              mandatory={true}
               divClass="w-1/2 flex-grow"
             />
           </div>

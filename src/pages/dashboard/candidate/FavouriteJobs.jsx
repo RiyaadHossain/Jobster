@@ -64,7 +64,7 @@ export default function FavouriteJobs() {
         subtitle="Detailed list of your favourite jobs."
       />
 
-      <div className="flex justify-end items-center mt-12 gap-5">
+      <div className="flex justify-end items-center gap-5">
         <p className="font-semibold">1 Jobs</p>
         <div>
           <div className="flex items-center gap-3 border px-4 py-[6px] rounded-3xl">

@@ -7,9 +7,9 @@ import JobDetails from "../pages/job/JobDetails";
 import Login from "../pages/login/Login";
 import Signup from "../pages/signup/Signup";
 import PrivateRoute from "./PrivateRoute";
-import AddJob from "../pages/dashboard/employee/AddJob";
+import AddJob from "../pages/dashboard/company/AddJob";
 import AppliedJob from "../pages/dashboard/candidate/AppliedJob";
-import MyJobs from "../pages/dashboard/employee/MyJobs";
+import MyJobs from "../pages/dashboard/company/MyJobs";
 import DashboardHome from "../layout/dashboard/DashboardHome";
 import ApplicantDetails from "../pages/dashboard/candidate/ApplicantDetails";
 import MyProfile from "../pages/dashboard/candidate/MyProfile";
@@ -20,12 +20,16 @@ import CandidateListing from "../pages/candidate/CandidateListing";
 import CandidateDetails from "../pages/candidate/CandidateDetails";
 import NotFound from "../components/404/NotFound";
 import ContactPage from "../pages/contact/ContactPage";
-import EditProfile from "../pages/dashboard/candidate/EditProfile";
+import CandidateEditProfile from "../pages/dashboard/candidate/CandidateEditProfile";
 import FavouriteJobs from "../pages/dashboard/candidate/FavouriteJobs";
 import ChangePassword from "../pages/dashboard/common/ChangePassword";
 import Inbox from "../pages/dashboard/common/Inbox";
 import Notification from "../pages/dashboard/common/Notification";
 import Applications from "../pages/dashboard/candidate/Applications";
+import CompanyEditProfile from "../pages/dashboard/company/CompanyEditProfile";
+import NewJobOffers from "../pages/dashboard/company/NewJobOffers";
+import ManageJobs from "../pages/dashboard/company/ManageJobs";
+import Candidates from "../pages/dashboard/company/Candidates";
 
 const routes = createBrowserRouter([
   {
@@ -135,8 +139,29 @@ const routes = createBrowserRouter([
         element: <MyProfile />,
       },
       {
-        path: "edit-profile",
-        element: <EditProfile />,
+        path: "candidate/edit-profile",
+        element: <CandidateEditProfile />,
+      },
+      {
+        path: "company",
+        children: [
+          {
+            path: "edit-profile",
+            element: <CompanyEditProfile />,
+          },
+          {
+            path: "new-job-offers",
+            element: <NewJobOffers />,
+          },
+          {
+            path: "manage-jobs",
+            element: <ManageJobs />,
+          },
+          {
+            path: "candidates",
+            element: <Candidates />,
+          },
+        ],
       },
       {
         path: "applications",

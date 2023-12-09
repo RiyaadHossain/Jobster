@@ -1,6 +1,6 @@
 export default function DashboardHeader({ title, subtitle }) {
   return (
-    <div>
+    <div className="mb-12">
       <h2 className="text-4xl font-bold leading-10 tracking-tight mb-2">
         {title}
       </h2>

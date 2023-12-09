@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./style/style.css";
 import {
-  dashboardSidebardItem,
+  // candidateSidebardItems,
+  companySidebardItems,
   dashboardSidebardItemInsights,
 } from "../../constants/sidebarItems";
 
@@ -19,7 +20,7 @@ const Sidebar = () => {
           Admin Tools
         </h4>
         <ul className="flex flex-col gap-2 w-full h-full">
-          {dashboardSidebardItem.map((item, i) => (
+          {companySidebardItems.map((item, i) => (
             <li key={i} onClick={() => setSelectedTab(item.link)}>
               <NavLink
                 className={`sidebar_item ${
