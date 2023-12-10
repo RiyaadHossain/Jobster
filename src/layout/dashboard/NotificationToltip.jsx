@@ -26,12 +26,22 @@ export default function NotificationToltip() {
 
   return (
     <div className="relative" ref={notificationRef}>
-      <IoMdNotifications className="text-2xl" onClick={toggleNotification} />
+      <div onClick={toggleNotification} className="cursor-pointer">
+        <IoMdNotifications className="text-2xl" />
+        {false && (
+          <div className="absolute -right-[6px] -bottom-[6px] w-4 h-4 bg-primary text-white text-xs font-semibold rounded-full flex_cen">
+            2
+          </div>
+        )}
+      </div>
       {openNotification && (
         <div className="absolute bg-slate-50 rounded-xl -right-1 border top-[50px] shadow-md w-80 z-30">
           <ul className="[&>*]:px-5 [&>*]:py-2 [&>*]:text-sm [&>*]:opacity-[0.8] [&>*]:text-accent py-3">
             <li>
-              <Link to={"/candidates/1"} className="text-black font-medium hover:text-accent">
+              <Link
+                to={"/candidates/1"}
+                className="text-black font-medium hover:text-accent"
+              >
                 Riyad Hossain{" "}
               </Link>
               sent you a message
@@ -45,7 +55,10 @@ export default function NotificationToltip() {
                 Riyad Hossain{" "}
               </Link>
               applied for{" "}
-              <Link to={"/jobs/1"} className="text-black font-medium hover:text-accent">
+              <Link
+                to={"/jobs/1"}
+                className="text-black font-medium hover:text-accent"
+              >
                 Frontend
               </Link>
               <span className="ml-2 text-xs text-slate-400">1h</span>

@@ -30,6 +30,7 @@ import CompanyEditProfile from "../pages/dashboard/company/CompanyEditProfile";
 import NewJobOffers from "../pages/dashboard/company/NewJobOffers";
 import ManageJobs from "../pages/dashboard/company/ManageJobs";
 import Candidates from "../pages/dashboard/company/Candidates";
+import EditJobOffer from "../pages/dashboard/company/EditJobOffer";
 
 const routes = createBrowserRouter([
   {
@@ -143,6 +144,10 @@ const routes = createBrowserRouter([
         element: <CandidateEditProfile />,
       },
       {
+        path: "candidate",
+        children: [],
+      },
+      {
         path: "company",
         children: [
           {
@@ -156,6 +161,10 @@ const routes = createBrowserRouter([
           {
             path: "manage-jobs",
             element: <ManageJobs />,
+          },
+          {
+            path: "manage-jobs/edit-job/:id",
+            element: <EditJobOffer />,
           },
           {
             path: "candidates",

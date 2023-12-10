@@ -47,9 +47,12 @@ export default function ManageJobs() {
       </td>
       <td>
         <div className="flex gap-2">
-          <button className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer">
+          <Link
+            to={`edit-job/1`}
+            className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
+          >
             <RiEdit2Fill />
-          </button>
+          </Link>
           <Link
             to="/jobs/63e11077c942dd2644639864"
             className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"

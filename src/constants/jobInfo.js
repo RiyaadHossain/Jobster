@@ -33,3 +33,21 @@ export const expLevel = [
   { type: "Fresher", jobs: 1 },
   { type: "Senior-Level", jobs: 0 },
 ];
+
+export const employmentTypeOpt = [
+  { value: 1, display: "Contract" },
+  { value: 2, display: "Full Time" },
+  { value: 3, display: "Internship" },
+  { value: 4, display: "Part Time" },
+  { value: 5, display: "Remote" },
+  { value: 6, display: "Training" },
+];
+
+export const expLevelOpt = [
+  { value: 1, display: "Entry-Level" },
+  { value: 2, display: "Manager" },
+  { value: 3, display: "Executive" },
+  { value: 4, display: "Mid-Level" },
+  { value: 5, display: "Fresher" },
+  { value: 6, display: "Senior-Level" },
+];

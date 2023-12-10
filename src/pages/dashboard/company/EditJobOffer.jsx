@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import DashboardHeader from "../../../components/reusable/DashboardHeader";
 import FormInput from "../../../components/form/FormInput";
-import FormImg from "../../../components/form/FormImg";
-import FormTextarea from "../../../components/form/FormTextarea";
 import FormSelect from "../../../components/form/FormSelect";
 import {
   employmentTypeOpt,
@@ -10,8 +8,10 @@ import {
   industries,
   location,
 } from "../../../constants/jobInfo";
+import FormTextarea from "../../../components/form/FormTextarea";
+import FormImg from "../../../components/form/FormImg";
 
-export default function NewJobOffers() {
+export default function EditJobOffer() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
 
   return (
@@ -103,7 +103,7 @@ export default function NewJobOffers() {
           </div>
 
           <div className="mt-10">
-            <button className="btn_secondary">Publish Job</button>
+            <button className="btn_secondary">Update Job</button>
           </div>
         </form>
       </div>
