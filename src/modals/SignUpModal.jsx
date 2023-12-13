@@ -4,25 +4,29 @@ import "./module.style.css";
 import Modal from "../components/modal/Modal";
 import { useState } from "react";
 import { USER_ROLE } from "../enum/userRole";
+import { ENUM_AUTH_MODAL } from "../enum/authModal";
 
-export default function SignUpModal({
-  openSignUpModal,
-  toggleSignUpModal,
-}) {
+export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const [role, setRole] = useState(USER_ROLE.candidate);
 
-  const onSignInHandle = () => {
-    toggleSignUpModal();
+  const onSignInHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.signIn);
+  const onModalClose = () => {
+    document.body.classList.toggle("overflow-y-hidden");
+    setOpenAuthModal(null);
   };
 
   return (
-    <Modal openModal={openSignUpModal} toggleModal={toggleSignUpModal}>
+    <Modal
+      openModal={openAuthModal === ENUM_AUTH_MODAL.signUp}
+      toggleModal={onModalClose}
+    >
       <div className="">
         <img src={signUpImg} alt="" className="h-[120px] w-auto" />
       </div>
       <h5 className="font-semibold text-[22px] tracking-tight  mt-6">
         Create an account
       </h5>
+
       <div className="flex mt-5">
         <div
           onClick={() => setRole(USER_ROLE.candidate)}
@@ -41,6 +45,7 @@ export default function SignUpModal({
           I'm company
         </div>
       </div>
+
       <form action="" className="w-full mt-6">
         {role === USER_ROLE.company ? (
           <FormInput id="companyName" placeholder="Company Name" type="text" />
@@ -68,9 +73,6 @@ export default function SignUpModal({
         />
         <button className="btn_secondary w-full">Continue</button>
         <div className="text-center">
-          <div className="mt-6 text-sm font-light text-primary cursor-pointer">
-            Forget Password
-          </div>
           <div className="mt-6 text-sm font-light">
             Already Have an account?{" "}
             <span

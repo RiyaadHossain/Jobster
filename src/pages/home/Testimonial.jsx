@@ -70,7 +70,7 @@ export default function Testimonial() {
           className="absolute hidden md:block bg-[#f0e9f1]  h-[90px] w-[90px] rounded-full right-[15%] top-[420px]"
         ></div>
 
-        <div className="max-w-lg text-center z-50">
+        <div className="max-w-lg text-center z-10">
           <i className="text-base font-light leading-6">
             Each day, I’m inspired by my colleagues to drive innovation that
             accomplishes this. Jobster fosters an environment of trust and

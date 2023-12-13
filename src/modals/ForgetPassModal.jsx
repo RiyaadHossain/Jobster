@@ -2,13 +2,19 @@ import React from "react";
 import Modal from "../components/modal/Modal";
 import FormInput from "../components/form/FormInput";
 import forgetPassImg from "../assets/forget-pass-fig.png";
+import { ENUM_AUTH_MODAL } from "../enum/authModal";
 
-export default function ForgetPassModal({
-  openForgetPassModal,
-  toggleForgetPassModal,
-}) {
+export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
+  const onModalClose = () => {
+    document.body.classList.toggle("overflow-y-hidden");
+    setOpenAuthModal(null);
+  };
+
   return (
-    <Modal openModal={openForgetPassModal} toggleModal={toggleForgetPassModal}>
+    <Modal
+      openModal={openAuthModal === ENUM_AUTH_MODAL.forgetPass}
+      toggleModal={onModalClose}
+    >
       <div className="">
         <img src={forgetPassImg} alt="" className="h-[120px] w-auto" />
       </div>

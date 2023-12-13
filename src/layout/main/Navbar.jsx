@@ -12,15 +12,15 @@ import ProfileMenu from "./ProfileMenu";
 import SignUpModal from "../../modals/SignUpModal";
 import SignInModal from "../../modals/SignInModal";
 import ForgetPassModal from "../../modals/ForgetPassModal";
+import { ENUM_AUTH_MODAL } from "../../enum/authModal";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const navbarRef = useRef(null);
   const { pathname } = useLocation();
-  const [openSignUpModal, setOpenSignUpModal] = useState(false);
-  const [openSignInModal, setOpenSignInModal] = useState(false);
-  const [openForgetPassModal, setOpenForgetPassModal] = useState(false);
+
+  const [openAuthModal, setOpenAuthModal] = useState(null);
 
   const {
     user: { email },
@@ -57,18 +57,8 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
     document.body.classList.toggle("overflow-y-hidden");
   };
 
-  const toggleSignUpModal = () => {
-    setOpenSignUpModal(!openSignUpModal);
-    document.body.classList.toggle("overflow-y-hidden");
-  };
-
-  const toggleSignInModal = () => {
-    setOpenSignInModal(!openSignInModal);
-    document.body.classList.toggle("overflow-y-hidden");
-  };
-
-  const toggleForgetPassModal = () => {
-    setOpenForgetPassModal(!openSignUpModal);
+  const toggleAuthModal = () => {
+    setOpenAuthModal(ENUM_AUTH_MODAL.signIn);
     document.body.classList.toggle("overflow-y-hidden");
   };
 
@@ -123,7 +113,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
             ) : (
               <li>
                 <button
-                  onClick={toggleSignInModal}
+                  onClick={toggleAuthModal}
                   className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all"
                 >
                   SignIn
@@ -145,16 +135,16 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
       ></div>
 
       <SignInModal
-        openSignInModal={openSignInModal}
-        toggleSignInModal={toggleSignInModal}
+        openAuthModal={openAuthModal}
+        setOpenAuthModal={setOpenAuthModal}
       />
       <SignUpModal
-        openSignUpModal={openSignUpModal}
-        toggleSignUpModal={toggleSignUpModal}
+        openAuthModal={openAuthModal}
+        setOpenAuthModal={setOpenAuthModal}
       />
       <ForgetPassModal
-        openForgetPassModal={openForgetPassModal}
-        toggleForgetPassModal={toggleForgetPassModal}
+        openAuthModal={openAuthModal}
+        setOpenAuthModal={setOpenAuthModal}
       />
     </nav>
   );
