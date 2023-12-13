@@ -7,19 +7,23 @@ import { signOutReducer } from "../../features/auth/authSlice";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { toast } from "react-hot-toast";
 import Sidebar from "./Sidebar";
-import avatar from "../../assets/person.png";
 import { navbarItems } from "../../constants/navbarItems";
 import ProfileMenu from "./ProfileMenu";
+import SignUpModal from "../../modals/SignUpModal";
+import SignInModal from "../../modals/SignInModal";
+import ForgetPassModal from "../../modals/ForgetPassModal";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
-  const [openProfile, setOpenProfile] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const navbarRef = useRef(null);
   const { pathname } = useLocation();
-  const profileMenuRef = useRef(null);
+  const [openSignUpModal, setOpenSignUpModal] = useState(false);
+  const [openSignInModal, setOpenSignInModal] = useState(false);
+  const [openForgetPassModal, setOpenForgetPassModal] = useState(false);
+
   const {
-    user: { email, role },
+    user: { email },
   } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -32,23 +36,12 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
       }
     };
 
-    // Close the profile menu - on outside click
-    const handleClickOutside = (event) => {
-      if (!profileMenuRef.current.contains(event.target)) {
-        setOpenProfile(false);
-      }
-    };
-
     // Listen for scroll down
     window.addEventListener("scroll", handleScroll);
-
-    // Listen for clicks outside the profile menu
-    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       // Remove the event listener on component unmount
       window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -64,7 +57,20 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
     document.body.classList.toggle("overflow-y-hidden");
   };
 
-  const toggleProfile = () => setOpenProfile(!openProfile);
+  const toggleSignUpModal = () => {
+    setOpenSignUpModal(!openSignUpModal);
+    document.body.classList.toggle("overflow-y-hidden");
+  };
+
+  const toggleSignInModal = () => {
+    setOpenSignInModal(!openSignInModal);
+    document.body.classList.toggle("overflow-y-hidden");
+  };
+
+  const toggleForgetPassModal = () => {
+    setOpenForgetPassModal(!openSignUpModal);
+    document.body.classList.toggle("overflow-y-hidden");
+  };
 
   const isHomeRoute = pathname === "/";
   const mediumDevice = window.innerWidth <= 1020;
@@ -110,24 +116,18 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
               <li>
                 <ProfileMenu
                   props={{
-                    toggleProfile,
-                    profileMenuRef,
-                    avatar,
-                    openProfile,
-                    email,
-                    role,
                     handleLogOut,
                   }}
                 />
               </li>
             ) : (
               <li>
-                <Link
-                  className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
-                  to="/login"
+                <button
+                  onClick={toggleSignInModal}
+                  className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all"
                 >
-                  Login
-                </Link>
+                  SignIn
+                </button>
               </li>
             )}
           </div>
@@ -139,10 +139,23 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
 
       <div
         onClick={toggleMenu}
-        className={`w-screen h-screen bg-black opacity-50 ${
+        className={`w-screen h-screen bg-black opacity-70 ${
           menuOpen ? "block" : "hidden"
         } fixed z-20 top-0`}
       ></div>
+
+      <SignInModal
+        openSignInModal={openSignInModal}
+        toggleSignInModal={toggleSignInModal}
+      />
+      <SignUpModal
+        openSignUpModal={openSignUpModal}
+        toggleSignUpModal={toggleSignUpModal}
+      />
+      <ForgetPassModal
+        openForgetPassModal={openForgetPassModal}
+        toggleForgetPassModal={toggleForgetPassModal}
+      />
     </nav>
   );
 };

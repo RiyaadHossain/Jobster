@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
+import avatar from "../../assets/person.png";
 
 export default function ProfileMenu({ props }) {
-  const {
-    avatar,
-    // email,
-    // role,
-    handleLogOut,
-  } = props;
+  const { handleLogOut } = props;
 
   const [openProfile, setOpenProfile] = useState(false);
   const toggleProfile = () => setOpenProfile(!openProfile);
