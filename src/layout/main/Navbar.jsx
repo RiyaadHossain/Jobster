@@ -1,30 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { signOut } from "firebase/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase/firebase.config";
-import { useDispatch, useSelector } from "react-redux";
-import { signOutReducer } from "../../features/auth/authSlice";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { toast } from "react-hot-toast";
 import Sidebar from "./Sidebar";
 import { navbarItems } from "../../constants/navbarItems";
-import ProfileMenu from "./ProfileMenu";
-import SignUpModal from "../../modals/SignUpModal";
-import SignInModal from "../../modals/SignInModal";
-import ForgetPassModal from "../../modals/ForgetPassModal";
 import { ENUM_AUTH_MODAL } from "../../enum/authModal";
+import { Link, useLocation } from "react-router-dom";
+import SignInModal from "../../components/auth-modals/SignInModal";
+import SignUpModal from "../../components/auth-modals/SignUpModal";
+import ForgetPassModal from "../../components/auth-modals/ForgetPassModal";
+import ProfileMenu from "../../components/other/ProfileMenu";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const navbarRef = useRef(null);
   const { pathname } = useLocation();
 
   const [openAuthModal, setOpenAuthModal] = useState(null);
 
-  const {
-    user: { email },
-  } = useSelector((state) => state.auth);
+  const email = 1;
 
   useEffect(() => {
     // Show Navbar background when scroll down
@@ -46,10 +38,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
   }, []);
 
   const handleLogOut = () => {
-    signOut(auth);
     toast.success("Sign Out successfully", { id: "signout" });
-    dispatch(signOutReducer());
-    navigate("/");
   };
 
   const toggleMenu = () => {

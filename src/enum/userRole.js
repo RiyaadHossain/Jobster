@@ -1,1 +1,1 @@
-export const USER_ROLE = { candidate: "candidate", company: "company" };
+export const ENUM_USER_ROLE = { candidate: "candidate", company: "company" };

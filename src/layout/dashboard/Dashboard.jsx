@@ -1,17 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import ProfileMenu from "../main/ProfileMenu";
+import ProfileMenu from "../../components/other/ProfileMenu";
 import avatar from "../../assets/person.png";
-import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import NotificationToltip from "./NotificationToltip";
+import { ENUM_USER_ROLE } from "../../enum/userRole";
+import NotificationToltip from "../../components/dashboard/NotificationToltip";
 
 const Dashboard = () => {
-
-  const {
-    user: { email, role },
-  } = useSelector((state) => state.auth);
-
+  const email = "riyad@gmail.com";
+  const role = ENUM_USER_ROLE.candidate;
 
   const handleLogOut = () => toast.success("hello world!");
 

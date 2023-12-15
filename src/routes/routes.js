@@ -1,36 +1,32 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layout/dashboard/Dashboard";
 import Main from "../layout/main/Main";
-import AccountCreator from "../pages/register/AccountCreator";
 import Home from "../pages/home/Home";
-import JobDetails from "../pages/job/JobDetails";
-import Login from "../pages/login/Login";
-import Signup from "../pages/signup/Signup";
-import PrivateRoute from "./PrivateRoute";
-import AddJob from "../pages/dashboard/company/AddJob";
-import AppliedJob from "../pages/dashboard/candidate/AppliedJob";
-import MyJobs from "../pages/dashboard/company/MyJobs";
 import DashboardHome from "../layout/dashboard/DashboardHome";
-import ApplicantDetails from "../pages/dashboard/candidate/ApplicantDetails";
-import MyProfile from "../pages/dashboard/candidate/MyProfile";
-import JobListing from "../pages/job/JobListing";
-import CompanyListing from "../pages/company/CompanyListing";
-import CompanyDetails from "../pages/company/CompanyDetails";
-import CandidateListing from "../pages/candidate/CandidateListing";
-import CandidateDetails from "../pages/candidate/CandidateDetails";
 import NotFound from "../components/404/NotFound";
 import ContactPage from "../pages/contact/ContactPage";
-import CandidateEditProfile from "../pages/dashboard/candidate/CandidateEditProfile";
-import FavouriteJobs from "../pages/dashboard/candidate/FavouriteJobs";
-import ChangePassword from "../pages/dashboard/common/ChangePassword";
-import Inbox from "../pages/dashboard/common/Inbox";
-import Notification from "../pages/dashboard/common/Notification";
-import Applications from "../pages/dashboard/candidate/Applications";
-import CompanyEditProfile from "../pages/dashboard/company/CompanyEditProfile";
-import NewJobOffers from "../pages/dashboard/company/NewJobOffers";
-import ManageJobs from "../pages/dashboard/company/ManageJobs";
-import Candidates from "../pages/dashboard/company/Candidates";
-import EditJobOffer from "../pages/dashboard/company/EditJobOffer";
+import CompanyEditProfile from "../pages/dashboard/company/company-edit-profile/CompanyEditProfile";
+import NewJobOffers from "../pages/dashboard/company/new-job-offer/NewJobOffers";
+import ManageJobs from "../pages/dashboard/company/manage-jobs/ManageJobs";
+import Candidates from "../pages/dashboard/company/candidates/Candidates";
+import EditJobOffer from "../pages/dashboard/company/edit-job-offer/EditJobOffer";
+
+import CandidateListing from "../pages/candidate-listing/CandidateListing";
+import CandidateDetails from "../pages/candidate-details/CandidateDetails";
+
+import CompanyListing from "../pages/company-listing/CompanyListing";
+import CompanyDetails from "../pages/company-details/CompanyDetails";
+
+import JobListing from "../pages/job-listing/JobListing";
+import JobDetails from "../pages/job-details/JobDetails";
+
+import Applications from "../pages/dashboard/candidate/applications/Applications";
+import FavouriteJobs from "../pages/dashboard/candidate/favourite-jobs/FavouriteJobs";
+import CandidateEditProfile from "../pages/dashboard/candidate/candidate-edit-profile/CandidateEditProfile";
+
+import Inbox from "../pages/dashboard/common/inbox/Inbox";
+import Notification from "../pages/dashboard/common/notification/Notification";
+import ChangePassword from "../pages/dashboard/common/change-password/ChangePassword";
 
 const routes = createBrowserRouter([
   {
@@ -66,50 +62,6 @@ const routes = createBrowserRouter([
         element: <CandidateDetails />,
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
-      },
-      // {
-      //   path: "/applications/:id",
-      //   element: <Applications />,
-      // },
-      {
-        path: "/job-details/:id",
-        element: (
-          <PrivateRoute>
-            <JobDetails />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/applicant-details/:email",
-        element: (
-          <PrivateRoute>
-            <ApplicantDetails />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/register",
-        element: (
-          <PrivateRoute>
-            <AccountCreator />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/register/:type",
-        element: (
-          <PrivateRoute>
-            <AccountCreator />
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/contact",
         element: <ContactPage />,
       },
@@ -124,28 +76,21 @@ const routes = createBrowserRouter([
         element: <DashboardHome />,
       },
       {
-        path: "add-job",
-        element: <AddJob />,
-      },
-      {
-        path: "my-jobs/:email",
-        element: <MyJobs />,
-      },
-      {
-        path: "applied-job/:email",
-        element: <AppliedJob />,
-      },
-      {
-        path: "my-profile/:email",
-        element: <MyProfile />,
-      },
-      {
-        path: "candidate/edit-profile",
-        element: <CandidateEditProfile />,
-      },
-      {
         path: "candidate",
-        children: [],
+        children: [
+          {
+            path: "edit-profile",
+            element: <CandidateEditProfile />,
+          },
+          {
+            path: "applications",
+            element: <Applications />,
+          },
+          {
+            path: "favourite-jobs",
+            element: <FavouriteJobs />,
+          },
+        ],
       },
       {
         path: "company",
@@ -161,24 +106,18 @@ const routes = createBrowserRouter([
           {
             path: "manage-jobs",
             element: <ManageJobs />,
-          },
-          {
-            path: "manage-jobs/edit-job/:id",
-            element: <EditJobOffer />,
+            children: [
+              {
+                path: "edit-job/:id",
+                element: <EditJobOffer />,
+              },
+            ],
           },
           {
             path: "candidates",
             element: <Candidates />,
           },
         ],
-      },
-      {
-        path: "applications",
-        element: <Applications />,
-      },
-      {
-        path: "favourite-jobs",
-        element: <FavouriteJobs />,
       },
       {
         path: "change-password",

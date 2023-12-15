@@ -1,0 +1,19 @@
+.sidebar_item_title {
+  @apply font-light text-sm text-accent;
+}
+
+.sidebar_content_info {
+  @apply font-semibold text-base;
+}
+
+.company_logo {
+  @apply w-[120px] h-[120px] rounded-2xl;
+}
+
+.job_info_section_header {
+  @apply text-black text-lg font-semibold leading-5 mb-3;
+}
+
+.job_info_section_content {
+  @apply text-sm font-light leading-6;
+}

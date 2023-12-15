@@ -1,4 +1,3 @@
-import "./modal.style.css";
 
 export default function Modal({ openModal, toggleModal, children }) {
   return (

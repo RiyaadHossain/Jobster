@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import SocialIcons from "../../components/ui/SocialIcons";
+import SocialIcons from "../../components/other/SocialIcons";
 
 export default function Footer() {
   const { pathname } = useLocation();

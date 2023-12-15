@@ -6,14 +6,14 @@ import {
   companySidebardItems,
   dashboardSidebardItemInsights,
 } from "../../constants/sidebarItems";
-import { USER_ROLE } from "../../enum/userRole";
+import { ENUM_USER_ROLE } from "../../enum/userRole";
 
 const Sidebar = () => {
   const [selectedTab, setSelectedTab] = useState("/dashboard");
 
   const role = "company";
   const sidebarItems =
-    role === USER_ROLE.candidate
+    role === ENUM_USER_ROLE.candidate
       ? candidateSidebardItems
       : companySidebardItems;
 
