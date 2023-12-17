@@ -22,7 +22,7 @@ export default function CompanyCard({ border }) {
       >
         CoderBotics
       </h3>
-      <p className="text-sm font-light leading-6 mt-5 text-slate-500">
+      <p className="text-sm font-light leading-6 mt-5 text-slate-500 max-w-md">
         CoderBotics, Inc. is an American multinational corporation that is
         engaged in the design, development, manufacturing, and worldwide
         marketing and sales of footwear, apparel, equipment, accessories, and

@@ -7,13 +7,13 @@ import FeaturedCompany from "./components/FeaturedCompany";
 
 const Home = () => {
   return (
-    <div className="">
+    <>
       <Banner />
       <FeaturedJob />
       <Category />
       <FeaturedCompany />
       <Testimonial />
-    </div>
+    </>
   );
 };
 

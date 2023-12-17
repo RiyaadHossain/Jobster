@@ -3,6 +3,7 @@ import { IoMailUnread } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 // import { HiMiniBuildingOffice2 } from "react-icons/hi2";
 import { HiBuildingOffice2 } from "react-icons/hi2";
+import SectionHeader from "../../components/ui/SectionHeader";
 
 export default function ContactPage() {
   return (
@@ -12,13 +13,8 @@ export default function ContactPage() {
         subtitle="Let us know your concern"
         className="bg-fifth"
       />
-      <div className="">
-        <h2 className="text-4xl font-bold text-center mt-10">
-          Contact with Us
-        </h2>
-        <p className="text-center mt-2 font-light text-grayColor">
-          Get in Touch
-        </p>
+      <div className="pt-20">
+        <SectionHeader title="Contact with Us" subtitle=" Get in Touch" />
         <div className="max_container flex mt-8 gap-8 flex-wrap justify-center ">
           <div className="border flex flex-col items-center gap-2 shadow-md p-10 rounded-xl">
             <IoMailUnread className="text-4xl mb-6 text-green-500" />
@@ -46,7 +42,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className=" bg-fifth py-16 mt-16">
+        <div className=" bg-fifth py-20 mt-20">
           <div className="max_container flex flex-col lg:flex-row gap-6">
             <div className="bg-[#FFFAF4] lg:w-1/2 rounded-lg grid place-items-center p-10">
               <h1 className="mb-10 font-medium text-2xl">Sent Us Mail</h1>
