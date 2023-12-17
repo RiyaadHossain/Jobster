@@ -13,7 +13,7 @@ export default function Testimonial() {
         title="Why Customers Love Us"
         subtitle="What our customers say about us"
       />
-      <div className="relative flex items-center justify-center h-[50vh]">
+      <div className="relative flex items-center justify-center h-[50vh] mb-32">
         {/* ------ Left Side ------ */}
         <div
           style={{

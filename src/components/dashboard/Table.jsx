@@ -26,7 +26,7 @@ export default function Table() {
             Finance
           </td>
           <td className="w-[25%] p-2 gap-2">
-            <div className="flex items-center gap-2 text-[13px] font-medium leading-5 text-accent">
+            <div className="flex items-center gap-2 text-[13px] font-medium leading-5 text-grayColor">
               <FaGlobeAmericas />
               <span>San Dieago, SA</span>
             </div>

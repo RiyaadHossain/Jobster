@@ -1,48 +1,47 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import DetailsPageSidebar from "../../../components/other/details-page-sidebar/DetailsPageSidebar";
 
 export default function CandidateSidebar() {
   const [showNum, setShowNum] = useState(false);
 
   return (
-    <>
-      <div className="bg-fifth p-8 rounded-xl">
-        <div className="mb-5">
-          <div className="text-[13px] font-light leading-5 opacity-[0.7]">
-            Email
-          </div>
-          <div className="text-base font-medium leading-6 text-primary">
-            riyadhossain.dev@gmail.com
-          </div>
+    <DetailsPageSidebar bg="bg-fifth">
+      <div className="">
+        <div className="sidebar_item_title">
+          Email
         </div>
-        <div className="mb-5">
-          <div className="text-[13px] font-light leading-5 opacity-[0.7]">
-            Location
-          </div>
-          <div className="text-base font-medium leading-6 ">
-            Dhaka, Bangladesh
-          </div>
-        </div>
-        <div className="mb-5">
-          <div className="text-[13px] font-light leading-5 opacity-[0.7]">
-            Phone
-          </div>
-          <div
-            className={`text-base font-medium leading-6 ${
-              showNum && "text-primary"
-            }`}
-          >
-            +(880) 170379{showNum ? "0978" : "****"}{" "}
-            {!showNum && (
-              <button onClick={() => setShowNum(true)} className="btn_sm ml-2">
-                Show
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="">
-          <button className="btn_secondary w-full">Download Resume</button>
+        <div className="sidebar_item_info text-primary">
+          riyadhossain.dev@gmail.com
         </div>
       </div>
-    </>
+      <div className="">
+        <div className="sidebar_item_title">
+          Location
+        </div>
+        <div className="sidebar_item_info ">
+          Dhaka, Bangladesh
+        </div>
+      </div>
+      <div className="">
+        <div className="sidebar_item_title">
+          Phone
+        </div>
+        <div
+          className={`sidebar_item_info ${
+            showNum && "text-primary"
+          }`}
+        >
+          +(880) 170379{showNum ? "0978" : "****"}{" "}
+          {!showNum && (
+            <button onClick={() => setShowNum(true)} className="btn_sm ml-2">
+              Show
+            </button>
+          )}
+        </div>
+      </div>
+      <div className="">
+        <button className="btn_secondary w-full">Download Resume</button>
+      </div>
+    </DetailsPageSidebar>
   );
 }

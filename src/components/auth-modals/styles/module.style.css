@@ -1,7 +1,15 @@
+.modal_img {
+  @apply h-[120px] w-auto;
+}
+
+.modal_header {
+  @apply font-semibold text-[22px] tracking-tight mt-6;
+}
+
 .radio_role {
-  @apply bg-white border text-deep py-[7px] px-[16px] cursor-pointer hover:bg-primary hover:border-primary hover:text-white transition-all;
+  @apply bg-white border text-primaryDark py-[7px] px-[16px] cursor-pointer hover:bg-primary hover:border-primary hover:text-white transition-all;
 }
 
 .radio_role_active {
-  @apply bg-deep border border-primary text-white py-[7px] px-[16px] cursor-pointer hover:bg-primary hover:border-primary hover:text-white transition-all;
+  @apply bg-primaryDark border border-primary text-white py-[7px] px-[16px] cursor-pointer hover:bg-primary hover:border-primary hover:text-white transition-all;
 }

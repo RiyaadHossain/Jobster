@@ -1,4 +1,3 @@
-
 import companyHero1 from "../../../assets/company-hero-1.jpg";
 import companyHero2 from "../../../assets/company-hero-2.jpg";
 import companyHero3 from "../../../assets/company-hero-3.jpg";
@@ -6,17 +5,17 @@ import companyHero4 from "../../../assets/company-hero-4.jpg";
 import companyHero5 from "../../../assets/company-hero-5.jpg";
 import companyHero6 from "../../../assets/company-hero-6.jpg";
 import JobCard from "../../job-listing/components/JobCard";
-import "./module.style.css";
+import "./style/module.style.css";
 
 export default function CompanyInfo() {
   return (
     <div className="mt-8">
       {/* +++ About +++ */}
       <div>
-        <h1 className="text-3xl font-bold leading-8 tracking-tight mb-6">
+        <h1 className="text-4xl font-bold leading-10 tracking-tight mb-5">
           About Artistre Studio
         </h1>
-        <p className="text-sm font-light leading-6">
+        <p className="text_accent">
           <span>Artistre Studio</span>, Inc. is an American multinational
           corporation that is engaged in the design, development, manufacturing,
           and worldwide marketing and sales of footwear, apparel, equipment,
@@ -36,44 +35,32 @@ export default function CompanyInfo() {
       {/* +++ Gallery +++ */}
       <div className="my-4">
         <div className="grid grid-cols-12 gap-2">
-          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
-            <img
-              className="rounded-2xl h-[300px] w-full object-cover"
-              src={companyHero6}
-              alt=""
-            />
+          <figure className="img_container">
+            <img className="img_class h-[300px] " src={companyHero6} alt="" />
           </figure>
-          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
-            <img
-              className="rounded-2xl h-[300px] w-full object-cover"
-              src={companyHero5}
-              alt=""
-            />
+          <figure className="img_container">
+            <img className="img_class h-[300px] " src={companyHero5} alt="" />
           </figure>
-          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+          <figure className="img_container">
             <img
-              className="rounded-2xl h-[580px] lg:h-[300px] w-full object-cover"
+              className="img_class h-[580px] lg:h-[300px] "
               src={companyHero4}
               alt=""
             />
           </figure>
-          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
-            <img
-              className="rounded-2xl h-[580px] w-full object-cover"
-              src={companyHero3}
-              alt=""
-            />
+          <figure className="img_container">
+            <img className="img_class h-[580px] " src={companyHero3} alt="" />
           </figure>
-          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+          <figure className="img_container">
             <img
-              className="rounded-2xl h-[300px]  lg:h-[580px] w-full object-cover"
+              className="img_class h-[300px]  lg:h-[580px] "
               src={companyHero2}
               alt=""
             />
           </figure>
-          <figure className="col-span-12 md:col-span-6 lg:col-span-4">
+          <figure className="img_container">
             <img
-              className="rounded-2xl h-[300px] lg:h-[580px] w-full object-cover"
+              className="img_class h-[300px] lg:h-[580px] "
               src={companyHero1}
               alt=""
             />
@@ -81,7 +68,7 @@ export default function CompanyInfo() {
         </div>
       </div>
 
-      <p className="text-sm font-light leading-[23px]">
+      <p className="text_accent">
         Artistre Studio, Inc. is an American multinational corporation that is
         engaged in the design, development, manufacturing, and worldwide
         marketing and sales of footwear, apparel, equipment, accessories, and
@@ -102,7 +89,7 @@ export default function CompanyInfo() {
           </div>
         </div>
         <div className="flex-1">
-          <p className="text-sm font-light leading-[23px]">
+          <p className="text_accent">
             In 2020 the brand alone was valued in excess of $32 billion, making
             it the most valuable brand among sports businesses. Previously, in
             2017, the Artistre Studio brand was valued at $29.6 billion.

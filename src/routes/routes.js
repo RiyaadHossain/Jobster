@@ -1,15 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../layout/dashboard/Dashboard";
+
 import Main from "../layout/main/Main";
 import Home from "../pages/home/Home";
+import ContactPage from "../pages/contact/ContactPage";
+import Dashboard from "../layout/dashboard/Dashboard";
 import DashboardHome from "../layout/dashboard/DashboardHome";
 import NotFound from "../components/404/NotFound";
-import ContactPage from "../pages/contact/ContactPage";
-import CompanyEditProfile from "../pages/dashboard/company/company-edit-profile/CompanyEditProfile";
-import NewJobOffers from "../pages/dashboard/company/new-job-offer/NewJobOffers";
-import ManageJobs from "../pages/dashboard/company/manage-jobs/ManageJobs";
-import Candidates from "../pages/dashboard/company/candidates/Candidates";
-import EditJobOffer from "../pages/dashboard/company/edit-job-offer/EditJobOffer";
 
 import CandidateListing from "../pages/candidate-listing/CandidateListing";
 import CandidateDetails from "../pages/candidate-details/CandidateDetails";
@@ -27,6 +23,12 @@ import CandidateEditProfile from "../pages/dashboard/candidate/candidate-edit-pr
 import Inbox from "../pages/dashboard/common/inbox/Inbox";
 import Notification from "../pages/dashboard/common/notification/Notification";
 import ChangePassword from "../pages/dashboard/common/change-password/ChangePassword";
+
+import CompanyEditProfile from "../pages/dashboard/company/company-edit-profile/CompanyEditProfile";
+import NewJobOffers from "../pages/dashboard/company/new-job-offer/NewJobOffers";
+import ManageJobs from "../pages/dashboard/company/manage-jobs/ManageJobs";
+import Candidates from "../pages/dashboard/company/candidates/Candidates";
+import EditJobOffer from "../pages/dashboard/company/manage-jobs/edit-job-offer/EditJobOffer";
 
 const routes = createBrowserRouter([
   {
@@ -64,6 +66,10 @@ const routes = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
@@ -132,10 +138,6 @@ const routes = createBrowserRouter([
         element: <Notification />,
       },
     ],
-  },
-  {
-    path: "*",
-    element: <NotFound />,
   },
 ]);
 

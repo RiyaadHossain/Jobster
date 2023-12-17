@@ -1,4 +1,3 @@
-
 import DashboardHeader from "../../../../components/ui/DashboardHeader";
 import { IoIosSearch } from "react-icons/io";
 import JobsterTable from "../../../../components/dashboard/JobsterTable";
@@ -40,7 +39,7 @@ export default function Candidates() {
             <h2 className="text-base font-semibold leading-6 text-primary">
               Financial Analyst
             </h2>
-            <div className="flex items-center gap-1 text-[13px] font-medium leading-5 text-accent">
+            <div className="flex items-center gap-1 text-[13px] font-medium leading-5 text-grayColor">
               <FaGlobeAsia /> San Diego, CA
             </div>
           </div>

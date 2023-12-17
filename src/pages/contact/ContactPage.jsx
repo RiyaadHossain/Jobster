@@ -16,12 +16,14 @@ export default function ContactPage() {
         <h2 className="text-4xl font-bold text-center mt-10">
           Contact with Us
         </h2>
-        <p className="text-center mt-2 font-light text-accent">Get in Touch</p>
+        <p className="text-center mt-2 font-light text-grayColor">
+          Get in Touch
+        </p>
         <div className="max_container flex mt-8 gap-8 flex-wrap justify-center ">
           <div className="border flex flex-col items-center gap-2 shadow-md p-10 rounded-xl">
             <IoMailUnread className="text-4xl mb-6 text-green-500" />
             <h2 className="text-2xl font-semibold mb-1">Email Address</h2>
-            <div className="text-accent">
+            <div className="text-grayColor">
               <p className="mb-1">info@example.com</p>
               <p>info@example.com</p>
             </div>
@@ -29,7 +31,7 @@ export default function ContactPage() {
           <div className="border flex flex-col items-center gap-2 shadow-md p-10 rounded-xl">
             <FaPhoneAlt className="text-4xl mb-6 text-orange-500" />
             <h2 className="text-2xl font-semibold mb-1">Phone Number</h2>
-            <div className="text-accent">
+            <div className="text-grayColor">
               <p className="mb-1">(+880) 1703790978</p>
               <p>+2(305) 587-3407</p>
             </div>
@@ -37,7 +39,7 @@ export default function ContactPage() {
           <div className="border flex flex-col items-center gap-2 shadow-md p-10 rounded-xl">
             <HiBuildingOffice2 className="text-4xl mb-6 text-blue-500" />
             <h2 className="text-2xl font-semibold mb-1">Office Address </h2>
-            <div className="text-accent">
+            <div className="text-grayColor">
               <p className="mb-1">214 West Arnold St.</p>
               <p>New York, NY 10002</p>
             </div>

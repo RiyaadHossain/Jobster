@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Logo from "../../components/ui/Logo";
 import { Link, NavLink } from "react-router-dom";
-import "./style/style.css";
+import { ENUM_USER_ROLE } from "../../enum/userRole";
 import {
   candidateSidebardItems,
   companySidebardItems,
   dashboardSidebardItemInsights,
 } from "../../constants/sidebarItems";
-import { ENUM_USER_ROLE } from "../../enum/userRole";
+import "./style/style.css";
 
-const Sidebar = () => {
+export const DashboardSidebar = () => {
   const [selectedTab, setSelectedTab] = useState("/dashboard");
 
   const role = "company";
@@ -19,14 +20,10 @@ const Sidebar = () => {
 
   return (
     <div className="bg-fifth col-span-2 p-10 fixed h-screen w-80 top-0">
-      <Link to="/" className="font-extrabold text-2xl">
-        <span className="text-blue-600 ">J</span>obster
-      </Link>
+      <Logo />
       <div className=" mt-8">
-        <h4 className="text-sm font-light leading-5 text-accent mb-2 ">
-          Admin Tools
-        </h4>
-        <ul className="flex flex-col gap-2 w-full h-full">
+        <h4 className="sidebar_items_header">Admin Tools</h4>
+        <ul className="sidebar_items_container">
           {sidebarItems.map((item, i) => (
             <li key={i} onClick={() => setSelectedTab(item.link)}>
               <NavLink
@@ -42,11 +39,9 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      <div className=" mt-8">
-        <h4 className="text-sm font-light leading-5 text-accent mb-2 ">
-          Insights
-        </h4>
-        <ul className="flex flex-col gap-2 w-full h-full">
+      <div className="mt-8">
+        <h4 className="sidebar_items_header">Insights</h4>
+        <ul className="sidebar_items_container">
           {dashboardSidebardItemInsights.map((item, i) => (
             <li key={i} onClick={() => setSelectedTab(item.display)}>
               <Link
@@ -64,5 +59,3 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export default Sidebar;

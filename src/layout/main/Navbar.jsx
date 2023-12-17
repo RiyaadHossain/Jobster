@@ -8,7 +8,10 @@ import { Link, useLocation } from "react-router-dom";
 import SignInModal from "../../components/auth-modals/SignInModal";
 import SignUpModal from "../../components/auth-modals/SignUpModal";
 import ForgetPassModal from "../../components/auth-modals/ForgetPassModal";
-import ProfileMenu from "../../components/other/ProfileMenu";
+import ProfileMenu from "../components/ProfileMenu";
+import Logo from "../../components/ui/Logo";
+import SignInButton from "./components/SignInButton";
+import "./style/module.style.css"
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navbarRef = useRef(null);
@@ -16,15 +19,15 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
 
   const [openAuthModal, setOpenAuthModal] = useState(null);
 
-  const email = 1;
+  const email = null;
 
   useEffect(() => {
     // Show Navbar background when scroll down
     const handleScroll = () => {
       if (window.scrollY >= 100) {
-        navbarRef.current.classList.add("nav-white");
+        navbarRef.current.classList.add("nav_white");
       } else {
-        navbarRef.current.classList.remove("nav-white");
+        navbarRef.current.classList.remove("nav_white");
       }
     };
 
@@ -58,16 +61,12 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
     <nav>
       <div
         ref={navbarRef}
-        className={`h-20 fixed top-0 w-full z-20 ${
-          pathname === "/" ? null : ""
-        } `}
+        className={`h-20 fixed top-0 w-full z-20 `} /* ${!isHomeRoute && "border-b"} */
       >
         <ul className="max_container mx-auto justify-between flex gap-3 h-full items-center">
           <li className=" font-bold text-2xl">
             <div className="flex items-center gap-6">
-              <Link to="/">
-                <span className="text-blue-600">J</span>obster
-              </Link>
+              <Logo />
               {(isHomeRoute || mediumDevice) && (
                 <div className="cursor-pointer" onClick={toggleMenu}>
                   <HiOutlineMenuAlt1 />
@@ -81,7 +80,10 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
               <ul className="flex items-center gap-10 font-semibold">
                 {navbarItems.map((item) => (
                   <li key={item.display}>
-                    <Link className="hover:text-primary" to={item.link}>
+                    <Link
+                      className="hover:text-primary transition-colors"
+                      to={item.link}
+                    >
                       {item.display}
                     </Link>
                   </li>
@@ -101,12 +103,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
               </li>
             ) : (
               <li>
-                <button
-                  onClick={toggleAuthModal}
-                  className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all"
-                >
-                  SignIn
-                </button>
+                <SignInButton toggleAuthModal={toggleAuthModal} />
               </li>
             )}
           </div>
@@ -118,7 +115,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
 
       <div
         onClick={toggleMenu}
-        className={`w-screen h-screen bg-black opacity-70 ${
+        className={`w-screen h-screen bg-black/70 ${
           menuOpen ? "block" : "hidden"
         } fixed z-20 top-0`}
       ></div>

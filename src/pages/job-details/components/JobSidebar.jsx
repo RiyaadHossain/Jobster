@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import SocialIcons from "../../../components/other/SocialIcons";
+import SocialIcons from "../../../components/ui/SocialIcons";
+import DetailsPageSidebar from "../../../components/other/details-page-sidebar/DetailsPageSidebar";
 
 export default function JobSidebar({ companyInfo, userData }) {
   const {
@@ -16,7 +17,7 @@ export default function JobSidebar({ companyInfo, userData }) {
 
   return (
     <>
-      <div className="rounded-xl bg-third p-5  space-y-5">
+      <DetailsPageSidebar bg="bg-third">
         <div className="">
           <p className="sidebar_item_title">Experience</p>
           <h1 className="sidebar_content_info">{experience}</h1>
@@ -37,10 +38,12 @@ export default function JobSidebar({ companyInfo, userData }) {
           <p className="sidebar_item_title">Location</p>
           <h1 className="sidebar_content_info">{location}</h1>
         </div>
-      </div>
+      </DetailsPageSidebar>
 
-      <div className="mt-5 rounded-xl bg-third p-5 space-y-5">
-        <div className="flex  gap-2">
+      <div className="mt-5"></div>
+
+      <DetailsPageSidebar bg="bg-third">
+        <div className="flex gap-2">
           <div>
             <img src={companyLogo} className="h-16 w-1h-16 rounded-xl" alt="" />
           </div>
@@ -66,7 +69,7 @@ export default function JobSidebar({ companyInfo, userData }) {
         </div>
         <div>
           <p className="sidebar_item_title">Company Location</p>
-          <h1 className="sidebar_content_info">{companyLocation || "N/A"}</h1>
+          <h1 className="sidebar_content_info">{companyLocation}</h1>
         </div>
         <div>
           <p className="sidebar_item_title">Website</p>
@@ -78,7 +81,7 @@ export default function JobSidebar({ companyInfo, userData }) {
         <div className="mt-4">
           <SocialIcons className="gap-6" />
         </div>
-      </div>
+      </DetailsPageSidebar>
     </>
   );
 }

@@ -1,3 +1,11 @@
 .exp_disk {
   @apply after:border-dotted after:border-r-primary after:absolute after:top-3 after:left-[5px] after:bottom-[-3px] after:-z-10 after:last:border-r-0;
 }
+
+.page_section_header {
+  @apply text-[28px] font-bold mb-5 tracking-tight;
+}
+
+.text_graish {
+  @apply text-sm font-medium leading-5 text-grayColor;
+}

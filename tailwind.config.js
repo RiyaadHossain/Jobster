@@ -5,15 +5,20 @@ module.exports = {
     extend: {
       colors: {
         primary: "#691f74",
+        primaryDark: "#44195d",
+        primaryLight: "#f0e9f1",
+
         secondary: "#FFF0D9",
-        deep: "#44195d",
         light: "#f0e9f1",
         third: "#F0E9F1",
         fourth: "#FFF0EB",
         black: "#17171d",
-        accent: "#606065",
+        grayColor: "#606065",
         job: "#3B3940",
         fifth: "#FFF0EB",
+
+        // secondary: "#e34b32",
+        secondaryLight: "#fff0eb",
       },
     },
     screens: {
@@ -27,3 +32,17 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/forms")],
 };
+
+/*  
+  --pxpHoverTransition: 300ms cubic-bezier(0.215,0.61,0.355,1);
+  --pxpHoverOpacity: 0.6;
+  --pxpTextColor: #17171D;
+  --pxpMainColor: #0969C3;
+  --pxpMainColorTransparent: rgba(9,105,195,0.05);
+  --pxpMainColorDark: #002745;
+  --pxpMainColorLight: #e6f0f9;
+  --pxpSecondaryColor: #fff0d9;
+  --pxpSecondaryColorLight: #FFF8EC;
+  --pxpLightGrayColor: #dedede;
+  --pxpDarkGrayColor: #999;
+*/

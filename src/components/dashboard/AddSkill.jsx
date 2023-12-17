@@ -22,7 +22,7 @@ export default function AddSkill({ skills, setSkills }) {
           {skills.map((skill, i) => (
             <div
               key={i}
-              className={`bg-primary/10 font-light w-fit px-[16px] py-[6px] rounded-full text-deep text-[13px] flex items-center gap-2`}
+              className={`bg-primary/10 font-light w-fit px-[16px] py-[6px] rounded-full text-primaryDark text-[13px] flex items-center gap-2`}
             >
               <p>{skill}</p>
               <IoTrashOutline

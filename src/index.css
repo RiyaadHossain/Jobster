@@ -41,20 +41,13 @@
   }
 }
 
-input:focus {
-  @apply outline-none;
+/* Typography */
+.text_accent {
+  @apply text-sm font-light leading-6 opacity-[0.8];
 }
 
 .max_container {
   @apply max-w-[1600px] mx-auto w-full px-3;
-}
-
-.nav-white {
-  @apply bg-white shadow-md transition-colors duration-300;
-}
-
-.sidebar_item {
-  @apply hover:text-gray-600 transition-colors cursor-pointer;
 }
 
 .stat-card {
@@ -69,28 +62,20 @@ input:focus {
   @apply text-sm text-rose-600 mt-1;
 }
 
-.section_title {
-  @apply font-[700] text-5xl mb-4;
-}
-
-.section_subtitle {
-  @apply text-lg font-light text-slate-500;
-}
-
-.btn {
-  @apply px-6 py-4 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
+.btn_primary {
+  @apply py-3 px-5 bg-primary text-white rounded-full font-medium text-lg hover:bg-primaryDark transition-all;
 }
 
 .btn_secondary {
-  @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed hover:bg-[#002745];
+  @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all hover:bg-[#002745];
 }
 
 .btn_accent {
-  @apply px-6 py-4 font-semibold bg-light text-deep rounded-full transition-all hover:text-white hover:bg-primary;
+  @apply px-6 py-4 font-semibold bg-light text-primaryDark rounded-full transition-all hover:text-white hover:bg-primary;
 }
 
 .btn_sm {
-  @apply px-[10px] py-[2px] bg-primary text-white rounded-full text-xs hover:bg-[#002745] transition-all disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
+  @apply px-[10px] py-[2px] bg-primary text-white rounded-full text-xs hover:bg-[#002745] transition-all;
 }
 
 .pagination_btn {
@@ -110,8 +95,13 @@ input:focus {
   @apply flex items-center justify-center;
 }
 
-.overflow-hidden {
-  overflow: hidden;
+/* Details Page Style */
+.sidebar_item_title {
+  @apply text-[13px] font-light leading-5 opacity-[0.7];
+}
+
+.sidebar_content_info {
+  @apply text-base font-medium leading-6;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -122,27 +112,11 @@ input:focus {
   .container {
     @apply w-full;
   }
-
-  .section_title {
-    @apply font-[700] text-3xl mb-4;
-  }
-
-  .section_subtitle {
-    @apply text-lg font-light text-slate-500;
-  }
 }
 
 @media only screen and (max-width: 768px) {
   section {
     @apply py-[45px];
-  }
-
-  .section_title {
-    @apply font-[700] text-3xl mb-4;
-  }
-
-  .section_subtitle {
-    @apply text-lg font-light text-slate-500;
   }
 
   .text__para {

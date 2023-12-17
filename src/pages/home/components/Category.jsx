@@ -1,5 +1,5 @@
 import SectionHeader from "../../../components/ui/SectionHeader";
-import CategoryCard from "../../../components/other/CategoryCard";
+import CategoryCard from "../../../components/other/category-card/CategoryCard";
 
 export default function Category() {
   const array = [1, 2, 3, 4, 5];

@@ -11,7 +11,7 @@ export default function JobCard() {
     <div className="border hover:shadow-lg transition-all rounded-[30px] p-8 text-black h-fit">
       <div className="flex items-center gap-2 group transition-all">
         <div className="bg-primary/20 group-hover:bg-primary transition-all p-[3px] rounded-md">
-          <AiOutlineLineChart className="text-[20px] group-hover:text-white  transition-all" />
+          <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
         </div>
         <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
           Finance
@@ -19,7 +19,7 @@ export default function JobCard() {
       </div>
 
       <p className="text-[20px] font-semibold leading-7 mt-8 mb-2 hover:text-primary transition-colors">
-        <Link to="/jobs/63e11077c942dd2644639864"> Financial Analyst</Link>
+        <Link to="/jobs/1"> Financial Analyst</Link>
       </p>
 
       <div className="flex gap-8">
@@ -32,7 +32,7 @@ export default function JobCard() {
 
       <div className="flex items-center justify-between mt-6">
         <div>
-          <span className="text-[13px] font-light leading-5 text-accent">
+          <span className="text-[13px] font-light leading-5 text-grayColor">
             June 8, 2022 by
           </span>
           <p className="text-[14px] font-medium leading-[21px] mt-1 hover:text-primary transition-colors">

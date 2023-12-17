@@ -1,3 +1,11 @@
+.sidebar_items_header {
+  @apply text-sm font-light leading-5 text-[#606065] mb-2;
+}
+
+.sidebar_items_container {
+  @apply flex flex-col gap-2 w-full h-full;
+}
+
 .sidebar_item {
   @apply hover:text-[#44195d] transition-all w-full block py-4 px-6 rounded-full font-medium text-[15px] leading-[18px];
 }

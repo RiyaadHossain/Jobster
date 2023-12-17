@@ -1,7 +1,7 @@
 import React from "react";
 import SectionHeader from "../../../components/ui/SectionHeader";
-import SectionBottomBtn from "../../../components/ui/SectionBottomBtn";
 import CompanyCard from "../../company-listing/components/CompanyCard";
+import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
 
 export default function FeaturedCompany() {
   return (
@@ -20,7 +20,11 @@ export default function FeaturedCompany() {
           ))}
         </div>
       </div>
-      <SectionBottomBtn display="All Companies" link="/company-listing" />
+      <ButtonWithArrow
+        display="All Companies"
+        link="/company-listing"
+        mt="mt-12"
+      />
     </section>
   );
 }

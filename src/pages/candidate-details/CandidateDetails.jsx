@@ -1,5 +1,6 @@
 import banner from "../../assets/candidate-banner.jpeg";
 import candidateAvater from "../../assets/person.png";
+import PageBanner from "../../components/ui/PageBanner";
 import CandidateInfo from "./components/CandidateInfo";
 import CandidateSidebar from "./components/CandidateSidebar";
 
@@ -10,28 +11,14 @@ export default function CandidateDetails() {
         {/* Main Content_________________ */}
         <div className="col-span-12 lg:col-span-8 xl:col-span-9">
           {/* +++ Bannder +++ */}
-          <div className="relative mb-12">
-            <div
-              style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
-              className="absolute w-full rounded-xl h-full"
-            ></div>
-            <div className="h-96 rounded-xl overflow-hidden">
-              <img className="h-full w-full object-cover" src={banner} alt="" />
-            </div>
-            <div className="flex items-center gap-5 absolute left-8 bottom-8 right-8 ">
-              <div className="h-[100px] w-[100px] ">
-                <img src={candidateAvater} alt="" className="rounded-full" />
-              </div>
-              <div className="text-white">
-                <h3 className="text-4xl font-bold leading-10 tracking-tight">
-                  John Fischer
-                </h3>
-                <p className="text-base font-light leading-6">
-                  Financial Analyst
-                </p>
-              </div>
-            </div>
-          </div>
+
+          <PageBanner
+            banner={banner}
+            brandImg={candidateAvater}
+            rounded="rounded-full"
+            title="John Fischer"
+            subtitle=" Financial Analyst"
+          />
 
           {/* +++ Candidate Info +++ */}
           <div>

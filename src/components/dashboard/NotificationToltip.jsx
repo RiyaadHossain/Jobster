@@ -36,11 +36,11 @@ export default function NotificationToltip() {
       </div>
       {openNotification && (
         <div className="absolute bg-slate-50 rounded-xl -right-1 border top-[50px] shadow-md w-80 z-30">
-          <ul className="[&>*]:px-5 [&>*]:py-2 [&>*]:text-sm [&>*]:opacity-[0.8] [&>*]:text-accent py-3">
+          <ul className="[&>*]:px-5 [&>*]:py-2 [&>*]:text-sm [&>*]:opacity-[0.8] [&>*]:text-grayColor py-3">
             <li>
               <Link
                 to={"/candidates/1"}
-                className="text-black font-medium hover:text-accent"
+                className="text-black font-medium hover:text-grayColor"
               >
                 Riyad Hossain{" "}
               </Link>
@@ -50,14 +50,14 @@ export default function NotificationToltip() {
             <li>
               <Link
                 to={"/candidates/1"}
-                className="text-black font-medium hover:text-accent"
+                className="text-black font-medium hover:text-grayColor"
               >
                 Riyad Hossain{" "}
               </Link>
               applied for{" "}
               <Link
                 to={"/jobs/1"}
-                className="text-black font-medium hover:text-accent"
+                className="text-black font-medium hover:text-grayColor"
               >
                 Frontend
               </Link>

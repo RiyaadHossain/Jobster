@@ -1,7 +1,7 @@
 import React from "react";
 import SectionHeader from "../../../components/ui/SectionHeader";
-import SectionBottomBtn from "../../../components/ui/SectionBottomBtn";
 import JobCard from "../../job-listing/components/JobCard";
+import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
 
 export default function FeaturedJob() {
   const array = [1, 2, 3, 4, 5];
@@ -22,7 +22,11 @@ export default function FeaturedJob() {
           </div>
         ))}
       </div>
-      <SectionBottomBtn display="All Job Offers" link="/job-listing" />
+      <ButtonWithArrow
+        display="All Job Offers"
+        link="/job-listing"
+        mt="mt-12"
+      />
     </section>
   );
 }

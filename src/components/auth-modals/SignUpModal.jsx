@@ -21,11 +21,9 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
       toggleModal={onModalClose}
     >
       <div className="">
-        <img src={signUpImg} alt="" className="h-[120px] w-auto" />
+        <img src={signUpImg} alt="" className="modal_img" />
       </div>
-      <h5 className="font-semibold text-[22px] tracking-tight  mt-6">
-        Create an account
-      </h5>
+      <h5 className="modal_title">Create an account</h5>
 
       <div className="flex mt-5">
         <div

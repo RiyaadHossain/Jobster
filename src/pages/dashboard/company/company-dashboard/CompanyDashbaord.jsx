@@ -6,7 +6,6 @@ import DashboardHeader from "../../../../components/ui/DashboardHeader";
 import DashboardHomeCard from "../../../../components/dashboard/DashboardHomeCard";
 import JobsterAreaChart from "../../../../components/dashboard/JobsterAreaChart";
 import { BiBriefcase, BiUserCircle } from "react-icons/bi";
-import RecentCandidateTable from "./components/RecentCandidateTable";
 import {
   applicationData,
   profileVisitorData,
@@ -16,6 +15,7 @@ import {
   MdKeyboardArrowRight,
   MdMailOutline,
 } from "react-icons/md";
+import RecentCandidateTable from "./components/RecentCandidateTable";
 
 export default function CompanyDashbaord() {
   const cardItems = [

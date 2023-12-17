@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
-import ProfileMenu from "../../components/other/ProfileMenu";
-import avatar from "../../assets/person.png";
 import toast from "react-hot-toast";
+import { Outlet } from "react-router-dom";
+import avatar from "../../assets/person.png";
+import ProfileMenu from "../components/ProfileMenu";
 import { ENUM_USER_ROLE } from "../../enum/userRole";
+import { DashboardSidebar } from "./DashboardSidebar";
 import NotificationToltip from "../../components/dashboard/NotificationToltip";
 
 const Dashboard = () => {
@@ -13,8 +13,8 @@ const Dashboard = () => {
   const handleLogOut = () => toast.success("hello world!");
 
   return (
-    <div className="grid grid-cols-12 ">
-      <Sidebar />
+    <div className="grid grid-cols-12">
+      <DashboardSidebar />
       <div className=" col-span-12 ml-80">
         <div className=" h-full w-full mx-auto">
           <div className="py-8 flex items-center gap-4 justify-end bg-fifth w-full pr-8">

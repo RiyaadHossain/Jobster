@@ -1,21 +1,21 @@
-import { Link } from "react-router-dom";
-import notFound from "../../assets/not-found.svg";
+import SectionHeader from "../ui/SectionHeader";
+import ButtonWithArrow from "../ui/ButtonWithArrow";
+import notFoundImg from "../../assets/not-found.svg";
 
 export default function NotFound() {
   return (
-    <div className="flex justify-center items-center">
-      <div className="h-screen w-screen grid grid-cols-2">
-        <div className=" col-span-2 md:col-span-1">
-          <img src={notFound} alt="" className="w-full h-full]" />
+    <div className="my-20 max_container min-h-[70vh] flex_cen">
+      <div>
+        <SectionHeader
+          title="This page is off the map"
+          subtitle="We can't seem to find the page you're looking for."
+          classes="pb-0"
+        />
+        <div>
+          <img src={notFoundImg} alt="" className="w-[560px] h-[330px] mx-auto" />
         </div>
-        <div className=" text-center col-span-2 md:col-span-1 flex justify-center items-center flex-col">
-          <h1 className="text-7xl font-extrabold mb-3">404</h1>
-          <p className="mb-8 font-light">
-            The Page you're looking for is not found
-          </p>
-          <Link to="/" className="btn">
-            Go To Home
-          </Link>
+        <div>
+          <ButtonWithArrow display="Go Home" link="/" />
         </div>
       </div>
     </div>

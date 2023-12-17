@@ -17,11 +17,9 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
       toggleModal={onModalClose}
     >
       <div className="">
-        <img src={signInImg} alt="" className="h-[120px] w-auto" />
+        <img src={signInImg} alt="" className="modal_img" />
       </div>
-      <h5 className="font-semibold text-[22px] tracking-tight  mt-6">
-        Welcome Back!
-      </h5>
+      <h5 className="modal_title">Welcome Back!</h5>
       <form action="" className="w-full mt-6">
         <FormInput id="email" placeholder="Email Address" type="email" />
         <FormInput id="password" placeholder="Password" type="password" />

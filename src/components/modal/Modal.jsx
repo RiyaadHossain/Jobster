@@ -1,4 +1,3 @@
-
 export default function Modal({ openModal, toggleModal, children }) {
   return (
     <div
@@ -15,7 +14,7 @@ export default function Modal({ openModal, toggleModal, children }) {
       >
         <span
           onClick={toggleModal}
-          className="absolute top-6 right-6 text-4xl font-light text-accent hover:text-black cursor-pointer"
+          className="absolute top-6 right-6 text-4xl font-light text-grayColor hover:text-black cursor-pointer"
         >
           &times;
         </span>

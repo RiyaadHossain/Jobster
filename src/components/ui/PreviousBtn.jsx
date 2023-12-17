@@ -6,10 +6,7 @@ export default function PreviousBtn() {
   const navigate = useNavigate();
 
   return (
-    <button
-      onClick={() => navigate(-1)}
-      className="flex items-center gap-2 bg-primary/90 w-28 justify-center rounded-md py-2 text-white mt-8"
-    >
+    <button onClick={() => navigate(-1)} className="btn_primary flex items-center gap-4">
       <BsFillArrowLeftCircleFill className="text-base" /> Back
     </button>
   );

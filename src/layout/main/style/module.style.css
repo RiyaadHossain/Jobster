@@ -1,0 +1,11 @@
+.footer_item_header {
+  @apply text-base font-semibold leading-5;
+}
+
+.footer_sub_items {
+  @apply text-sm font-light leading-7;
+}
+
+.nav_white {
+  @apply bg-white shadow-md transition-colors duration-300;
+}
