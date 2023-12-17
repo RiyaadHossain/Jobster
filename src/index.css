@@ -135,10 +135,8 @@
   .max_container {
     max-width: 720px;
   }
-  .job_card_container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .job_listing_card_container {
+  
+  .listing_page_card_container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -153,13 +151,11 @@
   .max_container {
     max-width: 960px;
   }
-  .job_card_container {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  
 }
 
 @media (min-width: 1024px) {
-  .job_listing_card_container {
+  .listing_page_card_container {
     grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -168,7 +164,7 @@
   .max_container {
     max-width: 1140px;
   }
-  .job_listing_card_container {
+  .listing_page_card_container {
     grid-template-columns: repeat(2, 1fr);
   }
   .sidebar_container {
@@ -180,9 +176,7 @@
   .max_container {
     max-width: 1320px;
   }
-  .job_card_container {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  
   .job_listing_container {
     grid-template-columns: repeat(3, 1fr);
   }
