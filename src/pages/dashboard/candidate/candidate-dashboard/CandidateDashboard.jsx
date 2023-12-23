@@ -1,19 +1,18 @@
-import React from "react";
-import DashboardHeader from "../../../../components/ui/DashboardHeader";
+import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import DashboardHomeCard from "../../../../components/dashboard/DashboardHomeCard";
 import JobsterAreaChart from "../../../../components/dashboard/JobsterAreaChart";
-import {
-  applicationData,
-  profileVisitorData,
-} from "../../../../constants/statData";
-import Table from "../../../../components/dashboard/Table";
 import { IoDocumentText } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { MdForwardToInbox, MdMailOutline } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { BiUserCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import LinkWithArrow from "../../../../components/ui/LinkWithArrow";
+import {
+  applicationData,
+  profileVisitorData,
+} from "../../../../constants/statData";
+import RecentApplicationsTable from "./components/RecentApplicationsTable";
 
 export default function CandidateDashboard() {
   const cardItems = [
@@ -87,6 +86,7 @@ export default function CandidateDashboard() {
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Notifications</h2>
           <div>
+            {/* Use 'RecentNotificationRow' Component in 'components>dashboard' folder; instead of the static design */}
             <div className="flex items-center justify-between font-light mb-2">
               <div className="flex items-center text-base">
                 <MdForwardToInbox className="mr-3 opacity-[0.8]" size={18} />
@@ -108,12 +108,7 @@ export default function CandidateDashboard() {
               <div className="text-sm ">1d</div>
             </div>
           </div>
-          <Link
-            to="notifications"
-            className="text-primary font-medium flex gap-3 hover:gap-5 transition-all items-center mt-5"
-          >
-            Read all <MdKeyboardArrowRight />
-          </Link>
+          <LinkWithArrow display="Read all" link="notifications" />
         </div>
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Messages</h2>
@@ -125,7 +120,7 @@ export default function CandidateDashboard() {
       <div className="mt-12">
         <h2 className="home_section_title">Recent Job Applications</h2>
         <div>
-          <Table />
+          <RecentApplicationsTable />
         </div>
       </div>
     </div>

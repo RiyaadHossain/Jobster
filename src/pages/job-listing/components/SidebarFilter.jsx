@@ -4,7 +4,7 @@ import { employmentType, expLevel } from "../../../constants/jobInfo";
 
 export default function SidebarFilter() {
   return (
-    <div className="bg-third mt-10 p-6 rounded-xl">
+    <div className="bg-primaryLight mt-10 p-6 rounded-xl">
       <div>
         <h3 className="text-lg font-semibold mb-5">Type of Employment</h3>
         <div className="flex flex-col gap-4">

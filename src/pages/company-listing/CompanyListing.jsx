@@ -8,18 +8,20 @@ export default function CompanyListing() {
   return (
     <div className="my-20">
       <PageHeader
-        className="bg-fifth"
+        className="bg-secondaryLight"
         title="Companies"
         subtitle="Work for the best companies in the world"
       />
 
       <ListingPageContainer
         sidebar={
-          <SidebarSearch
-            onhandleSubmit={onSearchSubmit}
-            moduleName="Company"
-            bg="bg-fifth"
-          />
+          <div>
+            <SidebarSearch
+              onhandleSubmit={onSearchSubmit}
+              moduleName="Company"
+              bg="bg-secondaryLight"
+            />
+          </div>
         }
         cards={[1, 2, 3, 4, 5].map((el) => (
           <CompanyCard key={el} border={true} />

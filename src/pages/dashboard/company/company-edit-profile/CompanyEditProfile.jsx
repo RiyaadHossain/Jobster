@@ -3,7 +3,7 @@ import FormSelect from "../../../../components/form/FormSelect";
 import FormImg from "../../../../components/form/FormImg";
 import FormTextarea from "../../../../components/form/FormTextarea";
 import FormInput from "../../../../components/form/FormInput";
-import DashboardHeader from "../../../../components/ui/DashboardHeader";
+import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import { industries, location } from "../../../../constants/jobInfo";
 import FormCheckbox from "../../../../components/form/FormCheckbox";
 

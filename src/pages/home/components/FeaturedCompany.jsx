@@ -5,7 +5,7 @@ import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
 
 export default function FeaturedCompany() {
   return (
-    <section className="bg-third">
+    <section className="bg-primaryLight">
       <SectionHeader
         title="Featured Companies"
         subtitle="Work for the best companies in the world"

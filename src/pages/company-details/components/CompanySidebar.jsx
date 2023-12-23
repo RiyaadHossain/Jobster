@@ -6,7 +6,7 @@ export default function CompanySidebar() {
   const [showNum, setShowNum] = useState(false);
 
   return (
-    <DetailsPageSidebar bg="bg-fifth">
+    <DetailsPageSidebar bg="bg-secondaryLight">
       <div className="">
         <div className="sidebar_item_title">Industry</div>
         <div className="sidebar_content_info">Marketing & Communication</div>

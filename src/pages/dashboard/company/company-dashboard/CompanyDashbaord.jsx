@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoDocumentText } from "react-icons/io5";
-import DashboardHeader from "../../../../components/ui/DashboardHeader";
+import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import DashboardHomeCard from "../../../../components/dashboard/DashboardHomeCard";
 import JobsterAreaChart from "../../../../components/dashboard/JobsterAreaChart";
 import { BiBriefcase, BiUserCircle } from "react-icons/bi";
@@ -10,12 +10,9 @@ import {
   applicationData,
   profileVisitorData,
 } from "../../../../constants/statData";
-import {
-  MdForwardToInbox,
-  MdKeyboardArrowRight,
-  MdMailOutline,
-} from "react-icons/md";
+import { MdForwardToInbox, MdMailOutline } from "react-icons/md";
 import RecentCandidateTable from "./components/RecentCandidateTable";
+import LinkWithArrow from "../../../../components/ui/LinkWithArrow";
 
 export default function CompanyDashbaord() {
   const cardItems = [
@@ -88,6 +85,7 @@ export default function CompanyDashbaord() {
       <div className="grid grid-cols-12 gap-7 mt-12">
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Notifications</h2>
+          {/* Use 'RecentNotificationRow' Component in 'components>dashboard' folder; instead of the static design */}
           <div>
             <div className="flex items-center justify-between font-light mb-2">
               <div className="flex items-center text-base">
@@ -95,7 +93,7 @@ export default function CompanyDashbaord() {
                 <Link to={`/candidates/1`} className="mr-2 text-primary">
                   Hasib
                 </Link>
-                sent you a message
+                <span className="">sent you a message</span>
               </div>
               <div>3h</div>
             </div>
@@ -123,30 +121,21 @@ export default function CompanyDashbaord() {
               <div className="text-sm ">1d</div>
             </div>
           </div>
-          <Link
-            to="notifications"
-            className="text-primary font-medium flex gap-3 hover:gap-5 transition-all items-center mt-5"
-          >
-            Read all <MdKeyboardArrowRight />
-          </Link>
+          <LinkWithArrow display="Read all" link="notifications" />
         </div>
+
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Messages</h2>
           <p className="opacity-[0.8]">No recent Messages</p>
         </div>
       </div>
 
-      {/* Recent Job Applicaitons */}
+      {/* Recent Candidates */}
       <div className="mt-12">
         <h2 className="home_section_title">Recent Candidates</h2>
         <div>
           <RecentCandidateTable />
-          <Link
-            to="candidates"
-            className="text-primary font-medium flex gap-3 hover:gap-5 transition-all items-center mt-5"
-          >
-            View all <MdKeyboardArrowRight />
-          </Link>
+          <LinkWithArrow display="View all" link="candidates" />
         </div>
       </div>
     </div>

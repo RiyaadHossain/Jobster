@@ -17,3 +17,32 @@
 .home_section_title {
   @apply text-2xl font-semibold mb-6 tracking-tight;
 }
+
+/* Dashboard Table Classes */
+.inside_table_icon {
+  @apply bg-primaryLight p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer;
+}
+
+.main_row_title {
+  @apply text-base font-semibold leading-6 text-primary;
+}
+
+.main_row_subtitle {
+  @apply flex items-center gap-1 text-[13px] font-medium leading-5 text-grayColor;
+}
+
+.dashboard_table_date {
+  @apply text-[13px] font-light leading-5;
+}
+
+.font_var_thin {
+  @apply text-sm font-light leading-5;
+}
+
+.font_var_thin_pri {
+  @apply text-sm font-light leading-5 text-primary;
+}
+
+.font_var_medium {
+  @apply text-sm font-medium leading-5;
+}

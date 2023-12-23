@@ -9,18 +9,20 @@ export default function CandidateListing() {
   return (
     <div className="my-20">
       <PageHeader
-        className="bg-fifth"
+        className="bg-secondaryLight"
         title="Candidates"
         subtitle="Work with the most talented candidates in the world"
       />
 
       <ListingPageContainer
         sidebar={
-          <SidebarSearch
-            onhandleSubmit={onSearchSubmit}
-            moduleName="Candidate"
-            bg="bg-fifth"
-          />
+          <div>
+            <SidebarSearch
+              onhandleSubmit={onSearchSubmit}
+              moduleName="Candidate"
+              bg="bg-secondaryLight"
+            />
+          </div>
         }
         cards={[1, 2, 3, 4, 5].map((el) => (
           <CandidateCard key={el} border={true} />

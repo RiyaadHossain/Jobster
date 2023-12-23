@@ -11,7 +11,7 @@ export default function ContactPage() {
       <PageHeader
         title="Contact"
         subtitle="Let us know your concern"
-        className="bg-fifth"
+        className="bg-secondaryLight"
       />
       <div className="pt-20">
         <SectionHeader title="Contact with Us" subtitle=" Get in Touch" />
@@ -42,7 +42,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className=" bg-fifth py-20 mt-20">
+        <div className=" bg-secondaryLight py-20 mt-20">
           <div className="max_container flex flex-col lg:flex-row gap-6">
             <div className="bg-[#FFFAF4] lg:w-1/2 rounded-lg grid place-items-center p-10">
               <h1 className="mb-10 font-medium text-2xl">Sent Us Mail</h1>

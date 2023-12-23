@@ -112,12 +112,10 @@ const routes = createBrowserRouter([
           {
             path: "manage-jobs",
             element: <ManageJobs />,
-            children: [
-              {
-                path: "edit-job/:id",
-                element: <EditJobOffer />,
-              },
-            ],
+          },
+          {
+            path: "manage-jobs/edit-job/:id",
+            element: <EditJobOffer />
           },
           {
             path: "candidates",

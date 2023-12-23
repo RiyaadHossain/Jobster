@@ -1,4 +1,3 @@
 .skill_btn {
-    @apply px-6 py-3 border border-primary bg-light text-primaryDark rounded-r-full hover:bg-primary hover:text-white transition-all font-semibold;
-  }
-  
+  @apply px-6 py-3 border border-primary bg-primaryLight text-primaryDark rounded-r-full hover:bg-primary hover:text-white transition-all font-semibold;
+}

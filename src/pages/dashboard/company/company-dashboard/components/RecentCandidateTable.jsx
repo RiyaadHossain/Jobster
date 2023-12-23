@@ -8,13 +8,13 @@ export default function RecentCandidateTable() {
     <div>
       <table className="w-full">
         <tbody>
-          <tr className="border-b hover:bg-fifth transition-colors">
-            <td className="w-[55%] p-2">
+          <tr className="border-b hover:bg-secondaryLight transition-colors [&>*]:p-2">
+            <td className="w-[55%]">
               <div className="flex items-center gap-3">
                 <div>
                   <img src={avatar} alt="" className="w-10 h-10 rounded-full" />
                 </div>
-                <div className="">
+                <div>
                   <Link
                     to={"/candidates/1"}
                     className="font-semibold cursor-pointer hover:text-primary transition-all"
@@ -27,17 +27,17 @@ export default function RecentCandidateTable() {
                 </div>
               </div>
             </td>
-            <td className="w-[25%] p-2 text-sm font-light leading-5">
+            <td className="w-[25%] text-sm font-light leading-5">
               <div className="flex items-center gap-1 text-[13px] font-medium leading-5 ">
                 <FaGlobeAsia /> San Diego, CA
               </div>
             </td>
-            <td className="w-[20%] p-2 ">
+            <td className="w-[20%]">
               <div className="flex justify-end">
                 <div className="text-sm font-light leading-5 opacity-[0.8] flex items-center gap-2">
                   Applied for{" "}
                   <Link
-                    to="/"
+                    to="/candidates/1"
                     className="opacity-100 font-medium hover:text-grayColor"
                   >
                     Frontend

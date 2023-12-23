@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DashboardHeader from "../../../../components/ui/DashboardHeader";
+import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import FormInput from "../../../../components/form/FormInput";
 import FormImg from "../../../../components/form/FormImg";
 import FormTextarea from "../../../../components/form/FormTextarea";

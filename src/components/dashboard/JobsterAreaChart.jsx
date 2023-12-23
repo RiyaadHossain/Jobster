@@ -7,7 +7,13 @@ import {
   YAxis,
 } from "recharts";
 
-export default function JobsterAreaChart({ title, data, color, quantity, syncId }) {
+export default function JobsterAreaChart({
+  title,
+  data,
+  color,
+  quantity,
+  syncId,
+}) {
   return (
     <div className="">
       <h2 className="text-2xl font-semibold tracking-tight mb-7">{title}</h2>

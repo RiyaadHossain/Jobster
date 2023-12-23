@@ -1,16 +1,16 @@
 import { FaEye, FaGlobeAmericas } from "react-icons/fa";
-import companyLogo from "../../assets/company-logo-5.png";
+import companyLogo from "../../../../../assets/company-logo-5.png";
 import { Link } from "react-router-dom";
 
-export default function Table() {
+export default function RecentApplicationsTable() {
   return (
     <table className="w-full">
       <tbody>
-        <tr className="border-b">
-          <td className="w-[3%] pb-2 ">
-            <img src={companyLogo} alt="" className="rounded-lg" />
+        <tr className="border-b [&>*]:pb-2">
+          <td className="w-[3%]">
+            <img src={companyLogo} alt="" className="w-10 h-10 rounded-lg" />
           </td>
-          <td className="w-[25%] p-2">
+          <td className="w-[25%]">
             <Link to="/jobs/63e11077c942dd2644639864">
               <h3 className="text-base font-semibold leading-6 hover:opacity-[0.5] transition-colors">
                 Financial Analyst
@@ -22,25 +22,25 @@ export default function Table() {
               </p>
             </Link>
           </td>
-          <td className="w-[25%] p-2 text-sm font-light leading-5 opacity-[0.8]">
+          <td className="w-[25%] text-sm font-light leading-5 opacity-[0.8]">
             Finance
           </td>
-          <td className="w-[25%] p-2 gap-2">
+          <td className="w-[25%] gap-2">
             <div className="flex items-center gap-2 text-[13px] font-medium leading-5 text-grayColor">
               <FaGlobeAmericas />
               <span>San Dieago, SA</span>
             </div>
           </td>
-          <td className="w-[10%] p-2 text-sm font-medium leading-5">
-            Full Time
-          </td>
-          <td className="w-[12%] p-2 ">
-            <Link
-              to="/jobs/63e11077c942dd2644639864"
-              className="bg-third p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
-            >
-              <FaEye className="" />
-            </Link>
+          <td className="w-[10%] text-sm font-medium leading-5">Full Time</td>
+          <td className="w-[12%]">
+            <div className="flex justify-end">
+              <Link
+                to="/jobs/63e11077c942dd2644639864"
+                className="bg-primaryLight p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
+              >
+                <FaEye className="" />
+              </Link>
+            </div>
           </td>
         </tr>
       </tbody>

@@ -1,5 +1,5 @@
 import "./module.style.css";
-import DashboardHeader from "../../../../components/ui/DashboardHeader";
+import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import { useState } from "react";
 import { industries, location } from "../../../../constants/jobInfo";
 import FormInput from "../../../../components/form/FormInput";

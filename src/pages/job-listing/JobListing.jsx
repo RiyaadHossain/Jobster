@@ -10,7 +10,7 @@ const JobListing = () => {
   return (
     <div className="my-20">
       <PageHeader
-        className="bg-third"
+        className="bg-primaryLight"
         title="Find Jobs"
         subtitle="Search your career opportunity through 12,800 jobs"
       />
@@ -21,7 +21,7 @@ const JobListing = () => {
             <SidebarSearch
               onhandleSubmit={onSearchSubmit}
               moduleName="Job"
-              bg="bg-third"
+              bg="bg-primaryLight"
             />
             <SidebarFilter />
           </div>

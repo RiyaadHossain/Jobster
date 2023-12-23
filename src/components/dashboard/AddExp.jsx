@@ -27,7 +27,7 @@ export default function AddExp() {
               </td>
               <td className="w-[10%] p-2 text-sm font-medium leading-5 ">
                 <div className="flex justify-end">
-                  <span className="bg-light p-1 rounded-md text-primary hover:bg-primary hover:text-white transition-colors">
+                  <span className="bg-primaryLight p-1 rounded-md text-primary hover:bg-primary hover:text-white transition-colors">
                     <IoTrashOutline className="" size={15} />
                   </span>
                 </div>

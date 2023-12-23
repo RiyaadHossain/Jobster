@@ -18,7 +18,7 @@ export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
       <div>
         <img src={forgetPassImg} alt="" className="modal_img" />
       </div>
-      <h5 className="modal_header">Forgot Password</h5>
+      <h5 className="modal_title">Forgot Password</h5>
       <form action="" className="w-full mt-6">
         <FormInput id="email" placeholder="Email Address" type="email" />
         <button className="btn_secondary w-full">Get New Password</button>

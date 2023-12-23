@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./style/pagination.style.css"
 
 export default function Pagination() {
   const [page, setPage] = useState(1);

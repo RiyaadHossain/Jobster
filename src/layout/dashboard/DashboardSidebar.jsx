@@ -19,7 +19,7 @@ export const DashboardSidebar = () => {
       : companySidebardItems;
 
   return (
-    <div className="bg-fifth col-span-2 p-10 fixed h-screen w-80 top-0">
+    <div className="bg-secondaryLight col-span-2 p-10 fixed h-screen w-80 top-0">
       <Logo />
       <div className=" mt-8">
         <h4 className="sidebar_items_header">Admin Tools</h4>

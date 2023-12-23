@@ -5,6 +5,7 @@ import ProfileMenu from "../components/ProfileMenu";
 import { ENUM_USER_ROLE } from "../../enum/userRole";
 import { DashboardSidebar } from "./DashboardSidebar";
 import NotificationToltip from "../../components/dashboard/NotificationToltip";
+import "./style/style.css";
 
 const Dashboard = () => {
   const email = "riyad@gmail.com";
@@ -17,7 +18,7 @@ const Dashboard = () => {
       <DashboardSidebar />
       <div className=" col-span-12 ml-80">
         <div className=" h-full w-full mx-auto">
-          <div className="py-8 flex items-center gap-4 justify-end bg-fifth w-full pr-8">
+          <div className="py-8 flex items-center gap-4 justify-end bg-secondaryLight w-full pr-8">
             <NotificationToltip />
             <ProfileMenu
               props={{

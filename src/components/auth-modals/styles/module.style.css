@@ -2,7 +2,7 @@
   @apply h-[120px] w-auto;
 }
 
-.modal_header {
+.modal_title {
   @apply font-semibold text-[22px] tracking-tight mt-6;
 }
 

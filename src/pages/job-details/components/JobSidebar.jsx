@@ -17,7 +17,7 @@ export default function JobSidebar({ companyInfo, userData }) {
 
   return (
     <>
-      <DetailsPageSidebar bg="bg-third">
+      <DetailsPageSidebar bg="bg-primaryLight">
         <div className="">
           <p className="sidebar_item_title">Experience</p>
           <h1 className="sidebar_content_info">{experience}</h1>
@@ -42,7 +42,7 @@ export default function JobSidebar({ companyInfo, userData }) {
 
       <div className="mt-5"></div>
 
-      <DetailsPageSidebar bg="bg-third">
+      <DetailsPageSidebar bg="bg-primaryLight">
         <div className="flex gap-2">
           <div>
             <img src={companyLogo} className="h-16 w-1h-16 rounded-xl" alt="" />

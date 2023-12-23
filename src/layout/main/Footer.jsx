@@ -4,7 +4,7 @@ import "./style/module.style.css";
 export default function Footer() {
   return (
     <footer>
-      <div className="bg-third py-24 ">
+      <div className="bg-primaryLight py-24 ">
         <div className="max_container mx-auto px-6 flex flex-col lg:flex-row justify-between gap-y-14">
           <div className="flex flex-col gap-7">
             <h3 className="font-bold text-3xl">
@@ -39,7 +39,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="bg-fourth py-[70px]">
+      <div className="bg-secondaryLight py-[70px]">
         <div className="max_container mx-auto px-6 flex justify-between">
           <p className="font-light text-sm text-grayColor">
             © 2022 Jobster. All Right Reserved.
