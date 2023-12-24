@@ -1,62 +1,25 @@
 import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import DashboardHomeCard from "../../../../components/dashboard/DashboardHomeCard";
 import JobsterAreaChart from "../../../../components/dashboard/JobsterAreaChart";
-import { IoDocumentText } from "react-icons/io5";
-import { CgProfile } from "react-icons/cg";
-import { MdForwardToInbox, MdMailOutline } from "react-icons/md";
-import { IoMdNotificationsOutline } from "react-icons/io";
+import { MdForwardToInbox } from "react-icons/md";
 import { BiUserCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import LinkWithArrow from "../../../../components/ui/LinkWithArrow";
+import RecentApplicationsTable from "./components/RecentApplicationsTable";
+import { statsData } from "../../../../data/stats";
+import GetDashboardStats from "../../../../helpers/GetDashboardStats";
 import {
   applicationData,
   profileVisitorData,
 } from "../../../../constants/statData";
-import RecentApplicationsTable from "./components/RecentApplicationsTable";
 
 export default function CandidateDashboard() {
-  const cardItems = [
-    {
-      title: "Job Applications",
-      quantity: 1,
-      icon: <IoDocumentText className="text-[#0D6EFD]" />,
-      bg: "bg-[#E6F0FF]",
-    },
-    {
-      title: "Profile Visitors",
-      quantity: 11,
-      icon: <CgProfile className="text-[#198754]" />,
-      bg: "bg-[#E8F3EE]",
-    },
-    {
-      title: "Unread Messages",
-      quantity: 5,
-      icon: <MdMailOutline className="text-[#FFC43F]" />,
-      bg: "bg-[#FFF9E6]",
-    },
-    {
-      title: "Notifications",
-      quantity: 0,
-      icon: <IoMdNotificationsOutline className="text-[#DC3545]" />,
-      bg: "bg-[#FBEAEC]",
-    },
-  ];
-
   return (
     <div className="">
       <DashboardHeader title="Dashboard" subtitle="Welcome, Riyad Hossain!" />
 
       {/* Stats Cards */}
       <div className="mt-12 grid grid-cols-4 gap-6">
-        {cardItems.map((item) => (
-          <DashboardHomeCard
-            title={item.title}
-            quantity={item.quantity}
-            icon={item.icon}
-            bg={item.bg}
-            color={item.color}
-          />
-        ))}
+        <GetDashboardStats statsData={statsData} />
       </div>
 
       {/* Info Charts */}

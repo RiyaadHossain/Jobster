@@ -1,7 +1,7 @@
 import Modal from "../modal/Modal";
 import FormInput from "../form/FormInput";
 import forgetPassImg from "../../assets/forget-pass-fig.png";
-import { ENUM_AUTH_MODAL } from "../../enum/authModal";
+import { ENUM_AUTH_MODAL } from "../../enums/authModal";
 import "./styles/module.style.css";
 
 export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {

@@ -5,6 +5,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import JobsterTable from "../../../../components/dashboard/JobsterTable";
 import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
 import { useState } from "react";
+import { applicationsData } from "../../../../data/applications";
 
 export default function Applications() {
   const columns = [
@@ -17,38 +18,38 @@ export default function Applications() {
     { className: "", title: "" },
   ];
 
-  const dataSource = [1, 2, 3].map((el) => (
+  const dataSource = applicationsData.map((application, i) => (
     <tr
-      key={el}
+      key={i}
       className="[&>*]:p-3 hover:bg-secondaryLight transition-colors border-b"
     >
       <td>
         <input type="checkbox" name="" id="" />
       </td>
       <td>
-        <h2 className="main_row_title">Financial Analyst</h2>
+        <Link to={`/jobs/${application.id}`} className="main_row_title">
+          {application.job.title}
+        </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> San Diego, CA
+          <FaGlobeAsia /> {application.job.location}
         </div>
       </td>
-      <td className="font_var_thin_pri">Gramware</td>
-      <td className="font_var_medium">Finance</td>
-      <td className="font_var_thin">Full Time</td>
-      <td className="dashboard_table_date">2023/11/26 at 1:57 am</td>
+      <td className="font_var_thin_pri">
+        <Link to={`/companies/${application.company.id}`}>
+          {application.company.name}
+        </Link>
+      </td>
+      <td className="font_var_medium">{application.job.category}</td>
+      <td className="font_var_thin">{application.job.employmentType}</td>
+      <td className="dashboard_table_date">{application.appliedAt}</td>
       <td>
         <div className="flex gap-2">
-          <Link
-            to="/jobs/63e11077c942dd2644639864"
-            className="inside_table_icon"
-          >
+          <Link to={`/jobs/${application.id}`} className="inside_table_icon">
             <FaEye />
           </Link>
-          <Link
-            to="/jobs/63e11077c942dd2644639864"
-            className="inside_table_icon"
-          >
+          <button className="inside_table_icon">
             <IoTrashOutline />
-          </Link>
+          </button>
         </div>
       </td>
     </tr>
@@ -65,7 +66,7 @@ export default function Applications() {
       />
 
       <TableSearchBar
-        quantity={1}
+        quantity={applicationsData.length}
         display="application"
         setSearchText={setSearchText}
       />

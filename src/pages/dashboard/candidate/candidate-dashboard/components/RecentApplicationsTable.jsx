@@ -1,48 +1,67 @@
 import { FaEye, FaGlobeAmericas } from "react-icons/fa";
-import companyLogo from "../../../../../assets/company-logo-5.png";
 import { Link } from "react-router-dom";
+import { recentApplications } from "../../../../../data/recentApplications";
 
 export default function RecentApplicationsTable() {
   return (
     <table className="w-full">
       <tbody>
-        <tr className="border-b [&>*]:pb-2">
-          <td className="w-[3%]">
-            <img src={companyLogo} alt="" className="w-10 h-10 rounded-lg" />
-          </td>
-          <td className="w-[25%]">
-            <Link to="/jobs/63e11077c942dd2644639864">
-              <h3 className="text-base font-semibold leading-6 hover:opacity-[0.5] transition-colors">
-                Financial Analyst
-              </h3>
-            </Link>
-            <Link to="/companies/1">
-              <p className="text-sm font-light leading-5 hover:opacity-[0.5] transition-colors">
-                Grameware
-              </p>
-            </Link>
-          </td>
-          <td className="w-[25%] text-sm font-light leading-5 opacity-[0.8]">
-            Finance
-          </td>
-          <td className="w-[25%] gap-2">
-            <div className="flex items-center gap-2 text-[13px] font-medium leading-5 text-grayColor">
-              <FaGlobeAmericas />
-              <span>San Dieago, SA</span>
-            </div>
-          </td>
-          <td className="w-[10%] text-sm font-medium leading-5">Full Time</td>
-          <td className="w-[12%]">
-            <div className="flex justify-end">
-              <Link
-                to="/jobs/63e11077c942dd2644639864"
-                className="bg-primaryLight p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
-              >
-                <FaEye className="" />
-              </Link>
-            </div>
-          </td>
-        </tr>
+        {recentApplications.map((application, i) => (
+          <tr
+            key={i}
+            className="border-b hover:bg-secondaryLight transition-colors [&>*]:p-2"
+          >
+            <td className="w-[28%]">
+              <div className="flex items-center gap-3">
+                <div>
+                  <img
+                    src={application.company.logo}
+                    alt=""
+                    className="w-10 h-10 rounded-lg"
+                  />
+                </div>
+                <div>
+                  <Link to={`/jobs/${application.id}`}>
+                    <h3 className="text-base font-semibold leading-6 hover:opacity-[0.5] transition-colors">
+                      {application.title}
+                    </h3>
+                  </Link>
+                  <Link to={`/companies/${application.company.id}`}>
+                    <p className="text-sm font-light leading-5 hover:opacity-[0.5] transition-colors">
+                      {application.company.name}
+                    </p>
+                  </Link>
+                </div>
+              </div>
+            </td>
+
+            <td className="w-[25%] text-sm font-light leading-5 opacity-[0.8]">
+              {application.category}
+            </td>
+
+            <td className="w-[25%] gap-2">
+              <div className="flex items-center gap-2 text-[13px] font-medium leading-5 text-grayColor">
+                <FaGlobeAmericas />
+                <span>{application.location}</span>
+              </div>
+            </td>
+
+            <td className="w-[10%] text-sm font-medium leading-5">
+              {application.employmentType}
+            </td>
+
+            <td className="w-[12%]">
+              <div className="flex justify-end">
+                <Link
+                  to={`/jobs/${application.id}`}
+                  className="inside_table_icon"
+                >
+                  <FaEye className="" />
+                </Link>
+              </div>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

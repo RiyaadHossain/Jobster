@@ -1,32 +1,24 @@
-import { useNavigate } from "react-router-dom";
-import companyLogo from "../../../assets/company-logo-7-160x160.png";
+import { Link } from "react-router-dom";
 
-export default function CompanyCard({ border }) {
-  const navigate = useNavigate();
+export default function CompanyCard({ company }) {
+  // company.description.length = 150;
 
   return (
-    <div
-      className={`p-7 h-fit bg-white rounded-3xl shadow-lg ${
-        border && "border"
-      }`}
-    >
-      <div
-        onClick={() => navigate(`/companies/${1}`)}
+    <div className={`p-7 h-fit bg-white rounded-3xl shadow-lg border`}>
+      <Link
+        to={`/companies/${company.name}`}
         className="w-20 h-20 cursor-pointer"
       >
-        <img className="w-20 h-20 rounded-2xl" src={companyLogo} alt="" />
-      </div>
-      <h3
-        onClick={() => navigate(`/companies/${1}`)}
-        className="text-lg font-semibold leading-7 mt-3 cursor-pointer hover:text-primary transition-colors"
+        <img className="w-20 h-20 rounded-2xl" src={company.logo} alt="" />
+      </Link>
+      <Link
+        to={`/companies/${company.name}`}
+        className="text-lg font-semibold leading-7 block mt-3 cursor-pointer hover:text-primary transition-colors"
       >
-        CoderBotics
-      </h3>
+        {company.name}
+      </Link>
       <p className="text-sm font-light leading-6 mt-5 text-slate-500 max-w-md">
-        CoderBotics, Inc. is an American multinational corporation that is
-        engaged in the design, development, manufacturing, and worldwide
-        marketing and sales of footwear, apparel, equipment, accessories, and
-        services. The company is...
+        {company.description.slice(0, 150)} ......
       </p>
       <p className="text-base font-medium leading-7 mt-6 hover:text-primary transition-colors">
         1 jobs

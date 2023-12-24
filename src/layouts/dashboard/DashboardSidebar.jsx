@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Logo from "../../components/ui/Logo";
 import { Link, NavLink } from "react-router-dom";
-import { ENUM_USER_ROLE } from "../../enum/userRole";
+import { ENUM_USER_ROLE } from "../../enums/userRole";
 import {
   candidateSidebardItems,
   companySidebardItems,
@@ -12,7 +12,7 @@ import "./style/style.css";
 export const DashboardSidebar = () => {
   const [selectedTab, setSelectedTab] = useState("/dashboard");
 
-  const role = "company";
+  const role = ENUM_USER_ROLE.company;
   const sidebarItems =
     role === ENUM_USER_ROLE.candidate
       ? candidateSidebardItems

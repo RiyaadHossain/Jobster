@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Main from "../layout/main/Main";
+import Main from "../layouts/main/Main";
 import Home from "../pages/home/Home";
 import ContactPage from "../pages/contact/ContactPage";
-import Dashboard from "../layout/dashboard/Dashboard";
-import DashboardHome from "../layout/dashboard/DashboardHome";
+import Dashboard from "../layouts/dashboard/Dashboard";
+import DashboardHome from "../layouts/dashboard/DashboardHome";
 import NotFound from "../components/404/NotFound";
 
 import CandidateListing from "../pages/candidate-listing/CandidateListing";

@@ -4,32 +4,19 @@ import companyHero3 from "../../../assets/company-hero-3.jpg";
 import companyHero4 from "../../../assets/company-hero-4.jpg";
 import companyHero5 from "../../../assets/company-hero-5.jpg";
 import companyHero6 from "../../../assets/company-hero-6.jpg";
+import { jobsData } from "../../../data/jobs";
 import JobCard from "../../job-listing/components/JobCard";
 import "./style/module.style.css";
 
-export default function CompanyInfo() {
+export default function CompanyInfo({ companyInfo }) {
   return (
     <div className="mt-8">
       {/* +++ About +++ */}
       <div>
         <h1 className="text-4xl font-bold leading-10 tracking-tight mb-5">
-          About Artistre Studio
+          About {companyInfo.name}
         </h1>
-        <p className="text_accent">
-          <span>Artistre Studio</span>, Inc. is an American multinational
-          corporation that is engaged in the design, development, manufacturing,
-          and worldwide marketing and sales of footwear, apparel, equipment,
-          accessories, and services. The company is headquartered in the San
-          Francisco metropolitan area. It is the world’s largest supplier of
-          athletic shoes and apparel and a major manufacturer of sports
-          equipment, with revenue in excess of US$37.4 billion in its fiscal
-          year 2020 (ending May 31, 2020). As of 2020, it employed 76,700 people
-          worldwide. In 2020 the brand alone was valued in excess of $32
-          billion, making it the most valuable brand among sports businesses.
-          Previously, in 2017, the Artistre Studio brand was valued at $29.6
-          billion. Artistre Studio ranked 89th in the 2018 Fortune 500 list of
-          the largest United States corporations by total revenue.
-        </p>
+        <p className="text_accent">{companyInfo.description}</p>
       </div>
 
       {/* +++ Gallery +++ */}
@@ -111,9 +98,9 @@ export default function CompanyInfo() {
           Jobs posted by Artistre Studio
         </p>
         <div className="grid grid-cols-12 gap-5 mt-8">
-          {[1, 2].map((el) => (
-            <div key={el} className="col-span-12 md:col-span-6 xl:col-span-4">
-              <JobCard />
+          {jobsData.splice(1, 3).map((job, i) => (
+            <div key={i} className="col-span-12 md:col-span-6 xl:col-span-4">
+              <JobCard jobInfo={job} />
             </div>
           ))}
         </div>

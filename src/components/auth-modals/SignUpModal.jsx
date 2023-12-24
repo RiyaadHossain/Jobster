@@ -2,8 +2,8 @@ import { useState } from "react";
 import signUpImg from "../../assets/signup-fig.png";
 import Modal from "../modal/Modal";
 import FormInput from "../form/FormInput";
-import { ENUM_USER_ROLE } from "../../enum/userRole";
-import { ENUM_AUTH_MODAL } from "../../enum/authModal";
+import { ENUM_USER_ROLE } from "../../enums/userRole";
+import { ENUM_AUTH_MODAL } from "../../enums/authModal";
 import "./styles/module.style.css";
 
 export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {

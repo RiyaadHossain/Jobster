@@ -3,12 +3,12 @@ import JobsterTable from "../../../../components/dashboard/JobsterTable";
 import { IoTrashOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
-import avatar from "../../../../assets/person.png";
 import { MdBlock } from "react-icons/md";
 import { IoMdCheckmark } from "react-icons/io";
 import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
 import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
 import { useState } from "react";
+import { appliedCandidates } from "../../../../data/dashCandidates";
 
 export default function Candidates() {
   const columns = [
@@ -20,9 +20,9 @@ export default function Candidates() {
     { className: "", title: "" },
   ];
 
-  const dataSource = [1, 2, 3].map((el) => (
+  const dataSource = appliedCandidates.map((application, i) => (
     <tr
-      key={el}
+      key={i}
       className="[&>*]:p-3 hover:bg-secondaryLight transition-colors border-b"
     >
       <td>
@@ -33,27 +33,34 @@ export default function Candidates() {
           <div>
             <img
               className="w-10 h-10 rounded-full border border-primary"
-              src={avatar}
+              src={application.candidate.avatar}
               alt=""
             />
           </div>
           <div>
-            <h2 className="main_row_title">Financial Analyst</h2>
+            <Link
+              to={`/candidates/${application.candidate.id}`}
+              className="main_row_title"
+            >
+              {application.candidate.name}
+            </Link>
             <div className="main_row_subtitle">
-              <FaGlobeAsia /> San Diego, CA
+              <FaGlobeAsia /> {application.candidate.location}
             </div>
           </div>
         </div>
       </td>
-      <td className="font_var_thin_pri">Gramware</td>
-      <td>
-        <DashboardBadge display="Approved" bg="bg-green-700" />
+      <td className="font_var_thin_pri">
+        <Link to={`/jobs/${application.job.id}`}>{application.job.title}</Link>
       </td>
-      <td className="dashboard_table_date">2023/11/26 at 1:57 am</td>
+      <td>
+        <DashboardBadge display={application.status} />
+      </td>
+      <td className="dashboard_table_date">{application.appliedAt}</td>
       <td>
         <div className="flex justify-end gap-2">
           <Link
-            to="/jobs/63e11077c942dd2644639864"
+            to={`/candidates/${application.candidate.id}`}
             className="inside_table_icon"
           >
             <FaEye />
@@ -83,7 +90,7 @@ export default function Candidates() {
       />
 
       <TableSearchBar
-        quantity={3}
+        quantity={appliedCandidates.length}
         display="candidate"
         setSearchText={setSearchText}
       />

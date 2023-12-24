@@ -2,9 +2,9 @@ import React from "react";
 import SectionHeader from "../../../components/ui/SectionHeader";
 import JobCard from "../../job-listing/components/JobCard";
 import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
+import { jobsData } from "../../../data/jobs";
 
 export default function FeaturedJob() {
-  const array = [1, 2, 3, 4, 5];
 
   return (
     <section className="max_container">
@@ -13,12 +13,12 @@ export default function FeaturedJob() {
         subtitle="Search your career opportunity through 12,800 jobs"
       />
       <div className="grid grid-cols-12 gap-6">
-        {array.map((el) => (
+        {jobsData.map((job, i) => (
           <div
-            key={el}
+            key={i}
             className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
           >
-            <JobCard />
+            <JobCard jobInfo={job}/>
           </div>
         ))}
       </div>

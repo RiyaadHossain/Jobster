@@ -1,6 +1,7 @@
 import ListingPageContainer from "../../components/other/listing-page-container/ListingPageContainer";
 import SidebarSearch from "../../components/other/sidebar-search/SidebarSearch";
 import PageHeader from "../../components/ui/PageHeader";
+import { jobsData } from "../../data/jobs";
 import JobCard from "./components/JobCard";
 import SidebarFilter from "./components/SidebarFilter";
 
@@ -26,8 +27,8 @@ const JobListing = () => {
             <SidebarFilter />
           </div>
         }
-        cards={[1, 2, 3, 4, 5].map((el) => (
-          <JobCard key={el} />
+        cards={jobsData.map((job, i) => (
+          <JobCard key={i} jobInfo={job} />
         ))}
         moduleName="Job"
         total={12}

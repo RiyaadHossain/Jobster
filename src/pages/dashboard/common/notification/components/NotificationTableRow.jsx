@@ -3,7 +3,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "./module.style.css";
 
-export default function NotificationTableRow({ type }) {
+export default function NotificationTableRow({ notification }) {
   /* Types - Profile view, Message Received, Applied for Job, Application Accepted/Rejected */
 
   return (

@@ -1,10 +1,8 @@
-import companyLogo from "../../../assets/company-logo-5.png";
 import { BiGlobe } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { AiOutlineLineChart } from "react-icons/ai";
 
-export default function JobCard() {
-  const navigate = useNavigate();
+export default function JobCard({ jobInfo }) {
 
   return (
     <div className="border hover:shadow-lg transition-all rounded-[30px] p-8 text-black h-fit">
@@ -13,34 +11,47 @@ export default function JobCard() {
           <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
         </div>
         <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
-          Finance
+          {jobInfo.category}
         </span>
       </div>
 
       <p className="text-[20px] font-semibold leading-7 mt-8 mb-2 hover:text-primary transition-colors">
-        <Link to="/jobs/1"> Financial Analyst</Link>
+        <Link to="/jobs/1"> {jobInfo.title}</Link>
       </p>
 
       <div className="flex gap-8">
         <div className="flex items-center gap-1 hover:text-primary transition-colors">
           <BiGlobe />
-          <p className="text-[14px] font-medium leading-5">San Diego, CA</p>
+          <p className="text-[14px] font-medium leading-5">
+            {jobInfo.location}
+          </p>
         </div>
-        <span className="text-[15px]  font-light leading-5">Full Time</span>
+        <span className="text-[15px]  font-light leading-5">
+          {jobInfo.employmentType}
+        </span>
       </div>
 
       <div className="flex items-center justify-between mt-6">
         <div>
           <span className="text-[13px] font-light leading-5 text-grayColor">
-            June 8, 2022 by
+            {jobInfo.publishedAt}
           </span>
           <p className="text-[14px] font-medium leading-[21px] mt-1 hover:text-primary transition-colors">
-            <Link to="/">Gramware</Link>
+            <Link to={`/companies/${jobInfo.company.name}`}>
+              {jobInfo.company.name}
+            </Link>
           </p>
         </div>
-        <div onClick={() => navigate("/")} className="cursor-pointer">
-          <img className="w-20 h-20 rounded-2xl" src={companyLogo} alt="" />
-        </div>
+        <Link
+          to={`/companies/${jobInfo.company.name}`}
+          className="cursor-pointer"
+        >
+          <img
+            className="w-20 h-20 rounded-2xl"
+            src={jobInfo.company.logo}
+            alt=""
+          />
+        </Link>
       </div>
     </div>
   );

@@ -25,8 +25,8 @@ export default function PageBanner({
           </div>
         </div>
       ) : (
-        <div className="p-1 bg-white absolute left-[6%] bottom-[-16%] w-[120px] h-[120px] rounded-2xl">
-          <img src={brandImg} alt="" className="rounded-2xl" />
+        <div className="p-[2px] bg-white absolute left-[6%] bottom-[-16%] w-[120px] h-[120px] rounded-3xl">
+          <img src={brandImg} alt="" className="rounded-3xl" />
         </div>
       )}
     </div>

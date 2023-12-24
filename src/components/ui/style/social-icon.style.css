@@ -1,0 +1,3 @@
+.icon_class {
+  @apply hover:text-primary transition-colors text-xl
+}

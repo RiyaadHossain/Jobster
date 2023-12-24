@@ -7,6 +7,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { RiEdit2Fill } from "react-icons/ri";
 import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
 import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
+import { dashboardJobsData } from "../../../../data/dashJobs";
 
 export default function ManageJobs() {
   const columns = [
@@ -19,36 +20,37 @@ export default function ManageJobs() {
     { className: "", title: "" },
   ];
 
-  const dataSource = [1, 2, 3].map((el) => (
+  const dataSource = dashboardJobsData.map((job, i) => (
     <tr
-      key={el}
+      key={i}
       className="[&>*]:p-3 hover:bg-secondaryLight transition-colors border-b"
     >
       <td>
         <input type="checkbox" name="" id="" />
       </td>
       <td>
-        <h2 className="main_row_title">Financial Analyst</h2>
+        <Link to={`/jobs/${job.id}`} className="main_row_title">
+          {job.title}
+        </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> San Diego, CA
+          <FaGlobeAsia /> {job.location}
         </div>
       </td>
-      <td className="font_var_medium">Construction</td>
-      <td className="font_var_thin">Internship</td>
-      <td className="font_var_thin_pri">2 candidates</td>
+      <td className="font_var_medium">{job.category}</td>
+      <td className="font_var_thin">{job.employmentType}</td>
+      <td className="font_var_thin_pri">
+        {job.applications.length} candidates
+      </td>
       <td>
-        <DashboardBadge display="Published" bg="bg-green-700" />
-        <div className="dashboard_table_date">2023/11/26 at 1:57 am</div>
+        <DashboardBadge display={job.status} bg="bg-green-700" />
+        <div className="dashboard_table_date">{job.publishedAt}</div>
       </td>
       <td>
         <div className="flex gap-2">
-          <Link to={`edit-job/1`} className="inside_table_icon">
+          <Link to={`edit-job/${job.id}`} className="inside_table_icon">
             <RiEdit2Fill />
           </Link>
-          <Link
-            to="/jobs/63e11077c942dd2644639864"
-            className="inside_table_icon"
-          >
+          <Link to={`/jobs/${job.id}`} className="inside_table_icon">
             <FaEye />
           </Link>
           <button className="inside_table_icon">
@@ -70,7 +72,7 @@ export default function ManageJobs() {
       />
 
       <TableSearchBar
-        quantity={23}
+        quantity={dashboardJobsData.length}
         display="job"
         setSearchText={setSearchText}
       />

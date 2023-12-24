@@ -1,6 +1,7 @@
 import ListingPageContainer from "../../components/other/listing-page-container/ListingPageContainer";
 import SidebarSearch from "../../components/other/sidebar-search/SidebarSearch";
 import PageHeader from "../../components/ui/PageHeader";
+import { companiesData } from "../../data/companies";
 import CompanyCard from "./components/CompanyCard";
 
 export default function CompanyListing() {
@@ -23,11 +24,11 @@ export default function CompanyListing() {
             />
           </div>
         }
-        cards={[1, 2, 3, 4, 5].map((el) => (
-          <CompanyCard key={el} border={true} />
+        cards={companiesData.map((company, i) => (
+          <CompanyCard key={i} company={company} />
         ))}
         moduleName="Company"
-        total={7}
+        total={companiesData.length}
       />
     </div>
   );

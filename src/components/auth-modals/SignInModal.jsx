@@ -1,7 +1,7 @@
 import Modal from "../modal/Modal";
 import FormInput from "../form/FormInput";
 import signInImg from "../../assets/signin-fig.png";
-import { ENUM_AUTH_MODAL } from "../../enum/authModal";
+import { ENUM_AUTH_MODAL } from "../../enums/authModal";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.signUp);

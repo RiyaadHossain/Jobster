@@ -3,6 +3,8 @@ import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import { MdForwardToInbox } from "react-icons/md";
 import { IoTrashOutline } from "react-icons/io5";
 import { FaBriefcase } from "react-icons/fa";
+import { notificationsData } from "../../../../data/notifications";
+import NotificationTableRow from "./components/NotificationTableRow";
 
 export default function Notification() {
   return (
@@ -80,6 +82,9 @@ export default function Notification() {
                 </div>
               </td>
             </tr>
+            {notificationsData.map((notification, i) => (
+              <NotificationTableRow key={i} notification={notification} />
+            ))}
           </tbody>
         </table>
       </div>

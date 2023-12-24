@@ -1,7 +1,7 @@
-import React from "react";
 import SectionHeader from "../../../components/ui/SectionHeader";
 import CompanyCard from "../../company-listing/components/CompanyCard";
 import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
+import { companiesData } from "../../../data/companies";
 
 export default function FeaturedCompany() {
   return (
@@ -13,9 +13,9 @@ export default function FeaturedCompany() {
 
       <div className="max_container">
         <div className="grid gap-5 grid-cols-12">
-          {[1, 2, 3, 4].map((el) => (
-            <div key={el} className="col-span-12 md:col-span-6 lg:col-span-4">
-              <CompanyCard />
+          {companiesData.map((company, i) => (
+            <div key={i} className="col-span-12 md:col-span-6 lg:col-span-4">
+              <CompanyCard company={company} />
             </div>
           ))}
         </div>

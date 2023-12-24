@@ -1,16 +1,24 @@
 import React from "react";
-import { BiPieChart } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import GetCategoryIcon from "../../../helpers/GetCategoryIcon";
 
-export default function CategoryCard() {
+export default function CategoryCard({ category }) {
+  const icon = <GetCategoryIcon type={category.type} />;
+
   return (
-    <div className="flex items-center w-full border rounded-3xl group hover:bg-primary/10 transition-all cursor-pointer">
-      <div className="bg-primary/20 p-5 rounded-3xl group-hover:bg-primary transition-all">
-        <BiPieChart className="text-6xl group-hover:text-white transition-all" />
+    <Link
+      to="/job-listing"
+      className="flex items-center w-full border rounded-3xl group hover:bg-primaryLight transition-all duration-500 cursor-pointer"
+    >
+      <div className="bg-primaryLight p-7 rounded-3xl group-hover:bg-primary transition-all">
+        {icon}
       </div>
       <div className="ml-7">
-        <h3 className="text-lg font-medium leading-7">Business Development</h3>
-        <p className="text-sm font-light leading-5">1 open positions</p>
+        <h3 className="text-lg font-medium leading-7 mb-1">{category.title}</h3>
+        <p className="text-sm font-light leading-5">
+          {category.openings} open positions
+        </p>
       </div>
-    </div>
+    </Link>
   );
 }

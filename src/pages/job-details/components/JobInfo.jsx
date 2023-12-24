@@ -5,36 +5,32 @@ import ButtonPrimary from "../../../components/ui/ButtonPrimary";
 import toast from "react-hot-toast";
 
 export default function JobInfo({ jobInfo }) {
-  const {
-    overview,
-    position,
-    companyName,
-    location,
-    skills,
-    responsibilities,
-    requirements,
-  } = jobInfo;
-
   return (
     <>
       <div className="space-y-5 mt-24">
         <div className="flex justify-between items-center mt-5">
           <div>
-            <h1 className="text-3xl bold font-bold">{position}</h1>
+            <h1 className="text-3xl bold font-bold">{jobInfo.title}</h1>
             <h5 className="text-grayColor font-light text-base">
-              by <span className="text-primary font-medium">{companyName}</span>{" "}
-              in <span className="text-primary font-light">{location}</span>
+              by
+              <span className="text-primary font-medium mx-1">
+                {jobInfo.company.name}
+              </span>
+              in{" "}
+              <span className="text-primary font-light">
+                {jobInfo.location}
+              </span>
             </h5>
           </div>
 
           <div>
             <div className="flex items-center gap-5">
-              <span className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
+              <div className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
                 <IoHeartOutline className="text-2xl group-hover:text-white" />
-              </span>
-              <span className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
+              </div>
+              <div className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
                 <IoShareSocialOutline className="text-2xl group-hover:text-white" />
-              </span>
+              </div>
               <ButtonPrimary
                 display="Apply"
                 onClickFunc={() =>
@@ -56,18 +52,20 @@ export default function JobInfo({ jobInfo }) {
               Finance
             </span>
           </div>
-          <span className="font-light text-grayColor">June 8, 2022</span>
+          <span className="font-light text-grayColor">
+            {jobInfo.publishedAt}
+          </span>
         </div>
 
         {/* -------------- Job Description -------------- */}
         <div className="pt-10">
           <h1 className="job_info_section_header">Overview</h1>
-          <p className="text_accent">{overview}</p>
+          <p className="text_accent">{jobInfo.description}</p>
         </div>
         <div>
           <h1 className="job_info_section_header">Skills</h1>
           <ul className="text_accent list-disc pl-10">
-            {skills.map((item, i) => (
+            {jobInfo.skills.map((item, i) => (
               <li key={i} className="mt-2">
                 {item}
               </li>
@@ -77,7 +75,7 @@ export default function JobInfo({ jobInfo }) {
         <div>
           <h1 className="job_info_section_header">Requirements</h1>
           <ul className="text_accent list-disc pl-10">
-            {requirements.map((item, i) => (
+            {jobInfo.requirements.map((item, i) => (
               <li key={i} className="mt-2">
                 {item}
               </li>
@@ -87,14 +85,13 @@ export default function JobInfo({ jobInfo }) {
         <div>
           <h1 className="job_info_section_header">Responsibilities</h1>
           <ul className="text_accent list-disc pl-10">
-            {responsibilities.map((item, i) => (
+            {jobInfo.responsibilities.map((item, i) => (
               <li key={i} className="mt-2">
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <hr className="my-5" />
         <PreviousBtn />
       </div>
     </>
