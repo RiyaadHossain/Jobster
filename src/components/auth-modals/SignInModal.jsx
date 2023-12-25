@@ -1,7 +1,8 @@
 import Modal from "../modal/Modal";
-import FormInput from "../form/FormInput";
 import signInImg from "../../assets/signin-fig.png";
 import { ENUM_AUTH_MODAL } from "../../enums/authModal";
+import FormInputIcon from "../form/FormInputIcon";
+import { IoMail, IoLockClosed } from "react-icons/io5";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_UP);
@@ -21,8 +22,28 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
       </div>
       <h5 className="modal_title">Welcome Back!</h5>
       <form action="" className="w-full mt-6">
-        <FormInput id="email" placeholder="Email Address" type="email" />
-        <FormInput id="password" placeholder="Password" type="password" />
+        <FormInputIcon
+          id="email"
+          placeholder="Email"
+          type="email"
+          icon={
+            <IoMail
+              className="absolute right-5 pointer-events-none"
+              size={18}
+            />
+          }
+        />
+        <FormInputIcon
+          id="password"
+          placeholder="Password"
+          type="password"
+          icon={
+            <IoLockClosed
+              className="absolute right-5 pointer-events-none"
+              size={18}
+            />
+          }
+        />
         <button className="btn_secondary w-full">Continue</button>
         <div className="text-center">
           <button

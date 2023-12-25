@@ -5,6 +5,8 @@ import FormInput from "../form/FormInput";
 import { ENUM_USER_ROLE } from "../../enums/userRole";
 import { ENUM_AUTH_MODAL } from "../../enums/authModal";
 import "./styles/module.style.css";
+import FormInputIcon from "../form/FormInputIcon";
+import { IoLockClosed, IoMail } from "react-icons/io5";
 
 export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const [role, setRole] = useState(ENUM_USER_ROLE.candidate);
@@ -65,11 +67,27 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
             />
           </div>
         )}
-        <FormInput id="email" placeholder="Email Address" type="email" />
-        <FormInput
+        <FormInputIcon
+          id="email"
+          placeholder="Email"
+          type="email"
+          icon={
+            <IoMail
+              className="absolute right-5 pointer-events-none"
+              size={18}
+            />
+          }
+        />
+        <FormInputIcon
           id="password"
-          placeholder="Create Password"
+          placeholder="Password"
           type="password"
+          icon={
+            <IoLockClosed
+              className="absolute right-5 pointer-events-none"
+              size={18}
+            />
+          }
         />
         <button className="btn_secondary w-full">Continue</button>
         <div className="text-center">

@@ -19,7 +19,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
 
   const [openAuthModal, setOpenAuthModal] = useState(null);
 
-  const email = 1;
+  const email = null;
 
   useEffect(() => {
     // Show Navbar background when scroll down
