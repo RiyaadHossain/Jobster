@@ -1,0 +1,19 @@
+.text_container {
+  @apply flex items-center text-base;
+}
+
+.highlighted_text {
+  @apply text-primary font-medium cursor-pointer;
+}
+
+.time_text {
+  @apply text-sm font-light leading-5 opacity-[0.8];
+}
+
+.normal_text {
+  @apply opacity-[0.8] ml-1;
+}
+
+.icon_class {
+  @apply mr-3 opacity-[0.8];
+}

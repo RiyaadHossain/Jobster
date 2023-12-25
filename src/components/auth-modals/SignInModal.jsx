@@ -4,7 +4,7 @@ import signInImg from "../../assets/signin-fig.png";
 import { ENUM_AUTH_MODAL } from "../../enums/authModal";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
-  const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.signUp);
+  const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_UP);
 
   const onModalClose = () => {
     document.body.classList.toggle("overflow-y-hidden");
@@ -13,7 +13,7 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
 
   return (
     <Modal
-      openModal={openAuthModal === ENUM_AUTH_MODAL.signIn}
+      openModal={openAuthModal === ENUM_AUTH_MODAL.SIGN_IN}
       toggleModal={onModalClose}
     >
       <div className="">
@@ -28,7 +28,7 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
           <button
             onClick={(e) => {
               e.preventDefault();
-              setOpenAuthModal(ENUM_AUTH_MODAL.forgetPass);
+              setOpenAuthModal(ENUM_AUTH_MODAL.FORGET_PASS);
             }}
             className="mt-6 text-sm font-light text-primary cursor-pointer"
           >

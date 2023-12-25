@@ -1,8 +1,5 @@
 import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import JobsterAreaChart from "../../../../components/dashboard/JobsterAreaChart";
-import { MdForwardToInbox } from "react-icons/md";
-import { BiUserCircle } from "react-icons/bi";
-import { Link } from "react-router-dom";
 import LinkWithArrow from "../../../../components/ui/LinkWithArrow";
 import RecentApplicationsTable from "./components/RecentApplicationsTable";
 import { statsData } from "../../../../data/stats";
@@ -11,6 +8,8 @@ import {
   applicationData,
   profileVisitorData,
 } from "../../../../constants/statData";
+import { notificationsData } from "../../../../data/notifications";
+import RecentNotificationRow from "./components/RecentNotificationRow";
 
 export default function CandidateDashboard() {
   return (
@@ -18,9 +17,7 @@ export default function CandidateDashboard() {
       <DashboardHeader title="Dashboard" subtitle="Welcome, Riyad Hossain!" />
 
       {/* Stats Cards */}
-      <div className="mt-12 grid grid-cols-4 gap-6">
-        <GetDashboardStats statsData={statsData} />
-      </div>
+      <GetDashboardStats statsData={statsData} />
 
       {/* Info Charts */}
       <div className="mt-12 grid grid-cols-12 gap-12">
@@ -50,26 +47,10 @@ export default function CandidateDashboard() {
           <h2 className="home_section_title">Recent Notifications</h2>
           <div>
             {/* Use 'RecentNotificationRow' Component in 'components>dashboard' folder; instead of the static design */}
-            <div className="flex items-center justify-between font-light mb-2">
-              <div className="flex items-center text-base">
-                <MdForwardToInbox className="mr-3 opacity-[0.8]" size={18} />
-                <Link to={`/companies/1`} className="mr-2 text-primary">
-                  Company
-                </Link>{" "}
-                sent you a message
-              </div>
-              <div>3h</div>
-            </div>
-            <div className="flex items-center justify-between font-light mb-2">
-              <div className="flex items-center text-base">
-                <BiUserCircle className="mr-3 opacity-[0.8]" size={18} />
-                <Link to={`/companies/1`} className="mr-2 text-primary">
-                  Someone
-                </Link>{" "}
-                viewed your profile
-              </div>
-              <div className="text-sm ">1d</div>
-            </div>
+
+            {notificationsData.map((notification, i) => (
+              <RecentNotificationRow key={i} notification={notification} />
+            ))}
           </div>
           <LinkWithArrow display="Read all" link="notifications" />
         </div>

@@ -9,7 +9,7 @@ import "./styles/module.style.css";
 export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const [role, setRole] = useState(ENUM_USER_ROLE.candidate);
 
-  const onSignInHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.signIn);
+  const onSignInHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_IN);
   const onModalClose = () => {
     document.body.classList.toggle("overflow-y-hidden");
     setOpenAuthModal(null);
@@ -17,7 +17,7 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
 
   return (
     <Modal
-      openModal={openAuthModal === ENUM_AUTH_MODAL.signUp}
+      openModal={openAuthModal === ENUM_AUTH_MODAL.SIGN_UP}
       toggleModal={onModalClose}
     >
       <div className="">

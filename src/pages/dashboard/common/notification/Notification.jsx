@@ -1,8 +1,5 @@
-import { Link } from "react-router-dom";
+import "./module.style.css";
 import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import { MdForwardToInbox } from "react-icons/md";
-import { IoTrashOutline } from "react-icons/io5";
-import { FaBriefcase } from "react-icons/fa";
 import { notificationsData } from "../../../../data/notifications";
 import NotificationTableRow from "./components/NotificationTableRow";
 
@@ -17,8 +14,31 @@ export default function Notification() {
       <div>
         <table className="w-full">
           <tbody>
-            {/* Use 'NotificationTableRow' component */}
-            <tr className="[&>*]:p-2 border-b hover:bg-secondaryLight transition-colors">
+            {notificationsData.map((notification, i) => (
+              <NotificationTableRow key={i} notification={notification} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* <tr className="[&>*]:p-2 border-b hover:bg-secondaryLight transition-colors">
               <td className="w-[70%]">
                 <div className="flex items-center text-base">
                   <MdForwardToInbox className="mr-3 opacity-[0.8]" />
@@ -81,13 +101,4 @@ export default function Notification() {
                   </div>
                 </div>
               </td>
-            </tr>
-            {notificationsData.map((notification, i) => (
-              <NotificationTableRow key={i} notification={notification} />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
+            </tr> */

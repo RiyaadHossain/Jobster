@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import GetCategoryIcon from "../../../helpers/GetCategoryIcon";
+import GetCategoryIcon from "../../../pages/home/helpers/GetCategoryIcon";
 
 export default function CategoryCard({ category }) {
   const icon = <GetCategoryIcon type={category.type} />;

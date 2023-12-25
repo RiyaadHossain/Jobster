@@ -1,7 +1,0 @@
-.highlighted_text {
-  @apply text-primary font-medium cursor-pointer;
-}
-
-.time_text {
-  @apply text-sm font-light leading-5 opacity-[0.8];
-}

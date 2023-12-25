@@ -1,6 +1,6 @@
-export const statsType = {
-  job_applications: "job_applications",
-  profile_visitors: "profile_visitors",
-  unread_messages: "unread_messages",
-  notifications: "notifications",
+export const ENUM_STATS_TYPE = {
+  JOB_APPLICATIONS: "job_applications",
+  PROFILE_VISITORS: "profile_visitors",
+  UNREAD_MESAGES: "unread_messages",
+  NOTIFICATIONS: "notifications",
 };

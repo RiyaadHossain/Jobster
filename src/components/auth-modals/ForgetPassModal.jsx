@@ -12,7 +12,7 @@ export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
 
   return (
     <Modal
-      openModal={openAuthModal === ENUM_AUTH_MODAL.forgetPass}
+      openModal={openAuthModal === ENUM_AUTH_MODAL.FORGET_PASS}
       toggleModal={onModalClose}
     >
       <div>

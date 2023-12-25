@@ -1,3 +1,4 @@
+import "./style/module.style.css";
 import React, { useEffect, useRef, useState } from "react";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { toast } from "react-hot-toast";
@@ -11,7 +12,6 @@ import ForgetPassModal from "../../components/auth-modals/ForgetPassModal";
 import ProfileMenu from "../components/ProfileMenu";
 import Logo from "../../components/ui/Logo";
 import SignInButton from "./components/SignInButton";
-import "./style/module.style.css";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navbarRef = useRef(null);
@@ -50,7 +50,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
   };
 
   const toggleAuthModal = () => {
-    setOpenAuthModal(ENUM_AUTH_MODAL.signIn);
+    setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_IN);
     document.body.classList.toggle("overflow-y-hidden");
   };
 
