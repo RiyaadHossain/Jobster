@@ -41,7 +41,8 @@ export default function AddExp() {
           <div className="grid grid-cols-3 gap-3">
             <div className="col-span-1">
               <FormInput
-                id="job_title"
+                id="jobTitle"
+                name="jobTitle"
                 label="Job Title"
                 placeholder="E.g. Web Developer"
                 type="text"
@@ -49,7 +50,8 @@ export default function AddExp() {
             </div>
             <div className="col-span-1">
               <FormInput
-                id="company_ame"
+                id="companyName"
+                name="companyName"
                 label="Company Name"
                 placeholder="E.g. Apple"
                 type="text"
@@ -57,7 +59,8 @@ export default function AddExp() {
             </div>
             <div className="col-span-1">
               <FormInput
-                id="time_period"
+                id="timePeriod"
+                name="timePeriod"
                 label="Time Period"
                 placeholder="E.g. 2007 - 2012"
                 type="text"
@@ -68,6 +71,7 @@ export default function AddExp() {
           <FormTextarea
             rows={6}
             id="description"
+            name="description"
             label="Description"
             placeholder="Type a short description..."
             inputClass="resize-none"

@@ -1,4 +1,4 @@
-import React from "react";
+import { useFormContext } from "react-hook-form";
 
 export default function FormInputIcon({
   id,
@@ -6,18 +6,46 @@ export default function FormInputIcon({
   name,
   type,
   placeholder,
-  inputClass,
+  defaultValue,
 }) {
+  const {
+    register,
+    // control,
+    // formState: { errors },
+  } = useFormContext();
+
+  // console.log({ FromInputIcon: errors });
+
   return (
     <div className="relative flex items-center mb-4">
       {icon}
       <input
+        {...register(name)}
         name={name}
         id={id}
         type={type}
         placeholder={placeholder}
-        className={`w-full ${inputClass}`}
+        defaultValue={defaultValue ? defaultValue : ""}
+        className={`w-full`}
       />
     </div>
   );
 }
+
+/* 
+<Controller
+        control={control}
+        name={name}
+        render={({ field }) => (
+          <input
+          {...field}
+            name={name}
+            id={id}
+            type={type}
+            placeholder={placeholder}
+            value={value ? value : field.value}
+            className={`w-full`}
+          />
+        )}
+      /> 
+      */

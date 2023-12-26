@@ -3,6 +3,7 @@ import signInImg from "../../assets/signin-fig.png";
 import { ENUM_AUTH_MODAL } from "../../enums/authModal";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoMail, IoLockClosed } from "react-icons/io5";
+import Form from "../form/Form";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_UP);
@@ -10,6 +11,14 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const onModalClose = () => {
     document.body.classList.toggle("overflow-y-hidden");
     setOpenAuthModal(null);
+  };
+
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -21,30 +30,24 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
         <img src={signInImg} alt="" className="modal_img" />
       </div>
       <h5 className="modal_title">Welcome Back!</h5>
-      <form action="" className="w-full mt-6">
+      <Form submitHandler={onSubmit} className="w-full mt-6">
         <FormInputIcon
-          id="email"
+          id="email_sign_in"
+          name="email"
           placeholder="Email"
           type="email"
-          icon={
-            <IoMail
-              className="absolute right-5 pointer-events-none"
-              size={18}
-            />
-          }
+          icon={<IoMail className="input_icon" size={18} />}
         />
         <FormInputIcon
-          id="password"
+          id="password_sign_in"
+          name="password"
           placeholder="Password"
           type="password"
-          icon={
-            <IoLockClosed
-              className="absolute right-5 pointer-events-none"
-              size={18}
-            />
-          }
+          icon={<IoLockClosed className="input_icon" size={18} />}
         />
-        <button className="btn_secondary w-full">Continue</button>
+        <button type="submit" className="btn_secondary w-full">
+          Continue
+        </button>
         <div className="text-center">
           <button
             onClick={(e) => {
@@ -56,16 +59,16 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
             Forget Password
           </button>
           <div className="mt-6 text-sm font-light">
-            Already Have an account?{" "}
+            New to Jobster?
             <span
               onClick={onSignUpHandle}
-              className="text-primary cursor-pointer"
+              className="text-primary cursor-pointer ml-1"
             >
-              Sign In
+              Create an account
             </span>
           </div>
         </div>
-      </form>
+      </Form>
     </Modal>
   );
 }

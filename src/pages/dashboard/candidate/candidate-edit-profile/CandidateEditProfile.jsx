@@ -9,10 +9,21 @@ import FormImg from "../../../../components/form/FormImg";
 import AddSkill from "../../../../components/dashboard/AddSkill";
 import AddExp from "../../../../components/dashboard/AddExp";
 import AddEducation from "../../../../components/dashboard/AddEducation";
+import Form from "../../../../components/form/Form";
 
 export default function CandidateEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
   const [skills, setSkills] = useState([]);
+
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+      // Add skills data as well
+      setSkills([])
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -22,11 +33,12 @@ export default function CandidateEditProfile() {
       />
 
       <div className="">
-        <form>
+        <Form submitHandler={onSubmit}>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
                 id="name"
+                name="name"
                 label="Name"
                 placeholder="Your Name"
                 type="text"
@@ -35,6 +47,7 @@ export default function CandidateEditProfile() {
               <div className="flex gap-5">
                 <FormInput
                   id="email"
+                  name="email"
                   label="Email"
                   placeholder="Your Email"
                   type="email"
@@ -43,6 +56,7 @@ export default function CandidateEditProfile() {
                 />
                 <FormInput
                   id="phone"
+                  name="phone"
                   label="Phone"
                   placeholder="Your Phone"
                   type="number"
@@ -52,6 +66,7 @@ export default function CandidateEditProfile() {
               </div>
               <FormInput
                 id="title"
+                name="title"
                 label="Title"
                 placeholder="Your Title"
                 type="text"
@@ -60,6 +75,7 @@ export default function CandidateEditProfile() {
               <FormTextarea
                 rows={6}
                 id="about"
+                name="about"
                 label="About"
                 placeholder="Bio"
                 mandatory={true}
@@ -93,6 +109,7 @@ export default function CandidateEditProfile() {
           <div className="flex gap-5 mb-8">
             <FormSelect
               options={industries}
+              name="industry"
               label="Industry"
               mandatory={true}
               placeholder="Select Industry"
@@ -100,6 +117,7 @@ export default function CandidateEditProfile() {
             />
             <FormSelect
               options={location}
+              name="location"
               label="Location"
               placeholder="Select Location"
               mandatory={true}
@@ -134,7 +152,7 @@ export default function CandidateEditProfile() {
           <div className="mt-12">
             <button className="btn_secondary">Update Profile</button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );

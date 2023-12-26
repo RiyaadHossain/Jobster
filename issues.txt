@@ -1,0 +1,1 @@
+1. When clicking on submit button default values are not being removed ; Even when change the default value on the input field and then click on submit button, it showing the default value again on the input display. (See: Form.jsx)

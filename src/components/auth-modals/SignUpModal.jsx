@@ -7,6 +7,7 @@ import { ENUM_AUTH_MODAL } from "../../enums/authModal";
 import "./styles/module.style.css";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoLockClosed, IoMail } from "react-icons/io5";
+import Form from "../form/Form";
 
 export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const [role, setRole] = useState(ENUM_USER_ROLE.candidate);
@@ -15,6 +16,15 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const onModalClose = () => {
     document.body.classList.toggle("overflow-y-hidden");
     setOpenAuthModal(null);
+  };
+
+  const onSubmit = async (data) => {
+    try {
+      // Set the role from the `role` state
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -48,19 +58,26 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
         </div>
       </div>
 
-      <form action="" className="w-full mt-6">
+      <Form submitHandler={onSubmit} className="w-full mt-6">
         {role === ENUM_USER_ROLE.company ? (
-          <FormInput id="companyName" placeholder="Company Name" type="text" />
+          <FormInput
+            id="companyName"
+            name="companyName"
+            placeholder="Company Name"
+            type="text"
+          />
         ) : (
           <div className="flex gap-3">
             <FormInput
               id="firstName"
+              name="firstName"
               placeholder="First Name"
               type="text"
               divClass="flex-grow w-1/2"
             />
             <FormInput
               id="lastName"
+              name="lastName"
               placeholder="Last Name"
               type="text"
               divClass="flex-grow w-1/2"
@@ -68,28 +85,22 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
           </div>
         )}
         <FormInputIcon
-          id="email"
+          id="email_sign_up"
+          name="email"
           placeholder="Email"
           type="email"
-          icon={
-            <IoMail
-              className="absolute right-5 pointer-events-none"
-              size={18}
-            />
-          }
+          icon={<IoMail className="input_icon" size={18} />}
         />
         <FormInputIcon
-          id="password"
+          id="password_sign_up"
+          name="password"
           placeholder="Password"
           type="password"
-          icon={
-            <IoLockClosed
-              className="absolute right-5 pointer-events-none"
-              size={18}
-            />
-          }
+          icon={<IoLockClosed className="input_icon" size={18} />}
         />
-        <button className="btn_secondary w-full">Continue</button>
+        <button type="submit" className="btn_secondary w-full">
+          Continue
+        </button>
         <div className="text-center">
           <div className="mt-6 text-sm font-light">
             Already Have an account?{" "}
@@ -101,7 +112,7 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
             </span>
           </div>
         </div>
-      </form>
+      </Form>
     </Modal>
   );
 }
