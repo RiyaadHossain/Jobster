@@ -2,6 +2,10 @@
   @apply h-[120px] w-auto;
 }
 
+.input_icon {
+  @apply absolute right-5 pointer-events-none;
+}
+
 .modal_title {
   @apply font-semibold text-[22px] tracking-tight mt-6;
 }

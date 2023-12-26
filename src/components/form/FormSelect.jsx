@@ -1,14 +1,18 @@
+import { useFormContext } from "react-hook-form";
+
 export default function FormSelect({
   id,
   name,
-  value,
   options,
   label,
   placeholder,
   divClass,
   inputClass,
   mandatory,
+  defaultValue,
 }) {
+  const { register } = useFormContext();
+
   return (
     <div className={`flex flex-col items-start mb-4 ${divClass}`}>
       <label
@@ -18,8 +22,10 @@ export default function FormSelect({
         {label} {mandatory && <span className="text-red-700">*</span>}
       </label>
       <select
+        {...register(name)}
         name={name}
         id={id}
+        defaultValue={defaultValue}
         className={`w-full ${inputClass}`}
         placeholder={placeholder}
       >

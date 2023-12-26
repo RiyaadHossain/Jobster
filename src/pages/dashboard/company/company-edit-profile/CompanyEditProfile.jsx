@@ -6,9 +6,18 @@ import FormInput from "../../../../components/form/FormInput";
 import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import { industries, location } from "../../../../constants/jobInfo";
 import FormCheckbox from "../../../../components/form/FormCheckbox";
+import Form from "../../../../components/form/Form";
 
 export default function CompanyEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
+
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -18,11 +27,12 @@ export default function CompanyEditProfile() {
       />
 
       <div className="">
-        <form>
+        <Form submitHandler={onSubmit}>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
                 id="companyName"
+                name="companyName"
                 label="Company Name"
                 placeholder="Add Company Name"
                 type="text"
@@ -31,6 +41,7 @@ export default function CompanyEditProfile() {
               <div className="flex gap-5">
                 <FormInput
                   id="email"
+                  name="email"
                   label="Email"
                   placeholder="company@gmail.com"
                   type="email"
@@ -39,6 +50,7 @@ export default function CompanyEditProfile() {
                 />
                 <FormInput
                   id="phone"
+                  name="phone"
                   label="Phone"
                   placeholder="(+880) 1703790978"
                   type="number"
@@ -48,6 +60,7 @@ export default function CompanyEditProfile() {
               </div>
               <FormInput
                 id="website"
+                name="website"
                 label="Website"
                 placeholder="https://"
                 type="text"
@@ -56,6 +69,7 @@ export default function CompanyEditProfile() {
               <FormTextarea
                 rows={6}
                 id="about"
+                name="about"
                 label="About"
                 placeholder="About Company"
                 mandatory={true}
@@ -89,6 +103,7 @@ export default function CompanyEditProfile() {
           <div className="grid grid-cols-12 gap-5 mb-8">
             <FormSelect
               options={industries}
+              name="industry"
               label="Industry"
               mandatory={true}
               placeholder="Select Industry"
@@ -96,6 +111,7 @@ export default function CompanyEditProfile() {
             />
             <FormSelect
               options={location}
+              name="location"
               label="Location"
               placeholder="Select Location"
               mandatory={true}
@@ -103,6 +119,7 @@ export default function CompanyEditProfile() {
             />
             <FormInput
               id="foundIn"
+              name="foundIn"
               label="Found In"
               placeholder="E.g. 2001"
               type="text"
@@ -111,6 +128,7 @@ export default function CompanyEditProfile() {
             />
             <FormInput
               id="companySize"
+              name="companySize"
               label="Company Size"
               placeholder="E.g. 10 - 51"
               type="text"
@@ -127,6 +145,7 @@ export default function CompanyEditProfile() {
             <div className="grid grid-cols-2 gap-5">
               <FormInput
                 id="facebook"
+                name="facebook"
                 label="Facebook"
                 placeholder="https://"
                 type="text"
@@ -134,6 +153,7 @@ export default function CompanyEditProfile() {
               />
               <FormInput
                 id="twitter"
+                name="twitter"
                 label="Twitter"
                 placeholder="https://"
                 type="text"
@@ -141,6 +161,7 @@ export default function CompanyEditProfile() {
               />
               <FormInput
                 id="instagram"
+                name="instagram"
                 label="Instagram"
                 placeholder="https://"
                 type="text"
@@ -148,6 +169,7 @@ export default function CompanyEditProfile() {
               />
               <FormInput
                 id="linkedIn"
+                name="linkedIn"
                 label="LinkedIn"
                 placeholder="https://"
                 type="text"
@@ -158,6 +180,7 @@ export default function CompanyEditProfile() {
 
           <FormCheckbox
             id="applyNotification"
+            name="applyNotification"
             label="Notify the company when a new candidate applies for a job"
             divClass="mt-3"
           />
@@ -165,7 +188,7 @@ export default function CompanyEditProfile() {
           <div className="mt-12">
             <button className="btn_secondary">Update Profile</button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );

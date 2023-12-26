@@ -1,14 +1,18 @@
+import { useFormContext } from "react-hook-form";
+
 export default function FormTextarea({
   id,
   rows,
   name,
-  value,
+  defaultValue,
   label,
   placeholder,
   divClass,
   inputClass,
   mandatory,
 }) {
+  const { register } = useFormContext();
+
   return (
     <div className={`flex flex-col items-start mb-4 ${divClass}`}>
       <label
@@ -18,9 +22,11 @@ export default function FormTextarea({
         {label} {mandatory && <span className="text-red-700">*</span>}
       </label>
       <textarea
+        {...register(name)}
         id={id}
         name={name}
         rows={rows}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         className={`w-full ${inputClass}`}
       />

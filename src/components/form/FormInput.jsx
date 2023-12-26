@@ -1,14 +1,18 @@
+import { useFormContext } from "react-hook-form";
+
 export default function FormInput({
   id,
   type,
   name,
-  value,
   label,
   placeholder,
   divClass,
   inputClass,
   mandatory,
+  defaultValue,
 }) {
+  const { register } = useFormContext();
+
   return (
     <div className={`flex flex-col items-start mb-4 ${divClass}`}>
       {label && (
@@ -20,9 +24,11 @@ export default function FormInput({
         </label>
       )}
       <input
+        {...register(name)}
         name={name}
         id={id}
         type={type}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         className={`w-full ${inputClass}`}
       />
