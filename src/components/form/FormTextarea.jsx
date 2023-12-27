@@ -10,6 +10,8 @@ export default function FormTextarea({
   divClass,
   inputClass,
   mandatory,
+  inputRef,
+  handleOnChange,
 }) {
   const { register } = useFormContext();
 
@@ -21,15 +23,28 @@ export default function FormTextarea({
       >
         {label} {mandatory && <span className="text-red-700">*</span>}
       </label>
-      <textarea
-        {...register(name)}
-        id={id}
-        name={name}
-        rows={rows}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        className={`w-full ${inputClass}`}
-      />
+      {!handleOnChange ? (
+        <textarea
+          {...register(name)}
+          id={id}
+          name={name}
+          rows={rows}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          className={`w-full ${inputClass}`}
+        />
+      ) : (
+        <textarea
+          id={id}
+          name={name}
+          rows={rows}
+          ref={inputRef}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          className={`w-full ${inputClass}`}
+          onChange={(e) => handleOnChange(name, e.target.value)}
+        />
+      )}
     </div>
   );
 }

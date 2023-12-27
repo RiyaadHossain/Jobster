@@ -6,10 +6,10 @@ import FormInput from "../../../../components/form/FormInput";
 import FormTextarea from "../../../../components/form/FormTextarea";
 import FormSelect from "../../../../components/form/FormSelect";
 import FormImg from "../../../../components/form/FormImg";
-import AddSkill from "../../../../components/dashboard/AddSkill";
-import AddExp from "../../../../components/dashboard/AddExp";
-import AddEducation from "../../../../components/dashboard/AddEducation";
 import Form from "../../../../components/form/Form";
+import AddSkill from "./components/AddSkill";
+import AddExperience from "./components/AddExperience";
+import AddEducation from "./components/AddEducation";
 
 export default function CandidateEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
@@ -33,7 +33,7 @@ export default function CandidateEditProfile() {
       />
 
       <div className="">
-        <Form submitHandler={onSubmit}>
+        <Form  submitHandler={onSubmit}>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
@@ -138,7 +138,7 @@ export default function CandidateEditProfile() {
               Work Experience
             </h2>
 
-            <AddExp />
+            <AddExperience />
           </div>
 
           <div className="mt-12">
