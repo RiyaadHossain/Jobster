@@ -5,11 +5,13 @@ export default function FormInput({
   type,
   name,
   label,
+  inputRef,
   placeholder,
   divClass,
   inputClass,
   mandatory,
   defaultValue,
+  handleOnChange,
 }) {
   const { register } = useFormContext();
 
@@ -23,15 +25,28 @@ export default function FormInput({
           {label} {mandatory && <span className="text-red-700">*</span>}
         </label>
       )}
-      <input
-        {...register(name)}
-        name={name}
-        id={id}
-        type={type}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        className={`w-full ${inputClass}`}
-      />
+      {!handleOnChange ? (
+        <input
+          {...register(name)}
+          name={name}
+          id={id}
+          type={type}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          className={`w-full ${inputClass}`}
+        />
+      ) : (
+        <input
+          ref={inputRef}
+          name={name}
+          id={id}
+          type={type}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          className={`w-full ${inputClass}`}
+          onChange={(e) => handleOnChange(e.target.value, name)}
+        />
+      )}
     </div>
   );
 }

@@ -54,7 +54,7 @@ export default function NewJobOffers() {
                 <FormSelect
                   options={location}
                   label="Location"
-                  name="Location"
+                  name="location"
                   placeholder="Select Location"
                   mandatory={true}
                   divClass=" w-1/2 flex-grow"
@@ -95,6 +95,7 @@ export default function NewJobOffers() {
             <FormSelect
               options={expLevelOpt}
               label="Experience Level"
+              name="experienceLevel"
               mandatory={true}
               divClass="col-span-3"
             />
