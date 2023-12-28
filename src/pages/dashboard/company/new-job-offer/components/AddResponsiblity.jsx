@@ -3,39 +3,36 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import InputWithButton from "../../../../../components/dashboard/InputWithButton";
 import DynamicTextField from "../../../../../components/dashboard/DynamicTextField";
 
-export default function AddSkill() {
+export default function AddResponsiblity() {
   const inputRef = useRef(null);
-  const [skill, setSkill] = useState({});
+  const [responsiblity, setResponsiblity] = useState({});
   const { control } = useFormContext();
 
   const { fields, append, remove } = useFieldArray({
-    name: "skills",
+    name: "responsiblities",
     control,
   });
 
   const appendData = () => {
-    const exist = fields.find((item) => item.title === skill.title);
-
-    if (Object.keys(skill).length) {
-      !exist && append(skill);
-      setSkill({});
+    if (Object.keys(responsiblity).length) {
+      append(responsiblity);
+      setResponsiblity({});
       inputRef.current.value = "";
     }
   };
 
-  const onChange = (title) => setSkill({ title });
+  const onChange = (title) => setResponsiblity({ title });
 
   return (
     <div>
       <DynamicTextField
         fields={fields}
         remove={remove}
-        text={13}
-        rounded="full"
-        divClass="flex flex-wrap"
+        text={15}
+        rounded="md"
       />
       <InputWithButton
-        name="skill"
+        name="responsiblity"
         appendData={appendData}
         inputRef={inputRef}
         onChange={onChange}

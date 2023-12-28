@@ -13,8 +13,8 @@ export default function CandidateInfo({ candidateInfo }) {
       <div className="mb-6 lg:mb-12">
         <h1 className="page_section_header">Skills</h1>
         <div className="flex gap-4 flex-wrap">
-          {candidateInfo.skills.map((item) => (
-            <Badge key={item}>{item}</Badge>
+          {candidateInfo.skills.map((item, i) => (
+            <Badge key={i}>{item.title}</Badge>
           ))}
         </div>
       </div>
@@ -33,9 +33,7 @@ export default function CandidateInfo({ candidateInfo }) {
               <FaDotCircle className="text-xs text-primary " />
             </div>
             <div className="pl-5 pb-6">
-              <Badge className={"py-[1.5px]"}>
-                {experience.joinAt} - {experience.leaveAt}
-              </Badge>
+              <Badge className={"py-[1.5px]"}>{experience.timePeriod}</Badge>
               <h5 className="text-base font-semibold leading-6 mt-2 mb-1">
                 {experience.position}
               </h5>
@@ -54,9 +52,7 @@ export default function CandidateInfo({ candidateInfo }) {
               <FaDotCircle className="text-xs text-primary" />
             </div>
             <div>
-              <Badge className={"py-[1.5px]"}>
-                {education.startIn} - {education.endIn}
-              </Badge>
+              <Badge className={"py-[1.5px]"}>{education.timePeriod}</Badge>
               <h5 className="text-base font-semibold leading-6 mt-2 mb-1">
                 {education.degreeName}
               </h5>

@@ -1,19 +1,21 @@
-import React, { useState } from "react";
 import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import FormInput from "../../../../components/form/FormInput";
-import FormImg from "../../../../components/form/FormImg";
 import FormTextarea from "../../../../components/form/FormTextarea";
 import FormSelect from "../../../../components/form/FormSelect";
+import Form from "../../../../components/form/Form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { jobOfferSchema } from "../../../../schema/jobOffer";
 import {
   employmentTypeOpt,
   expLevelOpt,
   industries,
   location,
 } from "../../../../constants/jobInfo";
-import Form from "../../../../components/form/Form";
+import AddResponsiblity from "./components/AddResponsiblity";
+import AddRequirement from "./components/AddRequirements";
 
 export default function NewJobOffers() {
-  const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
+  // const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
 
   const onSubmit = async (data) => {
     try {
@@ -31,7 +33,7 @@ export default function NewJobOffers() {
       />
 
       <div className="">
-        <Form submitHandler={onSubmit}>
+        <Form submitHandler={onSubmit} resolver={yupResolver(jobOfferSchema)}>
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
@@ -62,8 +64,8 @@ export default function NewJobOffers() {
               </div>
               <FormTextarea
                 rows={6}
-                id="jobDescription"
-                name="jobDescription"
+                id="description"
+                name="description"
                 label="Job Description"
                 placeholder="Write Job Details"
                 mandatory={true}
@@ -72,7 +74,7 @@ export default function NewJobOffers() {
             </div>
 
             <div className="col-span-4">
-              <FormImg
+              {/* <FormImg
                 label="Upload cover photo"
                 id="banner"
                 name="banner"
@@ -80,7 +82,7 @@ export default function NewJobOffers() {
                 width="w-full"
                 imgUrl={imgUrl}
                 setImgUrl={setImgUrl}
-              />
+              /> */}
             </div>
           </div>
 
@@ -91,6 +93,7 @@ export default function NewJobOffers() {
               label="Type of Employment"
               mandatory={true}
               divClass="col-span-3"
+              placeholder="Select Employment Type"
             />
             <FormSelect
               options={expLevelOpt}
@@ -98,6 +101,7 @@ export default function NewJobOffers() {
               name="experienceLevel"
               mandatory={true}
               divClass="col-span-3"
+              placeholder="Select Experience Level"
             />
             <FormInput
               id="requiredExperience"
@@ -117,6 +121,22 @@ export default function NewJobOffers() {
               mandatory={true}
               divClass="col-span-3"
             />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
+              Responsiblity
+            </h2>
+
+            <AddResponsiblity />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
+              Requirements
+            </h2>
+
+            <AddRequirement />
           </div>
 
           <div className="mt-10">

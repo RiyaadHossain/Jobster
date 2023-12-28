@@ -12,18 +12,17 @@ export const candidatesData = [
     about:
       "Meticulous, patient-focused Certified Medical Assistant with 10+ years of extensive experience in providing a variety of healthcare services and administrative assistant to support organizational objectives. Possess a genuine passion for delivering premium, compassionate patient care, and helping diverse people within the healthcare industry.",
     skills: [
-      "Leadership, Planning",
-      "Public Speaking",
-      "Teamwork",
-      "Communication",
-      "Innovative",
-      "Self-motivated",
-      "Enthusiatic",
+      { title: "Leadership, Planning" },
+      { title: "Public Speaking" },
+      { title: "Teamwork" },
+      { title: "Communication" },
+      { title: "Innovative" },
+      { title: "Self-motivated" },
+      { title: "Enthusiatic" },
     ],
     workExperiences: [
       {
-        joinAt: "Jan 2022",
-        leaveAt: "Dec 2023",
+        timePeriod: "Jan 2020 - Dec 2023",
         currentlyWorking: false,
         position: "Frontend Developer",
         companyName: "Amazon",
@@ -31,8 +30,7 @@ export const candidatesData = [
           "Collected, analyzed, and managed quantitative data and created meaningful reports to lead business improvement and 30% cost reductions.",
       },
       {
-        joinAt: "Mar 2020",
-        leaveAt: "Present",
+        timePeriod: "Mar 2020 - Present",
         currentlyWorking: true,
         position: "Software Engineer",
         companyName: "Google",
@@ -40,8 +38,7 @@ export const candidatesData = [
           "Developed scalable backend systems using Python and implemented innovative solutions that improved service response time by 40%.",
       },
       {
-        joinAt: "Jul 2019",
-        leaveAt: "Nov 2021",
+        timePeriod: "Jul 2019 - Nov 2021",
         currentlyWorking: false,
         position: "UX Designer",
         companyName: "Microsoft",
@@ -51,16 +48,14 @@ export const candidatesData = [
     ],
     educationTraining: [
       {
-        startIn: "2004",
-        endIn: "2008",
+        timePeriod: "2008 - 2012",
         degreeName: "Master's in Finance",
         institution: "University of Arizona",
         details:
           "I become gratuated from Arizona University in Computer Science where I learned from fundamental to advanced concepts of computer science and software engineering.",
       },
       {
-        startIn: "2015",
-        endIn: "2020",
+        timePeriod: "2015 - 2020",
         degreeName: "Ph.D. in Psychology",
         institution: "Stanford University",
         details:

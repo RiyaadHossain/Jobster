@@ -3,11 +3,11 @@ import FormInput from "../../../../../components/form/FormInput";
 import FormTextarea from "../../../../../components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import FormTableRow from "./FormTableRow";
+import { useFieldState } from "../../../../../hooks/useFieldState";
 
 export default function AddExperience() {
-  const [openExp, setOpenExp] = useState(false);
   const { control } = useFormContext();
-  const [experience, setExperience] = useState({});
+  const [openExp, setOpenExp] = useState(false);
 
   const jobTitleRef = useRef(null);
   const companyNameRef = useRef(null);
@@ -19,18 +19,10 @@ export default function AddExperience() {
     control,
   });
 
-  const appendData = () => {
-    append(experience);
-    setExperience({});
-
-    jobTitleRef.current.value = "";
-    companyNameRef.current.value = "";
-    timePeriodRef.current.value = "";
-    desciptionRef.current.value = "";
-  };
-
-  const onChange = (data, name) =>
-    setExperience({ ...experience, [name]: data });
+  const { appendData, customError, onChange } = useFieldState({
+    append,
+    refs: [jobTitleRef, companyNameRef, timePeriodRef, desciptionRef],
+  });
 
   return (
     <div className="mt-2">
@@ -45,6 +37,7 @@ export default function AddExperience() {
           <div className="grid grid-cols-3 gap-3">
             <div className="col-span-1">
               <FormInput
+                mandatory
                 id="jobTitle"
                 name="jobTitle"
                 label="Job Title"
@@ -52,10 +45,12 @@ export default function AddExperience() {
                 handleOnChange={onChange}
                 type="text"
                 inputRef={jobTitleRef}
+                customError={customError}
               />
             </div>
             <div className="col-span-1">
               <FormInput
+                mandatory
                 id="companyName"
                 name="companyName"
                 label="Company Name"
@@ -63,10 +58,12 @@ export default function AddExperience() {
                 handleOnChange={onChange}
                 type="text"
                 inputRef={companyNameRef}
+                customError={customError}
               />
             </div>
             <div className="col-span-1">
               <FormInput
+                mandatory
                 id="timePeriod"
                 name="timePeriod"
                 label="Time Period"
@@ -74,11 +71,13 @@ export default function AddExperience() {
                 handleOnChange={onChange}
                 type="text"
                 inputRef={timePeriodRef}
+                customError={customError}
               />
             </div>
           </div>
 
           <FormTextarea
+            mandatory
             rows={6}
             id="description"
             name="description"
@@ -87,6 +86,7 @@ export default function AddExperience() {
             handleOnChange={onChange}
             inputClass="resize-none"
             inputRef={desciptionRef}
+            customError={customError}
           />
 
           <div className="flex gap-5 items-center">

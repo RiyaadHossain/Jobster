@@ -10,6 +10,8 @@ import Form from "../../../../components/form/Form";
 import AddSkill from "./components/AddSkill";
 import AddExperience from "./components/AddExperience";
 import AddEducation from "./components/AddEducation";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { candidateProfileSchema } from "../../../../schema/candidateProfile";
 
 export default function CandidateEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
@@ -19,7 +21,7 @@ export default function CandidateEditProfile() {
     try {
       console.log(data);
       // Add skills data as well
-      setSkills([])
+      setSkills([]);
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +35,10 @@ export default function CandidateEditProfile() {
       />
 
       <div className="">
-        <Form  submitHandler={onSubmit}>
+        <Form
+          submitHandler={onSubmit}
+          resolver={yupResolver(candidateProfileSchema)}
+        >
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
@@ -74,8 +79,8 @@ export default function CandidateEditProfile() {
               />
               <FormTextarea
                 rows={6}
-                id="about"
-                name="about"
+                id="description"
+                name="description"
                 label="About"
                 placeholder="Bio"
                 mandatory={true}

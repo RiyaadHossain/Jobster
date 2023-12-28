@@ -8,11 +8,13 @@ import "./styles/module.style.css";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoLockClosed, IoMail } from "react-icons/io5";
 import Form from "../form/Form";
+import { emailRegex } from "../../regex";
 
 export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const [role, setRole] = useState(ENUM_USER_ROLE.candidate);
 
   const onSignInHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_IN);
+
   const onModalClose = () => {
     document.body.classList.toggle("overflow-y-hidden");
     setOpenAuthModal(null);
@@ -58,13 +60,20 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
         </div>
       </div>
 
-      <Form submitHandler={onSubmit} className="w-full mt-6">
+      <Form
+        className="w-full mt-6"
+        submitHandler={onSubmit}
+        // resolver={yupResolver(signUpSchema)}
+      >
         {role === ENUM_USER_ROLE.company ? (
           <FormInput
             id="companyName"
             name="companyName"
             placeholder="Company Name"
             type="text"
+            validation={{ required: true, minLength: 3, maxLength: 16 }}
+            minLen={3}
+            maxLen={16}
           />
         ) : (
           <div className="flex gap-3">
@@ -74,6 +83,9 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
               placeholder="First Name"
               type="text"
               divClass="flex-grow w-1/2"
+              validation={{ required: true, minLength: 3, maxLength: 16 }}
+              minLen={3}
+              maxLen={16}
             />
             <FormInput
               id="lastName"
@@ -81,21 +93,26 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
               placeholder="Last Name"
               type="text"
               divClass="flex-grow w-1/2"
+              validation={{ required: true, minLength: 3, maxLength: 16 }}
+              minLen={3}
+              maxLen={16}
             />
           </div>
         )}
         <FormInputIcon
-          id="email_sign_up"
           name="email"
           placeholder="Email"
           type="email"
+          validation={{ required: true, pattern: emailRegex }}
           icon={<IoMail className="input_icon" size={18} />}
         />
         <FormInputIcon
-          id="password_sign_up"
           name="password"
           placeholder="Password"
           type="password"
+          validation={{ required: true, minLength: 6, maxLength: 32 }}
+          minLen={6}
+          maxLen={16}
           icon={<IoLockClosed className="input_icon" size={18} />}
         />
         <button type="submit" className="btn_secondary w-full">

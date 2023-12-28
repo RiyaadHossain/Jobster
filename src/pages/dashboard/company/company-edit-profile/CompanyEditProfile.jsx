@@ -7,6 +7,8 @@ import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
 import { industries, location } from "../../../../constants/jobInfo";
 import FormCheckbox from "../../../../components/form/FormCheckbox";
 import Form from "../../../../components/form/Form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { companyProfileSchema } from "../../../../schema/companyProfile";
 
 export default function CompanyEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
@@ -27,7 +29,10 @@ export default function CompanyEditProfile() {
       />
 
       <div className="">
-        <Form submitHandler={onSubmit}>
+        <Form
+          submitHandler={onSubmit}
+          resolver={yupResolver(companyProfileSchema)}
+        >
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
@@ -68,8 +73,8 @@ export default function CompanyEditProfile() {
               />
               <FormTextarea
                 rows={6}
-                id="about"
-                name="about"
+                id="description"
+                name="description"
                 label="About"
                 placeholder="About Company"
                 mandatory={true}

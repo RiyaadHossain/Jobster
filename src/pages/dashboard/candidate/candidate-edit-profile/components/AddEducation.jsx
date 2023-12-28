@@ -3,11 +3,11 @@ import FormInput from "../../../../../components/form/FormInput";
 import FormTextarea from "../../../../../components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import EducationRow from "./FormTableRow";
+import { useFieldState } from "../../../../../hooks/useFieldState";
 
 export default function AddEducation() {
   const [openEdu, setOpenEdu] = useState(false);
   const { control } = useFormContext();
-  const [education, setEducation] = useState({});
 
   const courseOfStudyRef = useRef(null);
   const institutionRef = useRef(null);
@@ -19,17 +19,11 @@ export default function AddEducation() {
     control,
   });
 
-  const appendData = () => {
-    append(education);
-    setEducation({});
+  const { appendData, customError, onChange } = useFieldState({
+    append,
+    refs: [courseOfStudyRef, institutionRef, timePeriodRef, desciptionRef],
+  });
 
-    courseOfStudyRef.current.value = "";
-    institutionRef.current.value = "";
-    timePeriodRef.current.value = "";
-    desciptionRef.current.value = "";
-  };
-
-  const onChange = (data, name) => setEducation({ ...education, [name]: data });
 
   return (
     <div className="mt-2">
@@ -51,6 +45,7 @@ export default function AddEducation() {
                 type="text"
                 inputRef={courseOfStudyRef}
                 handleOnChange={onChange}
+                customError={customError}
               />
             </div>
             <div className="col-span-1">
@@ -62,6 +57,7 @@ export default function AddEducation() {
                 handleOnChange={onChange}
                 placeholder="E.g. Oxford University"
                 inputRef={institutionRef}
+                customError={customError}
               />
             </div>
             <div className="col-span-1">
@@ -73,6 +69,7 @@ export default function AddEducation() {
                 placeholder="E.g. 2007 - 2012"
                 type="text"
                 inputRef={timePeriodRef}
+                customError={customError}
               />
             </div>
           </div>
@@ -86,6 +83,7 @@ export default function AddEducation() {
             placeholder="Type a short description..."
             inputClass="resize-none"
             inputRef={desciptionRef}
+            customError={customError}
           />
 
           <div className="flex gap-5 items-center">
