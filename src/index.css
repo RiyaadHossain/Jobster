@@ -53,11 +53,15 @@
 }
 
 .btn_accent {
-  @apply px-6 py-4 font-semibold bg-primaryLight text-primaryDark rounded-full transition-all hover:text-white hover:bg-primary;
+  @apply px-6 py-4 font-medium bg-primaryLight text-primaryDark rounded-full transition-all cursor-pointer hover:text-white hover:bg-primary;
 }
 
 .btn_sm {
   @apply px-[10px] py-[2px] bg-primary text-white rounded-full text-xs hover:bg-darkNavy transition-all;
+}
+
+.btn_icon {
+  @apply bg-primaryLight p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer;
 }
 
 /* Responsive Media */

@@ -44,10 +44,10 @@ export default function Applications() {
       <td className="dashboard_table_date">{application.appliedAt}</td>
       <td>
         <div className="flex gap-2">
-          <Link to={`/jobs/${application.id}`} className="inside_table_icon">
+          <Link to={`/jobs/${application.id}`} className="btn_icon">
             <FaEye />
           </Link>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>

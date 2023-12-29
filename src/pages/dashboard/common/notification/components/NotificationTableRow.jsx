@@ -14,7 +14,7 @@ export default function NotificationTableRow({ notification }) {
       </td>
       <td>
         <div className="flex justify-end">
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>

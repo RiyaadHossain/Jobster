@@ -27,7 +27,7 @@ export default function FormTableRow({ fields, remove }) {
                 <button
                   type="button"
                   onClick={() => remove(i)}
-                  className="inside_table_icon"
+                  className="btn_icon"
                 >
                   <IoTrashOutline className="" size={15} />
                 </button>

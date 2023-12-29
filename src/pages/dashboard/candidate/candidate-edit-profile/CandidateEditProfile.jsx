@@ -12,6 +12,7 @@ import AddExperience from "./components/AddExperience";
 import AddEducation from "./components/AddEducation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { candidateProfileSchema } from "../../../../schema/candidateProfile";
+import AddResume from "./components/AddResume";
 
 export default function CandidateEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
@@ -131,27 +132,23 @@ export default function CandidateEditProfile() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Skills
-            </h2>
-
+            <h2 className="heading_2">Skills</h2>
             <AddSkill skills={skills} setSkills={setSkills} />
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Work Experience
-            </h2>
-
+            <h2 className="heading_2">Work Experience</h2>
             <AddExperience />
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Education & Training
-            </h2>
-
+            <h2 className="heading_2">Education & Training</h2>
             <AddEducation />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="heading_2">Resume</h2>
+            <AddResume />
           </div>
 
           <div className="mt-12">

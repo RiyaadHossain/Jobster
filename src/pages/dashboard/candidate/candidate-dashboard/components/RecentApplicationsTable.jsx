@@ -52,10 +52,7 @@ export default function RecentApplicationsTable() {
 
             <td className="w-[12%]">
               <div className="flex justify-end">
-                <Link
-                  to={`/jobs/${application.id}`}
-                  className="inside_table_icon"
-                >
+                <Link to={`/jobs/${application.id}`} className="btn_icon">
                   <FaEye className="" />
                 </Link>
               </div>

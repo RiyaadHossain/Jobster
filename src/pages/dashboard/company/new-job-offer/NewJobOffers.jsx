@@ -124,18 +124,12 @@ export default function NewJobOffers() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Responsiblity
-            </h2>
-
+            <h2 className="heading_2">Responsiblity</h2>
             <AddResponsiblity />
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Requirements
-            </h2>
-
+            <h2 className="heading_2">Requirements</h2>
             <AddRequirement />
           </div>
 

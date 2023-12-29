@@ -1,34 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { IoMdNotifications } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { notificationsData } from "../../data/notifications";
 import GetTooltipNotificaitonContent from "../../helpers/GetTooltipNotificaitonContent";
+import { useTooltip } from "../../hooks/useTooltip";
 
 export default function NotificationToltip() {
-  const [openNotification, setOpenNotification] = useState(false);
-  const toggleNotification = () => setOpenNotification(!openNotification);
   const notificationRef = useRef(null);
-
-  useEffect(() => {
-    // Close the profile menu - on outside click
-    const handleClickOutside = (event) => {
-      if (!notificationRef.current.contains(event.target)) {
-        setOpenNotification(false);
-      }
-    };
-
-    // Listen for clicks outside the profile menu
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      // Remove the event listener on component unmount
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  const { openTooltip, toggleTooltip } = useTooltip(notificationRef);
 
   return (
     <div className="relative" ref={notificationRef}>
-      <div onClick={toggleNotification} className="cursor-pointer">
+      <div onClick={toggleTooltip} className="cursor-pointer">
         <IoMdNotifications className="text-2xl" />
         {false && (
           <div className="absolute -right-[6px] -bottom-[6px] w-4 h-4 bg-primary text-white text-xs font-semibold rounded-full flex_cen">
@@ -36,7 +19,7 @@ export default function NotificationToltip() {
           </div>
         )}
       </div>
-      {openNotification && (
+      {openTooltip && (
         <div className="absolute bg-slate-50 rounded-xl -right-1 border top-[30px] shadow-md w-96 z-30">
           <ul className="px-5 [&>*]:py-[6px] text-sm opacity-[0.8] text-grayColor py-3">
             {notificationsData.map((notification, i) => (

@@ -61,17 +61,17 @@ export default function Candidates() {
         <div className="flex justify-end gap-2">
           <Link
             to={`/candidates/${application.candidate.id}`}
-            className="inside_table_icon"
+            className="btn_icon"
           >
             <FaEye />
           </Link>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoMdCheckmark />
           </button>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <MdBlock />
           </button>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>

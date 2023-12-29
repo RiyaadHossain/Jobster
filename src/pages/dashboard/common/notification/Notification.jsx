@@ -24,20 +24,6 @@ export default function Notification() {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* <tr className="[&>*]:p-2 border-b hover:bg-secondaryLight transition-colors">
               <td className="w-[70%]">
                 <div className="flex items-center text-base">
@@ -60,7 +46,7 @@ export default function Notification() {
                 <div className="flex justify-end ">
                   <div
                     to="/jobs/63e11077c942dd2644639864"
-                    className="inside_table_icon"
+                    className="btn_icon"
                   >
                     <IoTrashOutline />
                   </div>
@@ -95,7 +81,7 @@ export default function Notification() {
                 <div className="flex justify-end ">
                   <div
                     to="/jobs/63e11077c942dd2644639864"
-                    className="inside_table_icon"
+                    className="btn_icon"
                   >
                     <IoTrashOutline />
                   </div>

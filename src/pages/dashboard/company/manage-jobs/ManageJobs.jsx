@@ -47,13 +47,13 @@ export default function ManageJobs() {
       </td>
       <td>
         <div className="flex gap-2">
-          <Link to={`edit-job/${job.id}`} className="inside_table_icon">
+          <Link to={`edit-job/${job.id}`} className="btn_icon">
             <RiEdit2Fill />
           </Link>
-          <Link to={`/jobs/${job.id}`} className="inside_table_icon">
+          <Link to={`/jobs/${job.id}`} className="btn_icon">
             <FaEye />
           </Link>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>
