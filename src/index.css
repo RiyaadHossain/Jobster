@@ -24,12 +24,13 @@
   [type="time"],
   [type="week"],
   select,
+  textarea,
   select[multiple] {
-    @apply text-lg py-4 px-5 border border-opacity-20 focus:border-opacity-60 focus:ring-0 rounded-full font-light;
+    @apply text-lg py-4 px-5 border border-opacity-20 rounded-full font-light ring-0 outline-0 focus:border-opacity-70 focus:ring-0 focus:outline-0;
   }
 
   textarea {
-    @apply text-lg py-2 px-5  border border-opacity-20 focus:border-opacity-60 focus:ring-0 rounded-3xl;
+    @apply rounded-3xl;
   }
 
   [type="checkbox"],
@@ -48,15 +49,19 @@
 }
 
 .btn_secondary {
-  @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all hover:bg-[#002745];
+  @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all hover:bg-darkNavy;
 }
 
 .btn_accent {
-  @apply px-6 py-4 font-semibold bg-primaryLight text-primaryDark rounded-full transition-all hover:text-white hover:bg-primary;
+  @apply px-6 py-4 font-medium bg-primaryLight text-primaryDark rounded-full transition-all cursor-pointer hover:text-white hover:bg-primary;
 }
 
 .btn_sm {
-  @apply px-[10px] py-[2px] bg-primary text-white rounded-full text-xs hover:bg-[#002745] transition-all;
+  @apply px-[10px] py-[2px] bg-primary text-white rounded-full text-xs hover:bg-darkNavy transition-all;
+}
+
+.btn_icon {
+  @apply bg-primaryLight p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer;
 }
 
 /* Responsive Media */

@@ -1,11 +1,11 @@
-import { ENUM_NOTIFICATION_TYPE } from "../../../../../enums/notificationType";
+import { ENUM_NOTIFICATION_TYPE } from "@/enums/notificationType";
 import { Link } from "react-router-dom";
 import { FaBriefcase, FaEye, FaInbox } from "react-icons/fa";
 import {
   BsFillClipboard2CheckFill,
   BsFillClipboard2XFill,
 } from "react-icons/bs";
-import { pluralRole } from "../../../../../utils/pluralRole";
+import { pluralRole } from "@/utils/pluralRole";
 
 export default function GetNotificationContent({ notification }) {
   let content = <span className="normal_text">Invalid notification type</span>;

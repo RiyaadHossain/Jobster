@@ -1,34 +1,34 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Main from "../layouts/main/Main";
-import Home from "../pages/home/Home";
-import ContactPage from "../pages/contact/ContactPage";
-import Dashboard from "../layouts/dashboard/Dashboard";
-import DashboardHome from "../layouts/dashboard/DashboardHome";
-import NotFound from "../components/404/NotFound";
+import Main from "@/layouts/main/Main";
+import Home from "@/pages/home/Home";
+import ContactPage from "@/pages/contact/ContactPage";
+import Dashboard from "@/layouts/dashboard/Dashboard";
+import DashboardHome from "@/layouts/dashboard/DashboardHome";
+import NotFound from "@/components/404/NotFound";
 
-import CandidateListing from "../pages/candidate-listing/CandidateListing";
-import CandidateDetails from "../pages/candidate-details/CandidateDetails";
+import CandidateListing from "@/pages/candidate-listing/CandidateListing";
+import CandidateDetails from "@/pages/candidate-details/CandidateDetails";
 
-import CompanyListing from "../pages/company-listing/CompanyListing";
-import CompanyDetails from "../pages/company-details/CompanyDetails";
+import CompanyListing from "@/pages/company-listing/CompanyListing";
+import CompanyDetails from "@/pages/company-details/CompanyDetails";
 
-import JobListing from "../pages/job-listing/JobListing";
-import JobDetails from "../pages/job-details/JobDetails";
+import JobListing from "@/pages/job-listing/JobListing";
+import JobDetails from "@/pages/job-details/JobDetails";
 
-import Applications from "../pages/dashboard/candidate/applications/Applications";
-import FavouriteJobs from "../pages/dashboard/candidate/favourite-jobs/FavouriteJobs";
-import CandidateEditProfile from "../pages/dashboard/candidate/candidate-edit-profile/CandidateEditProfile";
+import Applications from "@/pages/dashboard/candidate/applications/Applications";
+import FavouriteJobs from "@/pages/dashboard/candidate/favourite-jobs/FavouriteJobs";
+import CandidateEditProfile from "@/pages/dashboard/candidate/candidate-edit-profile/CandidateEditProfile";
 
-import Inbox from "../pages/dashboard/common/inbox/Inbox";
-import Notification from "../pages/dashboard/common/notification/Notification";
-import ChangePassword from "../pages/dashboard/common/change-password/ChangePassword";
+import Inbox from "@/pages/dashboard/common/inbox/Inbox";
+import Notification from "@/pages/dashboard/common/notification/Notification";
+import ChangePassword from "@/pages/dashboard/common/change-password/ChangePassword";
 
-import CompanyEditProfile from "../pages/dashboard/company/company-edit-profile/CompanyEditProfile";
-import NewJobOffers from "../pages/dashboard/company/new-job-offer/NewJobOffers";
-import ManageJobs from "../pages/dashboard/company/manage-jobs/ManageJobs";
-import Candidates from "../pages/dashboard/company/candidates/Candidates";
-import EditJobOffer from "../pages/dashboard/company/manage-jobs/edit-job-offer/EditJobOffer";
+import CompanyEditProfile from "@/pages/dashboard/company/company-edit-profile/CompanyEditProfile";
+import NewJobOffers from "@/pages/dashboard/company/new-job-offer/NewJobOffers";
+import ManageJobs from "@/pages/dashboard/company/manage-jobs/ManageJobs";
+import Candidates from "@/pages/dashboard/company/candidates/Candidates";
+import EditJobOffer from "@/pages/dashboard/company/manage-jobs/edit-job-offer/EditJobOffer";
 
 const routes = createBrowserRouter([
   {
@@ -115,7 +115,7 @@ const routes = createBrowserRouter([
           },
           {
             path: "manage-jobs/edit-job/:id",
-            element: <EditJobOffer />
+            element: <EditJobOffer />,
           },
           {
             path: "candidates",

@@ -1,15 +1,15 @@
 import React, { useLayoutEffect, useRef } from "react";
-import hero_logo_1 from "../../../assets/hero-logo-1.png";
-import hero_logo_2 from "../../../assets/hero-logo-2.png";
-import hero_logo_3 from "../../../assets/hero-logo-3.png";
-import hero_logo_4 from "../../../assets/hero-logo-4.png";
-import hero_logo_5 from "../../../assets/hero-logo-5.png";
-import hero_logo_6 from "../../../assets/hero-logo-6.png";
-import hero1 from "../../../assets/hero-01.jpg";
-import hero2 from "../../../assets/hero-02.jpg";
-import hero3 from "../../../assets/hero-03.jpg";
+import hero_logo_1 from "@/assets/hero-logo-1.png";
+import hero_logo_2 from "@/assets/hero-logo-2.png";
+import hero_logo_3 from "@/assets/hero-logo-3.png";
+import hero_logo_4 from "@/assets/hero-logo-4.png";
+import hero_logo_5 from "@/assets/hero-logo-5.png";
+import hero_logo_6 from "@/assets/hero-logo-6.png";
+import hero1 from "@/assets/hero-01.jpg";
+import hero2 from "@/assets/hero-02.jpg";
+import hero3 from "@/assets/hero-03.jpg";
 import { BiSearchAlt } from "react-icons/bi";
-import Badge from "../../../components/ui/Badge";
+import Badge from "@/components/ui/Badge";
 import { gsap } from "gsap";
 
 const Landing = () => {

@@ -5,7 +5,7 @@ import {
   BsFillClipboard2CheckFill,
   BsFillClipboard2XFill,
 } from "react-icons/bs";
-import { pluralRole } from "../utils/pluralRole";
+import { pluralRole } from "@/utils/pluralRole";
 
 /* Tailwind Calsses */
 const icon_class = "mr-3 opacity-[0.8]";

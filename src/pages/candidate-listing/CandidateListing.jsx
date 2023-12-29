@@ -1,7 +1,7 @@
-import ListingPageContainer from "../../components/other/listing-page-container/ListingPageContainer";
-import SidebarSearch from "../../components/other/sidebar-search/SidebarSearch";
-import PageHeader from "../../components/ui/PageHeader";
-import { candidatesData } from "../../data/candidates";
+import ListingPageContainer from "@/components/other/listing-page-container/ListingPageContainer";
+import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
+import PageHeader from "@/components/ui/PageHeader";
+import { candidatesData } from "@/data/candidates";
 import CandidateCard from "./components/CandidateCard";
 
 export default function CandidateListing() {
@@ -26,7 +26,7 @@ export default function CandidateListing() {
           </div>
         }
         cards={candidatesData.map((candidate, i) => (
-          <CandidateCard candidateInfo={candidate} key={i}/>
+          <CandidateCard candidateInfo={candidate} key={i} />
         ))}
         moduleName="Candidate"
         total={candidatesData.length}

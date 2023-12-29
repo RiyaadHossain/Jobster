@@ -1,9 +1,11 @@
 import Modal from "../modal/Modal";
-import signInImg from "../../assets/signin-fig.png";
-import { ENUM_AUTH_MODAL } from "../../enums/authModal";
+import signInImg from "@/assets/signin-fig.png";
+import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoMail, IoLockClosed } from "react-icons/io5";
 import Form from "../form/Form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signInSchema } from "@/schema/signIn";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_UP);
@@ -30,16 +32,18 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
         <img src={signInImg} alt="" className="modal_img" />
       </div>
       <h5 className="modal_title">Welcome Back!</h5>
-      <Form submitHandler={onSubmit} className="w-full mt-6">
+      <Form
+        submitHandler={onSubmit}
+        resolver={yupResolver(signInSchema)}
+        className="w-full mt-6"
+      >
         <FormInputIcon
-          id="email_sign_in"
           name="email"
           placeholder="Email"
           type="email"
           icon={<IoMail className="input_icon" size={18} />}
         />
         <FormInputIcon
-          id="password_sign_in"
           name="password"
           placeholder="Password"
           type="password"

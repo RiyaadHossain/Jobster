@@ -1,14 +1,11 @@
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import JobsterAreaChart from "../../../../components/dashboard/JobsterAreaChart";
-import LinkWithArrow from "../../../../components/ui/LinkWithArrow";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import JobsterAreaChart from "@/components/dashboard/JobsterAreaChart";
+import LinkWithArrow from "@/components/ui/LinkWithArrow";
 import RecentApplicationsTable from "./components/RecentApplicationsTable";
-import { statsData } from "../../../../data/stats";
-import GetDashboardStats from "../../../../helpers/GetDashboardStats";
-import {
-  applicationData,
-  profileVisitorData,
-} from "../../../../constants/statData";
-import { notificationsData } from "../../../../data/notifications";
+import { statsData } from "@/data/stats";
+import GetDashboardStats from "@/helpers/GetDashboardStats";
+import { applicationData, profileVisitorData } from "@/constants/statData";
+import { notificationsData } from "@/data/notifications";
 import RecentNotificationRow from "./components/RecentNotificationRow";
 
 export default function CandidateDashboard() {

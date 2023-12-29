@@ -1,7 +1,7 @@
-import SectionHeader from "../../../components/ui/SectionHeader";
+import SectionHeader from "@/components/ui/SectionHeader";
+import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
+import { companiesData } from "@/data/companies";
 import CompanyCard from "../../company-listing/components/CompanyCard";
-import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
-import { companiesData } from "../../../data/companies";
 
 export default function FeaturedCompany() {
   return (

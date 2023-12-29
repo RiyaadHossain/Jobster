@@ -1,0 +1,87 @@
+0000000000000000000000000000000000000000 baedf10d7b2ada93438fbcfd969336d0a174f3f9 RiyaadHossain <riyadhossain.dev@gmail.com> 1672063923 +0600	commit (initial): Starter template initialized
+baedf10d7b2ada93438fbcfd969336d0a174f3f9 0000000000000000000000000000000000000000 RiyaadHossain <riyadhossain.dev@gmail.com> 1672063932 +0600	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 baedf10d7b2ada93438fbcfd969336d0a174f3f9 RiyaadHossain <riyadhossain.dev@gmail.com> 1672063932 +0600	Branch: renamed refs/heads/master to refs/heads/main
+baedf10d7b2ada93438fbcfd969336d0a174f3f9 0000000000000000000000000000000000000000 RiyaadHossain <riyadhossain.dev@gmail.com> 1672063937 +0600	Branch: renamed refs/heads/main to refs/heads/main
+baedf10d7b2ada93438fbcfd969336d0a174f3f9 baedf10d7b2ada93438fbcfd969336d0a174f3f9 RiyaadHossain <riyadhossain.dev@gmail.com> 1672063937 +0600	Branch: renamed refs/heads/main to refs/heads/main
+baedf10d7b2ada93438fbcfd969336d0a174f3f9 17863e7a34b1c6d0569857a7b71e0d93e6f53477 RiyaadHossain <riyadhossain.dev@gmail.com> 1672066581 +0600	commit: config store, authSlice, config firebase, user sign up
+17863e7a34b1c6d0569857a7b71e0d93e6f53477 6197fe52f688a289a30385260c4e1da74a5b3f4a RiyaadHossain <riyadhossain.dev@gmail.com> 1672066848 +0600	commit: sign in
+6197fe52f688a289a30385260c4e1da74a5b3f4a 81c31ca1e44a03c1c832e4fa824356da2b4b209e RiyaadHossain <riyadhossain.dev@gmail.com> 1672068718 +0600	commit: signout button and redirect
+81c31ca1e44a03c1c832e4fa824356da2b4b209e d56013806beb99ceb0c547f9783155b2397fd2df RiyaadHossain <riyadhossain.dev@gmail.com> 1672120132 +0600	commit: user persistency
+d56013806beb99ceb0c547f9783155b2397fd2df 1ec2cd6c9134255463fef288726546174ff5fc11 RiyaadHossain <riyadhossain.dev@gmail.com> 1672124894 +0600	commit: register candidate added
+1ec2cd6c9134255463fef288726546174ff5fc11 0086d4b3cefd40abd3da56421556dd2e34326980 RiyaadHossain <riyadhossain.dev@gmail.com> 1672125553 +0600	commit: error handled for login using toastfy
+0086d4b3cefd40abd3da56421556dd2e34326980 4fe4a7b55f488c7c2f782b5918ea6f7b08ffaf32 RiyaadHossain <riyadhossain.dev@gmail.com> 1672567369 +0600	commit: register and user management
+4fe4a7b55f488c7c2f782b5918ea6f7b08ffaf32 477d85e2fcb59399796077e2ea951e530672610b RiyaadHossain <riyadhossain.dev@gmail.com> 1672675030 +0600	commit: add job && get jobs && get job details
+477d85e2fcb59399796077e2ea951e530672610b 2d03b4bc39dbc888ce8d24b8796b26b91a21f7f7 RiyaadHossain <riyadhossain.dev@gmail.com> 1672902120 +0600	commit: Refactoring
+2d03b4bc39dbc888ce8d24b8796b26b91a21f7f7 ffb20f83b63e63f0ba84f6c93e188a6d72349e0d RiyaadHossain <riyadhossain.dev@gmail.com> 1672917253 +0600	commit: QA - option
+ffb20f83b63e63f0ba84f6c93e188a6d72349e0d 9e88ba686f0bc10f2904c6e2d4b3c59d00a20d0f RiyaadHossain <riyadhossain.dev@gmail.com> 1672918330 +0600	commit: ans-ques = refactor
+9e88ba686f0bc10f2904c6e2d4b3c59d00a20d0f 27ea2b2b0b8777a2f568496bea5750bd143ba244 RiyaadHossain <riyadhossain.dev@gmail.com> 1672932818 +0600	commit: full project done
+27ea2b2b0b8777a2f568496bea5750bd143ba244 a3ab04ce00828aed7c2c78edbf0cf84b4b14c6e5 RiyaadHossain <riyadhossain.dev@gmail.com> 1672989203 +0600	commit: full project developed
+a3ab04ce00828aed7c2c78edbf0cf84b4b14c6e5 06cb3332d4e19b73acd6b1ca72cbce00fc6e4e2b RiyaadHossain <riyadhossain.dev@gmail.com> 1672995214 +0600	commit: Editing REadme.md file
+06cb3332d4e19b73acd6b1ca72cbce00fc6e4e2b e968e829c76e64e79312325342596a63aba39088 RiyaadHossain <riyadhossain.dev@gmail.com> 1672997185 +0600	commit: Image add
+e968e829c76e64e79312325342596a63aba39088 99b962e2599c8fd93bb923921732ddc56292ce60 RiyaadHossain <riyadhossain.dev@gmail.com> 1672998660 +0600	commit: readme.md file updated
+99b962e2599c8fd93bb923921732ddc56292ce60 86a249adbb9e388ab1ec6473487d219a3fbada0b RiyaadHossain <riyadhossain.dev@gmail.com> 1672999044 +0600	commit: readme.md file updated
+86a249adbb9e388ab1ec6473487d219a3fbada0b 568396c238db721bfbd6d8134018f88efdc8d84f RiyaadHossain <riyadhossain.dev@gmail.com> 1675587186 +0600	commit: Company info added
+568396c238db721bfbd6d8134018f88efdc8d84f 519db19c4c35435354592897272e77dea691b0c7 RiyaadHossain <riyadhossain.dev@gmail.com> 1675587202 +0600	pull origin main: Merge made by the 'ort' strategy.
+519db19c4c35435354592897272e77dea691b0c7 4c8c7bad14f8e8e482cdb385c38897d3cf27fdf3 RiyaadHossain <riyadhossain.dev@gmail.com> 1675613669 +0600	commit: applied jobs bug fixed, dashboard home page, total applicants
+4c8c7bad14f8e8e482cdb385c38897d3cf27fdf3 0e794c944e9a7df55ab9c7c3ac4ee3f07b178263 RiyaadHossain <riyadhossain.dev@gmail.com> 1675672728 +0600	commit: Job Description changed, application can be only viewed by jobHolder
+0e794c944e9a7df55ab9c7c3ac4ee3f07b178263 3d0ca27ad72fa0c81e86546259545e0618242ed8 RiyaadHossain <riyadhossain.dev@gmail.com> 1675676329 +0600	commit: Static page - applcants, applicant details
+3d0ca27ad72fa0c81e86546259545e0618242ed8 e1bc7786ee566d51cb4a7c0f53ecf56b5ec2bfe1 RiyaadHossain <riyadhossain.dev@gmail.com> 1675683307 +0600	commit: Candidate Registration form updated
+e1bc7786ee566d51cb4a7c0f53ecf56b5ec2bfe1 64a7b63ce5891d55f54defc5e72c75912ff85afc RiyaadHossain <riyadhossain.dev@gmail.com> 1675735325 +0600	commit: dynamic - applicants list & applicat details page
+64a7b63ce5891d55f54defc5e72c75912ff85afc ba9df491e6c91ba120371ab5ec69c9d60add2eff RiyaadHossain <riyadhossain.dev@gmail.com> 1675737891 +0600	commit: My profile page added
+ba9df491e6c91ba120371ab5ec69c9d60add2eff e6c901ce6aabf5a91ce90218b8b860feed598c1c RiyaadHossain <riyadhossain.dev@gmail.com> 1675738356 +0600	commit: Image URL provision added & URL changed
+e6c901ce6aabf5a91ce90218b8b860feed598c1c ad71f61ec35f275f22863c80b50da7d3e59edefd RiyaadHossain <riyadhossain.dev@gmail.com> 1675780639 +0600	commit: Some previous bugs fixed
+ad71f61ec35f275f22863c80b50da7d3e59edefd 6fbcf064310471d1c01717b3531b42406667371f RiyaadHossain <riyadhossain.dev@gmail.com> 1675780714 +0600	pull origin main: Merge made by the 'ort' strategy.
+6fbcf064310471d1c01717b3531b42406667371f d7d18fb4fc1f3a9522f9f46aae5a7fbd33751ba8 RiyaadHossain <riyadhossain.dev@gmail.com> 1700027814 +0600	commit: New Job Card Design
+d7d18fb4fc1f3a9522f9f46aae5a7fbd33751ba8 bce500263f513c892e512e7c025d039873772080 RiyaadHossain <riyadhossain.dev@gmail.com> 1700029955 +0600	commit: Category section added
+bce500263f513c892e512e7c025d039873772080 caf59a4f3033bd1f18aae84311c034b55620dffc RiyaadHossain <riyadhossain.dev@gmail.com> 1700128260 +0600	commit: Landing page
+caf59a4f3033bd1f18aae84311c034b55620dffc b65cc16f88a0614e9dbf755353105c807866813a RiyaadHossain <riyadhossain.dev@gmail.com> 1700377096 +0600	commit: Hamberger menu added
+b65cc16f88a0614e9dbf755353105c807866813a 88bc711fb53c4b3e47540cc806b73e3887f16719 RiyaadHossain <riyadhossain.dev@gmail.com> 1700381947 +0600	commit: file name updated
+88bc711fb53c4b3e47540cc806b73e3887f16719 35ac0f054bb1b2cc8ca524c4892ed74fb1c0b918 RiyaadHossain <riyadhossain.dev@gmail.com> 1700460300 +0600	commit: Navbar refactored
+35ac0f054bb1b2cc8ca524c4892ed74fb1c0b918 5ee4481b4d5d1c2d70f15648cf477aff2a9746b8 RiyaadHossain <riyadhossain.dev@gmail.com> 1700465068 +0600	commit: Job Listing page
+5ee4481b4d5d1c2d70f15648cf477aff2a9746b8 4df4f4ba0e9f9ee44d6ec6730275fccb4a447f7f RiyaadHossain <riyadhossain.dev@gmail.com> 1700545305 +0600	commit: Job listing page designed
+4df4f4ba0e9f9ee44d6ec6730275fccb4a447f7f 944a6ca1623ab64650230cc33613b159becdb996 RiyaadHossain <riyadhossain.dev@gmail.com> 1700549824 +0600	commit: Company Listing Page
+944a6ca1623ab64650230cc33613b159becdb996 44cc47ab1a264fcc080c8ee0771e084028021dd5 RiyaadHossain <riyadhossain.dev@gmail.com> 1700709685 +0600	commit: Job Details page
+44cc47ab1a264fcc080c8ee0771e084028021dd5 943a85a19fb6112eb5bc6c175f2a4b7f65148b50 RiyaadHossain <riyadhossain.dev@gmail.com> 1700710699 +0600	commit: Job Details page Refactored
+943a85a19fb6112eb5bc6c175f2a4b7f65148b50 7aad794ce9e1b9502d6c08cb1155229f368f0357 RiyaadHossain <riyadhossain.dev@gmail.com> 1700711401 +0600	commit: Refactored grid system in Home page
+7aad794ce9e1b9502d6c08cb1155229f368f0357 c450406ffd3805475fe68490d26f3a2382e3f105 RiyaadHossain <riyadhossain.dev@gmail.com> 1700723431 +0600	commit: Candidate Details
+c450406ffd3805475fe68490d26f3a2382e3f105 3917283c2ad957c89f11003f3486fcd49d66ef73 RiyaadHossain <riyadhossain.dev@gmail.com> 1700807195 +0600	commit: company Details page - on progress
+3917283c2ad957c89f11003f3486fcd49d66ef73 abcb1220329ae1add4f25a8e4746a05898c7f758 RiyaadHossain <riyadhossain.dev@gmail.com> 1700880351 +0600	commit: company Details page - completed
+abcb1220329ae1add4f25a8e4746a05898c7f758 408dc63f670ffdf69498e2533228ab539c0f1449 RiyaadHossain <riyadhossain.dev@gmail.com> 1700890653 +0600	commit: Contact Page
+408dc63f670ffdf69498e2533228ab539c0f1449 db84977283db2ebaf31ca4e6462cf448e72f9ffe RiyaadHossain <riyadhossain.dev@gmail.com> 1700890655 +0600	commit: Contact Page
+db84977283db2ebaf31ca4e6462cf448e72f9ffe 8260aaaa9b7f7d28086f633471e2cfbc2a03c4ef RiyaadHossain <riyadhossain.dev@gmail.com> 1700981831 +0600	commit: Dashboard on the Candidate side - sidebar completed
+8260aaaa9b7f7d28086f633471e2cfbc2a03c4ef b54f866dbba7d079b75e75398be2ab9a34e03ac9 RiyaadHossain <riyadhossain.dev@gmail.com> 1700996913 +0600	commit: Dashboard home page card design
+b54f866dbba7d079b75e75398be2ab9a34e03ac9 39768e4a788cb30ad48162f36cdeec029c42dfb6 RiyaadHossain <riyadhossain.dev@gmail.com> 1701058923 +0600	commit: Dashboard Home page
+39768e4a788cb30ad48162f36cdeec029c42dfb6 eafbca4d3f73310a8c606eaf49c77485c066daaa RiyaadHossain <riyadhossain.dev@gmail.com> 1701149144 +0600	commit: Applications Page Completed
+eafbca4d3f73310a8c606eaf49c77485c066daaa 08fb6fc414513dc14225341a8a91d8fc6f2f0ff4 RiyaadHossain <riyadhossain.dev@gmail.com> 1701164048 +0600	commit: Edit profile page - on progress
+08fb6fc414513dc14225341a8a91d8fc6f2f0ff4 04ac24d617a34fa768f2436cd2f9a5435e12b77b RiyaadHossain <riyadhossain.dev@gmail.com> 1701320297 +0600	commit: AddSkill component
+04ac24d617a34fa768f2436cd2f9a5435e12b77b cd7911bd4b8d5143cc2ed09c0e1721e8d5284748 RiyaadHossain <riyadhossain.dev@gmail.com> 1701674031 +0600	commit: Edit profile page - Candidates
+cd7911bd4b8d5143cc2ed09c0e1721e8d5284748 3e5a5192c7b49373de05b3cffdadf525251496a0 RiyaadHossain <riyadhossain.dev@gmail.com> 1702105582 +0600	commit: Candidate Dashboard completed
+3e5a5192c7b49373de05b3cffdadf525251496a0 1482fa874d2be7060f4bbf85b1a7719b1799ad03 RiyaadHossain <riyadhossain.dev@gmail.com> 1702114811 +0600	commit: Manage Jobs page
+1482fa874d2be7060f4bbf85b1a7719b1799ad03 cf8b3289fcd187ae9e8768257d4e70b4eee04ca9 RiyaadHossain <riyadhossain.dev@gmail.com> 1702120151 +0600	commit: Candidates Page
+cf8b3289fcd187ae9e8768257d4e70b4eee04ca9 686e9ce2f33986cd76f41ddbfe19c4c975efc8e8 RiyaadHossain <riyadhossain.dev@gmail.com> 1702189849 +0600	commit: Dashboard Completed
+686e9ce2f33986cd76f41ddbfe19c4c975efc8e8 a974919b4505259070560cc7a52a09f1968663f2 RiyaadHossain <riyadhossain.dev@gmail.com> 1702449836 +0600	commit: Modal component added
+a974919b4505259070560cc7a52a09f1968663f2 f9738564d269cf491e880c463885e518e01ab2f1 RiyaadHossain <riyadhossain.dev@gmail.com> 1702457854 +0600	commit: Full Static Design Completed
+f9738564d269cf491e880c463885e518e01ab2f1 a64a140a5ada96aa8876fa94cae6822556ecc11d RiyaadHossain <riyadhossain.dev@gmail.com> 1702637737 +0600	commit: Restructure the architecture
+a64a140a5ada96aa8876fa94cae6822556ecc11d c80c886b80f63c6d76ebb0080fccfb9b9e7c8720 RiyaadHossain <riyadhossain.dev@gmail.com> 1702790721 +0600	commit: Details page refactored
+c80c886b80f63c6d76ebb0080fccfb9b9e7c8720 d6558ce80a9f5381f225dfae5056bc0ab939a628 RiyaadHossain <riyadhossain.dev@gmail.com> 1702806187 +0600	commit: Listing Pages Refactored
+d6558ce80a9f5381f225dfae5056bc0ab939a628 9467de49a1c94a8996ab3bbf94f07dde9288384d RiyaadHossain <riyadhossain.dev@gmail.com> 1702811394 +0600	commit: Reuseable components done except dashboard
+9467de49a1c94a8996ab3bbf94f07dde9288384d 994657fd639b03cae815a02e659cad760d9f3a35 RiyaadHossain <riyadhossain.dev@gmail.com> 1703312274 +0600	commit: Refactoring - reuseable classes, components; optimize - tailwindcss & index.css
+994657fd639b03cae815a02e659cad760d9f3a35 28cb9791170fe839976be1e01c888b4572ed0f2b RiyaadHossain <riyadhossain.dev@gmail.com> 1703416414 +0600	commit: Using JSON data - ongoing:
+28cb9791170fe839976be1e01c888b4572ed0f2b 4426e7b761bda18a9699cdc89c6e1130b5699eda RiyaadHossain <riyadhossain.dev@gmail.com> 1703480856 +0600	commit: Using JSON data - completed
+4426e7b761bda18a9699cdc89c6e1130b5699eda 21740e2620c9a83db14c776ded0f53d254325e64 RiyaadHossain <riyadhossain.dev@gmail.com> 1703483436 +0600	commit: SignUp + Login form input updated
+21740e2620c9a83db14c776ded0f53d254325e64 76ae2b29d5225bd6c5e2562d15271b5456a50e89 RiyaadHossain <riyadhossain.dev@gmail.com> 1703572423 +0600	commit: react hook form integration - on progress
+76ae2b29d5225bd6c5e2562d15271b5456a50e89 1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 RiyaadHossain <riyadhossain.dev@gmail.com> 1703646769 +0600	commit: React Hook Form - Data receiving in onSubmit func
+1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647115 +0600	checkout: moving from main to new-branch
+1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 0000000000000000000000000000000000000000 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647227 +0600	Branch: renamed refs/heads/new-branch to refs/heads/development
+0000000000000000000000000000000000000000 1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647227 +0600	Branch: renamed refs/heads/new-branch to refs/heads/development
+1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647303 +0600	checkout: moving from development to development
+1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647316 +0600	checkout: moving from development to main
+1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647350 +0600	checkout: moving from main to development
+1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647426 +0600	checkout: moving from development to main
+1eef25cd3eca934c1e9cba63eee4d37200ff0ab6 8da4688eb9b322bd2fc23e05cc68b8295ddf7391 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647437 +0600	pull: Fast-forward
+8da4688eb9b322bd2fc23e05cc68b8295ddf7391 8da4688eb9b322bd2fc23e05cc68b8295ddf7391 RiyaadHossain <riyadhossain.dev@gmail.com> 1703647655 +0600	checkout: moving from main to development
+8da4688eb9b322bd2fc23e05cc68b8295ddf7391 ed3eb06f29e14917aeb449f6a94da731cc13dbc2 RiyaadHossain <riyadhossain.dev@gmail.com> 1703757667 +0600	commit: Update new Job offer form
+ed3eb06f29e14917aeb449f6a94da731cc13dbc2 76c003a5ed44a10d89616926fcede68b5dc65d92 RiyaadHossain <riyadhossain.dev@gmail.com> 1703819330 +0600	commit: Optimize notification tooltip row content
+76c003a5ed44a10d89616926fcede68b5dc65d92 0e8bca8c9e3922b16f3e62d4a8a329769211b41d RiyaadHossain <riyadhossain.dev@gmail.com> 1703824103 +0600	commit: Resume Upload feature
+0e8bca8c9e3922b16f3e62d4a8a329769211b41d 6fe1d913f5e36008d842e8264b192ef565e6590c RiyaadHossain <riyadhossain.dev@gmail.com> 1703826142 +0600	commit: FormTableRow refactored
+                                                                                                                                                                      

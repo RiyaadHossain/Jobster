@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-import Loading from "../components/loader/Loading";
+import Loading from "@/components/loader/Loading";
 
 const PrivateRoute = ({ children }) => {
   const { pathname } = useLocation();

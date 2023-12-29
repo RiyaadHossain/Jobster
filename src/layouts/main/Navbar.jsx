@@ -3,15 +3,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { toast } from "react-hot-toast";
 import Sidebar from "./Sidebar";
-import { navbarItems } from "../../constants/navbarItems";
-import { ENUM_AUTH_MODAL } from "../../enums/authModal";
+import { navbarItems } from "@/constants/navbarItems";
+import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import { Link, useLocation } from "react-router-dom";
-import SignInModal from "../../components/auth-modals/SignInModal";
-import SignUpModal from "../../components/auth-modals/SignUpModal";
-import ForgetPassModal from "../../components/auth-modals/ForgetPassModal";
-import ProfileMenu from "../components/ProfileMenu";
-import Logo from "../../components/ui/Logo";
+import SignInModal from "@/components/auth-modals/SignInModal";
+import SignUpModal from "@/components/auth-modals/SignUpModal";
+import ForgetPassModal from "@/components/auth-modals/ForgetPassModal";
+import Logo from "@/components/ui/Logo";
 import SignInButton from "./components/SignInButton";
+import ProfileMenu from "../components/ProfileMenu";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navbarRef = useRef(null);

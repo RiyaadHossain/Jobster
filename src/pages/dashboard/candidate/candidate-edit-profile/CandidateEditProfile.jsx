@@ -1,15 +1,18 @@
 import "./module.style.css";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import { useState } from "react";
-import { industries, location } from "../../../../constants/jobInfo";
-import FormInput from "../../../../components/form/FormInput";
-import FormTextarea from "../../../../components/form/FormTextarea";
-import FormSelect from "../../../../components/form/FormSelect";
-import FormImg from "../../../../components/form/FormImg";
-import AddSkill from "../../../../components/dashboard/AddSkill";
-import AddExp from "../../../../components/dashboard/AddExp";
-import AddEducation from "../../../../components/dashboard/AddEducation";
-import Form from "../../../../components/form/Form";
+import { industries, location } from "@/constants/jobInfo";
+import FormInput from "@/components/form/FormInput";
+import FormTextarea from "@/components/form/FormTextarea";
+import FormSelect from "@/components/form/FormSelect";
+import FormImg from "@/components/form/FormImg";
+import Form from "@/components/form/Form";
+import AddSkill from "./components/AddSkill";
+import AddExperience from "./components/AddExperience";
+import AddEducation from "./components/AddEducation";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { candidateProfileSchema } from "@/schema/candidateProfile";
+import AddResume from "./components/AddResume";
 
 export default function CandidateEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
@@ -19,7 +22,7 @@ export default function CandidateEditProfile() {
     try {
       console.log(data);
       // Add skills data as well
-      setSkills([])
+      setSkills([]);
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +36,10 @@ export default function CandidateEditProfile() {
       />
 
       <div className="">
-        <Form submitHandler={onSubmit}>
+        <Form
+          submitHandler={onSubmit}
+          resolver={yupResolver(candidateProfileSchema)}
+        >
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
@@ -74,8 +80,8 @@ export default function CandidateEditProfile() {
               />
               <FormTextarea
                 rows={6}
-                id="about"
-                name="about"
+                id="description"
+                name="description"
                 label="About"
                 placeholder="Bio"
                 mandatory={true}
@@ -126,27 +132,23 @@ export default function CandidateEditProfile() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Skills
-            </h2>
-
+            <h2 className="heading_2">Skills</h2>
             <AddSkill skills={skills} setSkills={setSkills} />
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Work Experience
-            </h2>
-
-            <AddExp />
+            <h2 className="heading_2">Work Experience</h2>
+            <AddExperience />
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold leading-7 tracking-tight mb-6">
-              Education & Training
-            </h2>
-
+            <h2 className="heading_2">Education & Training</h2>
             <AddEducation />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="heading_2">Resume</h2>
+            <AddResume />
           </div>
 
           <div className="mt-12">

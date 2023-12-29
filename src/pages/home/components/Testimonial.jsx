@@ -1,10 +1,10 @@
-import SectionHeader from "../../../components/ui/SectionHeader";
-import customer1 from "../../../assets/customer-1.png";
-import customer2 from "../../../assets/customer-2.png";
-import customer3 from "../../../assets/customer-3.png";
-import customer4 from "../../../assets/customer-4.png";
-import customer5 from "../../../assets/customer-5.png";
-import customer6 from "../../../assets/customer-6.png";
+import SectionHeader from "@/components/ui/SectionHeader";
+import customer1 from "@/assets/customer-1.png";
+import customer2 from "@/assets/customer-2.png";
+import customer3 from "@/assets/customer-3.png";
+import customer4 from "@/assets/customer-4.png";
+import customer5 from "@/assets/customer-5.png";
+import customer6 from "@/assets/customer-6.png";
 
 export default function Testimonial() {
   return (

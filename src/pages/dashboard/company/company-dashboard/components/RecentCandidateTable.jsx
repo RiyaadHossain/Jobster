@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaGlobeAsia } from "react-icons/fa";
-import { recentCandidates } from "../../../../../data/recentCandidates";
+import { recentCandidates } from "@/data/recentCandidates";
 
 export default function RecentCandidateTable() {
   return (

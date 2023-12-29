@@ -1,11 +1,10 @@
 import React from "react";
-import SectionHeader from "../../../components/ui/SectionHeader";
+import SectionHeader from "@/components/ui/SectionHeader";
 import JobCard from "../../job-listing/components/JobCard";
-import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
-import { jobsData } from "../../../data/jobs";
+import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
+import { jobsData } from "@/data/jobs";
 
 export default function FeaturedJob() {
-
   return (
     <section className="max_container">
       <SectionHeader
@@ -18,7 +17,7 @@ export default function FeaturedJob() {
             key={i}
             className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
           >
-            <JobCard jobInfo={job}/>
+            <JobCard jobInfo={job} />
           </div>
         ))}
       </div>

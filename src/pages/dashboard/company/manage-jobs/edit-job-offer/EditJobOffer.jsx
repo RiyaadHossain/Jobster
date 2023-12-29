@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import DashboardHeader from "../../../../../components/dashboard/DashboardHeader";
-import FormInput from "../../../../../components/form/FormInput";
-import FormSelect from "../../../../../components/form/FormSelect";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import FormInput from "@/components/form/FormInput";
+import FormSelect from "@/components/form/FormSelect";
 import {
   employmentTypeOpt,
   expLevelOpt,
   industries,
   location,
-} from "../../../../../constants/jobInfo";
-import FormTextarea from "../../../../../components/form/FormTextarea";
-import FormImg from "../../../../../components/form/FormImg";
-import Form from "../../../../../components/form/Form";
+} from "@/constants/jobInfo";
+import FormTextarea from "@/components/form/FormTextarea";
+import FormImg from "@/components/form/FormImg";
+import Form from "@/components/form/Form";
 
 export default function EditJobOffer() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
@@ -23,7 +23,7 @@ export default function EditJobOffer() {
     }
   };
 
-  const defaultValues = {}
+  const defaultValues = {};
 
   return (
     <div>

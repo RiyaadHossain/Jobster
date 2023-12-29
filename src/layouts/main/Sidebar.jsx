@@ -1,6 +1,6 @@
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import { navbarItems } from "../../constants/navbarItems";
+import { navbarItems } from "@/constants/navbarItems";
 
 export default function Sidebar({ menuOpen, toggleMenu }) {
   return (

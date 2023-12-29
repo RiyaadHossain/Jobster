@@ -1,6 +1,6 @@
 import { FaEye, FaGlobeAmericas } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { recentApplications } from "../../../../../data/recentApplications";
+import { recentApplications } from "@/data/recentApplications";
 
 export default function RecentApplicationsTable() {
   return (
@@ -52,10 +52,7 @@ export default function RecentApplicationsTable() {
 
             <td className="w-[12%]">
               <div className="flex justify-end">
-                <Link
-                  to={`/jobs/${application.id}`}
-                  className="inside_table_icon"
-                >
+                <Link to={`/jobs/${application.id}`} className="btn_icon">
                   <FaEye className="" />
                 </Link>
               </div>

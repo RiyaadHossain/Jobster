@@ -1,6 +1,6 @@
 import React from "react";
-import DotBadge from "../../../components/ui/DotBadge";
-import { employmentType, expLevel } from "../../../constants/jobInfo";
+import DotBadge from "@/components/ui/DotBadge";
+import { employmentType, expLevel } from "@/constants/jobInfo";
 
 export default function SidebarFilter() {
   return (

@@ -1,0 +1,3 @@
+.field_error {
+  @apply text-red-500 text-[12px] ml-2;
+}

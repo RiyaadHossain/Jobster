@@ -1,9 +1,9 @@
-import PageHeader from "../../components/ui/PageHeader";
+import PageHeader from "@/components/ui/PageHeader";
 import { IoMailUnread } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 // import { HiMiniBuildingOffice2 } from "react-icons/hi2";
 import { HiBuildingOffice2 } from "react-icons/hi2";
-import SectionHeader from "../../components/ui/SectionHeader";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function ContactPage() {
   return (
