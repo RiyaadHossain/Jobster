@@ -1,17 +1,17 @@
 import "./module.style.css";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import { useState } from "react";
-import { industries, location } from "../../../../constants/jobInfo";
-import FormInput from "../../../../components/form/FormInput";
-import FormTextarea from "../../../../components/form/FormTextarea";
-import FormSelect from "../../../../components/form/FormSelect";
-import FormImg from "../../../../components/form/FormImg";
-import Form from "../../../../components/form/Form";
+import { industries, location } from "@/constants/jobInfo";
+import FormInput from "@/components/form/FormInput";
+import FormTextarea from "@/components/form/FormTextarea";
+import FormSelect from "@/components/form/FormSelect";
+import FormImg from "@/components/form/FormImg";
+import Form from "@/components/form/Form";
 import AddSkill from "./components/AddSkill";
 import AddExperience from "./components/AddExperience";
 import AddEducation from "./components/AddEducation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { candidateProfileSchema } from "../../../../schema/candidateProfile";
+import { candidateProfileSchema } from "@/schema/candidateProfile";
 import AddResume from "./components/AddResume";
 
 export default function CandidateEditProfile() {

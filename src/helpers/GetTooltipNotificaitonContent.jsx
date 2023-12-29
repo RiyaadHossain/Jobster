@@ -1,7 +1,7 @@
 import React from "react";
 import { ENUM_NOTIFICATION_TYPE } from "../enums/notificationType";
 import { Link } from "react-router-dom";
-import { pluralRole } from "../utils/pluralRole";
+import { pluralRole } from "@/utils/pluralRole";
 
 /* Tailwind Calsses */
 const highlighted_text = "text-black font-medium hover:text-grayColor";

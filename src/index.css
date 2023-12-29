@@ -26,7 +26,7 @@
   select,
   textarea,
   select[multiple] {
-    @apply text-lg py-4 px-5 border border-opacity-20 rounded-full font-light ring-0 outline-0 focus:ring-0 focus:outline-0;
+    @apply text-lg py-4 px-5 border border-opacity-20 rounded-full font-light ring-0 outline-0 focus:border-opacity-70 focus:ring-0 focus:outline-0;
   }
 
   textarea {

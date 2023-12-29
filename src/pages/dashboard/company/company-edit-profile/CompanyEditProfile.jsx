@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import FormSelect from "../../../../components/form/FormSelect";
-import FormImg from "../../../../components/form/FormImg";
-import FormTextarea from "../../../../components/form/FormTextarea";
-import FormInput from "../../../../components/form/FormInput";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import { industries, location } from "../../../../constants/jobInfo";
-import FormCheckbox from "../../../../components/form/FormCheckbox";
-import Form from "../../../../components/form/Form";
+import FormSelect from "@/components/form/FormSelect";
+import FormImg from "@/components/form/FormImg";
+import FormTextarea from "@/components/form/FormTextarea";
+import FormInput from "@/components/form/FormInput";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import { industries, location } from "@/constants/jobInfo";
+import FormCheckbox from "@/components/form/FormCheckbox";
+import Form from "@/components/form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { companyProfileSchema } from "../../../../schema/companyProfile";
+import { companyProfileSchema } from "@/schema/companyProfile";
 
 export default function CompanyEditProfile() {
   const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });

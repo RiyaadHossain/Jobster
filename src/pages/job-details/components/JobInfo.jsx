@@ -1,7 +1,7 @@
 import { AiOutlineLineChart } from "react-icons/ai";
 import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
-import PreviousBtn from "../../../components/ui/PreviousBtn";
-import ButtonPrimary from "../../../components/ui/ButtonPrimary";
+import PreviousBtn from "@/components/ui/PreviousBtn";
+import ButtonPrimary from "@/components/ui/ButtonPrimary";
 import toast from "react-hot-toast";
 
 export default function JobInfo({ jobInfo }) {

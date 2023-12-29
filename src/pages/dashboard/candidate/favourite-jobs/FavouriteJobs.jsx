@@ -1,11 +1,11 @@
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import JobsterTable from "../../../../components/dashboard/JobsterTable";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import JobsterTable from "@/components/dashboard/JobsterTable";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
-import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
+import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { applicationsData } from "../../../../data/applications";
+import { applicationsData } from "@/data/applications";
 
 export default function FavouriteJobs() {
   const columns = [

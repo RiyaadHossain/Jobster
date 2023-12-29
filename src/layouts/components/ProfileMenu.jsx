@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
 import { useRef } from "react";
-import avatar from "../../assets/person.png";
-import { ENUM_USER_ROLE } from "../../enums/userRole";
-import { useTooltip } from "../../hooks/useTooltip";
+import avatar from "@/assets/person.png";
+import { ENUM_USER_ROLE } from "@/enums/userRole";
+import { useTooltip } from "@/hooks/useTooltip";
 
 export default function ProfileMenu({ props }) {
   const { handleLogOut } = props;

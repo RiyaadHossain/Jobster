@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Logo from "../../components/ui/Logo";
+import Logo from "@/components/ui/Logo";
 import { Link, NavLink } from "react-router-dom";
-import { ENUM_USER_ROLE } from "../../enums/userRole";
+import { ENUM_USER_ROLE } from "@/enums/userRole";
 import {
   candidateSidebardItems,
   companySidebardItems,
   dashboardSidebardItemInsights,
-} from "../../constants/sidebarItems";
+} from "@/constants/sidebarItems";
 import "./style/style.css";
 
 export const DashboardSidebar = () => {

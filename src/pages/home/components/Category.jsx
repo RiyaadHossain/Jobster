@@ -1,10 +1,9 @@
-import SectionHeader from "../../../components/ui/SectionHeader";
-import CategoryCard from "../../../components/other/category-card/CategoryCard";
-import ButtonWithArrow from "../../../components/ui/ButtonWithArrow";
-import { categoriesData } from "../../../data/categories";
+import SectionHeader from "@/components/ui/SectionHeader";
+import CategoryCard from "@/components/other/category-card/CategoryCard";
+import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
+import { categoriesData } from "@/data/categories";
 
 export default function Category() {
-
   return (
     <section className="max_container">
       <SectionHeader

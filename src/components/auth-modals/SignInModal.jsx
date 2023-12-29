@@ -1,11 +1,11 @@
 import Modal from "../modal/Modal";
-import signInImg from "../../assets/signin-fig.png";
-import { ENUM_AUTH_MODAL } from "../../enums/authModal";
+import signInImg from "@/assets/signin-fig.png";
+import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoMail, IoLockClosed } from "react-icons/io5";
 import Form from "../form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signInSchema } from "../../schema/signIn";
+import { signInSchema } from "@/schema/signIn";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_UP);

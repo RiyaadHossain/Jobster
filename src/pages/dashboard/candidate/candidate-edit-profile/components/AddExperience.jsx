@@ -1,9 +1,9 @@
 import { useRef } from "react";
-import FormInput from "../../../../../components/form/FormInput";
-import FormTextarea from "../../../../../components/form/FormTextarea";
+import FormInput from "@/components/form/FormInput";
+import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import FormTableRow from "./FormTableRow";
-import { useFieldState } from "../../../../../hooks/useFieldState";
+import { useFieldState } from "@/hooks/useFieldState";
 
 export default function AddExperience() {
   const { control } = useFormContext();

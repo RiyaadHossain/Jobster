@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import InputWithButton from "../../../../../components/dashboard/InputWithButton";
-import DynamicTextField from "../../../../../components/dashboard/DynamicTextField";
+import InputWithButton from "@/components/dashboard/InputWithButton";
+import DynamicTextField from "@/components/dashboard/DynamicTextField";
 
 export default function AddSkill() {
   const inputRef = useRef(null);

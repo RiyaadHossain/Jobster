@@ -1,14 +1,14 @@
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import JobsterTable from "../../../../components/dashboard/JobsterTable";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import JobsterTable from "@/components/dashboard/JobsterTable";
 import { IoTrashOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
 import { MdBlock } from "react-icons/md";
 import { IoMdCheckmark } from "react-icons/io";
-import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
-import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
+import DashboardBadge from "@/components/dashboard/DashboardBadge";
+import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { appliedCandidates } from "../../../../data/dashCandidates";
+import { appliedCandidates } from "@/data/dashCandidates";
 
 export default function Candidates() {
   const columns = [

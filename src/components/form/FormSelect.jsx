@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 import {
   getFormValidationError,
   getYupValidationError,
-} from "../../helpers/getFormValidationError";
+} from "@/helpers/getFormValidationError";
 
 export default function FormSelect({
   id,

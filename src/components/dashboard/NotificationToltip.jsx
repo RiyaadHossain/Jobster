@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { IoMdNotifications } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { notificationsData } from "../../data/notifications";
-import GetTooltipNotificaitonContent from "../../helpers/GetTooltipNotificaitonContent";
-import { useTooltip } from "../../hooks/useTooltip";
+import { notificationsData } from "@/data/notifications";
+import GetTooltipNotificaitonContent from "@/helpers/GetTooltipNotificaitonContent";
+import { useTooltip } from "@/hooks/useTooltip";
 
 export default function NotificationToltip() {
   const notificationRef = useRef(null);

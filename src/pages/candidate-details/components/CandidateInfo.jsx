@@ -1,4 +1,4 @@
-import Badge from "../../../components/ui/Badge";
+import Badge from "@/components/ui/Badge";
 import { FaDotCircle } from "react-icons/fa";
 import "./style/module.style.css";
 

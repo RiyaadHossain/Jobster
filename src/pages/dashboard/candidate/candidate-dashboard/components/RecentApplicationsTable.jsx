@@ -1,6 +1,6 @@
 import { FaEye, FaGlobeAmericas } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { recentApplications } from "../../../../../data/recentApplications";
+import { recentApplications } from "@/data/recentApplications";
 
 export default function RecentApplicationsTable() {
   return (

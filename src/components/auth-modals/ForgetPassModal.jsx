@@ -1,12 +1,12 @@
 import Modal from "../modal/Modal";
-import forgetPassImg from "../../assets/forget-pass-fig.png";
-import { ENUM_AUTH_MODAL } from "../../enums/authModal";
+import forgetPassImg from "@/assets/forget-pass-fig.png";
+import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import "./styles/module.style.css";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoMail } from "react-icons/io5";
 import Form from "../form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { forgetPassSchema } from "../../schema/forgetPass";
+import { forgetPassSchema } from "@/schema/forgetPass";
 
 export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
   const onModalClose = () => {

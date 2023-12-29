@@ -1,24 +1,27 @@
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import FormInput from "../../../../components/form/FormInput";
-import FormTextarea from "../../../../components/form/FormTextarea";
-import FormSelect from "../../../../components/form/FormSelect";
-import Form from "../../../../components/form/Form";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import FormInput from "@/components/form/FormInput";
+import FormTextarea from "@/components/form/FormTextarea";
+import FormSelect from "@/components/form/FormSelect";
+import Form from "@/components/form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { jobOfferSchema } from "../../../../schema/jobOffer";
+import { jobOfferSchema } from "@/schema/jobOffer";
 import {
   employmentTypeOpt,
   expLevelOpt,
   industries,
   location,
-} from "../../../../constants/jobInfo";
+} from "@/constants/jobInfo";
 import AddResponsiblity from "./components/AddResponsiblity";
 import AddRequirement from "./components/AddRequirements";
+import { makeArrayOfString } from "@/utils/makeArrayOfString";
 
 export default function NewJobOffers() {
   // const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
 
   const onSubmit = async (data) => {
     try {
+      data.responsiblities = makeArrayOfString(data.responsiblities, "title");
+      data.requirements = makeArrayOfString(data.requirements, "title");
       console.log(data);
     } catch (error) {
       console.log(error);

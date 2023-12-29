@@ -1,4 +1,4 @@
-import SocialIcons from "../../components/ui/SocialIcons";
+import SocialIcons from "@/components/ui/SocialIcons";
 import "./style/module.style.css";
 
 export default function Footer() {

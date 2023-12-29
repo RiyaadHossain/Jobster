@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import SocialIcons from "../../../components/ui/SocialIcons";
-import DetailsPageSidebar from "../../../components/other/details-page-sidebar/DetailsPageSidebar";
+import SocialIcons from "@/components/ui/SocialIcons";
+import DetailsPageSidebar from "@/components/other/details-page-sidebar/DetailsPageSidebar";
 
 export default function JobSidebar({ jobInfo }) {
-
   console.log(jobInfo);
 
   return (

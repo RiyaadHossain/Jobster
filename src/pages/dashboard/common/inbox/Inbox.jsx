@@ -1,4 +1,4 @@
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 
 export default function Inbox() {
   return (

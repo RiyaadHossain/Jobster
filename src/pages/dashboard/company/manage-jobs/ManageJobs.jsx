@@ -1,13 +1,13 @@
 import { useState } from "react";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import JobsterTable from "../../../../components/dashboard/JobsterTable";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import JobsterTable from "@/components/dashboard/JobsterTable";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
 import { RiEdit2Fill } from "react-icons/ri";
-import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
-import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
-import { dashboardJobsData } from "../../../../data/dashJobs";
+import DashboardBadge from "@/components/dashboard/DashboardBadge";
+import TableSearchBar from "@/components/dashboard/TableSearchBar";
+import { dashboardJobsData } from "@/data/dashJobs";
 
 export default function ManageJobs() {
   const columns = [

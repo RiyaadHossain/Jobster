@@ -1,11 +1,11 @@
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import { Link } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
-import JobsterTable from "../../../../components/dashboard/JobsterTable";
-import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
+import JobsterTable from "@/components/dashboard/JobsterTable";
+import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { applicationsData } from "../../../../data/applications";
+import { applicationsData } from "@/data/applications";
 
 export default function Applications() {
   const columns = [

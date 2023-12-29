@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { capitalizeFirstLetter } from "../utils/capitalizeLetter";
+import { capitalizeFirstLetter } from "@/utils/capitalizeLetter";
 
 export const useFieldState = ({ refs, append }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);

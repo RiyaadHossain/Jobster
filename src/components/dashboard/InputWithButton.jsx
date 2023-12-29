@@ -1,6 +1,6 @@
 import "./style/module.style.css";
 import FormInput from "../form/FormInput";
-import { capitalizeFirstLetter } from "../../utils/capitalizeLetter";
+import { capitalizeFirstLetter } from "@/utils/capitalizeLetter";
 
 export default function InputWithButton({
   name,
