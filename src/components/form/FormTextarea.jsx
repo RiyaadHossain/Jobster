@@ -62,7 +62,7 @@ export default function FormTextarea({
             defaultValue={defaultValue}
             placeholder={placeholder}
             className={`w-full ${inputClass} ${error && "border-red-500"}`}
-            onChange={(e) => handleOnChange(name, e.target.value)}
+            onChange={(e) => handleOnChange(e.target.value, name)}
           />
         )}
         {error && <span className="field_error">{error}</span>}
