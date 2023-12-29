@@ -3,14 +3,25 @@ import { useEffect, useState } from "react";
 import { capitalizeFirstLetter } from "../utils/capitalizeLetter";
 
 export const useFieldState = ({ refs, append }) => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [freshForm, setFreshForm] = useState(true);
   const [customError, setCustomError] = useState({});
   const [fieldData, setFieldData] = useState({});
 
+  // Form Open-Close
+  const openForm = () => setIsFormOpen(true);
+
+  const closeForm = () => {
+    setCustomError({});
+    setIsFormOpen(false);
+  };
+
+  // On change
   const onChange = (data, name) => setFieldData({ ...fieldData, [name]: data });
 
   const setErrorMsg = (id) => `${capitalizeFirstLetter(id)} is Required`;
 
+  // Append Data
   const appendData = () => {
     setFreshForm(false);
 
@@ -36,12 +47,10 @@ export const useFieldState = ({ refs, append }) => {
     setCustomError({});
   };
 
-  const changeLog = [];
+  // Update Custom error while typing
+  let changeLog = 0;
   refs.forEach((ref) => {
-    if (ref.current?.value)
-      changeLog.push(ref.current?.value)
-    // else
-      
+    if (ref.current?.value) changeLog++;
   });
 
   useEffect(() => {
@@ -57,7 +66,15 @@ export const useFieldState = ({ refs, append }) => {
           [ref.current?.id]: "",
         }));
     });
-  }, [...changeLog, freshForm]); // ? `refs` state causing infinity rerenders
+  }, [changeLog, freshForm]);
 
-  return { fieldData, customError, appendData, onChange };
+  return {
+    isFormOpen,
+    openForm,
+    closeForm,
+    onChange,
+    appendData,
+    fieldData,
+    customError,
+  };
 };

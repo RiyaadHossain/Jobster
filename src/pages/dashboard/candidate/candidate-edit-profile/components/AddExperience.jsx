@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import FormInput from "../../../../../components/form/FormInput";
 import FormTextarea from "../../../../../components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
@@ -7,7 +7,6 @@ import { useFieldState } from "../../../../../hooks/useFieldState";
 
 export default function AddExperience() {
   const { control } = useFormContext();
-  const [openExp, setOpenExp] = useState(false);
 
   const jobTitleRef = useRef(null);
   const companyNameRef = useRef(null);
@@ -19,10 +18,11 @@ export default function AddExperience() {
     control,
   });
 
-  const { appendData, customError, onChange } = useFieldState({
-    append,
-    refs: [jobTitleRef, companyNameRef, timePeriodRef, desciptionRef],
-  });
+  const { appendData, customError, onChange, isFormOpen, openForm, closeForm } =
+    useFieldState({
+      append,
+      refs: [jobTitleRef, companyNameRef, timePeriodRef, desciptionRef],
+    });
 
   return (
     <div className="mt-2">
@@ -32,7 +32,7 @@ export default function AddExperience() {
         </div>
       ) : null}
 
-      {openExp ? (
+      {isFormOpen ? (
         <div className="mb-5">
           <div className="grid grid-cols-3 gap-3">
             <div className="col-span-1">
@@ -93,20 +93,13 @@ export default function AddExperience() {
             <button type="button" onClick={appendData} className="btn_accent">
               Add
             </button>
-            <button
-              onClick={() => setOpenExp(false)}
-              className="font-semibold text-primary"
-            >
+            <button onClick={closeForm} className="font-semibold text-primary">
               Cancel
             </button>
           </div>
         </div>
       ) : (
-        <button
-          type="button"
-          onClick={() => setOpenExp(true)}
-          className="btn_accent"
-        >
+        <button type="button" onClick={openForm} className="btn_accent">
           Add Experience
         </button>
       )}
