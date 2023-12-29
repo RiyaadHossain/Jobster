@@ -1,0 +1,44 @@
+.sidebar_items_header {
+  @apply text-sm font-light leading-5 text-[#606065] mb-2;
+}
+
+.sidebar_items_container {
+  @apply flex flex-col gap-2 w-full h-full;
+}
+
+.sidebar_item {
+  @apply hover:text-[#44195d] transition-all w-full block py-4 px-6 rounded-full font-medium text-[15px] leading-[18px];
+}
+
+.sidebar_item_active {
+  @apply bg-[#44195d] text-white hover:text-white;
+}
+
+.home_section_title {
+  @apply text-2xl font-semibold mb-6 tracking-tight;
+}
+
+/* Dashboard Table Classes */
+.main_row_title {
+  @apply text-base font-semibold leading-6 text-primary;
+}
+
+.main_row_subtitle {
+  @apply flex items-center gap-1 text-[13px] font-medium leading-5 text-grayColor;
+}
+
+.dashboard_table_date {
+  @apply text-[13px] font-light leading-5;
+}
+
+.font_var_thin {
+  @apply text-sm font-light leading-5;
+}
+
+.font_var_thin_pri {
+  @apply text-sm font-light leading-5 text-primary;
+}
+
+.font_var_medium {
+  @apply text-sm font-medium leading-5;
+}

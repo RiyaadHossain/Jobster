@@ -1,0 +1,19 @@
+.modal_img {
+  @apply h-[120px] w-auto;
+}
+
+.input_icon {
+  @apply absolute right-5 pointer-events-none;
+}
+
+.modal_title {
+  @apply font-semibold text-[22px] tracking-tight mt-6;
+}
+
+.radio_role {
+  @apply bg-white border text-primaryDark py-[7px] px-[16px] cursor-pointer hover:bg-primary hover:border-primary hover:text-white transition-all;
+}
+
+.radio_role_active {
+  @apply bg-primaryDark border border-primary text-white py-[7px] px-[16px] cursor-pointer hover:bg-primary hover:border-primary hover:text-white transition-all;
+}

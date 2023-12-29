@@ -1,0 +1,7 @@
+.pagination_btn {
+  @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-gray-400 bg-transparent p-0 text-sm text-black transition duration-150 ease-in-out hover:bg-primaryLight;
+}
+
+.pagination_btn_active {
+  @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-primary p-0 text-sm text-white shadow-md transition duration-150 ease-in-out;
+}

@@ -1,0 +1,7 @@
+.sidebar_item_title {
+  @apply text-[13px] font-light leading-5 opacity-[0.7];
+}
+
+.sidebar_content_info {
+  @apply text-base font-medium leading-6;
+}

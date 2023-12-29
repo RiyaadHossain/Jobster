@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Poppins", sans-serif;
+  }
+
+  section {
+    @apply py-[45px];
+  }
+
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  select,
+  textarea,
+  select[multiple] {
+    @apply text-lg py-4 px-5 border border-opacity-20 rounded-full font-light ring-0 outline-0 focus:border-opacity-70 focus:ring-0 focus:outline-0;
+  }
+
+  textarea {
+    @apply rounded-3xl;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    @apply text-primary border border-opacity-20 focus:border-opacity-0 focus:ring-0 h-4 w-4;
+  }
+
+  [type="checkbox"] {
+    @apply rounded;
+  }
+}
+
+/* Button */
+.btn_primary {
+  @apply py-3 px-5 bg-primary text-white rounded-full font-medium text-lg hover:bg-primaryDark transition-all;
+}
+
+.btn_secondary {
+  @apply px-6 py-4 border font-semibold border-primary bg-primary text-white rounded-full transition-all hover:bg-darkNavy;
+}
+
+.btn_accent {
+  @apply px-6 py-4 font-medium bg-primaryLight text-primaryDark rounded-full transition-all cursor-pointer hover:text-white hover:bg-primary;
+}
+
+.btn_sm {
+  @apply px-[10px] py-[2px] bg-primary text-white rounded-full text-xs hover:bg-darkNavy transition-all;
+}
+
+.btn_icon {
+  @apply bg-primaryLight p-[6px] inline-block rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer;
+}
+
+/* Responsive Media */
+@media (min-width: 576px) {
+  .max_container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .max_container {
+    max-width: 720px;
+  }
+  section {
+    @apply py-[65px];
+  }
+}
+
+@media (min-width: 900px) {
+  .max_container {
+    max-width: 780px;
+  }
+}
+
+@media (min-width: 992px) {
+  .max_container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1024px) {
+  section {
+    @apply py-[85px];
+  }
+}
+
+@media (min-width: 1200px) {
+  .max_container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .max_container {
+    max-width: 1320px;
+  }
+
+  .job_listing_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1680px) {
+  .max_container {
+    max-width: 1600px;
+  }
+}

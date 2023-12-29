@@ -1,0 +1,7 @@
+.text_accent {
+  @apply text-sm font-light leading-6 opacity-[0.8];
+}
+
+.heading_2 {
+  @apply text-2xl font-semibold leading-7 tracking-tight mb-6;
+}
