@@ -2,7 +2,7 @@ import { IoDocumentText } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { MdMailOutline } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import DashboardHomeCard from "../components/dashboard/DashboardHomeCard";
+import DashboardHomeCard from "@/components/dashboard/DashboardHomeCard";
 import { ENUM_STATS_TYPE } from "../enums/statsType";
 
 export default function GetDashboardStats({ statsData }) {

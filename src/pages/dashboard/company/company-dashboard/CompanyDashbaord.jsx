@@ -2,17 +2,14 @@ import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoDocumentText } from "react-icons/io5";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import DashboardHomeCard from "../../../../components/dashboard/DashboardHomeCard";
-import JobsterAreaChart from "../../../../components/dashboard/JobsterAreaChart";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import DashboardHomeCard from "@/components/dashboard/DashboardHomeCard";
+import JobsterAreaChart from "@/components/dashboard/JobsterAreaChart";
 import { BiBriefcase, BiUserCircle } from "react-icons/bi";
-import {
-  applicationData,
-  profileVisitorData,
-} from "../../../../constants/statData";
+import { applicationData, profileVisitorData } from "@/constants/statData";
 import { MdForwardToInbox, MdMailOutline } from "react-icons/md";
 import RecentCandidateTable from "./components/RecentCandidateTable";
-import LinkWithArrow from "../../../../components/ui/LinkWithArrow";
+import LinkWithArrow from "@/components/ui/LinkWithArrow";
 
 export default function CompanyDashbaord() {
   const cardItems = [

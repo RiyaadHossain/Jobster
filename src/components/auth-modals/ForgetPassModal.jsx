@@ -1,10 +1,12 @@
 import Modal from "../modal/Modal";
-import forgetPassImg from "../../assets/forget-pass-fig.png";
-import { ENUM_AUTH_MODAL } from "../../enums/authModal";
+import forgetPassImg from "@/assets/forget-pass-fig.png";
+import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import "./styles/module.style.css";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoMail } from "react-icons/io5";
 import Form from "../form/Form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { forgetPassSchema } from "@/schema/forgetPass";
 
 export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
   const onModalClose = () => {
@@ -29,7 +31,11 @@ export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
         <img src={forgetPassImg} alt="" className="modal_img" />
       </div>
       <h5 className="modal_title">Forgot Password</h5>
-      <Form submitHandler={onSubmit} className="w-full mt-6">
+      <Form
+        className="w-full mt-6"
+        submitHandler={onSubmit}
+        resolver={yupResolver(forgetPassSchema)}
+      >
         <FormInputIcon
           id="email_forget_pass"
           name="email"

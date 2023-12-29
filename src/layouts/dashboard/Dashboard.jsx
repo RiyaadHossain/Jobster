@@ -1,11 +1,11 @@
+import "./style/style.css";
 import toast from "react-hot-toast";
 import { Outlet } from "react-router-dom";
-import avatar from "../../assets/person.png";
+import avatar from "@/assets/person.png";
 import ProfileMenu from "../components/ProfileMenu";
-import { ENUM_USER_ROLE } from "../../enums/userRole";
+import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { DashboardSidebar } from "./DashboardSidebar";
-import NotificationToltip from "../../components/dashboard/NotificationToltip";
-import "./style/style.css";
+import NotificationToltip from "@/components/dashboard/NotificationToltip";
 
 const Dashboard = () => {
   const email = "riyad@gmail.com";

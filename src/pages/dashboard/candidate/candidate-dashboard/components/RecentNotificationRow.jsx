@@ -1,4 +1,4 @@
-import GetRecentNotficationContent from "../../../../../helpers/GetRecentNotficationContent";
+import GetRecentNotficationContent from "@/helpers/GetRecentNotficationContent";
 
 export default function RecentNotificationRow({ notification }) {
   return (

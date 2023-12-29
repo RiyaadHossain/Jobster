@@ -1,5 +1,5 @@
-import PageBanner from "../../components/ui/PageBanner";
-import { candidatesData } from "../../data/candidates";
+import PageBanner from "@/components/ui/PageBanner";
+import { candidatesData } from "@/data/candidates";
 import CandidateInfo from "./components/CandidateInfo";
 import CandidateSidebar from "./components/CandidateSidebar";
 
@@ -11,7 +11,6 @@ export default function CandidateDetails() {
       <div className=" grid grid-cols-12 gap-5">
         {/* Main Content_________________ */}
         <div className="col-span-12 lg:col-span-8 xl:col-span-9">
-          
           {/* +++ Bannder +++ */}
           <PageBanner
             rounded="rounded-full"

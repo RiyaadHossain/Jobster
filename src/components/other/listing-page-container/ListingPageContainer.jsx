@@ -1,5 +1,5 @@
 import React from "react";
-import Pagination from "../../ui/Pagination";
+import Pagination from "@/components/ui/Pagination";
 import "./module.style.css";
 
 export default function ListingPageContainer({

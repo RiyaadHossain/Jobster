@@ -1,7 +1,7 @@
-import ListingPageContainer from "../../components/other/listing-page-container/ListingPageContainer";
-import SidebarSearch from "../../components/other/sidebar-search/SidebarSearch";
-import PageHeader from "../../components/ui/PageHeader";
-import { jobsData } from "../../data/jobs";
+import ListingPageContainer from "@/components/other/listing-page-container/ListingPageContainer";
+import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
+import PageHeader from "@/components/ui/PageHeader";
+import { jobsData } from "@/data/jobs";
 import JobCard from "./components/JobCard";
 import SidebarFilter from "./components/SidebarFilter";
 

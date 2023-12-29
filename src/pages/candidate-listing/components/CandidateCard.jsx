@@ -1,5 +1,5 @@
 import { FaGlobeAmericas } from "react-icons/fa";
-import LinkWithArrow from "../../../components/ui/LinkWithArrow";
+import LinkWithArrow from "@/components/ui/LinkWithArrow";
 
 export default function CandidateCard({ candidateInfo }) {
   return (
@@ -26,7 +26,10 @@ export default function CandidateCard({ candidateInfo }) {
             {candidateInfo.location}
           </span>
         </div>
-        <LinkWithArrow display="View Profile" link={`/candidates/${candidateInfo.name}`}/>
+        <LinkWithArrow
+          display="View Profile"
+          link={`/candidates/${candidateInfo.name}`}
+        />
       </div>
     </div>
   );

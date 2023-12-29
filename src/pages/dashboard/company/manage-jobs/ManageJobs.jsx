@@ -1,13 +1,13 @@
 import { useState } from "react";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import JobsterTable from "../../../../components/dashboard/JobsterTable";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import JobsterTable from "@/components/dashboard/JobsterTable";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
 import { RiEdit2Fill } from "react-icons/ri";
-import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
-import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
-import { dashboardJobsData } from "../../../../data/dashJobs";
+import DashboardBadge from "@/components/dashboard/DashboardBadge";
+import TableSearchBar from "@/components/dashboard/TableSearchBar";
+import { dashboardJobsData } from "@/data/dashJobs";
 
 export default function ManageJobs() {
   const columns = [
@@ -47,13 +47,13 @@ export default function ManageJobs() {
       </td>
       <td>
         <div className="flex gap-2">
-          <Link to={`edit-job/${job.id}`} className="inside_table_icon">
+          <Link to={`edit-job/${job.id}`} className="btn_icon">
             <RiEdit2Fill />
           </Link>
-          <Link to={`/jobs/${job.id}`} className="inside_table_icon">
+          <Link to={`/jobs/${job.id}`} className="btn_icon">
             <FaEye />
           </Link>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>

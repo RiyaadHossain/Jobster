@@ -1,13 +1,12 @@
-import { useRef, useState } from "react";
-import FormInput from "../../../../../components/form/FormInput";
-import FormTextarea from "../../../../../components/form/FormTextarea";
+import { useRef } from "react";
+import FormInput from "@/components/form/FormInput";
+import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import EducationRow from "./FormTableRow";
+import { useFieldState } from "@/hooks/useFieldState";
 
 export default function AddEducation() {
-  const [openEdu, setOpenEdu] = useState(false);
   const { control } = useFormContext();
-  const [education, setEducation] = useState({});
 
   const courseOfStudyRef = useRef(null);
   const institutionRef = useRef(null);
@@ -19,17 +18,11 @@ export default function AddEducation() {
     control,
   });
 
-  const appendData = () => {
-    append(education);
-    setEducation({});
-
-    courseOfStudyRef.current.value = "";
-    institutionRef.current.value = "";
-    timePeriodRef.current.value = "";
-    desciptionRef.current.value = "";
-  };
-
-  const onChange = (data, name) => setEducation({ ...education, [name]: data });
+  const { appendData, customError, onChange, openForm, closeForm, isFormOpen } =
+    useFieldState({
+      append,
+      refs: [courseOfStudyRef, institutionRef, timePeriodRef, desciptionRef],
+    });
 
   return (
     <div className="mt-2">
@@ -39,7 +32,7 @@ export default function AddEducation() {
         </div>
       ) : null}
 
-      {openEdu ? (
+      {isFormOpen ? (
         <div className="mb-5">
           <div className="grid grid-cols-3 gap-3">
             <div className="col-span-1">
@@ -51,6 +44,7 @@ export default function AddEducation() {
                 type="text"
                 inputRef={courseOfStudyRef}
                 handleOnChange={onChange}
+                customError={customError}
               />
             </div>
             <div className="col-span-1">
@@ -62,6 +56,7 @@ export default function AddEducation() {
                 handleOnChange={onChange}
                 placeholder="E.g. Oxford University"
                 inputRef={institutionRef}
+                customError={customError}
               />
             </div>
             <div className="col-span-1">
@@ -73,6 +68,7 @@ export default function AddEducation() {
                 placeholder="E.g. 2007 - 2012"
                 type="text"
                 inputRef={timePeriodRef}
+                customError={customError}
               />
             </div>
           </div>
@@ -86,6 +82,7 @@ export default function AddEducation() {
             placeholder="Type a short description..."
             inputClass="resize-none"
             inputRef={desciptionRef}
+            customError={customError}
           />
 
           <div className="flex gap-5 items-center">
@@ -94,7 +91,7 @@ export default function AddEducation() {
             </button>
             <button
               type="button"
-              onClick={() => setOpenEdu(false)}
+              onClick={closeForm}
               className="font-semibold text-primary"
             >
               Cancel
@@ -102,11 +99,7 @@ export default function AddEducation() {
           </div>
         </div>
       ) : (
-        <button
-          type="button"
-          onClick={() => setOpenEdu(true)}
-          className="btn_accent"
-        >
+        <button type="button" onClick={openForm} className="btn_accent">
           Add Education
         </button>
       )}

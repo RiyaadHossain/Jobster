@@ -1,14 +1,14 @@
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import JobsterTable from "../../../../components/dashboard/JobsterTable";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import JobsterTable from "@/components/dashboard/JobsterTable";
 import { IoTrashOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
 import { MdBlock } from "react-icons/md";
 import { IoMdCheckmark } from "react-icons/io";
-import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
-import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
+import DashboardBadge from "@/components/dashboard/DashboardBadge";
+import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { appliedCandidates } from "../../../../data/dashCandidates";
+import { appliedCandidates } from "@/data/dashCandidates";
 
 export default function Candidates() {
   const columns = [
@@ -61,17 +61,17 @@ export default function Candidates() {
         <div className="flex justify-end gap-2">
           <Link
             to={`/candidates/${application.candidate.id}`}
-            className="inside_table_icon"
+            className="btn_icon"
           >
             <FaEye />
           </Link>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoMdCheckmark />
           </button>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <MdBlock />
           </button>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>

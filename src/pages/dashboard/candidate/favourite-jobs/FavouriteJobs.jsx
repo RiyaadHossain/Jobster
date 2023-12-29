@@ -1,11 +1,11 @@
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import JobsterTable from "../../../../components/dashboard/JobsterTable";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import JobsterTable from "@/components/dashboard/JobsterTable";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
-import TableSearchBar from "../../../../components/dashboard/TableSearchBar";
+import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { applicationsData } from "../../../../data/applications";
+import { applicationsData } from "@/data/applications";
 
 export default function FavouriteJobs() {
   const columns = [
@@ -44,10 +44,10 @@ export default function FavouriteJobs() {
       <td className="dashboard_table_date">{application.appliedAt}</td>
       <td>
         <div className="flex gap-2">
-          <Link to={`/jobs/${application.id}`} className="inside_table_icon">
+          <Link to={`/jobs/${application.id}`} className="btn_icon">
             <FaEye />
           </Link>
-          <button className="inside_table_icon">
+          <button className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>

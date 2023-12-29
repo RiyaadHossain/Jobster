@@ -1,7 +1,7 @@
 import React from "react";
-import DashboardHeader from "../../../../components/dashboard/DashboardHeader";
-import FormInput from "../../../../components/form/FormInput";
-import Form from "../../../../components/form/Form";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import FormInput from "@/components/form/FormInput";
+import Form from "@/components/form/Form";
 
 export default function ChangePassword() {
   const onSubmit = async (data) => {

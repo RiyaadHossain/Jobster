@@ -1,5 +1,5 @@
-import PageBanner from "../../components/ui/PageBanner";
-import { companiesData } from "../../data/companies";
+import PageBanner from "@/components/ui/PageBanner";
+import { companiesData } from "@/data/companies";
 import CompanyInfo from "./components/CompanyInfo";
 import CompanySidebar from "./components/CompanySidebar";
 

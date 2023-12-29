@@ -1,7 +1,7 @@
-import ListingPageContainer from "../../components/other/listing-page-container/ListingPageContainer";
-import SidebarSearch from "../../components/other/sidebar-search/SidebarSearch";
-import PageHeader from "../../components/ui/PageHeader";
-import { companiesData } from "../../data/companies";
+import ListingPageContainer from "@/components/other/listing-page-container/ListingPageContainer";
+import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
+import PageHeader from "@/components/ui/PageHeader";
+import { companiesData } from "@/data/companies";
 import CompanyCard from "./components/CompanyCard";
 
 export default function CompanyListing() {

@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import JobSidebar from "./components/JobSidebar";
 import JobInfo from "./components/JobInfo";
-import PageBanner from "../../components/ui/PageBanner";
-import { jobsData } from "../../data/jobs";
+import PageBanner from "@/components/ui/PageBanner";
+import { jobsData } from "@/data/jobs";
 import "./module.style.css";
 
 const JobDetails = () => {
