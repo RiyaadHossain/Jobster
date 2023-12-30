@@ -1,5 +1,5 @@
 import Modal from "../modal/Modal";
-import signInImg from "@/assets/signin-fig.png";
+import signInImg from "@/assets/images/auth/signin-fig.png";
 import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoMail, IoLockClosed } from "react-icons/io5";

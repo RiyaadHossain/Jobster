@@ -1,5 +1,5 @@
 import Modal from "../modal/Modal";
-import forgetPassImg from "@/assets/forget-pass-fig.png";
+import forgetPassImg from "@/assets/images/auth/forget-pass-fig.png";
 import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import "./styles/module.style.css";
 import FormInputIcon from "../form/FormInputIcon";

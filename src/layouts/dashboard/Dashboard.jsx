@@ -1,7 +1,7 @@
 import "./style/style.css";
 import toast from "react-hot-toast";
 import { Outlet } from "react-router-dom";
-import avatar from "@/assets/person.png";
+import avatar from "@/assets/images/avatar/avatar-5.jpeg"
 import ProfileMenu from "../components/ProfileMenu";
 import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { DashboardSidebar } from "./DashboardSidebar";

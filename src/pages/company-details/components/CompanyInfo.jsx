@@ -1,9 +1,9 @@
-import companyHero1 from "@/assets/company-hero-1.jpg";
-import companyHero2 from "@/assets/company-hero-2.jpg";
-import companyHero3 from "@/assets/company-hero-3.jpg";
-import companyHero4 from "@/assets/company-hero-4.jpg";
-import companyHero5 from "@/assets/company-hero-5.jpg";
-import companyHero6 from "@/assets/company-hero-6.jpg";
+import companyHero1 from "@/assets/images/company-hero/company-hero-1.jpg";
+import companyHero2 from "@/assets/images/company-hero/company-hero-2.jpg";
+import companyHero3 from "@/assets/images/company-hero/company-hero-3.jpg";
+import companyHero4 from "@/assets/images/company-hero/company-hero-4.jpg";
+import companyHero5 from "@/assets/images/company-hero/company-hero-5.jpg";
+import companyHero6 from "@/assets/images/company-hero/company-hero-6.jpg";
 import { jobsData } from "@/data/jobs";
 import "./style/module.style.css";
 import JobCard from "../../job-listing/components/JobCard";

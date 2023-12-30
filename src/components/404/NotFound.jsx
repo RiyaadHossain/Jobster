@@ -1,6 +1,6 @@
 import SectionHeader from "../ui/SectionHeader";
 import ButtonWithArrow from "../ui/ButtonWithArrow";
-import notFoundImg from "@/assets/not-found.svg";
+import notFoundImg from "@/assets/svgs/not-found.svg";
 
 export default function NotFound() {
   return (

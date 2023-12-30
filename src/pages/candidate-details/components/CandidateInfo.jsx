@@ -1,6 +1,5 @@
 import "./style/module.style.css";
 import Badge from "@/components/ui/Badge";
-import { FaDotCircle } from "react-icons/fa";
 import ExperienceAndEducationList from "./ExperienceAndEducationList";
 
 export default function CandidateInfo({ candidateInfo }) {

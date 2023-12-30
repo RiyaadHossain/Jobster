@@ -1,10 +1,10 @@
+import "./styles/module.style.css";
 import { useState } from "react";
-import signUpImg from "@/assets/signup-fig.png";
+import signUpImg from "@/assets/images/auth/signup-fig.png";
 import Modal from "../modal/Modal";
 import FormInput from "../form/FormInput";
 import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { ENUM_AUTH_MODAL } from "@/enums/authModal";
-import "./styles/module.style.css";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoLockClosed, IoMail } from "react-icons/io5";
 import Form from "../form/Form";

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
 import { useRef } from "react";
-import avatar from "@/assets/person.png";
+import avatar from "@/assets/images/avatar/avatar-5.jpeg"
 import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { useTooltip } from "@/hooks/useTooltip";
 
