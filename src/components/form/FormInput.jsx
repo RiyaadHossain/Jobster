@@ -1,9 +1,10 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import {
   getFormValidationError,
   getYupValidationError,
 } from "@/helpers/getFormValidationError";
 import "./style/module.style.css";
+import { useEffect } from "react";
 
 export default function FormInput({
   id,
@@ -20,12 +21,22 @@ export default function FormInput({
   validation,
   maxLen,
   minLen,
+  setWatch,
   customError,
 }) {
   const {
     register,
+    control,
     formState: { errors },
   } = useFormContext();
+
+  const inputTag = useWatch({ control, name });
+
+  console.log(inputTag);
+
+  useEffect(() => {
+    if (setWatch) setWatch(inputTag);
+  }, [inputTag, setWatch]);
 
   let error = !validation
     ? getYupValidationError(errors, name)

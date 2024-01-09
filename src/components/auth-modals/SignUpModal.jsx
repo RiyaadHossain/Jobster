@@ -8,11 +8,10 @@ import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoLockClosed, IoMail } from "react-icons/io5";
 import Form from "../form/Form";
-import { emailRegex } from "@/regex";
 
 export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const [role, setRole] = useState(ENUM_USER_ROLE.candidate);
-
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   const onSignInHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_IN);
 
   const onModalClose = () => {

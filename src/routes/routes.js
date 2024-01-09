@@ -29,6 +29,7 @@ import NewJobOffers from "@/pages/dashboard/company/new-job-offer/NewJobOffers";
 import ManageJobs from "@/pages/dashboard/company/manage-jobs/ManageJobs";
 import Candidates from "@/pages/dashboard/company/candidates/Candidates";
 import EditJobOffer from "@/pages/dashboard/company/manage-jobs/edit-job-offer/EditJobOffer";
+import ForgetPassword from "@/pages/reset-password/ResetPassword";
 
 const routes = createBrowserRouter([
   {
@@ -136,6 +137,10 @@ const routes = createBrowserRouter([
         element: <Notification />,
       },
     ],
+  },
+  {
+    path: "/reset-password/:token",
+    element: <ForgetPassword />,
   },
 ]);
 

@@ -4,8 +4,8 @@ import notFoundImg from "@/assets/svgs/not-found.svg";
 
 export default function NotFound() {
   return (
-    <div className="my-20 max_container min-h-[70vh] flex_cen">
-      <div>
+    <div className="my-20 border-t min-h-[70vh] flex_cen">
+      <div className="max_container">
         <SectionHeader
           title="This page is off the map"
           subtitle="We can't seem to find the page you're looking for."
