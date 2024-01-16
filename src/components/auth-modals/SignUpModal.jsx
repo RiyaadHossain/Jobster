@@ -3,11 +3,15 @@ import { useState } from "react";
 import signUpImg from "@/assets/images/auth/signup-fig.png";
 import Modal from "../modal/Modal";
 import FormInput from "../form/FormInput";
-import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoLockClosed, IoMail } from "react-icons/io5";
 import Form from "../form/Form";
+import { useSignUpMutation } from "../../redux/api/user";
+import { catchAsync } from "../../helpers/catchAsync";
+import { ENUM_USER_ROLE } from "../../enums/userRole";
+import toast from "react-hot-toast";
+import ButtonPrimary from "../ui/ButtonPrimary";
 
 export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
   const [role, setRole] = useState(ENUM_USER_ROLE.candidate);
@@ -19,14 +23,25 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
     setOpenAuthModal(null);
   };
 
-  const onSubmit = async (data) => {
-    try {
-      // Set the role from the `role` state
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+  const [signUp, { isLoading }] = useSignUpMutation();
+
+  const onSubmit = catchAsync(async (data) => {
+    let name = data.companyName;
+
+    if (role === ENUM_USER_ROLE.candidate)
+      name = `${data.firstName} ${data.lastName}`;
+
+    const user = { role, email: data.email, password: data.password };
+    const res = await signUp({ user, name }).unwrap();
+
+    if (!res?.success) {
+      toast.error(res?.message);
+      return;
     }
-  };
+
+    onModalClose();
+    toast.success(res?.message);
+  });
 
   return (
     <Modal
@@ -62,7 +77,6 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
       <Form
         className="w-full mt-6"
         submitHandler={onSubmit}
-        // resolver={yupResolver(signUpSchema)}
       >
         {role === ENUM_USER_ROLE.company ? (
           <FormInput
@@ -72,7 +86,7 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
             type="text"
             validation={{ required: true, minLength: 3, maxLength: 16 }}
             minLen={3}
-            maxLen={16}
+            maxLen={32}
           />
         ) : (
           <div className="flex gap-3">
@@ -114,9 +128,12 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
           maxLen={16}
           icon={<IoLockClosed className="input_icon" size={18} />}
         />
-        <button type="submit" className="btn_secondary w-full">
-          Continue
-        </button>
+        <ButtonPrimary
+          display="Continue"
+          type="submit"
+          isLoading={isLoading}
+          className="btn_secondary w-full"
+        />
         <div className="text-center">
           <div className="mt-6 text-sm font-light">
             Already Have an account?{" "}

@@ -9,8 +9,8 @@ import { signInSchema } from "@/schema/signIn";
 import { useSignInMutation } from "@/redux/api/auth";
 import toast from "react-hot-toast";
 import { storeUserInfo } from "@/services/auth.services";
-import ButtonSpinner from "../ui/ButtonSpinner";
 import { catchAsync } from "@/helpers/catchAsync";
+import ButtonPrimary from "../ui/ButtonPrimary";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const [signIn, { isLoading }] = useSignInMutation();
@@ -62,9 +62,12 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
           type="password"
           icon={<IoLockClosed className="input_icon" size={18} />}
         />
-        <button type="submit" className="btn_secondary w-full">
-          {isLoading ? <ButtonSpinner /> : "Continue"}
-        </button>
+        <ButtonPrimary
+          display="Continue"
+          type="submit"
+          isLoading={isLoading}
+          className="btn_secondary w-full"
+        />
         <div className="text-center">
           <button
             onClick={(e) => {

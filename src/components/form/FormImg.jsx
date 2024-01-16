@@ -1,21 +1,32 @@
-import { useFormContext } from "react-hook-form";
+import {
+  useGetImageUrlQuery,
+  useUploadImageMutation,
+} from "../../redux/api/user";
+import { catchAsync } from "../../helpers/catchAsync";
+import toast from "react-hot-toast";
+import { FadeLoader } from "react-spinners";
+import { useState } from "react";
 
-export default function FormImg({
-  label,
-  id,
-  name,
-  height,
-  width,
-  imgUrl,
-  setImgUrl,
-}) {
-  const setPreviewImage = (e) => {
+export default function FormImg({ label, id, name, height, width }) {
+  const [imgUrl, setImgUrl] = useState("");
+  const [uploadImage, { isLoading }] = useUploadImageMutation();
+
+  const { data } = useGetImageUrlQuery({ field: id });
+
+  const setPreviewImage = catchAsync(async (e) => {
     const id = e.target.id;
-    const url = URL.createObjectURL(e.target.files[0]);
-    setImgUrl({ ...imgUrl, [id]: url });
-  };
+    const file = e.target.files[0];
 
-  const { register } = useFormContext();
+    const formData = new FormData();
+    formData.append("field", id);
+    formData.append("image", file);
+    const res = await uploadImage(formData).unwrap();
+
+    toast.success(res?.message);
+    setImgUrl(res?.data?.imageUrl);
+  });
+
+  const dbImgUrl = data?.data?.imageUrl;
 
   return (
     <div className={`rounded-3xl mt-6 relative ${height} ${width}`}>
@@ -26,20 +37,26 @@ export default function FormImg({
         <span className="flex_cen h-full text-[13px] font-medium">{label}</span>
       </label>
       <input
-        {...register(name)}
         type="file"
         name={name}
         id={id}
         className="hidden"
         onChange={setPreviewImage}
       />
-      <img
-        src={imgUrl[id]}
-        alt="Img"
-        className={`absolute top-0 w-full h-full rounded-3xl object-cover ${
-          !imgUrl[id] && "hidden"
-        }`}
-      />
+      <label htmlFor={id} className="cursor-pointer">
+        <img
+          src={imgUrl || dbImgUrl}
+          alt="Img"
+          className={`absolute top-0 w-full h-full rounded-3xl object-cover ${
+            !imgUrl && !dbImgUrl && "hidden"
+          }`}
+        />
+      </label>
+      {isLoading && (
+        <div className="absolute top-0 rounded-3xl w-full h-full flex_cen bg-primaryLight">
+          <FadeLoader color="#44195D" />
+        </div>
+      )}
     </div>
   );
 }

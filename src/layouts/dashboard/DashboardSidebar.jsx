@@ -8,11 +8,12 @@ import {
   dashboardSidebardItemInsights,
 } from "@/constants/sidebarItems";
 import "./style/style.css";
+import { getUserInfo } from "../../services/auth.services";
 
 export const DashboardSidebar = () => {
   const [selectedTab, setSelectedTab] = useState("/dashboard");
 
-  const role = ENUM_USER_ROLE.company;
+  const role = getUserInfo().role;
   const sidebarItems =
     role === ENUM_USER_ROLE.candidate
       ? candidateSidebardItems

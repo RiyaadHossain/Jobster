@@ -5,9 +5,10 @@ const JOB_URL = "/job";
 export const jobApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllJobs: builder.query({
-      query: () => ({
+      query: (params) => ({
         url: `${JOB_URL}`,
         method: "GET",
+        params,
       }),
     }),
     getSingleJob: builder.query({

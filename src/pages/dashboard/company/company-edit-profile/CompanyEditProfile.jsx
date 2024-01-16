@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import FormSelect from "@/components/form/FormSelect";
 import FormImg from "@/components/form/FormImg";
 import FormTextarea from "@/components/form/FormTextarea";
@@ -11,8 +10,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { companyProfileSchema } from "@/schema/companyProfile";
 
 export default function CompanyEditProfile() {
-  const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
-
   const onSubmit = async (data) => {
     try {
       console.log(data);
@@ -89,8 +86,6 @@ export default function CompanyEditProfile() {
                 name="banner"
                 height="h-40"
                 width="w-full"
-                imgUrl={imgUrl}
-                setImgUrl={setImgUrl}
               />
 
               <FormImg
@@ -99,8 +94,6 @@ export default function CompanyEditProfile() {
                 name="avatar"
                 height="h-32"
                 width="w-32"
-                imgUrl={imgUrl}
-                setImgUrl={setImgUrl}
               />
             </div>
           </div>

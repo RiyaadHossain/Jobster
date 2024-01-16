@@ -15,7 +15,6 @@ import { candidateProfileSchema } from "@/schema/candidateProfile";
 import AddResume from "./components/AddResume";
 
 export default function CandidateEditProfile() {
-  const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
   const [skills, setSkills] = useState([]);
 
   const onSubmit = async (data) => {
@@ -96,8 +95,6 @@ export default function CandidateEditProfile() {
                 name="banner"
                 height="h-40"
                 width="w-full"
-                imgUrl={imgUrl}
-                setImgUrl={setImgUrl}
               />
 
               <FormImg
@@ -106,8 +103,6 @@ export default function CandidateEditProfile() {
                 name="avatar"
                 height="h-32"
                 width="w-32"
-                imgUrl={imgUrl}
-                setImgUrl={setImgUrl}
               />
             </div>
           </div>
