@@ -14,19 +14,21 @@ import {
 import AddResponsiblity from "./components/AddResponsiblity";
 import AddRequirement from "./components/AddRequirements";
 import { makeArrayOfString } from "@/utils/makeArrayOfString";
+import { catchAsync } from "@/helpers/catchAsync";
+import { usePostJobMutation } from "@/redux/api/jobApi";
+import ButtonSpinner from "@/components/ui/ButtonSpinner";
 
 export default function NewJobOffers() {
-  // const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
+  const [createJob, { isLoading }] = usePostJobMutation();
 
-  const onSubmit = async (data) => {
-    try {
+  const onSubmit = catchAsync(async (data) => {
+    if (data.responsiblities)
       data.responsiblities = makeArrayOfString(data.responsiblities, "title");
+    if (data.requirements)
       data.requirements = makeArrayOfString(data.requirements, "title");
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const res = await createJob(data).unwrap();
+    console.log({ res });
+  });
 
   return (
     <div>
@@ -137,7 +139,9 @@ export default function NewJobOffers() {
           </div>
 
           <div className="mt-10">
-            <button className="btn_secondary">Update Job</button>
+            <button className="btn_secondary">
+              {isLoading ? <ButtonSpinner /> : "Update Job"}
+            </button>
           </div>
         </Form>
       </div>

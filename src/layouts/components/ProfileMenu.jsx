@@ -1,27 +1,36 @@
 import { Link } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
 import { useRef } from "react";
-import avatar from "@/assets/images/avatar/avatar-5.jpeg"
-import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { useTooltip } from "@/hooks/useTooltip";
+import { getUserInfo } from "@/services/auth.services";
+import { useMeQuery } from "@/redux/api/user";
+import { ENUM_USER_ROLE } from "@/enums/userRole";
+import NameLogo from "@/components/ui/NameLogo";
 
-export default function ProfileMenu({ props }) {
-  const { handleLogOut } = props;
-
+export default function ProfileMenu({ props: { handleLogOut } }) {
   const profileMenuRef = useRef(null);
   const { openTooltip, toggleTooltip } = useTooltip(profileMenuRef);
+  const userInfo = getUserInfo();
 
-  const role = ENUM_USER_ROLE.candidate;
+  const { data } = useMeQuery();
+
+  const role = userInfo?.role;
+  let profileIcon = data?.data?.avatar;
+  if (role === ENUM_USER_ROLE.company) profileIcon = data?.data?.logo;
 
   return (
     <div className="relative" ref={profileMenuRef}>
       <div onClick={toggleTooltip} className="flex items-center cursor-pointer">
-        <img
-          className="w-10 h-10 rounded-full border border-primary"
-          src={avatar}
-          alt=""
-        />
-        <h4 className="font-semibold ml-2">Riyad Hossain</h4>
+        {profileIcon ? (
+          <img
+            className="w-10 h-10 rounded-full border border-primary"
+            src={profileIcon}
+            alt=""
+          />
+        ) : (
+          <NameLogo name={data?.data?.name} />
+        )}
+        <h4 className="font-semibold ml-2">{data?.data?.name}</h4>
         <FaCaretDown />
       </div>
 

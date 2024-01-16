@@ -6,8 +6,14 @@ import { IoMail, IoLockClosed } from "react-icons/io5";
 import Form from "../form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInSchema } from "@/schema/signIn";
+import { useSignInMutation } from "@/redux/api/auth";
+import toast from "react-hot-toast";
+import { storeUserInfo } from "@/services/auth.services";
+import ButtonSpinner from "../ui/ButtonSpinner";
+import { catchAsync } from "@/helpers/catchAsync";
 
 export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
+  const [signIn, { isLoading }] = useSignInMutation();
   const onSignUpHandle = () => setOpenAuthModal(ENUM_AUTH_MODAL.SIGN_UP);
 
   const onModalClose = () => {
@@ -15,13 +21,20 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
     setOpenAuthModal(null);
   };
 
-  const onSubmit = async (data) => {
-    try {
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+  const onSubmit = catchAsync(async (data) => {
+    const res = await signIn(data).unwrap();
+
+    if (!res?.success) {
+      toast.error(res?.message);
+      return;
     }
-  };
+
+    onModalClose();
+    toast.success(res?.message);
+    const accessToken = res?.data?.accessToken;
+    const refreshToken = res?.data?.refreshToken;
+    storeUserInfo(accessToken, refreshToken);
+  });
 
   return (
     <Modal
@@ -50,7 +63,7 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
           icon={<IoLockClosed className="input_icon" size={18} />}
         />
         <button type="submit" className="btn_secondary w-full">
-          Continue
+          {isLoading ? <ButtonSpinner /> : "Continue"}
         </button>
         <div className="text-center">
           <button

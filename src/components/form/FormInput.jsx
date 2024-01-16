@@ -32,8 +32,6 @@ export default function FormInput({
 
   const inputTag = useWatch({ control, name });
 
-  console.log(inputTag);
-
   useEffect(() => {
     if (setWatch) setWatch(inputTag);
   }, [inputTag, setWatch]);

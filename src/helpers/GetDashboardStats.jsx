@@ -35,8 +35,9 @@ export default function GetDashboardStats({ statsData }) {
 
   return (
     <div className="mt-12 grid grid-cols-4 gap-6">
-      {cardItems.map((item) => (
+      {cardItems.map((item,i) => (
         <DashboardHomeCard
+          key={i}
           title={item.title}
           quantity={item.quantity}
           icon={item.icon}

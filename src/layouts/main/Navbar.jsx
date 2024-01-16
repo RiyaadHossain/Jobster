@@ -12,6 +12,7 @@ import ForgetPassModal from "@/components/auth-modals/ForgetPassModal";
 import Logo from "@/components/ui/Logo";
 import SignInButton from "./components/SignInButton";
 import ProfileMenu from "../components/ProfileMenu";
+import { isLoggedIn } from "../../services/auth.services";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navbarRef = useRef(null);
@@ -19,7 +20,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
 
   const [openAuthModal, setOpenAuthModal] = useState(null);
 
-  const email = null;
+  const userLoggedIn = isLoggedIn();
 
   useEffect(() => {
     // Show Navbar background when scroll down
@@ -93,7 +94,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
           )}
 
           <div className="flex items-center gap-8">
-            {email ? (
+            {userLoggedIn ? (
               <li>
                 <ProfileMenu
                   props={{

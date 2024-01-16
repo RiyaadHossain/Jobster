@@ -5,6 +5,7 @@ import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
 import { jobsData } from "@/data/jobs";
 
 export default function FeaturedJob() {
+
   return (
     <section className="max_container">
       <SectionHeader
