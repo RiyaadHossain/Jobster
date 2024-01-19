@@ -6,9 +6,9 @@ import {
 } from "@/utils/localStorage";
 import { authToken } from "@/constants/localStorage";
 import axiosInstance from "../config/axios/axiosInstance";
-import { baseUrl } from "../config/envConfig";
-import { refreshTokenKey } from "../constants/cookie";
-import { getFromCookie, removeFromCookie, setToCookie } from "../utils/cookie";
+import { baseUrl } from "@/config/envConfig";
+import { refreshTokenKey } from "@/constants/cookie";
+import { getFromCookie, removeFromCookie, setToCookie } from "@/utils/cookie";
 
 export const storeUserInfo = (accessToken, refreshToken) => {
   if (!refreshToken || !accessToken) return "";
@@ -40,7 +40,7 @@ export const getNewAccessToken = async () => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     withCredentials: true,
-    sent: true
+    sent: true,
   });
 };
 

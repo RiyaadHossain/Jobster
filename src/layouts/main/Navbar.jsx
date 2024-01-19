@@ -1,7 +1,6 @@
 import "./style/module.style.css";
 import React, { useEffect, useRef, useState } from "react";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
-import { toast } from "react-hot-toast";
 import Sidebar from "./Sidebar";
 import { navbarItems } from "@/constants/navbarItems";
 import { ENUM_AUTH_MODAL } from "@/enums/authModal";
@@ -40,10 +39,6 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleLogOut = () => {
-    toast.success("Sign Out successfully", { id: "signout" });
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -96,11 +91,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
           <div className="flex items-center gap-8">
             {userLoggedIn ? (
               <li>
-                <ProfileMenu
-                  props={{
-                    handleLogOut,
-                  }}
-                />
+                <ProfileMenu />
               </li>
             ) : (
               <li>

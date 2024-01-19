@@ -1,11 +1,14 @@
 import ListingPageContainer from "@/components/other/listing-page-container/ListingPageContainer";
 import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
 import PageHeader from "@/components/ui/PageHeader";
-import { jobsData } from "@/data/jobs";
 import JobCard from "./components/JobCard";
 import SidebarFilter from "./components/SidebarFilter";
+import { useGetAllJobsQuery } from "../../redux/api/jobApi";
 
 const JobListing = () => {
+  const { data } = useGetAllJobsQuery();
+ const jobsData =data?.data?.data
+
   const onSearchSubmit = (data) => console.log(data);
 
   return (
@@ -27,7 +30,7 @@ const JobListing = () => {
             <SidebarFilter />
           </div>
         }
-        cards={jobsData.map((job, i) => (
+        cards={jobsData?.map((job, i) => (
           <JobCard key={i} jobInfo={job} />
         ))}
         moduleName="Job"

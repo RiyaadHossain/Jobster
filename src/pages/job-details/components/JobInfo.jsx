@@ -1,46 +1,39 @@
 import { AiOutlineLineChart } from "react-icons/ai";
-import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
+
 import PreviousBtn from "@/components/ui/PreviousBtn";
-import ButtonPrimary from "@/components/ui/ButtonPrimary";
-import toast from "react-hot-toast";
+
+import { formatDate } from "../../../utils/formatDate";
+import JobActionBtn from "./JobActionBtn";
+import { getUserInfo } from "../../../services/auth.services";
+import { ENUM_USER_ROLE } from "../../../enums/userRole";
+import { Link } from "react-router-dom";
 
 export default function JobInfo({ jobInfo }) {
+  const { role } = getUserInfo();
+  const candidateRole = role === ENUM_USER_ROLE.candidate;
+
   return (
     <>
       <div className="space-y-5 mt-24">
         <div className="flex justify-between items-center mt-5">
           <div>
-            <h1 className="text-3xl bold font-bold">{jobInfo.title}</h1>
+            <h1 className="text-3xl bold font-bold">{jobInfo?.title}</h1>
             <h5 className="text-grayColor font-light text-base">
               by
-              <span className="text-primary font-medium mx-1">
-                {jobInfo.company.name}
-              </span>
+              <Link
+                to={`/companies/${jobInfo?.company?._id}`}
+                className="text-primary font-medium mx-1"
+              >
+                {jobInfo?.company?.name}
+              </Link>
               in{" "}
               <span className="text-primary font-light">
-                {jobInfo.location}
+                {jobInfo?.location || "Location"}
               </span>
             </h5>
           </div>
 
-          <div>
-            <div className="flex items-center gap-5">
-              <div className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
-                <IoHeartOutline className="text-2xl group-hover:text-white" />
-              </div>
-              <div className="border border-black rounded-full group p-3 hover:bg-black transition-colors">
-                <IoShareSocialOutline className="text-2xl group-hover:text-white" />
-              </div>
-              <ButtonPrimary
-                display="Apply"
-                onClickFunc={() =>
-                  toast.success("Applied successfully", {
-                    id: "apply",
-                  })
-                }
-              />
-            </div>
-          </div>
+          {candidateRole && <JobActionBtn />}
         </div>
 
         <div className="flex justify-between items-center mt-6">
@@ -53,21 +46,21 @@ export default function JobInfo({ jobInfo }) {
             </span>
           </div>
           <span className="font-light text-grayColor">
-            {jobInfo.publishedAt}
+            {formatDate(jobInfo?.createdAt)}
           </span>
         </div>
 
         {/* -------------- Job Description -------------- */}
         <div className="pt-10">
           <h1 className="job_info_section_header">Overview</h1>
-          <p className="text_accent">{jobInfo.description}</p>
+          <p className="text_accent">{jobInfo?.description}</p>
         </div>
         <div>
           <h1 className="job_info_section_header">Skills</h1>
           <ul className="text_accent list-disc pl-10">
-            {jobInfo.skills.map((item, i) => (
+            {jobInfo?.skills?.map((item, i) => (
               <li key={i} className="mt-2">
-                {item}
+                {item.title}
               </li>
             ))}
           </ul>
@@ -75,9 +68,9 @@ export default function JobInfo({ jobInfo }) {
         <div>
           <h1 className="job_info_section_header">Requirements</h1>
           <ul className="text_accent list-disc pl-10">
-            {jobInfo.requirements.map((item, i) => (
+            {jobInfo?.requirements?.map((item, i) => (
               <li key={i} className="mt-2">
-                {item}
+                {item.title}
               </li>
             ))}
           </ul>
@@ -85,9 +78,9 @@ export default function JobInfo({ jobInfo }) {
         <div>
           <h1 className="job_info_section_header">Responsibilities</h1>
           <ul className="text_accent list-disc pl-10">
-            {jobInfo.responsibilities.map((item, i) => (
+            {jobInfo?.responsibilities?.map((item, i) => (
               <li key={i} className="mt-2">
-                {item}
+                {item.title}
               </li>
             ))}
           </ul>

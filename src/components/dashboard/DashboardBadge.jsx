@@ -2,7 +2,7 @@ import { ENUM_APPLICATION_STATUS } from "@/enums/applicationStatus";
 import { capitalizeFirstLetter } from "@/utils/capitalizeLetter";
 
 export default function DashboardBadge({ display, bg, classes }) {
-  if (display === ENUM_APPLICATION_STATUS.APPROVED) bg = "bg-green-700";
+  if (display === ENUM_APPLICATION_STATUS.ACCEPTED) bg = "bg-green-700";
   if (display === ENUM_APPLICATION_STATUS.REJECTED) bg = "bg-red-700";
   if (display === ENUM_APPLICATION_STATUS.PENDING) bg = "bg-sky-700";
 

@@ -3,13 +3,14 @@ import resetPassSVG from "../../assets/svgs/undraw_my_password_re_ydq7.svg";
 import Logo from "../../components/ui/Logo";
 import ButtonPrimary from "../../components/ui/ButtonPrimary";
 import PasswordResetForm from "./components/PasswordResetForm";
-import { FaCheckCircle } from "react-icons/fa";
+import { useState } from "react";
+import SuccessMessage from "./components/SuccessMessage";
 
 export default function ForgetPassword() {
   const { token } = useParams();
   const navigate = useNavigate();
 
-  const isPasswordReset = false;
+  const [passwordReset, setPasswordReset] = useState(false);
 
   return (
     <div className="">
@@ -23,22 +24,13 @@ export default function ForgetPassword() {
         <div className="hidden md:col-span-1 md:flex justify-center items-center">
           <img className="w-96" src={resetPassSVG} alt="" />
         </div>
-        {!isPasswordReset ? (
-          <PasswordResetForm token={token} />
+        {!passwordReset ? (
+          <PasswordResetForm
+            token={token}
+            setPasswordReset={setPasswordReset}
+          />
         ) : (
-          <div className="flex items-center gap-5">
-            <FaCheckCircle
-              className="text-center text-green-600 rounded-full border border-green-400"
-              size={24}
-            />
-            <p className="text-xl">
-              Password has been reset Succesfully. <br /> Please signup now.
-            </p>
-            <ButtonPrimary
-              onClickFunc={() => navigate("/")}
-              display="Sign In"
-            />
-          </div>
+          <SuccessMessage />
         )}
       </div>
     </div>

@@ -11,6 +11,10 @@
     @apply py-[45px];
   }
 
+  button {
+    @apply disabled:bg-gray-500 disabled:border-gray-500 disabled:cursor-not-allowed disabled:hover:bg-gray-500 disabled:hover:border-gray-500;
+  }
+
   [type="text"],
   [type="email"],
   [type="url"],
@@ -26,7 +30,8 @@
   select,
   textarea,
   select[multiple] {
-    @apply text-lg py-4 px-5 border border-opacity-20 rounded-full font-light ring-0 outline-0 focus:border-opacity-70 focus:ring-0 focus:outline-0;
+    @apply text-lg py-4 px-5 border border-opacity-20 rounded-full font-light ring-0 outline-0 focus:border-opacity-70 focus:ring-0 focus:outline-0
+    disabled:bg-gray-200 disabled:border-gray-200 disabled:cursor-not-allowed;
   }
 
   textarea {

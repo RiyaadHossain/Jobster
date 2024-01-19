@@ -7,6 +7,10 @@ import { IoMail } from "react-icons/io5";
 import Form from "../form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { forgetPassSchema } from "@/schema/forgetPass";
+import { catchAsync } from "../../helpers/catchAsync";
+import { useForgetPasswordMutation } from "../../redux/api/auth";
+import toast from "react-hot-toast";
+import ButtonPrimary from "../ui/ButtonPrimary";
 
 export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
   const onModalClose = () => {
@@ -14,13 +18,13 @@ export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
     setOpenAuthModal(null);
   };
 
-  const onSubmit = async (data) => {
-    try {
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [forgetPass, { isLoading }] = useForgetPasswordMutation();
+
+  const onSubmit = catchAsync(async (data) => {
+    const res = await forgetPass(data).unwrap();
+    onModalClose();
+    toast.success(res?.message);
+  });
 
   return (
     <Modal
@@ -43,7 +47,11 @@ export default function ForgetPassModal({ openAuthModal, setOpenAuthModal }) {
           type="email"
           icon={<IoMail className="input_icon" size={18} />}
         />
-        <button className="btn_secondary w-full">Get New Password</button>
+        <ButtonPrimary
+          className="btn_secondary w-full"
+          display="Get New Password"
+          isLoading={isLoading}
+        />
       </Form>
     </Modal>
   );

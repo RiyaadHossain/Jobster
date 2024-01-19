@@ -14,42 +14,50 @@ export default function SocialIcons({ customLinks, className }) {
 
   return (
     <div className={`flex gap-8 text-grayColor text-xl ${className}`}>
-      <div>
-        <a
-          href={`${socialLinks.facebook}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaFacebook className="icon_class" />
-        </a>
-      </div>
-      <div>
-        <a
-          href={`${socialLinks.twitter}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaTwitter className="icon_class" />
-        </a>
-      </div>
-      <div>
-        <a
-          href={`${socialLinks.instagram}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaInstagram className="icon_class" />
-        </a>
-      </div>
-      <div>
-        <a
-          href={`${socialLinks.linkedin}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedin className="icon_class" />
-        </a>
-      </div>
+      {socialLinks.facebook && (
+        <div>
+          <a
+            href={`${socialLinks.facebook}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook className="icon_class" />
+          </a>
+        </div>
+      )}
+      {socialLinks.twitter && (
+        <div>
+          <a
+            href={`${socialLinks.twitter}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter className="icon_class" />
+          </a>
+        </div>
+      )}
+      {socialLinks.instagram && (
+        <div>
+          <a
+            href={`${socialLinks.instagram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="icon_class" />
+          </a>
+        </div>
+      )}
+      {socialLinks.linkedin && (
+        <div>
+          <a
+            href={`${socialLinks.linkedin}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="icon_class" />
+          </a>
+        </div>
+      )}
     </div>
   );
 }

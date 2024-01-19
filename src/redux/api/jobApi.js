@@ -1,3 +1,4 @@
+import { tagTypes } from "../tagTypes";
 import { baseApi } from "./baseApi";
 
 const JOB_URL = "/job";
@@ -10,12 +11,14 @@ export const jobApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
+      providesTags: [tagTypes.job],
     }),
     getSingleJob: builder.query({
       query: (id) => ({
         url: `${JOB_URL}/${id}`,
         method: "GET",
       }),
+      providesTags: [tagTypes.job],
     }),
     postJob: builder.mutation({
       query: (data) => ({
@@ -23,6 +26,7 @@ export const jobApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: [tagTypes.job],
     }),
     updateJob: builder.mutation({
       query: ({ id, data }) => ({
@@ -30,12 +34,14 @@ export const jobApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: [tagTypes.job],
     }),
     deleteJob: builder.mutation({
       query: (id) => ({
         url: `${JOB_URL}/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: [tagTypes.job],
     }),
   }),
 });

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
 import { useRef } from "react";
 import { useTooltip } from "@/hooks/useTooltip";
@@ -6,8 +6,13 @@ import { getUserInfo } from "@/services/auth.services";
 import { useMeQuery } from "@/redux/api/user";
 import { ENUM_USER_ROLE } from "@/enums/userRole";
 import NameLogo from "@/components/ui/NameLogo";
+import { removeUserInfo } from "../../services/auth.services";
+import { useRefetchMe } from "../../hooks/useRefetchMe";
+import toast from "react-hot-toast";
 
-export default function ProfileMenu({ props: { handleLogOut } }) {
+export default function ProfileMenu() {
+  const refetch = useRefetchMe();
+  const navigate = useNavigate();
   const profileMenuRef = useRef(null);
   const { openTooltip, toggleTooltip } = useTooltip(profileMenuRef);
   const userInfo = getUserInfo();
@@ -18,12 +23,19 @@ export default function ProfileMenu({ props: { handleLogOut } }) {
   let profileIcon = data?.data?.avatar;
   if (role === ENUM_USER_ROLE.company) profileIcon = data?.data?.logo;
 
+  const handleLogOut = () => {
+    removeUserInfo();
+    refetch();
+    navigate("/");
+    toast.success("Sign Out successfully", { id: "signout" });
+  };
+
   return (
     <div className="relative" ref={profileMenuRef}>
       <div onClick={toggleTooltip} className="flex items-center cursor-pointer">
         {profileIcon ? (
           <img
-            className="w-10 h-10 rounded-full border border-primary"
+            className="w-10 h-10 rounded-full object-cover border border-primary"
             src={profileIcon}
             alt=""
           />

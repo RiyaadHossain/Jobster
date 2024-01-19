@@ -1,17 +1,20 @@
 import "./style/style.css";
 import toast from "react-hot-toast";
 import { Outlet } from "react-router-dom";
-import avatar from "@/assets/images/avatar/avatar-5.jpeg"
 import ProfileMenu from "../components/ProfileMenu";
-import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { DashboardSidebar } from "./DashboardSidebar";
 import NotificationToltip from "@/components/dashboard/NotificationToltip";
+import { removeUserInfo } from "../../services/auth.services";
+import { useRefetchMe } from "../../hooks/useRefetchMe";
 
 const Dashboard = () => {
-  const email = "riyad@gmail.com";
-  const role = ENUM_USER_ROLE.candidate;
+  const refetch = useRefetchMe();
 
-  const handleLogOut = () => toast.success("hello world!");
+  const handleLogOut = () => {
+    removeUserInfo();
+    refetch();
+    toast.success("Sign Out successfully", { id: "signout" });
+  };
 
   return (
     <div className="grid grid-cols-12">
@@ -22,9 +25,6 @@ const Dashboard = () => {
             <NotificationToltip />
             <ProfileMenu
               props={{
-                avatar,
-                email,
-                role,
                 handleLogOut,
               }}
             />

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import FormInput from "@/components/form/FormInput";
 import FormSelect from "@/components/form/FormSelect";
@@ -9,21 +8,34 @@ import {
   location,
 } from "@/constants/jobInfo";
 import FormTextarea from "@/components/form/FormTextarea";
-import FormImg from "@/components/form/FormImg";
 import Form from "@/components/form/Form";
+import ButtonPrimary from "../../../../../components/ui/ButtonPrimary";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { jobOfferSchema } from "../../../../../schema/jobOffer";
+import AddSkill from "../../new-job-offer/components/AddSkill";
+import AddResponsiblity from "../../new-job-offer/components/AddResponsiblity";
+import AddRequirement from "../../new-job-offer/components/AddRequirements";
+import { catchAsync } from "../../../../../helpers/catchAsync";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useGetSingleJobQuery,
+  useUpdateJobMutation,
+} from "../../../../../redux/api/jobApi";
+import toast from "react-hot-toast";
 
 export default function EditJobOffer() {
-  const [imgUrl, setImgUrl] = useState({ banner: null, avatar: null });
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { data } = useGetSingleJobQuery(id);
+  const [updateJob, { isLoading }] = useUpdateJobMutation();
 
-  const onSubmit = async (data) => {
-    try {
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const onSubmit = catchAsync(async (data) => {
+    const res = await updateJob({ id, data }).unwrap();
+    toast.success(res?.message);
+    navigate("/dashboard/company/manage-jobs");
+  });
 
-  const defaultValues = {};
+  const defaultValues = data?.data;
 
   return (
     <div>
@@ -33,12 +45,15 @@ export default function EditJobOffer() {
       />
 
       <div className="">
-        <Form defaultValues={defaultValues} submitHandler={onSubmit}>
+        <Form
+          defaultValues={defaultValues}
+          submitHandler={onSubmit}
+          resolver={yupResolver(jobOfferSchema)}
+        >
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
-                id="jobTitle"
-                name="jobTitle"
+                name="title"
                 label="Job Title"
                 placeholder="Add Job Title"
                 type="text"
@@ -48,7 +63,7 @@ export default function EditJobOffer() {
                 <FormSelect
                   options={industries}
                   label="Industry"
-                  name="industry"
+                  name="category"
                   mandatory={true}
                   placeholder="Select Industry"
                   divClass=" w-1/2 flex-grow"
@@ -56,7 +71,7 @@ export default function EditJobOffer() {
                 <FormSelect
                   options={location}
                   label="Location"
-                  name="Location"
+                  name="location"
                   placeholder="Select Location"
                   mandatory={true}
                   divClass=" w-1/2 flex-grow"
@@ -64,24 +79,11 @@ export default function EditJobOffer() {
               </div>
               <FormTextarea
                 rows={6}
-                id="jobDescription"
-                name="jobDescription"
+                name="description"
                 label="Job Description"
                 placeholder="Write Job Details"
                 mandatory={true}
                 inputClass="resize-none"
-              />
-            </div>
-
-            <div className="col-span-4">
-              <FormImg
-                label="Upload cover photo"
-                id="banner"
-                name="banner"
-                height="h-40"
-                width="w-full"
-                imgUrl={imgUrl}
-                setImgUrl={setImgUrl}
               />
             </div>
           </div>
@@ -93,16 +95,18 @@ export default function EditJobOffer() {
               label="Type of Employment"
               mandatory={true}
               divClass="col-span-3"
+              placeholder="Select Employment Type"
             />
             <FormSelect
               options={expLevelOpt}
               label="Experience Level"
+              name="workLevel"
               mandatory={true}
               divClass="col-span-3"
+              placeholder="Select Experience Level"
             />
             <FormInput
-              id="requiredExperience"
-              name="requiredExperience"
+              name="experience"
               label="Required Experience"
               placeholder="E.g. Minimum 1 year"
               type="text"
@@ -110,8 +114,7 @@ export default function EditJobOffer() {
               divClass="col-span-3"
             />
             <FormInput
-              id="salary"
-              name="salary"
+              name="salaryRange"
               label="Salary"
               placeholder="E.g. $100 / year"
               type="text"
@@ -120,8 +123,27 @@ export default function EditJobOffer() {
             />
           </div>
 
+          <div className="mt-12">
+            <h2 className="heading_2">Skill</h2>
+            <AddSkill />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="heading_2">Responsiblity</h2>
+            <AddResponsiblity />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="heading_2">Requirements</h2>
+            <AddRequirement />
+          </div>
+
           <div className="mt-10">
-            <button className="btn_secondary">Update Job</button>
+            <ButtonPrimary
+              className="btn_secondary"
+              isLoading={isLoading}
+              display="Update Job"
+            />
           </div>
         </Form>
       </div>

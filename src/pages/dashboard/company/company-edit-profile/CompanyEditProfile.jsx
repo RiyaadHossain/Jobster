@@ -8,15 +8,22 @@ import FormCheckbox from "@/components/form/FormCheckbox";
 import Form from "@/components/form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { companyProfileSchema } from "@/schema/companyProfile";
+import { catchAsync } from "../../../../helpers/catchAsync";
+import { useEditCompanyProfileMutation } from "../../../../redux/api/company";
+import { useMeQuery } from "../../../../redux/api/user";
+import toast from "react-hot-toast";
+import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
 
 export default function CompanyEditProfile() {
-  const onSubmit = async (data) => {
-    try {
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { data } = useMeQuery();
+  const [updateProfile, { isLoading }] = useEditCompanyProfileMutation();
+
+  const onSubmit = catchAsync(async (data) => {
+    const res = await updateProfile(data).unwrap();
+    toast.success(res?.message);
+  });
+
+  const defaultValues = data?.data;
 
   return (
     <div>
@@ -27,14 +34,14 @@ export default function CompanyEditProfile() {
 
       <div className="">
         <Form
+          defaultValues={defaultValues}
           submitHandler={onSubmit}
           resolver={yupResolver(companyProfileSchema)}
         >
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
-                id="companyName"
-                name="companyName"
+                name="name"
                 label="Company Name"
                 placeholder="Add Company Name"
                 type="text"
@@ -42,17 +49,16 @@ export default function CompanyEditProfile() {
               />
               <div className="flex gap-5">
                 <FormInput
-                  id="email"
                   name="email"
                   label="Email"
                   placeholder="company@gmail.com"
                   type="email"
                   mandatory={true}
+                  disabled
                   divClass=" w-1/2 flex-grow"
                 />
                 <FormInput
-                  id="phone"
-                  name="phone"
+                  name="phoneNumber"
                   label="Phone"
                   placeholder="(+880) 1703790978"
                   type="number"
@@ -61,7 +67,6 @@ export default function CompanyEditProfile() {
                 />
               </div>
               <FormInput
-                id="website"
                 name="website"
                 label="Website"
                 placeholder="https://"
@@ -70,8 +75,7 @@ export default function CompanyEditProfile() {
               />
               <FormTextarea
                 rows={6}
-                id="description"
-                name="description"
+                name="about"
                 label="About"
                 placeholder="About Company"
                 mandatory={true}
@@ -90,8 +94,8 @@ export default function CompanyEditProfile() {
 
               <FormImg
                 label="Upload Image"
-                id="avatar"
-                name="avatar"
+                id="logo"
+                name="logo"
                 height="h-32"
                 width="w-32"
               />
@@ -116,8 +120,7 @@ export default function CompanyEditProfile() {
               divClass="col-span-3"
             />
             <FormInput
-              id="foundIn"
-              name="foundIn"
+              name="founded"
               label="Found In"
               placeholder="E.g. 2001"
               type="text"
@@ -125,7 +128,6 @@ export default function CompanyEditProfile() {
               divClass="col-span-3"
             />
             <FormInput
-              id="companySize"
               name="companySize"
               label="Company Size"
               placeholder="E.g. 10 - 51"
@@ -142,32 +144,28 @@ export default function CompanyEditProfile() {
 
             <div className="grid grid-cols-2 gap-5">
               <FormInput
-                id="facebook"
-                name="facebook"
+                name="socialLinks.facebook"
                 label="Facebook"
                 placeholder="https://"
                 type="text"
                 divClass="col-span-1"
               />
               <FormInput
-                id="twitter"
-                name="twitter"
+                name="socialLinks.twitter"
                 label="Twitter"
                 placeholder="https://"
                 type="text"
                 divClass="col-span-1"
               />
               <FormInput
-                id="instagram"
-                name="instagram"
+                name="socialLinks.instagram"
                 label="Instagram"
                 placeholder="https://"
                 type="text"
                 divClass="col-span-1"
               />
               <FormInput
-                id="linkedIn"
-                name="linkedIn"
+                name="socialLinks.linkedIn"
                 label="LinkedIn"
                 placeholder="https://"
                 type="text"
@@ -184,7 +182,11 @@ export default function CompanyEditProfile() {
           />
 
           <div className="mt-12">
-            <button className="btn_secondary">Update Profile</button>
+            <ButtonPrimary
+              className="btn_secondary"
+              display="Update Profile"
+              isLoading={isLoading}
+            />
           </div>
         </Form>
       </div>

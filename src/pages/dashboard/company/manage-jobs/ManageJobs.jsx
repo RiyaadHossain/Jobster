@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import JobsterTable from "@/components/dashboard/JobsterTable";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
@@ -7,7 +7,12 @@ import { IoTrashOutline } from "react-icons/io5";
 import { RiEdit2Fill } from "react-icons/ri";
 import DashboardBadge from "@/components/dashboard/DashboardBadge";
 import TableSearchBar from "@/components/dashboard/TableSearchBar";
-import { dashboardJobsData } from "@/data/dashJobs";
+import { useMyJobsQuery } from "../../../../redux/api/company";
+import { formatDate } from "../../../../utils/formatDate";
+import { userFormatText } from "../../../../utils/userFormatText";
+import { useDeleteJobMutation } from "../../../../redux/api/jobApi";
+import { catchAsync } from "../../../../helpers/catchAsync";
+import toast from "react-hot-toast";
 
 export default function ManageJobs() {
   const columns = [
@@ -20,7 +25,21 @@ export default function ManageJobs() {
     { className: "", title: "" },
   ];
 
-  const dataSource = dashboardJobsData.map((job, i) => (
+  const { data } = useMyJobsQuery();
+  const [deleteJob, { isLoading, isSuccess }] = useDeleteJobMutation();
+
+  const dashboardJobsData = data?.data;
+
+  const onDeleteJob = catchAsync(async (id) => {
+    const res = await deleteJob(id).unwrap();
+    toast.success(res?.message);
+  });
+
+  useEffect(() => {
+    if (isLoading && !isSuccess) toast.loading("Processing....", { id: 1 });
+  }, [isLoading, isSuccess]);
+
+  const dataSource = dashboardJobsData?.map((data, i) => (
     <tr
       key={i}
       className="[&>*]:p-3 hover:bg-secondaryLight transition-colors border-b"
@@ -29,31 +48,41 @@ export default function ManageJobs() {
         <input type="checkbox" name="" id="" />
       </td>
       <td>
-        <Link to={`/jobs/${job.id}`} className="main_row_title">
-          {job.title}
+        <Link to={`/jobs/${data?.job?._id}`} className="main_row_title">
+          {data?.job?.title}
         </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> {job.location}
+          <FaGlobeAsia /> {data?.job?.location || "No Location"}
         </div>
       </td>
-      <td className="font_var_medium">{job.category}</td>
-      <td className="font_var_thin">{job.employmentType}</td>
+      <td className="font_var_medium">{data?.job?.category}</td>
+      <td className="font_var_thin">
+        {userFormatText(data?.job?.employmentType)}
+      </td>
       <td className="font_var_thin_pri">
-        {job.applications.length} candidates
+        {data?.applications?.length} candidates
       </td>
       <td>
-        <DashboardBadge display={job.status} bg="bg-green-700" />
-        <div className="dashboard_table_date">{job.publishedAt}</div>
+        <DashboardBadge
+          display={data?.job?.status || "Published"}
+          bg="bg-green-700"
+        />
+        <div className="dashboard_table_date">
+          {formatDate(data?.job?.createdAt, true)}
+        </div>
       </td>
       <td>
         <div className="flex gap-2">
-          <Link to={`edit-job/${job.id}`} className="btn_icon">
+          <Link to={`edit-job/${data?.job?._id}`} className="btn_icon">
             <RiEdit2Fill />
           </Link>
-          <Link to={`/jobs/${job.id}`} className="btn_icon">
+          <Link to={`/jobs/${data?.job?._id}`} className="btn_icon">
             <FaEye />
           </Link>
-          <button className="btn_icon">
+          <button
+            onClick={() => onDeleteJob(data?.job?._id)}
+            className="btn_icon"
+          >
             <IoTrashOutline />
           </button>
         </div>
@@ -72,7 +101,7 @@ export default function ManageJobs() {
       />
 
       <TableSearchBar
-        quantity={dashboardJobsData.length}
+        quantity={dashboardJobsData?.length}
         display="job"
         setSearchText={setSearchText}
       />

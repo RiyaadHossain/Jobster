@@ -9,7 +9,7 @@ export default function AddResponsiblity() {
   const { control } = useFormContext();
 
   const { fields, append, remove } = useFieldArray({
-    name: "responsiblities",
+    name: "responsibilities",
     control,
   });
 

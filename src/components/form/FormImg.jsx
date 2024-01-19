@@ -17,6 +17,8 @@ export default function FormImg({ label, id, name, height, width }) {
     const id = e.target.id;
     const file = e.target.files[0];
 
+    if (!file) return;
+
     const formData = new FormData();
     formData.append("field", id);
     formData.append("image", file);

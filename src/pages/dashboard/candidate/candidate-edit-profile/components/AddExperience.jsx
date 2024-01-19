@@ -1,11 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import FormInput from "@/components/form/FormInput";
 import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import FormTableRow from "./FormTableRow";
 import { useFieldState } from "@/hooks/useFieldState";
 
-export default function AddExperience() {
+export default function AddExperience({ setExperience }) {
   const { control } = useFormContext();
 
   const jobTitleRef = useRef(null);
@@ -18,11 +18,13 @@ export default function AddExperience() {
     control,
   });
 
+  useEffect(() => {
+    setExperience(fields);
+  }, [fields, setExperience]);
+
+  const refs = [jobTitleRef, companyNameRef, timePeriodRef, desciptionRef];
   const { appendData, customError, onChange, isFormOpen, openForm, closeForm } =
-    useFieldState({
-      append,
-      refs: [jobTitleRef, companyNameRef, timePeriodRef, desciptionRef],
-    });
+    useFieldState(refs, append);
 
   return (
     <div className="mt-2">

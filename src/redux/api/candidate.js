@@ -1,3 +1,4 @@
+import { tagTypes } from "../tagTypes";
 import { baseApi } from "./baseApi";
 
 const CANDIDATE_API = "/candidate";
@@ -10,6 +11,7 @@ export const candidateApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: [tagTypes.candidate, tagTypes.user],
     }),
     getAllCandidates: builder.query({
       query: (params) => ({
@@ -17,12 +19,14 @@ export const candidateApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
+      providesTags: [tagTypes.candidate],
     }),
     getCandidate: builder.query({
       query: (id) => ({
         url: `${CANDIDATE_API}/${id}`,
         method: "GET",
       }),
+      providesTags: [tagTypes.candidate],
     }),
     uploadResume: builder.mutation({
       query: (data) => ({
@@ -31,6 +35,14 @@ export const candidateApi = baseApi.injectEndpoints({
         body: data,
         contentType: "multipart/form-data",
       }),
+      invalidatesTags: [tagTypes.candidate, tagTypes.user],
+    }),
+    deleteResume: builder.mutation({
+      query: () => ({
+        url: `${CANDIDATE_API}/delete-resume`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.candidate, tagTypes.user],
     }),
   }),
 });
@@ -40,4 +52,5 @@ export const {
   useGetAllCandidatesQuery,
   useGetCandidateQuery,
   useUploadResumeMutation,
+  useDeleteResumeMutation,
 } = candidateApi;

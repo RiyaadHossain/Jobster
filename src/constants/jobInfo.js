@@ -8,21 +8,21 @@ export const employmentType = [
 ];
 
 export const industries = [
-  { value: 1, display: "Construction" },
-  { value: 2, display: "Software Engineering" },
-  { value: 3, display: "Healthcare" },
-  { value: 4, display: "Business" },
-  { value: 5, display: "Finance" },
-  { value: 6, display: "Markeing" },
+  { value: "construction", display: "Construction" },
+  { value: "software_engineering", display: "Software Engineering" },
+  { value: "healthcare", display: "Healthcare" },
+  { value: "business", display: "Business" },
+  { value: "finance", display: "Finance" },
+  { value: "markeing", display: "Markeing" },
 ];
 
 export const location = [
-  { value: 1, display: "Dhaka" },
-  { value: 2, display: "Khulna" },
-  { value: 3, display: "Rajshahi" },
-  { value: 4, display: "Barishal" },
-  { value: 5, display: "Narail" },
-  { value: 6, display: "London" },
+  { value: "Dhaka", display: "Dhaka" },
+  { value: "Khulna", display: "Khulna" },
+  { value: "Rajshahi", display: "Rajshahi" },
+  { value: "Barishal", display: "Barishal" },
+  { value: "Narail", display: "Narail" },
+  { value: "London", display: "London" },
 ];
 
 export const expLevel = [
@@ -35,19 +35,19 @@ export const expLevel = [
 ];
 
 export const employmentTypeOpt = [
-  { value: 1, display: "Contract" },
-  { value: 2, display: "Full Time" },
-  { value: 3, display: "Internship" },
-  { value: 4, display: "Part Time" },
-  { value: 5, display: "Remote" },
-  { value: 6, display: "Training" },
+  { value: "contract", display: "Contract" },
+  { value: "full_time", display: "Full Time" },
+  { value: "internship", display: "Internship" },
+  { value: "part_time", display: "Part Time" },
+  { value: "remote", display: "Remote" },
+  { value: "training", display: "Training" },
 ];
 
 export const expLevelOpt = [
-  { value: 1, display: "Entry-Level" },
-  { value: 2, display: "Manager" },
-  { value: 3, display: "Executive" },
-  { value: 4, display: "Mid-Level" },
-  { value: 5, display: "Fresher" },
-  { value: 6, display: "Senior-Level" },
+  { value: "entry_level", display: "Entry-Level" },
+  { value: "manager", display: "Manager" },
+  { value: "executive", display: "Executive" },
+  { value: "mid_level", display: "Mid-Level" },
+  { value: "fresher", display: "Fresher" },
+  { value: "senior_level", display: "Senior-Level" },
 ];

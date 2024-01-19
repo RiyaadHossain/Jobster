@@ -1,49 +1,50 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaDownload, FaFilePdf, FaTrashAlt } from "react-icons/fa";
+import {
+  useDeleteResumeMutation,
+  useUploadResumeMutation,
+} from "@/redux/api/candidate";
+import { FadeLoader } from "react-spinners";
+import { catchAsync } from "@/helpers/catchAsync";
 
-export default function AddResume() {
+export default function AddResume({ resumeData, meLoading }) {
   const [uploadError, setUploadError] = useState("");
-  const [resumeUploaded, setResumeUploaded] = useState(false);
-  const [fileName, setFileName] = useState("");
+
+  const [uploadResume, { isLoading }] = useUploadResumeMutation();
+  const [deleteResume, { isLoading: deleteLoading }] =
+    useDeleteResumeMutation();
 
   const handleFileUpload = async (event) => {
-    const file = event.target.files[0];
-
     setUploadError("");
+    const file = event.target.files[0];
 
     if (file.type !== "application/pdf") {
       setUploadError("Resume must be a pdf file");
       return;
     }
 
-    if (file) {
-      try {
-        const formData = new FormData();
-        formData.append("resume", file);
+    const formData = new FormData();
+    formData.append("resume", file);
 
-        // Example: Replace 'YOUR_UPLOAD_ENDPOINT' with your actual backend endpoint
-        // const response = await fetch("YOUR_UPLOAD_ENDPOINT", {
-        //   method: "POST",
-        //   body: formData,
-        // });
+    const res = await uploadResume(formData);
 
-        // if (response.ok) {
-        setResumeUploaded(true);
-        setFileName(file.name);
-        // } else {
-        //   toast.error("Upload failed");
-        // }
-      } catch (error) {
-        toast.error("Error occurred during upload");
-      }
+    if (!res?.data) {
+      const error = res?.error?.data?.message;
+      toast.error(error);
+      setUploadError(error);
+      return;
     }
+
+    toast.success(res?.data?.message);
   };
 
-  const downloadResume = () => {};
-  const deleteResume = () => {
-    setResumeUploaded(false);
-  };
+  const onDeleteResume = catchAsync(async () => {
+    const res = await deleteResume().unwrap();
+    toast.success(res?.message);
+  });
+
+  const newFileName = resumeData?.fileName;
 
   return (
     <div>
@@ -55,32 +56,34 @@ export default function AddResume() {
         id="upload_resume"
       />
       <div
-        className={`border ${
+        className={`border relative ${
           !uploadError ? "border-lightGray" : "border-red-500"
         } rounded-3xl p-8 flex justify-between items-center`}
       >
         <div className="flex items-center gap-5">
           <FaFilePdf size={60} className="text-black/50" />
           <span className="font-semibold">
-            {!resumeUploaded ? "No Resume Uploaded" : fileName}
+            {newFileName || "No Resume uploaded"}
           </span>
         </div>
         <div>
-          {!resumeUploaded ? (
+          {!newFileName ? (
             <label className="btn_accent" htmlFor="upload_resume">
               Upload PDF
             </label>
           ) : (
             <div className="flex gap-2">
-              <button
-                onClick={downloadResume}
+              <a
+                href={resumeData?.fileURL}
+                target="_blank"
+                rel="noreferrer"
                 type="button"
                 className="btn_icon"
               >
                 <FaDownload />
-              </button>
+              </a>
               <button
-                onClick={deleteResume}
+                onClick={onDeleteResume}
                 type="button"
                 className="btn_icon"
               >
@@ -89,6 +92,11 @@ export default function AddResume() {
             </div>
           )}
         </div>
+        {(meLoading || isLoading || deleteLoading) && (
+          <div className="absolute left-0 w-full h-full bg-gray-300 rounded-3xl flex_cen">
+            <FadeLoader color="#44195D" />
+          </div>
+        )}
       </div>
       {uploadError && (
         <span className="text-red-500 text-sm mt-3">{uploadError}</span>

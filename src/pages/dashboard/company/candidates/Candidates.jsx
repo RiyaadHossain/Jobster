@@ -8,7 +8,10 @@ import { IoMdCheckmark } from "react-icons/io";
 import DashboardBadge from "@/components/dashboard/DashboardBadge";
 import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { appliedCandidates } from "@/data/dashCandidates";
+import { useAppliedCandidatesQuery } from "../../../../redux/api/company";
+import { formatDate } from "../../../../utils/formatDate";
+import NameLogo from "../../../../components/ui/NameLogo";
+import toast from "react-hot-toast";
 
 export default function Candidates() {
   const columns = [
@@ -20,7 +23,14 @@ export default function Candidates() {
     { className: "", title: "" },
   ];
 
-  const dataSource = appliedCandidates.map((application, i) => (
+  const { data } = useAppliedCandidatesQuery();
+  const appliedCandidates = data?.data;
+
+  const handleDelete = () => {
+    toast.error("You can't delete an application", { id: "del" });
+  };
+
+  const dataSource = appliedCandidates?.map((application, i) => (
     <tr
       key={i}
       className="[&>*]:p-3 hover:bg-secondaryLight transition-colors border-b"
@@ -31,36 +41,45 @@ export default function Candidates() {
       <td>
         <div className="flex items-center gap-2">
           <div>
-            <img
-              className="w-10 h-10 rounded-full border border-primary"
-              src={application.candidate.avatar}
-              alt=""
-            />
+            {application?.candidate?.avatar ? (
+              <img
+                className="w-10 h-10 rounded-full border border-primary"
+                src={application?.candidate?.avatar}
+                alt=""
+              />
+            ) : (
+              <NameLogo name={application?.candidate?.name} />
+            )}
           </div>
           <div>
             <Link
-              to={`/candidates/${application.candidate.id}`}
+              to={`/candidates/${application?.candidate?._id}`}
               className="main_row_title"
             >
-              {application.candidate.name}
+              {application?.candidate?.name}
             </Link>
             <div className="main_row_subtitle">
-              <FaGlobeAsia /> {application.candidate.location}
+              <FaGlobeAsia />{" "}
+              {application?.candidate?.location || "No Location"}
             </div>
           </div>
         </div>
       </td>
       <td className="font_var_thin_pri">
-        <Link to={`/jobs/${application.job.id}`}>{application.job.title}</Link>
+        <Link to={`/jobs/${application?.job?._id}`}>
+          {application?.job?.title}
+        </Link>
       </td>
       <td>
-        <DashboardBadge display={application.status} />
+        <DashboardBadge display={application?.status} />
       </td>
-      <td className="dashboard_table_date">{application.appliedAt}</td>
+      <td className="dashboard_table_date">
+        {formatDate(application?.createdAt, true)}
+      </td>
       <td>
         <div className="flex justify-end gap-2">
           <Link
-            to={`/candidates/${application.candidate.id}`}
+            to={`/candidates/${application?.candidate?._id}`}
             className="btn_icon"
           >
             <FaEye />
@@ -71,7 +90,7 @@ export default function Candidates() {
           <button className="btn_icon">
             <MdBlock />
           </button>
-          <button className="btn_icon">
+          <button onClick={handleDelete} className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>
@@ -90,7 +109,7 @@ export default function Candidates() {
       />
 
       <TableSearchBar
-        quantity={appliedCandidates.length}
+        quantity={appliedCandidates?.length}
         display="candidate"
         setSearchText={setSearchText}
       />

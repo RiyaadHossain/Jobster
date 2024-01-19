@@ -1,10 +1,15 @@
 import PageBanner from "@/components/ui/PageBanner";
-import { companiesData } from "@/data/companies";
 import CompanyInfo from "./components/CompanyInfo";
 import CompanySidebar from "./components/CompanySidebar";
+import { useParams } from "react-router-dom";
+import { useGetCompanyQuery } from "../../redux/api/company";
 
 export default function CompanyDetails() {
-  const companyInfo = companiesData[0];
+  const { id } = useParams();
+  const { data } = useGetCompanyQuery(id);
+
+  const companyInfo = data?.data?.company;
+  const availableJobs = data?.data?.availableJobs;
 
   return (
     <div className="max_container my-20">
@@ -14,14 +19,14 @@ export default function CompanyDetails() {
           {/* +++ Comapany Banner +++ */}
           <PageBanner
             rounded="rounded-xl"
-            title={companyInfo.name}
-            banner={companyInfo.banner}
-            brandImg={companyInfo.logo}
-            subtitle={companyInfo.location}
+            title={companyInfo?.name}
+            banner={companyInfo?.banner}
+            brandImg={companyInfo?.logo}
+            subtitle={companyInfo?.location}
           />
 
           {/* +++ Comapany Info +++ */}
-          <CompanyInfo companyInfo={companyInfo} />
+          <CompanyInfo companyInfo={companyInfo} availableJobs={availableJobs} />
         </div>
 
         {/* --------------- Sidebar Content --------------- */}

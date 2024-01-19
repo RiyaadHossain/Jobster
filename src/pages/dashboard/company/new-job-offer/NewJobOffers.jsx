@@ -13,21 +13,22 @@ import {
 } from "@/constants/jobInfo";
 import AddResponsiblity from "./components/AddResponsiblity";
 import AddRequirement from "./components/AddRequirements";
-import { makeArrayOfString } from "@/utils/makeArrayOfString";
 import { catchAsync } from "@/helpers/catchAsync";
 import { usePostJobMutation } from "@/redux/api/jobApi";
-import ButtonSpinner from "@/components/ui/ButtonSpinner";
+import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
+import toast from "react-hot-toast";
+import AddSkill from "./components/AddSkill";
+import { useNavigate } from "react-router-dom";
 
 export default function NewJobOffers() {
+  const navigate = useNavigate()
   const [createJob, { isLoading }] = usePostJobMutation();
 
   const onSubmit = catchAsync(async (data) => {
-    if (data.responsiblities)
-      data.responsiblities = makeArrayOfString(data.responsiblities, "title");
-    if (data.requirements)
-      data.requirements = makeArrayOfString(data.requirements, "title");
     const res = await createJob(data).unwrap();
-    console.log({ res });
+    toast.success(res?.message);
+
+    navigate('/dashboard/company/manage-jobs')
   });
 
   return (
@@ -42,8 +43,7 @@ export default function NewJobOffers() {
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
-                id="jobTitle"
-                name="jobTitle"
+                name="title"
                 label="Job Title"
                 placeholder="Add Job Title"
                 type="text"
@@ -53,7 +53,7 @@ export default function NewJobOffers() {
                 <FormSelect
                   options={industries}
                   label="Industry"
-                  name="industry"
+                  name="category"
                   mandatory={true}
                   placeholder="Select Industry"
                   divClass=" w-1/2 flex-grow"
@@ -69,25 +69,12 @@ export default function NewJobOffers() {
               </div>
               <FormTextarea
                 rows={6}
-                id="description"
                 name="description"
                 label="Job Description"
                 placeholder="Write Job Details"
                 mandatory={true}
                 inputClass="resize-none"
               />
-            </div>
-
-            <div className="col-span-4">
-              {/* <FormImg
-                label="Upload cover photo"
-                id="banner"
-                name="banner"
-                height="h-40"
-                width="w-full"
-                imgUrl={imgUrl}
-                setImgUrl={setImgUrl}
-              /> */}
             </div>
           </div>
 
@@ -103,14 +90,13 @@ export default function NewJobOffers() {
             <FormSelect
               options={expLevelOpt}
               label="Experience Level"
-              name="experienceLevel"
+              name="workLevel"
               mandatory={true}
               divClass="col-span-3"
               placeholder="Select Experience Level"
             />
             <FormInput
-              id="requiredExperience"
-              name="requiredExperience"
+              name="experience"
               label="Required Experience"
               placeholder="E.g. Minimum 1 year"
               type="text"
@@ -118,14 +104,18 @@ export default function NewJobOffers() {
               divClass="col-span-3"
             />
             <FormInput
-              id="salary"
-              name="salary"
+              name="salaryRange"
               label="Salary"
               placeholder="E.g. $100 / year"
               type="text"
               mandatory={true}
               divClass="col-span-3"
             />
+          </div>
+
+          <div className="mt-12">
+            <h2 className="heading_2">Skill</h2>
+            <AddSkill />
           </div>
 
           <div className="mt-12">
@@ -139,9 +129,11 @@ export default function NewJobOffers() {
           </div>
 
           <div className="mt-10">
-            <button className="btn_secondary">
-              {isLoading ? <ButtonSpinner /> : "Update Job"}
-            </button>
+            <ButtonPrimary
+              className="btn_secondary"
+              isLoading={isLoading}
+              display="Publish Job"
+            />
           </div>
         </Form>
       </div>

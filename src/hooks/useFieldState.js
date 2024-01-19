@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { capitalizeFirstLetter } from "@/utils/capitalizeLetter";
 
-export const useFieldState = ({ refs, append }) => {
+export const useFieldState = (refs, append) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [freshForm, setFreshForm] = useState(true);
   const [customError, setCustomError] = useState({});

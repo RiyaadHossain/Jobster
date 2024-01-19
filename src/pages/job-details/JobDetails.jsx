@@ -2,14 +2,14 @@ import { useParams } from "react-router-dom";
 import JobSidebar from "./components/JobSidebar";
 import JobInfo from "./components/JobInfo";
 import PageBanner from "@/components/ui/PageBanner";
-import { jobsData } from "@/data/jobs";
 import "./module.style.css";
+import { useGetSingleJobQuery } from "../../redux/api/jobApi";
 
 const JobDetails = () => {
   const { id } = useParams();
-  console.log(id);
+  const { data } = useGetSingleJobQuery(id);
 
-  const jobInfo = jobsData[0];
+  const jobInfo = data?.data;
 
   return (
     <div className="max_container my-20">
@@ -19,8 +19,9 @@ const JobDetails = () => {
           {/* -------------- Comapany Images -------------- */}
 
           <PageBanner
-            banner={jobInfo.banner}
-            brandImg={jobInfo.company.logo}
+            banner={jobInfo?.company?.banner}
+            title={jobInfo?.company?.name}
+            brandImg={jobInfo?.company?.logo}
             rounded="rounded-xl"
             insideIcon={false}
           />

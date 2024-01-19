@@ -13,19 +13,38 @@ import AddEducation from "./components/AddEducation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { candidateProfileSchema } from "@/schema/candidateProfile";
 import AddResume from "./components/AddResume";
+import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
+import { catchAsync } from "../../../../helpers/catchAsync";
+import { useEditProfileMutation } from "../../../../redux/api/candidate";
+import toast from "react-hot-toast";
+import { useMeQuery } from "../../../../redux/api/user";
+import { makeArrayOfString } from "../../../../utils/makeArrayOfString";
 
 export default function CandidateEditProfile() {
   const [skills, setSkills] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [experience, setExperience] = useState([]);
 
-  const onSubmit = async (data) => {
-    try {
-      console.log(data);
-      // Add skills data as well
-      setSkills([]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { data, isLoading: meLoading } = useMeQuery();
+  const [editProfile, { isLoading }] = useEditProfileMutation();
+
+  const onSubmit = catchAsync(async (data) => {
+    if (skills.length) data.skills = makeArrayOfString(skills, "title");
+    if (education.length) data.education = education;
+    if (experience.length) data.experience = experience;
+
+    const res = await editProfile(data).unwrap();
+    toast.success(res?.message);
+  });
+
+  let defaultValues = data?.data;
+  if (defaultValues?.skills?.length) {
+    // const skillsOfObj = defaultValues?.skills?.map((skill) => ({
+    //   title: skill,
+    // }));
+    // setSkills(skillsOfObj);
+  }
+  console.log(data?.data?.resume);
 
   return (
     <div>
@@ -36,13 +55,13 @@ export default function CandidateEditProfile() {
 
       <div className="">
         <Form
+          defaultValues={defaultValues}
           submitHandler={onSubmit}
           resolver={yupResolver(candidateProfileSchema)}
         >
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-8">
               <FormInput
-                id="name"
                 name="name"
                 label="Name"
                 placeholder="Your Name"
@@ -51,18 +70,16 @@ export default function CandidateEditProfile() {
               />
               <div className="flex gap-5">
                 <FormInput
-                  id="email"
                   name="email"
                   label="Email"
                   placeholder="Your Email"
                   type="email"
-                  mandatory={true}
                   divClass=" w-1/2 flex-grow"
+                  disabled
                 />
                 <FormInput
-                  id="phone"
-                  name="phone"
-                  label="Phone"
+                  name="phoneNumber"
+                  label="Phone Number"
                   placeholder="Your Phone"
                   type="number"
                   mandatory={true}
@@ -70,7 +87,6 @@ export default function CandidateEditProfile() {
                 />
               </div>
               <FormInput
-                id="title"
                 name="title"
                 label="Title"
                 placeholder="Your Title"
@@ -79,8 +95,7 @@ export default function CandidateEditProfile() {
               />
               <FormTextarea
                 rows={6}
-                id="description"
-                name="description"
+                name="about"
                 label="About"
                 placeholder="Bio"
                 mandatory={true}
@@ -133,21 +148,25 @@ export default function CandidateEditProfile() {
 
           <div className="mt-12">
             <h2 className="heading_2">Work Experience</h2>
-            <AddExperience />
+            <AddExperience setExperience={setExperience} />
           </div>
 
           <div className="mt-12">
             <h2 className="heading_2">Education & Training</h2>
-            <AddEducation />
+            <AddEducation setEducation={setEducation} />
           </div>
 
           <div className="mt-12">
             <h2 className="heading_2">Resume</h2>
-            <AddResume />
+            <AddResume resumeData={data?.data?.resume} meLoading={meLoading} />
           </div>
 
           <div className="mt-12">
-            <button className="btn_secondary">Update Profile</button>
+            <ButtonPrimary
+              className="btn_secondary"
+              display="Update Profile"
+              isLoading={isLoading}
+            />
           </div>
         </Form>
       </div>

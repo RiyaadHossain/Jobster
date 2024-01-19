@@ -1,11 +1,15 @@
 import ListingPageContainer from "@/components/other/listing-page-container/ListingPageContainer";
 import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
 import PageHeader from "@/components/ui/PageHeader";
-import { companiesData } from "@/data/companies";
 import CompanyCard from "./components/CompanyCard";
+import { useGetAllCompaniesQuery } from "../../redux/api/company";
 
 export default function CompanyListing() {
   const onSearchSubmit = (data) => console.log(data);
+
+  const { data } = useGetAllCompaniesQuery();
+  const companiesData = data?.data;
+
   return (
     <div className="my-20">
       <PageHeader
@@ -24,11 +28,11 @@ export default function CompanyListing() {
             />
           </div>
         }
-        cards={companiesData.map((company, i) => (
+        cards={companiesData?.map((company, i) => (
           <CompanyCard key={i} company={company} />
         ))}
         moduleName="Company"
-        total={companiesData.length}
+        total={companiesData?.length}
       />
     </div>
   );

@@ -1,8 +1,17 @@
 import React from "react";
 
-export default function NameLogo({ name }) {
+export default function NameLogo({
+  name,
+  width = 10,
+  text = "xl",
+  rounded = "full",
+}) {
+  const heightWidth = `w-${width} h-${width}`;
+
   return (
-    <div className="w-10 h-10 rounded-full border border-primary flex_cen bg-primary font-bold text-white text-xl">
+    <div
+      className={`${heightWidth} rounded-${rounded} border border-primary flex_cen bg-primary font-bold text-white text-${text}`}
+    >
       {name?.substr(0, 1)?.toUpperCase()}
     </div>
   );

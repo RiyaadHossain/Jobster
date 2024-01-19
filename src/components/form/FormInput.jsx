@@ -23,6 +23,7 @@ export default function FormInput({
   minLen,
   setWatch,
   customError,
+  disabled
 }) {
   const {
     register,
@@ -61,6 +62,7 @@ export default function FormInput({
             type={type}
             defaultValue={defaultValue}
             placeholder={placeholder}
+            disabled={disabled}
             className={`w-full ${inputClass} ${error && "border-red-500"}`}
           />
         ) : (
@@ -71,6 +73,7 @@ export default function FormInput({
             type={type}
             defaultValue={defaultValue}
             placeholder={placeholder}
+            disabled={disabled}
             className={`w-full ${inputClass} ${error && "border-red-500"}`}
             onChange={(e) => handleOnChange(e.target.value, name)}
           />

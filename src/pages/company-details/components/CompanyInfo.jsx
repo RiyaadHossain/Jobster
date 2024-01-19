@@ -4,19 +4,19 @@ import companyHero3 from "@/assets/images/company-hero/company-hero-3.jpg";
 import companyHero4 from "@/assets/images/company-hero/company-hero-4.jpg";
 import companyHero5 from "@/assets/images/company-hero/company-hero-5.jpg";
 import companyHero6 from "@/assets/images/company-hero/company-hero-6.jpg";
-import { jobsData } from "@/data/jobs";
 import "./style/module.style.css";
 import JobCard from "../../job-listing/components/JobCard";
 
-export default function CompanyInfo({ companyInfo }) {
+export default function CompanyInfo({ companyInfo, availableJobs }) {
+  console.log(availableJobs);
   return (
     <div className="mt-8">
       {/* +++ About +++ */}
       <div>
         <h1 className="text-4xl font-bold leading-10 tracking-tight mb-5">
-          About {companyInfo.name}
+          About {companyInfo?.name}
         </h1>
-        <p className="text_accent">{companyInfo.description}</p>
+        <p className="text_accent">{companyInfo?.about}</p>
       </div>
 
       {/* +++ Gallery +++ */}
@@ -98,9 +98,9 @@ export default function CompanyInfo({ companyInfo }) {
           Jobs posted by Artistre Studio
         </p>
         <div className="grid grid-cols-12 gap-5 mt-8">
-          {jobsData.splice(1, 3).map((job, i) => (
+          {availableJobs?.map((job, i) => (
             <div key={i} className="col-span-12 md:col-span-6 xl:col-span-4">
-              <JobCard jobInfo={job} />
+              <JobCard jobInfo={job} company={companyInfo} />
             </div>
           ))}
         </div>

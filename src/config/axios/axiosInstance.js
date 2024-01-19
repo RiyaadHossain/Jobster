@@ -9,6 +9,7 @@ const {
 } = require("../../utils/localStorage");
 const { authToken } = require("../../constants/localStorage");
 
+
 const axiosInstance = axios.create({});
 axiosInstance.defaults.headers.post["Content-Type"] = "application/json";
 axiosInstance.defaults.headers["Accept"] = "application/json";
@@ -49,7 +50,9 @@ axiosInstance.interceptors.response.use(
       return axiosInstance(config);
     }
 
-    if (error?.response?.data?.type === "TokenExpired" && config.sent) {
+    console.log(error?.response?.data, config.sent);
+    const errType = error?.response?.data?.type;
+    if (errType === "TokenExpired" && config.sent) {
       removeUserInfo();
       window.location.reload();
     }

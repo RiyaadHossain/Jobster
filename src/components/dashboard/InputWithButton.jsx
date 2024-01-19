@@ -1,5 +1,4 @@
 import "./style/module.style.css";
-import FormInput from "../form/FormInput";
 import { capitalizeFirstLetter } from "@/utils/capitalizeLetter";
 
 export default function InputWithButton({
@@ -10,13 +9,12 @@ export default function InputWithButton({
 }) {
   return (
     <div className="relative flex">
-      <FormInput
+      <input
+        ref={inputRef}
         name={name}
         type="text"
-        inputRef={inputRef}
-        className="w-full"
-        handleOnChange={onChange}
-        divClass="mb-0 flex-grow"
+        className={`w-full`}
+        onChange={(e) => onChange(e.target.value, name)}
       />
       <button type="button" onClick={appendData} className="input_btn">
         Add {capitalizeFirstLetter(name)}

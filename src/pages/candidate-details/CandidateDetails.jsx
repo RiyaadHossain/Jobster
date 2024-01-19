@@ -1,10 +1,15 @@
 import PageBanner from "@/components/ui/PageBanner";
-import { candidatesData } from "@/data/candidates";
 import CandidateInfo from "./components/CandidateInfo";
 import CandidateSidebar from "./components/CandidateSidebar";
+import { useParams } from "react-router-dom";
+import { useGetCandidateQuery } from "../../redux/api/candidate";
 
 export default function CandidateDetails() {
-  const candidateInfo = candidatesData[0];
+  const { id } = useParams();
+
+  const { data } = useGetCandidateQuery(id);
+  const candidateInfo = data?.data;
+  console.log(candidateInfo);
 
   return (
     <div className="my-20 max_container">
@@ -14,10 +19,10 @@ export default function CandidateDetails() {
           {/* +++ Bannder +++ */}
           <PageBanner
             rounded="rounded-full"
-            title={candidateInfo.name}
-            banner={candidateInfo.banner}
-            brandImg={candidateInfo.avatar}
-            subtitle={candidateInfo.industry}
+            title={candidateInfo?.name}
+            banner={candidateInfo?.banner}
+            brandImg={candidateInfo?.avatar}
+            subtitle={candidateInfo?.title}
           />
 
           {/* +++ Candidate Info +++ */}

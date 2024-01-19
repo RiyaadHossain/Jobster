@@ -3,18 +3,24 @@ import Form from "../../../components/form/Form";
 import FormInput from "../../../components/form/FormInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { resetPasswordSchema } from "../../../schema/resetPassword";
+import { catchAsync } from "../../../helpers/catchAsync";
+import toast from "react-hot-toast";
+import { useResetPasswordMutation } from "../../../redux/api/auth";
+import ButtonPrimary from "../../../components/ui/ButtonPrimary";
 
-export default function PasswordResetForm({ token }) {
+export default function PasswordResetForm({ token, setPasswordReset }) {
   const [newPasswordValue, setNewPasswordValue] = useState("");
   const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
 
-  const onSubmit = async (data) => {
-    try {
-      console.log(token);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [resetPassword, { isLoading }] = useResetPasswordMutation();
+
+  const onSubmit = catchAsync(async (data) => {
+    data.token = token;
+    const res = await resetPassword(data).unwrap();
+
+    toast.success(res?.message);
+    setPasswordReset(true);
+  });
 
   const passwordMatched = newPasswordValue === confirmPasswordValue;
 
@@ -43,15 +49,16 @@ export default function PasswordResetForm({ token }) {
           mandatory={true}
           setWatch={setConfirmPasswordValue}
         />
-        <button
-          type="submit"
-          className={`btn_secondary w-full disabled:bg-gray-500 disabled:cursor-not-allowed`}
+        <ButtonPrimary
+          className="btn_secondary w-full"
+          display="Reset Password"
+          isLoading={isLoading}
           disabled={!passwordMatched}
-        >
-          Reset Password
-        </button>
+        />
         {!passwordMatched && (
-          <p className="text-red-600 text-sm text-center mt-1">Password didn't match</p>
+          <p className="text-red-600 text-sm text-center mt-1">
+            Password didn't match
+          </p>
         )}
       </Form>
     </div>

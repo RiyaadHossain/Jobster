@@ -24,11 +24,6 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
   const onSubmit = catchAsync(async (data) => {
     const res = await signIn(data).unwrap();
 
-    if (!res?.success) {
-      toast.error(res?.message);
-      return;
-    }
-
     onModalClose();
     toast.success(res?.message);
     const accessToken = res?.data?.accessToken;

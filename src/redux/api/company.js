@@ -1,15 +1,17 @@
+import { tagTypes } from "../tagTypes";
 import { baseApi } from "./baseApi";
 
 const COMPANY_API = "/company";
 
 export const companyApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    editProfile: builder.mutation({
+    editCompanyProfile: builder.mutation({
       query: (data) => ({
         url: `${COMPANY_API}/edit-profile`,
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: [tagTypes.company, tagTypes.user],
     }),
     getAllCompanies: builder.query({
       query: (params) => ({
@@ -17,18 +19,21 @@ export const companyApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
+      providesTags: [tagTypes.company],
     }),
     getCompany: builder.query({
       query: (id) => ({
         url: `${COMPANY_API}/${id}`,
         method: "GET",
       }),
+      providesTags: [tagTypes.company],
     }),
     myJobs: builder.query({
       query: () => ({
         url: `${COMPANY_API}/my-jobs`,
         method: "GET",
       }),
+      providesTags: [tagTypes.job],
     }),
     appliedCandidates: builder.query({
       query: () => ({
@@ -40,7 +45,7 @@ export const companyApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useEditProfileMutation,
+  useEditCompanyProfileMutation,
   useGetAllCompaniesQuery,
   useGetCompanyQuery,
   useMyJobsQuery,

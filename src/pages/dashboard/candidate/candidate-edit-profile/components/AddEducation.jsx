@@ -1,11 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import FormInput from "@/components/form/FormInput";
 import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import EducationRow from "./FormTableRow";
 import { useFieldState } from "@/hooks/useFieldState";
 
-export default function AddEducation() {
+export default function AddEducation({ setEducation }) {
   const { control } = useFormContext();
 
   const courseOfStudyRef = useRef(null);
@@ -18,11 +18,13 @@ export default function AddEducation() {
     control,
   });
 
+  useEffect(() => {
+    setEducation(fields);
+  }, [fields, setEducation]);
+
+  const refs = [courseOfStudyRef, institutionRef, timePeriodRef, desciptionRef];
   const { appendData, customError, onChange, openForm, closeForm, isFormOpen } =
-    useFieldState({
-      append,
-      refs: [courseOfStudyRef, institutionRef, timePeriodRef, desciptionRef],
-    });
+    useFieldState(refs, append, setEducation);
 
   return (
     <div className="mt-2">

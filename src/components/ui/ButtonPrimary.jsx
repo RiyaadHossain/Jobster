@@ -5,10 +5,10 @@ export default function ButtonPrimary({
   onClickFunc,
   isLoading,
   className,
-  attributes,
+  ...attributes
 }) {
   return (
-    <button onClick={onClickFunc} className={className} {...attributes}>
+    <button onClick={onClickFunc} className={className || "btn_primary"} {...attributes}>
       {isLoading ? <ButtonSpinner /> : display}
     </button>
   );
