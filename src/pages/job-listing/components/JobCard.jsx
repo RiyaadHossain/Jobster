@@ -24,7 +24,7 @@ export default function JobCard({ company, jobInfo }) {
           <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
         </div>
         <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
-          {jobInfo?.category}
+          {userFormatText(jobInfo?.category)}
         </span>
       </div>
 

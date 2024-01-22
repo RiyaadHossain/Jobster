@@ -14,7 +14,7 @@ export default function CandidateCard({ candidateInfo }) {
               className="w-24 h-24 rounded-full"
             />
           ) : (
-            <NameLogo width={24} name={candidateInfo.name} text="text-4xl" />
+            <NameLogo width={24} name={candidateInfo.name} text="4xl" />
           )}
         </div>
         <div className="text-center">

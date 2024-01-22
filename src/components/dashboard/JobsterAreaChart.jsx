@@ -6,6 +6,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import "./style/module.style.css";
 
 export default function JobsterAreaChart({
   title,
@@ -13,7 +14,21 @@ export default function JobsterAreaChart({
   color,
   quantity,
   syncId,
+  dataKey,
 }) {
+  const CustomTooltip = ({ payload, label, active }) => {
+    if (active) {
+      return (
+        <div className="custom_tooltip">
+          <p className="tooltip_label">{label}</p>
+          <p className="tooltip_value">{`${dataKey}: ${payload[0]?.value}`}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className="">
       <h2 className="text-2xl font-semibold tracking-tight mb-7">{title}</h2>
@@ -21,17 +36,17 @@ export default function JobsterAreaChart({
         <div className="flex items-end gap-3 mb-5 ml-6">
           <h2 className="text-[42px] font-semibold leading-10">{quantity}</h2>
           <p className="text-sm font-light leading-5 opacity-[0.7] mb-1">
-            last 12 months
+            last 6 months
           </p>
         </div>
         <ResponsiveContainer width="100%" height={400} className="">
           <AreaChart data={data} syncId={syncId}>
             <XAxis dataKey="month" />
             <YAxis />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />} />
             <Area
               type="monotone"
-              dataKey="Visitors"
+              dataKey={dataKey}
               stroke={color}
               fill={color}
             />

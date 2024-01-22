@@ -49,13 +49,19 @@ export default function ProfileMenu() {
       {openTooltip && (
         <div className="absolute p-4 bg-slate-50 rounded-xl -right-1 border top-[50px] shadow-md w-52">
           <ul className="flex flex-col gap-5">
-            <li className="hover:text-primary hover:tracking-wider transition-all cursor-pointer">
+            <li
+              onClick={toggleTooltip}
+              className="hover:text-primary hover:tracking-wider transition-all cursor-pointer"
+            >
               <Link to={`/dashboard/${role}/edit-profile`}>Edit Profile</Link>
             </li>
-            <li className="hover:text-primary hover:tracking-wider transition-all cursor-pointer">
+            <li
+              onClick={toggleTooltip}
+              className="hover:text-primary hover:tracking-wider transition-all cursor-pointer"
+            >
               <Link to={`/dashboard`}>Dashboard</Link>
             </li>
-            <li>
+            <li onClick={toggleTooltip}>
               <button
                 onClick={handleLogOut}
                 className="border border-black px-3 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary transition-all"

@@ -1,41 +1,70 @@
-import React from "react";
 import DotBadge from "@/components/ui/DotBadge";
-import { employmentType, expLevel } from "@/constants/jobInfo";
+import { useGetTypeSpecifiJobsQuery } from "../../../redux/api/jobApi";
+import { userFormatText } from "../../../utils/userFormatText";
+import { onSetFilterValue } from "../utils/onSetFilterValue";
 
-export default function SidebarFilter() {
+export default function SidebarFilter({ props }) {
+  const { workLevel, setWorkLevel, employmentType, setEmployemploymentType } =
+    props;
+
+  const { data } = useGetTypeSpecifiJobsQuery();
+  const typeSpecificJobs = data?.data;
+
+  const onSetWorkLevel = (level) =>
+    onSetFilterValue({
+      values: workLevel,
+      setValues: setWorkLevel,
+      newValue: level,
+    });
+
+  const onSetEmploymentType = (type) =>
+    onSetFilterValue({
+      values: employmentType,
+      setValues: setEmployemploymentType,
+      newValue: type,
+    });
+
   return (
     <div className="bg-primaryLight mt-10 p-6 rounded-xl">
       <div>
         <h3 className="text-lg font-semibold mb-5">Type of Employment</h3>
         <div className="flex flex-col gap-4">
-          {employmentType.map((item) => (
+          {typeSpecificJobs?.employmentType?.map((item) => (
             <label
-              key={item.type}
+              key={item?.type}
               htmlFor=""
               className="flex justify-between items-center"
             >
               <span className="flex items-center gap-2 font-light">
-                <input type="checkbox" id="" />
-                {item.type}
+                <input
+                  onClick={() => onSetEmploymentType(item?.type)}
+                  type="checkbox"
+                  id=""
+                />
+                {userFormatText(item?.type)}
               </span>
-              <DotBadge>{item.jobs}</DotBadge>
+              <DotBadge>{item?.jobs}</DotBadge>
             </label>
           ))}
         </div>
 
         <h3 className="text-lg font-semibold mb-5 mt-10">Experience Level</h3>
         <div className="flex flex-col gap-4">
-          {expLevel.map((item) => (
+          {typeSpecificJobs?.workLevel?.map((item) => (
             <label
-              key={item.type}
+              key={item?.type}
               htmlFor=""
               className="flex justify-between items-center"
             >
               <span className="flex items-center gap-2 font-light">
-                <input type="checkbox" id="" />
-                {item.type}
+                <input
+                  onClick={() => onSetWorkLevel(item?.type)}
+                  type="checkbox"
+                  id=""
+                />
+                {userFormatText(item?.type, { hiphens: true })}
               </span>
-              <DotBadge>{item.jobs}</DotBadge>
+              <DotBadge>{item?.jobs}</DotBadge>
             </label>
           ))}
         </div>

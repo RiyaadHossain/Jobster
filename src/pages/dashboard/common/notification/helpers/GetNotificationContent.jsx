@@ -10,18 +10,18 @@ import { pluralRole } from "@/utils/pluralRole";
 export default function GetNotificationContent({ notification }) {
   let content = <span className="normal_text">Invalid notification type</span>;
 
-  if (notification.type === ENUM_NOTIFICATION_TYPE.MESSAGE) {
+  if (notification?.type === ENUM_NOTIFICATION_TYPE.MESSAGE) {
     content = (
       <div className="text_container">
         <FaInbox className="icon_class" />
         <div>
           <Link
-            to={`/${pluralRole(notification.from.role)}/${
-              notification.from.id
+            to={`/${pluralRole(notification?.from?.role)}/${
+              notification?.from?._id
             }`}
             className="highlighted_text"
           >
-            {notification.from.name}
+            {notification?.from?.name}
           </Link>
           <span className="normal_text">sent you a message</span>
         </div>
@@ -29,18 +29,18 @@ export default function GetNotificationContent({ notification }) {
     );
   }
 
-  if (notification.type === ENUM_NOTIFICATION_TYPE.PROFILE_VIEW) {
+  if (notification?.type === ENUM_NOTIFICATION_TYPE.PROFILE_VIEW) {
     content = (
       <div className="text_container">
         <FaEye className="icon_class" />
         <div>
           <Link
-            to={`/${pluralRole(notification.from.role)}/${
-              notification.from.id
+            to={`/${pluralRole(notification?.from?.role)}/${
+              notification?.from?._id
             }`}
             className="highlighted_text"
           >
-            {notification.from.name}
+            {notification?.from?.name}
           </Link>
           <span className="normal_text">viewed your profile</span>
         </div>
@@ -48,25 +48,25 @@ export default function GetNotificationContent({ notification }) {
     );
   }
 
-  if (notification.type === ENUM_NOTIFICATION_TYPE.APPLY) {
+  if (notification?.type === ENUM_NOTIFICATION_TYPE.APPLY) {
     content = (
       <div className="text_container">
         <FaBriefcase className="icon_class" />
         <div>
           <Link
             className="highlighted_text"
-            to={`/${pluralRole(notification.from.role)}/${
-              notification.from.id
+            to={`/${pluralRole(notification?.from?.role)}/${
+              notification?.from?._id
             }`}
           >
-            {notification.from.name}
+            {notification?.from?.name}
           </Link>
           <span className="normal_text">applied for</span>
           <Link
             className="highlighted_text ml-1"
-            to={`/jobs/${notification.job.id}`}
+            to={`/jobs/${notification?.job?._id}`}
           >
-            {notification.job.title}
+            {notification?.job?.title}
           </Link>
         </div>
       </div>
@@ -74,12 +74,12 @@ export default function GetNotificationContent({ notification }) {
   }
 
   if (
-    notification.type === ENUM_NOTIFICATION_TYPE.APPLICATION_ACCEPTED ||
-    notification.type === ENUM_NOTIFICATION_TYPE.APPLICATIN_REJECTED
+    notification?.type === ENUM_NOTIFICATION_TYPE.APPLICATION_ACCEPTED ||
+    notification?.type === ENUM_NOTIFICATION_TYPE.APPLICATIN_REJECTED
   ) {
     content = (
       <div className="text_container">
-        {notification.type === ENUM_NOTIFICATION_TYPE.APPLICATION_ACCEPTED ? (
+        {notification?.type === ENUM_NOTIFICATION_TYPE.APPLICATION_ACCEPTED ? (
           <BsFillClipboard2CheckFill className="icon_class" />
         ) : (
           <BsFillClipboard2XFill className="icon_class" />
@@ -87,23 +87,23 @@ export default function GetNotificationContent({ notification }) {
         <div>
           <Link
             className="highlighted_text"
-            to={`/${pluralRole(notification.from.role)}/${
-              notification.from.id
+            to={`/${pluralRole(notification?.from?.role)}/${
+              notification?.from?._id
             }`}
           >
-            {notification.from.name}
+            {notification?.from?.name}
           </Link>
           <span className="normal_text">
-            {notification.type === ENUM_NOTIFICATION_TYPE.APPLICATION_ACCEPTED
+            {notification?.type === ENUM_NOTIFICATION_TYPE.APPLICATION_ACCEPTED
               ? "accepted"
               : "rejected"}{" "}
             your application for
           </span>
           <Link
             className="highlighted_text ml-1"
-            to={`/jobs/${notification.job.id}`}
+            to={`/jobs/${notification?.job?._id}`}
           >
-            {notification.job.title}
+            {notification?.job?.title}
           </Link>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { industries, location } from "../../../constants/jobInfo";
 
 export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
   const { register, handleSubmit } = useForm();
+  const inputName = moduleName === "Job" ? "title" : "name";
+  const categoryOrIndustry = moduleName === "Job" ? "category" : "industry";
 
   return (
     <form
@@ -17,37 +20,36 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
           placeholder={`${
             moduleName === "Job" ? `${moduleName} Title` : `${moduleName} Name`
           } or Keyword`}
-          {...register("inputName")}
+          {...register(inputName)}
         />
       </div>
       <div className="mb-6">
         <p className="font-semibold mb-3">Location</p>
-        <select
-          className="w-full border-0 text-base"
-          {...register("location")}
-        >
-          <option value="d">Dhaka</option>
-          <option value="k">Khulna</option>
-          <option value="r">Rajshahi</option>
+        <select className="w-full border-0 text-base" {...register("location")}>
+          <option value="" selected>
+            Select Location
+          </option>
+          {location.map((item) => (
+            <option value={item.value}>{item.display}</option>
+          ))}
         </select>
       </div>
       <div className="mb-6">
         <p className="font-semibold mb-3">Category</p>
         <select
           className="w-full border-0 text-base"
-          {...register("category")}
+          {...register(categoryOrIndustry)}
         >
-          <option value="s">Software Engineering</option>
-          <option value="f">Finance</option>
-          <option value="m">Marketing</option>
+          <option value="" selected>
+            Select Category
+          </option>
+          {industries.map((item) => (
+            <option value={item.value}>{item.display}</option>
+          ))}
         </select>
       </div>
-      <div className="">
-        <button
-          // onClick={(e) => e.preventDefault()}
-          type="submit"
-          className="btn_secondary text-center w-full"
-        >
+      <div>
+        <button type="submit" className="btn_secondary text-center w-full">
           Find {moduleName}
         </button>
       </div>

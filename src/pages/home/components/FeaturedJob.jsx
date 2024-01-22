@@ -2,9 +2,12 @@ import React from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import JobCard from "../../job-listing/components/JobCard";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
-import { jobsData } from "@/data/jobs";
+import { useGetAllJobsQuery } from "../../../redux/api/jobApi";
 
 export default function FeaturedJob() {
+  const { data } = useGetAllJobsQuery();
+  console.log(data?.data);
+  const jobsData = data?.data?.data;
 
   return (
     <section className="max_container">
@@ -13,7 +16,7 @@ export default function FeaturedJob() {
         subtitle="Search your career opportunity through 12,800 jobs"
       />
       <div className="grid grid-cols-12 gap-6">
-        {jobsData.map((job, i) => (
+        {jobsData?.slice(0, 6)?.map((job, i) => (
           <div
             key={i}
             className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"

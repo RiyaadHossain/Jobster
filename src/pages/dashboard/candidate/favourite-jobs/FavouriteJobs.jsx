@@ -5,7 +5,15 @@ import { Link } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
 import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { applicationsData } from "@/data/applications";
+import {
+  useMyListQuery,
+  useRemoveMutation,
+} from "../../../../redux/api/whishlist";
+import { userFormatText } from "../../../../utils/userFormatText";
+import { formatDate } from "../../../../utils/formatDate";
+import { catchAsync } from "../../../../helpers/catchAsync";
+import toast from "react-hot-toast";
+import { useDeboune } from "../../../../hooks/useDebounce";
 
 export default function FavouriteJobs() {
   const columns = [
@@ -18,7 +26,23 @@ export default function FavouriteJobs() {
     { className: "", title: "" },
   ];
 
-  const dataSource = applicationsData.map((application, i) => (
+  const [searchTerm, setSearchTerm] = useState("");
+  const debounceTerm = useDeboune(searchTerm, 2000);
+
+  const query = {};
+  if (debounceTerm) query["searchTerm"] = debounceTerm;
+
+  const { data } = useMyListQuery({ ...query });
+  const [remove] = useRemoveMutation();
+
+  const favouriteItems = data?.data;
+
+  const handleOnRemove = catchAsync(async (id) => {
+    const res = await remove(id).unwrap();
+    toast.success(res?.message);
+  });
+
+  const dataSource = favouriteItems?.map((item, i) => (
     <tr
       key={i}
       className="[&>*]:p-3 hover:bg-secondaryLight transition-colors border-b"
@@ -27,36 +51,40 @@ export default function FavouriteJobs() {
         <input type="checkbox" name="" id="" />
       </td>
       <td>
-        <Link to={`/jobs/${application.id}`} className="main_row_title">
-          {application.job.title}
+        <Link to={`/jobs/${item?.job?._id}`} className="main_row_title">
+          {item?.job?.title}
         </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> {application.job.location}
+          <FaGlobeAsia /> {item?.job?.location || "No Location"}
         </div>
       </td>
       <td className="font_var_thin_pri">
-        <Link to={`/companies/${application.company.id}`}>
-          {application.company.name}
+        <Link to={`/companies/${item?.job?.company?._id}`}>
+          {item?.job?.company?.name}
         </Link>
       </td>
-      <td className="font_var_medium">{application.job.category}</td>
-      <td className="font_var_thin">{application.job.employmentType}</td>
-      <td className="dashboard_table_date">{application.appliedAt}</td>
+      <td className="font_var_medium">{userFormatText(item?.job?.category)}</td>
+      <td className="font_var_thin">
+        {userFormatText(item?.job?.employmentType)}
+      </td>
+      <td className="dashboard_table_date">
+        {formatDate(item?.createdAt, true)}
+      </td>
       <td>
         <div className="flex gap-2">
-          <Link to={`/jobs/${application.id}`} className="btn_icon">
+          <Link to={`/jobs/${item?.job?._id}`} className="btn_icon">
             <FaEye />
           </Link>
-          <button className="btn_icon">
+          <button
+            onClick={() => handleOnRemove(item?._id)}
+            className="btn_icon"
+          >
             <IoTrashOutline />
           </button>
         </div>
       </td>
     </tr>
   ));
-
-  const [searchText, setSearchText] = useState("");
-  console.log(searchText);
 
   return (
     <div>
@@ -66,9 +94,9 @@ export default function FavouriteJobs() {
       />
 
       <TableSearchBar
-        quantity={applicationsData.length}
+        quantity={favouriteItems?.length}
         display="job"
-        setSearchText={setSearchText}
+        setSearchTerm={setSearchTerm}
       />
 
       <div className="mt-8">

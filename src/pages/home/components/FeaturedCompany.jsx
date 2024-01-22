@@ -1,9 +1,12 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
-import { companiesData } from "@/data/companies";
 import CompanyCard from "../../company-listing/components/CompanyCard";
+import { useGetAllCompaniesQuery } from "../../../redux/api/company";
 
 export default function FeaturedCompany() {
+  const { data } = useGetAllCompaniesQuery();
+  const companiesData = data?.data;
+  console.log(data?.data);
   return (
     <section className="bg-primaryLight">
       <SectionHeader
@@ -13,7 +16,7 @@ export default function FeaturedCompany() {
 
       <div className="max_container">
         <div className="grid gap-5 grid-cols-12">
-          {companiesData.map((company, i) => (
+          {companiesData?.slice(0, 6)?.map((company, i) => (
             <div key={i} className="col-span-12 md:col-span-6 lg:col-span-4">
               <CompanyCard company={company} />
             </div>

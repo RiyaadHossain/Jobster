@@ -13,6 +13,14 @@ export const jobApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.job],
     }),
+    getTypeSpecifiJobs: builder.query({
+      query: (params) => ({
+        url: `${JOB_URL}/type-specific`,
+        method: "GET",
+        params,
+      }),
+      providesTags: [tagTypes.job],
+    }),
     getSingleJob: builder.query({
       query: (id) => ({
         url: `${JOB_URL}/${id}`,
@@ -48,6 +56,7 @@ export const jobApi = baseApi.injectEndpoints({
 
 export const {
   useGetAllJobsQuery,
+  useGetTypeSpecifiJobsQuery,
   useGetSingleJobQuery,
   usePostJobMutation,
   useUpdateJobMutation,

@@ -1,77 +1,52 @@
-import { Link } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { IoDocumentText } from "react-icons/io5";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import DashboardHomeCard from "@/components/dashboard/DashboardHomeCard";
 import JobsterAreaChart from "@/components/dashboard/JobsterAreaChart";
-import { BiBriefcase, BiUserCircle } from "react-icons/bi";
-import { applicationData, profileVisitorData } from "@/constants/statData";
-import { MdForwardToInbox, MdMailOutline } from "react-icons/md";
 import RecentCandidateTable from "./components/RecentCandidateTable";
 import LinkWithArrow from "@/components/ui/LinkWithArrow";
+import RecentNotificationRow from "../../../../components/dashboard/RecentNotificationRow";
+import { useGetAllNotificationsQuery } from "../../../../redux/api/notification";
+import GetDashboardStats from "../../../../helpers/GetDashboardStats";
+import {
+  useApplicationStatQuery,
+  useProfileViewStatQuery,
+} from "../../../../redux/api/dashboard";
 
 export default function CompanyDashbaord() {
-  const cardItems = [
-    {
-      title: "Job Applications",
-      quantity: 1,
-      icon: <IoDocumentText className="text-[#0D6EFD]" />,
-      bg: "bg-[#E6F0FF]",
-    },
-    {
-      title: "Profile Visitors",
-      quantity: 11,
-      icon: <CgProfile className="text-[#198754]" />,
-      bg: "bg-[#E8F3EE]",
-    },
-    {
-      title: "Unread Messages",
-      quantity: 5,
-      icon: <MdMailOutline className="text-[#FFC43F]" />,
-      bg: "bg-[#FFF9E6]",
-    },
-    {
-      title: "Notifications",
-      quantity: 0,
-      icon: <IoMdNotificationsOutline className="text-[#DC3545]" />,
-      bg: "bg-[#FBEAEC]",
-    },
-  ];
+  const { data } = useGetAllNotificationsQuery();
+  const notificationsData = data?.data?.notifications;
+
+  const { data: applicationData } = useApplicationStatQuery();
+  const { data: profileViewData } = useProfileViewStatQuery();
+
+  const applicationStat = applicationData?.data?.stats;
+  const profileViewStat = profileViewData?.data?.stats;
+  const applicationCount = applicationData?.data?.total;
+  const profileViewCount = profileViewData?.data?.total;
 
   return (
     <div className="">
       <DashboardHeader title="Dashboard" subtitle="Welcome, Riyad Hossain!" />
 
       {/* Stats Cards */}
-      <div className="mt-12 grid grid-cols-4 gap-6">
-        {cardItems.map((item) => (
-          <DashboardHomeCard
-            title={item.title}
-            quantity={item.quantity}
-            icon={item.icon}
-            bg={item.bg}
-            color={item.color}
-          />
-        ))}
-      </div>
+      <GetDashboardStats />
 
       {/* Info Charts */}
       <div className="mt-12 grid grid-cols-12 gap-12">
         <div className="col-span-6">
           <JobsterAreaChart
-            quantity={321}
-            data={profileVisitorData}
+            quantity={profileViewCount}
+            data={profileViewStat}
             syncId="profile-visitor"
+            dataKey="views"
             color="#0070C9"
             title="Company's Job Visitors"
           />
         </div>
         <div className="col-span-6">
           <JobsterAreaChart
-            quantity={125}
-            syncId="applications"
-            data={applicationData}
+            quantity={applicationCount}
+            syncId="application"
+            dataKey="applications"
+            data={applicationStat}
             color="#FFA823"
             title="Applications"
           />
@@ -82,45 +57,13 @@ export default function CompanyDashbaord() {
       <div className="grid grid-cols-12 gap-7 mt-12">
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Notifications</h2>
-          {/* Use 'RecentNotificationRow' Component in 'components>dashboard' folder; instead of the static design */}
           <div>
-            <div className="flex items-center justify-between font-light mb-2">
-              <div className="flex items-center text-base">
-                <MdForwardToInbox className="mr-3 opacity-[0.8]" size={18} />
-                <Link to={`/candidates/1`} className="mr-2 text-primary">
-                  Hasib
-                </Link>
-                <span className="">sent you a message</span>
-              </div>
-              <div>3h</div>
-            </div>
-            <div className="flex items-center justify-between font-light mb-2">
-              <div className="flex items-center text-base">
-                <BiBriefcase className="mr-3 opacity-[0.8]" size={18} />
-                <Link to={`/candidates/1`} className="mr-2 text-primary">
-                  Riyad Hossain
-                </Link>
-                applied for
-                <Link to={`/jobs/1`} className="ml-2 text-primary">
-                  Frontend
-                </Link>
-              </div>
-              <div className="text-sm ">45d</div>
-            </div>
-            <div className="flex items-center justify-between font-light mb-2">
-              <div className="flex items-center text-base">
-                <BiUserCircle className="mr-3 opacity-[0.8]" size={18} />
-                <Link to={`/companies/1`} className="mr-2 text-primary">
-                  Someone
-                </Link>
-                viewed your profile
-              </div>
-              <div className="text-sm ">1d</div>
-            </div>
+            {notificationsData?.slice(0, 5)?.map((notification, i) => (
+              <RecentNotificationRow key={i} notification={notification} />
+            ))}
           </div>
           <LinkWithArrow display="Read all" link="notifications" />
         </div>
-
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Messages</h2>
           <p className="opacity-[0.8]">No recent Messages</p>

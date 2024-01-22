@@ -4,11 +4,27 @@ import LinkWithArrow from "@/components/ui/LinkWithArrow";
 import RecentApplicationsTable from "./components/RecentApplicationsTable";
 import { statsData } from "@/data/stats";
 import GetDashboardStats from "@/helpers/GetDashboardStats";
-import { applicationData, profileVisitorData } from "@/constants/statData";
-import { notificationsData } from "@/data/notifications";
-import RecentNotificationRow from "./components/RecentNotificationRow";
+import { useGetAllNotificationsQuery } from "../../../../redux/api/notification";
+import RecentNotificationRow from "../../../../components/dashboard/RecentNotificationRow";
+import {
+  useApplicationStatQuery,
+  useProfileViewStatQuery,
+} from "../../../../redux/api/dashboard";
 
 export default function CandidateDashboard() {
+  const { data } = useGetAllNotificationsQuery();
+  const notificationsData = data?.data?.notifications;
+
+  const { data: applicationData } = useApplicationStatQuery();
+  const { data: profileViewData } = useProfileViewStatQuery();
+
+  const applicationStat = applicationData?.data?.stats;
+  const profileViewStat = profileViewData?.data?.stats;
+  const applicationCount = applicationData?.data?.total;
+  const profileViewCount = profileViewData?.data?.total;
+
+  console.log({ applicationStat, profileViewStat });
+
   return (
     <div className="">
       <DashboardHeader title="Dashboard" subtitle="Welcome, Riyad Hossain!" />
@@ -20,8 +36,9 @@ export default function CandidateDashboard() {
       <div className="mt-12 grid grid-cols-12 gap-12">
         <div className="col-span-6">
           <JobsterAreaChart
-            quantity={321}
-            data={profileVisitorData}
+            quantity={profileViewCount}
+            data={profileViewStat}
+            dataKey="views"
             syncId="profile-visitor"
             color="#0070C9"
             title="Candidate's Profile Visitors"
@@ -29,9 +46,10 @@ export default function CandidateDashboard() {
         </div>
         <div className="col-span-6">
           <JobsterAreaChart
-            quantity={125}
+            quantity={applicationCount}
             syncId="applications"
-            data={applicationData}
+            dataKey="applications"
+            data={applicationStat}
             color="#FFA823"
             title="Applications"
           />
@@ -43,9 +61,7 @@ export default function CandidateDashboard() {
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Notifications</h2>
           <div>
-            {/* Use 'RecentNotificationRow' Component in 'components>dashboard' folder; instead of the static design */}
-
-            {notificationsData.map((notification, i) => (
+            {notificationsData?.slice(0, 5)?.map((notification, i) => (
               <RecentNotificationRow key={i} notification={notification} />
             ))}
           </div>

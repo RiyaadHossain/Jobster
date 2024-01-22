@@ -30,7 +30,7 @@ export const candidateSidebardItems = [
         <span>Applications</span>
       </div>
     ),
-    link: "applications",
+    link: "candidate/applications",
   },
   {
     display: (
@@ -39,7 +39,7 @@ export const candidateSidebardItems = [
         <span>Favourite Jobs</span>
       </div>
     ),
-    link: "favourite-jobs",
+    link: "candidate/favourite-jobs",
   },
   {
     display: (

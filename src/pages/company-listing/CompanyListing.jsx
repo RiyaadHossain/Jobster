@@ -3,12 +3,28 @@ import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
 import PageHeader from "@/components/ui/PageHeader";
 import CompanyCard from "./components/CompanyCard";
 import { useGetAllCompaniesQuery } from "../../redux/api/company";
+import { useState } from "react";
 
 export default function CompanyListing() {
-  const onSearchSubmit = (data) => console.log(data);
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+  const [industry, setIndustry] = useState("");
 
-  const { data } = useGetAllCompaniesQuery();
+  const query = {};
+  if (name) query["name"] = name;
+  if (location) query["location"] = location;
+  if (industry) query["industry"] = industry;
+
+  const { data } = useGetAllCompaniesQuery({ ...query });
   const companiesData = data?.data;
+
+  const onSearchSubmit = (data) => {
+    const { name, location, industry } = data;
+
+    if (name) setName(name);
+    if (location) setLocation(location);
+    if (industry) setIndustry(industry);
+  };
 
   return (
     <div className="my-20">

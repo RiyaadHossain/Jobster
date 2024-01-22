@@ -6,6 +6,7 @@ export const tagTypes = {
   job: "Job",
   application: "Application",
   notification: "Notification",
+  wishlist: "Wishlist",
   dashboard: "Dashboard",
 };
 
@@ -17,5 +18,6 @@ export const tagTypesArray = [
   "Job",
   "Application",
   "Notification",
+  "Wishlist",
   "Dashboard",
 ];

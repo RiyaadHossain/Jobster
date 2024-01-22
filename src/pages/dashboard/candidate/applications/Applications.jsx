@@ -5,7 +5,17 @@ import { IoTrashOutline } from "react-icons/io5";
 import JobsterTable from "@/components/dashboard/JobsterTable";
 import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { applicationsData } from "@/data/applications";
+import {
+  useMyApplicationsQuery,
+  useRemoveApplicationMutation,
+} from "../../../../redux/api/application";
+import { formatDate } from "../../../../utils/formatDate";
+import { userFormatText } from "../../../../utils/userFormatText";
+import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
+import { catchAsync } from "../../../../helpers/catchAsync";
+import toast from "react-hot-toast";
+import { ENUM_APPLICATION_STATUS } from "../../../../enums/applicationStatus";
+import { useDeboune } from "../../../../hooks/useDebounce";
 
 export default function Applications() {
   const columns = [
@@ -18,7 +28,29 @@ export default function Applications() {
     { className: "", title: "" },
   ];
 
-  const dataSource = applicationsData.map((application, i) => (
+  const [searchTerm, setSearchTerm] = useState("");
+  const debounceTerm = useDeboune(searchTerm, 2000);
+
+  const query = {};
+  if (debounceTerm) query["searchTerm"] = debounceTerm;
+
+  const { data } = useMyApplicationsQuery({ ...query });
+  const [removeApplication] = useRemoveApplicationMutation();
+
+  const applicationsData = data?.data;
+
+  const onRemoveApplication = catchAsync(async (application) => {
+    if (application?.status !== ENUM_APPLICATION_STATUS.PENDING)
+      return toast.error(`Application already ${application?.status}`, {
+        id: "appRemove",
+      });
+
+    const id = application?._id;
+    const res = await removeApplication(id).unwrap();
+    toast.success(res?.message);
+  });
+
+  const dataSource = applicationsData?.map((application, i) => (
     <tr
       key={i}
       className="[&>*]:p-3 hover:bg-secondaryLight transition-colors border-b"
@@ -27,36 +59,43 @@ export default function Applications() {
         <input type="checkbox" name="" id="" />
       </td>
       <td>
-        <Link to={`/jobs/${application.id}`} className="main_row_title">
-          {application.job.title}
+        <Link to={`/jobs/${application?._id}`} className="main_row_title">
+          {application?.job?.title}
         </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> {application.job.location}
+          <FaGlobeAsia /> {application?.job?.location || "No Location"}
         </div>
       </td>
       <td className="font_var_thin_pri">
-        <Link to={`/companies/${application.company.id}`}>
-          {application.company.name}
+        <Link to={`/companies/${application?.job?.company?._id}`}>
+          {application?.job?.company?.name}
         </Link>
       </td>
-      <td className="font_var_medium">{application.job.category}</td>
-      <td className="font_var_thin">{application.job.employmentType}</td>
-      <td className="dashboard_table_date">{application.appliedAt}</td>
+      <td className="font_var_medium">{application?.job?.category}</td>
+      <td className="font_var_thin">
+        {userFormatText(application?.job?.employmentType)}
+      </td>
+      <td className="dashboard_table_date">
+        <div className="flex flex-col items-start">
+          <DashboardBadge display={application?.status} />
+          {formatDate(application?.createdAt, true)}
+        </div>
+      </td>
       <td>
         <div className="flex gap-2">
-          <Link to={`/jobs/${application.id}`} className="btn_icon">
+          <Link to={`/jobs/${application?._id}`} className="btn_icon">
             <FaEye />
           </Link>
-          <button className="btn_icon">
+          <button
+            onClick={() => onRemoveApplication(application)}
+            className="btn_icon"
+          >
             <IoTrashOutline />
           </button>
         </div>
       </td>
     </tr>
   ));
-
-  const [searchText, setSearchText] = useState("");
-  console.log(searchText);
 
   return (
     <div>
@@ -66,9 +105,9 @@ export default function Applications() {
       />
 
       <TableSearchBar
-        quantity={applicationsData.length}
+        quantity={applicationsData?.length}
         display="application"
-        setSearchText={setSearchText}
+        setSearchTerm={setSearchTerm}
       />
 
       <div className="mt-8">

@@ -1,15 +1,24 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import JobSidebar from "./components/JobSidebar";
 import JobInfo from "./components/JobInfo";
 import PageBanner from "@/components/ui/PageBanner";
 import "./module.style.css";
 import { useGetSingleJobQuery } from "../../redux/api/jobApi";
+import toast from "react-hot-toast";
 
 const JobDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { data } = useGetSingleJobQuery(id);
 
   const jobInfo = data?.data;
+
+  // setTimeout(() => {
+  //   if (!Object.keys(jobInfo || {}).length) {
+  //     toast.error("This job has been removed", { id: "job_remove" });
+  //     navigate(-1);
+  //   }
+  // }, 2000);
 
   return (
     <div className="max_container my-20">

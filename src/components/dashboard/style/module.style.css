@@ -1,3 +1,15 @@
 .input_btn {
   @apply px-6 py-4 border border-primary bg-primaryLight text-primaryDark rounded-r-full hover:bg-primary hover:text-white transition-all font-semibold h-full absolute right-0;
 }
+
+.custom_tooltip {
+  @apply bg-[#002745] p-2 rounded-md;
+}
+
+.tooltip_label {
+  @apply text-gray-300 text-xs;
+}
+
+.tooltip_value {
+  @apply text-white text-sm;
+}

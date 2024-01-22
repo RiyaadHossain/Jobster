@@ -1,4 +1,6 @@
-import GetRecentNotficationContent from "@/helpers/GetRecentNotficationContent";
+import GetRecentNotficationContent from "../../helpers/GetRecentNotficationContent";
+import { timeAgoCreated } from "../../utils/timeAgoCreated";
+
 
 export default function RecentNotificationRow({ notification }) {
   return (
@@ -6,7 +8,7 @@ export default function RecentNotificationRow({ notification }) {
       <div className="flex items-center">
         <GetRecentNotficationContent notification={notification} />
       </div>
-      <div>3h</div> {/* Make a util function to calculate time */}
+      <div>{timeAgoCreated(notification?.createdAt)}</div>
     </div>
   );
 }

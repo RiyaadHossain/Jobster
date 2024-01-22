@@ -1,7 +1,17 @@
 import { IoTrashOutline } from "react-icons/io5";
 import GetNotificationContent from "../helpers/GetNotificationContent";
+import { useDeleteNotificaitonMutation } from "../../../../../redux/api/notification";
+import { catchAsync } from "../../../../../helpers/catchAsync";
+import toast from "react-hot-toast";
+import { timeAgoCreated } from "../../../../../utils/timeAgoCreated";
 
 export default function NotificationTableRow({ notification }) {
+  const [deleteNotification] = useDeleteNotificaitonMutation();
+  const handleOnDelete = catchAsync(async () => {
+    const res = await deleteNotification(notification?._id).unwrap();
+    toast.success(res?.message);
+  });
+
   return (
     <tr className="[&>*]:p-2 border-b hover:bg-secondaryLight transition-colors">
       <td className="w-[70%]">
@@ -9,12 +19,11 @@ export default function NotificationTableRow({ notification }) {
       </td>
 
       <td className="w-[20%] time_text">
-        {/* Make a util function to calculate time */}
-        5h
+        {timeAgoCreated(notification?.createdAt)}
       </td>
       <td>
         <div className="flex justify-end">
-          <button className="btn_icon">
+          <button onClick={handleOnDelete} className="btn_icon">
             <IoTrashOutline />
           </button>
         </div>

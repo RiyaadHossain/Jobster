@@ -1,6 +1,7 @@
 import React from "react";
 import Pagination from "@/components/ui/Pagination";
 import "./module.style.css";
+import { BiSad } from "react-icons/bi";
 
 export default function ListingPageContainer({
   sidebar,
@@ -19,8 +20,16 @@ export default function ListingPageContainer({
           Showing <span className="text-primary">{total}</span> {moduleName}
         </h3>
         <div className="grid gap-5 listing_page_card_container">{cards}</div>
+        {!cards?.length && (
+          <>
+            <p className="flex_cen gap-3 text-3xl font-semibold mt-20">
+              No {moduleName} Found!
+              <BiSad />
+            </p>
+          </>
+        )}
         <div className="mt-20 items-end text-center">
-          <Pagination />
+          {/* <Pagination /> */}
         </div>
       </div>
     </div>

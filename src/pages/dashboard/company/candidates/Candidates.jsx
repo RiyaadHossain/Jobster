@@ -12,6 +12,10 @@ import { useAppliedCandidatesQuery } from "../../../../redux/api/company";
 import { formatDate } from "../../../../utils/formatDate";
 import NameLogo from "../../../../components/ui/NameLogo";
 import toast from "react-hot-toast";
+import { useUpdateStatusMutation } from "../../../../redux/api/application";
+import { catchAsync } from "../../../../helpers/catchAsync";
+import { ENUM_APPLICATION_STATUS } from "../../../../enums/applicationStatus";
+import { useDeboune } from "../../../../hooks/useDebounce";
 
 export default function Candidates() {
   const columns = [
@@ -23,12 +27,26 @@ export default function Candidates() {
     { className: "", title: "" },
   ];
 
-  const { data } = useAppliedCandidatesQuery();
+  const [searchTerm, setSearchTerm] = useState("");
+  const debounceTerm = useDeboune(searchTerm, 2000);
+
+  const query = {};
+  if (debounceTerm) query["searchTerm"] = debounceTerm;
+
+  const { data } = useAppliedCandidatesQuery({ ...query });
+  const [updateStatus] = useUpdateStatusMutation();
   const appliedCandidates = data?.data;
 
   const handleDelete = () => {
     toast.error("You can't delete an application", { id: "del" });
   };
+
+  const handleUpdate = catchAsync(async (id, payload) => {
+    const status = { status: payload };
+
+    const res = await updateStatus({ id, status }).unwrap();
+    toast.success(res?.message);
+  });
 
   const dataSource = appliedCandidates?.map((application, i) => (
     <tr
@@ -84,10 +102,20 @@ export default function Candidates() {
           >
             <FaEye />
           </Link>
-          <button className="btn_icon">
+          <button
+            onClick={() =>
+              handleUpdate(application?._id, ENUM_APPLICATION_STATUS.ACCEPTED)
+            }
+            className="btn_icon"
+          >
             <IoMdCheckmark />
           </button>
-          <button className="btn_icon">
+          <button
+            onClick={() =>
+              handleUpdate(application?._id, ENUM_APPLICATION_STATUS.REJECTED)
+            }
+            className="btn_icon"
+          >
             <MdBlock />
           </button>
           <button onClick={handleDelete} className="btn_icon">
@@ -97,9 +125,6 @@ export default function Candidates() {
       </td>
     </tr>
   ));
-
-  const [searchText, setSearchText] = useState("");
-  console.log({ searchText });
 
   return (
     <div>
@@ -111,7 +136,7 @@ export default function Candidates() {
       <TableSearchBar
         quantity={appliedCandidates?.length}
         display="candidate"
-        setSearchText={setSearchText}
+        setSearchTerm={setSearchTerm}
       />
 
       <div className="mt-8">

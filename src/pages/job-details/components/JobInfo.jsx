@@ -33,7 +33,7 @@ export default function JobInfo({ jobInfo }) {
             </h5>
           </div>
 
-          {candidateRole && <JobActionBtn />}
+          {candidateRole && <JobActionBtn jobId={jobInfo?._id} />}
         </div>
 
         <div className="flex justify-between items-center mt-6">

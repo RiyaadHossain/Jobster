@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import JobsterTable from "@/components/dashboard/JobsterTable";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
@@ -13,6 +13,7 @@ import { userFormatText } from "../../../../utils/userFormatText";
 import { useDeleteJobMutation } from "../../../../redux/api/jobApi";
 import { catchAsync } from "../../../../helpers/catchAsync";
 import toast from "react-hot-toast";
+import { useDeboune } from "../../../../hooks/useDebounce";
 
 export default function ManageJobs() {
   const columns = [
@@ -25,8 +26,14 @@ export default function ManageJobs() {
     { className: "", title: "" },
   ];
 
-  const { data } = useMyJobsQuery();
-  const [deleteJob, { isLoading, isSuccess }] = useDeleteJobMutation();
+  const [searchTerm, setSearchTerm] = useState("");
+  const debounceTerm = useDeboune(searchTerm, 2000);
+
+  const query = {};
+  if (debounceTerm) query["searchTerm"] = debounceTerm;
+
+  const { data } = useMyJobsQuery({ ...query });
+  const [deleteJob] = useDeleteJobMutation();
 
   const dashboardJobsData = data?.data;
 
@@ -34,10 +41,6 @@ export default function ManageJobs() {
     const res = await deleteJob(id).unwrap();
     toast.success(res?.message);
   });
-
-  useEffect(() => {
-    if (isLoading && !isSuccess) toast.loading("Processing....", { id: 1 });
-  }, [isLoading, isSuccess]);
 
   const dataSource = dashboardJobsData?.map((data, i) => (
     <tr
@@ -55,7 +58,7 @@ export default function ManageJobs() {
           <FaGlobeAsia /> {data?.job?.location || "No Location"}
         </div>
       </td>
-      <td className="font_var_medium">{data?.job?.category}</td>
+      <td className="font_var_medium">{userFormatText(data?.job?.category)}</td>
       <td className="font_var_thin">
         {userFormatText(data?.job?.employmentType)}
       </td>
@@ -90,9 +93,6 @@ export default function ManageJobs() {
     </tr>
   ));
 
-  const [searchText, setSearchText] = useState("");
-  console.log({ searchText });
-
   return (
     <div>
       <DashboardHeader
@@ -103,7 +103,7 @@ export default function ManageJobs() {
       <TableSearchBar
         quantity={dashboardJobsData?.length}
         display="job"
-        setSearchText={setSearchText}
+        setSearchTerm={setSearchTerm}
       />
 
       <div className="mt-8">

@@ -29,17 +29,20 @@ export const companyApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.company],
     }),
     myJobs: builder.query({
-      query: () => ({
+      query: (params) => ({
         url: `${COMPANY_API}/my-jobs`,
         method: "GET",
+        params,
       }),
       providesTags: [tagTypes.job],
     }),
     appliedCandidates: builder.query({
-      query: () => ({
+      query: (params) => ({
         url: `${COMPANY_API}/applied-candidates`,
         method: "GET",
+        params,
       }),
+      providesTags: [tagTypes.application],
     }),
   }),
 });
