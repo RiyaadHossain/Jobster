@@ -17,6 +17,7 @@ export default function CompanyListing() {
 
   const { data } = useGetAllCompaniesQuery({ ...query });
   const companiesData = data?.data;
+  const totalCompanies = data?.meta?.total;
 
   const onSearchSubmit = (data) => {
     const { name, location, industry } = data;
@@ -48,7 +49,7 @@ export default function CompanyListing() {
           <CompanyCard key={i} company={company} />
         ))}
         moduleName="Company"
-        total={companiesData?.length}
+        total={totalCompanies}
       />
     </div>
   );

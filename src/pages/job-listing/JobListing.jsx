@@ -7,6 +7,7 @@ import { useGetAllJobsQuery } from "../../redux/api/jobApi";
 import { useState } from "react";
 
 const JobListing = () => {
+  const [page, setPage] = useState(1);
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
@@ -14,14 +15,17 @@ const JobListing = () => {
   const [employmentType, setEmployemploymentType] = useState("");
 
   const query = {};
+  if (page) query["page"] = page;
   if (title) query["title"] = title;
   if (location) query["location"] = location;
   if (category) query["category"] = category;
   if (workLevel) query["workLevel"] = workLevel;
   if (employmentType) query["employmentType"] = employmentType;
 
-  const { data } = useGetAllJobsQuery({ ...query });
+  const { data } = useGetAllJobsQuery({ ...query, limit: 5 });
   const jobsData = data?.data?.data;
+  const totalJobs = data?.data?.meta?.total;
+  const totalPages = data?.data?.meta?.totalPages;
 
   const onSearchSubmit = (data) => {
     const { title, location, category } = data;
@@ -61,7 +65,10 @@ const JobListing = () => {
           <JobCard key={i} jobInfo={job} />
         ))}
         moduleName="Job"
-        total={jobsData?.length}
+        total={totalJobs}
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
       />
     </div>
   );

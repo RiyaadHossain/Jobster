@@ -1,33 +1,33 @@
-import { useState } from "react";
-import "./style/pagination.style.css"
+import "./style/pagination.style.css";
+import ButtonWithArrow from "./ButtonWithArrow";
 
-export default function Pagination() {
-  const [page, setPage] = useState(1);
-
-  const pages = [1, 2, 3, 4];
+export default function Pagination({ page, setPage, totalPages }) {
+  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <nav>
+    <nav className="flex justify-between">
       <ul className="flex justify-center">
-        {pages.map((num) => (
+        {pages.map((num, i) => (
           <li key={num}>
             <span
-              className={`${
-                page === num ? "pagination_btn_active" : "pagination_btn"
-              }`}
+              className={`${page === num && "pagination_btn_active"} ${
+                i === 0 && "first_page_btn"
+              } ${i === pages.length - 1 && "last_page_btn"} pagination_btn`}
               onClick={() => setPage(num)}
-            //   href="/"
             >
-              <span className="material-icons text-sm">{num}</span>
+              <span className="text-md">{num}</span>
             </span>
           </li>
         ))}
-        {/* <li>
-          <a className="pagination_btn" href="/" ariaLabel="Next">
-            <span className="material-icons text-sm">{`>`}</span>
-          </a>
-        </li> */}
       </ul>
+      {page < totalPages && (
+        <div>
+          <ButtonWithArrow
+            onHandleClick={() => setPage(page + 1)}
+            display="Show Me More"
+          />
+        </div>
+      )}
     </nav>
   );
 }

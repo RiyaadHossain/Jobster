@@ -8,6 +8,9 @@ export default function ListingPageContainer({
   cards,
   moduleName,
   total,
+  page,
+  setPage,
+  totalPages,
 }) {
   return (
     <div className="flex flex-col lg:flex-row mt-28 px-8 gap-6 max_container">
@@ -21,15 +24,15 @@ export default function ListingPageContainer({
         </h3>
         <div className="grid gap-5 listing_page_card_container">{cards}</div>
         {!cards?.length && (
-          <>
-            <p className="flex_cen gap-3 text-3xl font-semibold mt-20">
-              No {moduleName} Found!
-              <BiSad />
-            </p>
-          </>
+          <p className="flex_cen gap-3 text-3xl font-semibold mt-20">
+            No {moduleName} Found!
+            <BiSad />
+          </p>
         )}
         <div className="mt-20 items-end text-center">
-          {/* <Pagination /> */}
+          {totalPages > 1 ? (
+            <Pagination totalPages={totalPages} page={page} setPage={setPage} />
+          ) : null}
         </div>
       </div>
     </div>

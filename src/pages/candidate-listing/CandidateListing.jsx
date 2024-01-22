@@ -17,6 +17,8 @@ export default function CandidateListing() {
 
   const { data } = useGetAllCandidatesQuery({ ...query });
   const candidatesData = data?.data;
+  const totalCandidates = data?.meta?.total;
+  console.log(data);
 
   const onSearchSubmit = (data) => {
     const { name, location, industry } = data;
@@ -25,7 +27,6 @@ export default function CandidateListing() {
     if (location) setLocation(location);
     if (industry) setIndustry(industry);
   };
-
 
   return (
     <div className="my-20">
@@ -49,7 +50,7 @@ export default function CandidateListing() {
           <CandidateCard candidateInfo={candidate} key={i} />
         ))}
         moduleName="Candidate"
-        total={candidatesData?.length}
+        total={totalCandidates}
       />
     </div>
   );

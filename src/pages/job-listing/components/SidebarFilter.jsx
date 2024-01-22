@@ -30,42 +30,38 @@ export default function SidebarFilter({ props }) {
         <h3 className="text-lg font-semibold mb-5">Type of Employment</h3>
         <div className="flex flex-col gap-4">
           {typeSpecificJobs?.employmentType?.map((item) => (
-            <label
-              key={item?.type}
-              htmlFor=""
-              className="flex justify-between items-center"
-            >
-              <span className="flex items-center gap-2 font-light">
-                <input
-                  onClick={() => onSetEmploymentType(item?.type)}
-                  type="checkbox"
-                  id=""
-                />
-                {userFormatText(item?.type)}
-              </span>
+            <div key={item?.type} className="flex justify-between items-center">
+              <label htmlFor={item?.type} className="cursor-pointer">
+                <span className="flex items-center gap-2 font-light">
+                  <input
+                    onClick={() => onSetEmploymentType(item?.type)}
+                    type="checkbox"
+                    id={item?.type}
+                  />
+                  {userFormatText(item?.type)}
+                </span>
+              </label>
               <DotBadge>{item?.jobs}</DotBadge>
-            </label>
+            </div>
           ))}
         </div>
 
         <h3 className="text-lg font-semibold mb-5 mt-10">Experience Level</h3>
         <div className="flex flex-col gap-4">
           {typeSpecificJobs?.workLevel?.map((item) => (
-            <label
-              key={item?.type}
-              htmlFor=""
-              className="flex justify-between items-center"
-            >
-              <span className="flex items-center gap-2 font-light">
-                <input
-                  onClick={() => onSetWorkLevel(item?.type)}
-                  type="checkbox"
-                  id=""
-                />
-                {userFormatText(item?.type, { hiphens: true })}
-              </span>
+            <div key={item?.type} className="flex justify-between items-center">
+              <label htmlFor={item?.type} className="cursor-pointer">
+                <span className="flex items-center gap-2 font-light">
+                  <input
+                    onClick={() => onSetWorkLevel(item?.type)}
+                    type="checkbox"
+                    id={item?.type}
+                  />
+                  {userFormatText(item?.type, { hiphens: true })}
+                </span>
+              </label>
               <DotBadge>{item?.jobs}</DotBadge>
-            </label>
+            </div>
           ))}
         </div>
       </div>

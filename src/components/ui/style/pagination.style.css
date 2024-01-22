@@ -1,7 +1,15 @@
 .pagination_btn {
-  @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-gray-400 bg-transparent p-0 text-sm text-black transition duration-150 ease-in-out hover:bg-primaryLight;
+  @apply flex h-12 w-12 items-center justify-center border-t border-l border-b border-gray-300 bg-transparent font-semibold p-2 text-primary transition duration-150 ease-in-out hover:bg-primary hover:text-white hover:border-primary cursor-pointer;
 }
 
 .pagination_btn_active {
-  @apply mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-primary p-0 text-sm text-white shadow-md transition duration-150 ease-in-out;
+  @apply bg-primaryDark border-primaryDark text-white shadow-md hover:bg-primaryDark hover:border-primaryDark hover:text-white;
+}
+
+.first_page_btn {
+  @apply rounded-l-2xl
+}
+
+.last_page_btn {
+  @apply rounded-r-2xl border-r
 }
