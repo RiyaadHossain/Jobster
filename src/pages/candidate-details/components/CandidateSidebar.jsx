@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DetailsPageSidebar from "@/components/other/details-page-sidebar/DetailsPageSidebar";
+import { userFormatText } from "../../../utils/userFormatText";
 
 export default function CandidateSidebar({ candidateInfo }) {
   const [showNum, setShowNum] = useState(false);
@@ -18,7 +19,7 @@ export default function CandidateSidebar({ candidateInfo }) {
       <div className="">
         <div className="sidebar_item_title">Location</div>
         <div className="sidebar_content_info">
-          {candidateInfo?.location || "N/A"}
+          {userFormatText(candidateInfo?.location) || "N/A"}
         </div>
       </div>
       <div className="">

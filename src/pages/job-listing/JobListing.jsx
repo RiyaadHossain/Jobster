@@ -5,12 +5,16 @@ import JobCard from "./components/JobCard";
 import SidebarFilter from "./components/SidebarFilter";
 import { useGetAllJobsQuery } from "../../redux/api/jobApi";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const JobListing = () => {
+  const { search } = useLocation();
+  const searchIndustry = search.split("=")[1];
+
   const [page, setPage] = useState(1);
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
-  const [category, setCategory] = useState("");
+  const [industry, setIndustry] = useState(searchIndustry || "");
   const [workLevel, setWorkLevel] = useState("");
   const [employmentType, setEmployemploymentType] = useState("");
 
@@ -18,7 +22,7 @@ const JobListing = () => {
   if (page) query["page"] = page;
   if (title) query["title"] = title;
   if (location) query["location"] = location;
-  if (category) query["category"] = category;
+  if (industry) query["industry"] = industry;
   if (workLevel) query["workLevel"] = workLevel;
   if (employmentType) query["employmentType"] = employmentType;
 
@@ -28,11 +32,11 @@ const JobListing = () => {
   const totalPages = data?.data?.meta?.totalPages;
 
   const onSearchSubmit = (data) => {
-    const { title, location, category } = data;
+    const { title, location, industry } = data;
 
     if (title) setTitle(title);
     if (location) setLocation(location);
-    if (category) setCategory(category);
+    if (industry) setIndustry(industry);
   };
 
   return (

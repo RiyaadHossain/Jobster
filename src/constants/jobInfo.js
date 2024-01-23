@@ -8,21 +8,25 @@ export const employmentType = [
 ];
 
 export const industries = [
-  { value: "construction", display: "Construction" },
-  { value: "software_engineering", display: "Software Engineering" },
-  { value: "healthcare", display: "Healthcare" },
-  { value: "business", display: "Business" },
-  { value: "finance", display: "Finance" },
-  { value: "markeing", display: "Markeing" },
+  { display: "Busines Development", value: "business_development" },
+  { display: "Customer Service", value: "customer_service" },
+  { display: "Finance", value: "finance" },
+  { display: "Healthcare", value: "healthcare" },
+  { display: "Human Resources", value: "human_resources" },
+  { display: "Marketing & Communication", value: "marketing_communication" },
+  { display: "Project Management", value: "project_management" },
+  { display: "Software Engineering", value: "software_engineering" },
+  { display: "Others", value: "others" },
 ];
 
 export const location = [
-  { value: "Dhaka", display: "Dhaka" },
-  { value: "Khulna", display: "Khulna" },
-  { value: "Rajshahi", display: "Rajshahi" },
-  { value: "Barishal", display: "Barishal" },
-  { value: "Narail", display: "Narail" },
-  { value: "London", display: "London" },
+  { value: "asia", display: "Asia" },
+  { value: "africa", display: "Africa" },
+  { value: "north_america", display: "North America" },
+  { value: "south_america", display: "South America" },
+  { value: "antarctica", display: "Antarctica" },
+  { value: "europe", display: "Europe" },
+  { value: "australia", display: "Australia" },
 ];
 
 export const expLevel = [

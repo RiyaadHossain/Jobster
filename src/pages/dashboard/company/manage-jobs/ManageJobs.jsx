@@ -19,7 +19,7 @@ export default function ManageJobs() {
   const columns = [
     { className: "w-[1%]", title: "" },
     { className: "w-[25%]", title: "Title" },
-    { className: "w-[15%]", title: "Category" },
+    { className: "w-[15%]", title: "Industry" },
     { className: "w-[20%]", title: "Type" },
     { className: "w-[12%]", title: "Applications" },
     { className: "", title: "Date" },
@@ -55,10 +55,10 @@ export default function ManageJobs() {
           {data?.job?.title}
         </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> {data?.job?.location || "No Location"}
+          <FaGlobeAsia /> {userFormatText(data?.job?.location) || "No Location"}
         </div>
       </td>
-      <td className="font_var_medium">{userFormatText(data?.job?.category)}</td>
+      <td className="font_var_medium">{userFormatText(data?.job?.industry)}</td>
       <td className="font_var_thin">
         {userFormatText(data?.job?.employmentType)}
       </td>

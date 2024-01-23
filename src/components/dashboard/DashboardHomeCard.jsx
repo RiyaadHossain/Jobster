@@ -1,4 +1,6 @@
-export default function DashboardHomeCard({ title, quantity, icon, bg }) {
+import { userFormatText } from "../../utils/userFormatText";
+
+export default function DashboardHomeCard({ type, quantity, icon, bg }) {
   return (
     <div
       className={`flex gap-4 items-center justify-center p-8 ${bg} rounded-3xl shadow-md`}
@@ -10,7 +12,9 @@ export default function DashboardHomeCard({ title, quantity, icon, bg }) {
         <h1 className="text-[42px] font-semibold tracking-tight leading-10">
           {quantity}
         </h1>
-        <p className="text-sm font-light leading-5 opacity-[0.7]">{title}</p>
+        <p className="text-sm font-light leading-5 opacity-[0.7]">
+          {userFormatText(type)}
+        </p>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import JobActionBtn from "./JobActionBtn";
 import { getUserInfo } from "../../../services/auth.services";
 import { ENUM_USER_ROLE } from "../../../enums/userRole";
 import { Link } from "react-router-dom";
+import { userFormatText } from "../../../utils/userFormatText";
 
 export default function JobInfo({ jobInfo }) {
   const { role } = getUserInfo();
@@ -28,7 +29,7 @@ export default function JobInfo({ jobInfo }) {
               </Link>
               in{" "}
               <span className="text-primary font-light">
-                {jobInfo?.location || "Location"}
+                {userFormatText(jobInfo?.location) || "Location"}
               </span>
             </h5>
           </div>
@@ -42,7 +43,7 @@ export default function JobInfo({ jobInfo }) {
               <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
             </div>
             <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
-              Finance
+              {userFormatText(jobInfo?.industry)}
             </span>
           </div>
           <span className="font-light text-grayColor">

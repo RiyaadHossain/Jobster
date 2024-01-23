@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaGlobeAsia } from "react-icons/fa";
 import { useAppliedCandidatesQuery } from "@/redux/api/company";
 import NameLogo from "@/components/ui/NameLogo";
+import { userFormatText } from "../../../../../utils/userFormatText";
 
 export default function RecentCandidateTable() {
   const { data } = useAppliedCandidatesQuery();
@@ -38,7 +39,7 @@ export default function RecentCandidateTable() {
                       {application?.candidate?.name}
                     </Link>
                     <span className="block text-xs font-light">
-                      {application?.candidate?.industry || "No Industry"}
+                      {userFormatText(application?.candidate?.industry) || "No Industry"}
                     </span>
                   </div>
                 </div>
@@ -46,7 +47,7 @@ export default function RecentCandidateTable() {
               <td className="w-[25%] text-sm font-light leading-5">
                 <div className="opacity-[0.7] flex items-center gap-1 text-[13px] font-medium leading-5 ">
                   <FaGlobeAsia />{" "}
-                  {application?.candidate?.location || "No Location"}
+                  {userFormatText(application?.candidate?.location) || "No Location"}
                 </div>
               </td>
               <td className="w-[20%]">

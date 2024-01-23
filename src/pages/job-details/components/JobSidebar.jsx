@@ -35,7 +35,7 @@ export default function JobSidebar({ jobInfo }) {
         <div>
           <p className="sidebar_item_title">Location</p>
           <h1 className="sidebar_content_info">
-            {jobInfo?.location || "N/A"}
+            {userFormatText(jobInfo?.location) || "N/A"}
           </h1>
         </div>
       </DetailsPageSidebar>
@@ -91,7 +91,7 @@ export default function JobSidebar({ jobInfo }) {
         <div>
           <p className="sidebar_item_title">Company Location</p>
           <h1 className="sidebar_content_info">
-            {jobInfo?.company?.location || "N/A"}
+            {userFormatText(jobInfo?.company?.location) || "N/A"}
           </h1>
         </div>
         <div>

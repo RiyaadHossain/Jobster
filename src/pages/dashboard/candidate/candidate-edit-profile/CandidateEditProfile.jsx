@@ -18,7 +18,6 @@ import { catchAsync } from "../../../../helpers/catchAsync";
 import { useEditProfileMutation } from "../../../../redux/api/candidate";
 import toast from "react-hot-toast";
 import { useMeQuery } from "../../../../redux/api/user";
-import { makeArrayOfString } from "../../../../utils/makeArrayOfString";
 
 export default function CandidateEditProfile() {
   const [skills, setSkills] = useState([]);
@@ -29,22 +28,13 @@ export default function CandidateEditProfile() {
   const [editProfile, { isLoading }] = useEditProfileMutation();
 
   const onSubmit = catchAsync(async (data) => {
-    if (skills.length) data.skills = makeArrayOfString(skills, "title");
-    if (education.length) data.education = education;
-    if (experience.length) data.experience = experience;
 
+    console.log(data);
     const res = await editProfile(data).unwrap();
     toast.success(res?.message);
   });
 
   let defaultValues = data?.data;
-  if (defaultValues?.skills?.length) {
-    // const skillsOfObj = defaultValues?.skills?.map((skill) => ({
-    //   title: skill,
-    // }));
-    // setSkills(skillsOfObj);
-  }
-  console.log(data?.data?.resume);
 
   return (
     <div>

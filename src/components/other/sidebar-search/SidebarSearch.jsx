@@ -1,11 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { industries, location } from "../../../constants/jobInfo";
+import { useLocation } from "react-router-dom";
 
 export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
   const { register, handleSubmit } = useForm();
   const inputName = moduleName === "Job" ? "title" : "name";
-  const categoryOrIndustry = moduleName === "Job" ? "category" : "industry";
+
+  const { search } = useLocation();
+  const searchIndustry = search.split("=")[1];
 
   return (
     <form
@@ -26,25 +29,20 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
       <div className="mb-6">
         <p className="font-semibold mb-3">Location</p>
         <select className="w-full border-0 text-base" {...register("location")}>
-          <option value="" selected>
-            Select Location
-          </option>
+          <option value="">Select Location</option>
           {location.map((item) => (
             <option value={item.value}>{item.display}</option>
           ))}
         </select>
       </div>
       <div className="mb-6">
-        <p className="font-semibold mb-3">Category</p>
-        <select
-          className="w-full border-0 text-base"
-          {...register(categoryOrIndustry)}
-        >
-          <option value="" selected>
-            Select Category
-          </option>
+        <p className="font-semibold mb-3">Industry</p>
+        <select className="w-full border-0 text-base" {...register("industry")}>
+          <option value="">Select Industry</option>
           {industries.map((item) => (
-            <option value={item.value}>{item.display}</option>
+            <option selected={item.value === searchIndustry} value={item.value}>
+              {item.display}
+            </option>
           ))}
         </select>
       </div>

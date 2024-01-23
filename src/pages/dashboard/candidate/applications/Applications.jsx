@@ -22,7 +22,7 @@ export default function Applications() {
     { className: "w-[1%]", title: "" },
     { className: "w-[25%]", title: "Job" },
     { className: "w-[15%]", title: "Company" },
-    { className: "w-[20%]", title: "Category" },
+    { className: "w-[20%]", title: "Industry" },
     { className: "w-[12%]", title: "Type" },
     { className: "", title: "Date" },
     { className: "", title: "" },
@@ -63,7 +63,8 @@ export default function Applications() {
           {application?.job?.title}
         </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> {application?.job?.location || "No Location"}
+          <FaGlobeAsia />{" "}
+          {userFormatText(application?.job?.location) || "No Location"}
         </div>
       </td>
       <td className="font_var_thin_pri">
@@ -71,7 +72,9 @@ export default function Applications() {
           {application?.job?.company?.name}
         </Link>
       </td>
-      <td className="font_var_medium">{application?.job?.category}</td>
+      <td className="font_var_medium">
+        {userFormatText(application?.job?.industry)}
+      </td>
       <td className="font_var_thin">
         {userFormatText(application?.job?.employmentType)}
       </td>

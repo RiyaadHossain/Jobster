@@ -2,7 +2,6 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import JobsterAreaChart from "@/components/dashboard/JobsterAreaChart";
 import LinkWithArrow from "@/components/ui/LinkWithArrow";
 import RecentApplicationsTable from "./components/RecentApplicationsTable";
-import { statsData } from "@/data/stats";
 import GetDashboardStats from "@/helpers/GetDashboardStats";
 import { useGetAllNotificationsQuery } from "../../../../redux/api/notification";
 import RecentNotificationRow from "../../../../components/dashboard/RecentNotificationRow";
@@ -30,7 +29,7 @@ export default function CandidateDashboard() {
       <DashboardHeader title="Dashboard" subtitle="Welcome, Riyad Hossain!" />
 
       {/* Stats Cards */}
-      <GetDashboardStats statsData={statsData} />
+      <GetDashboardStats/>
 
       {/* Info Charts */}
       <div className="mt-12 grid grid-cols-12 gap-12">

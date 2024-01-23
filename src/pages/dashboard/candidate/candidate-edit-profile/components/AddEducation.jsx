@@ -4,11 +4,12 @@ import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import EducationRow from "./FormTableRow";
 import { useFieldState } from "@/hooks/useFieldState";
+import { ENUM_EDU_EXP } from "../../../../../enums/candidate";
 
 export default function AddEducation({ setEducation }) {
   const { control } = useFormContext();
 
-  const courseOfStudyRef = useRef(null);
+  const courseNameRef = useRef(null);
   const institutionRef = useRef(null);
   const timePeriodRef = useRef(null);
   const desciptionRef = useRef(null);
@@ -22,7 +23,7 @@ export default function AddEducation({ setEducation }) {
     setEducation(fields);
   }, [fields, setEducation]);
 
-  const refs = [courseOfStudyRef, institutionRef, timePeriodRef, desciptionRef];
+  const refs = [courseNameRef, institutionRef, timePeriodRef, desciptionRef];
   const { appendData, customError, onChange, openForm, closeForm, isFormOpen } =
     useFieldState(refs, append, setEducation);
 
@@ -30,7 +31,11 @@ export default function AddEducation({ setEducation }) {
     <div className="mt-2">
       {fields.length ? (
         <div className="mb-5">
-          <EducationRow fields={fields} remove={remove} />
+          <EducationRow
+            fields={fields}
+            remove={remove}
+            type={ENUM_EDU_EXP.EDU}
+          />
         </div>
       ) : null}
 
@@ -39,12 +44,12 @@ export default function AddEducation({ setEducation }) {
           <div className="grid grid-cols-3 gap-3">
             <div className="col-span-1">
               <FormInput
-                id="courseOfStudy"
-                name="courseOfStudy"
+                id="courseName"
+                name="courseName"
                 label="Course of Study"
                 placeholder="E.g. Finance"
                 type="text"
-                inputRef={courseOfStudyRef}
+                inputRef={courseNameRef}
                 handleOnChange={onChange}
                 customError={customError}
               />
@@ -77,11 +82,11 @@ export default function AddEducation({ setEducation }) {
 
           <FormTextarea
             rows={6}
-            id="description"
-            name="description"
-            label="Description"
+            id="details"
+            name="details"
+            label="Details"
             handleOnChange={onChange}
-            placeholder="Type a short description..."
+            placeholder="Type a short details..."
             inputClass="resize-none"
             inputRef={desciptionRef}
             customError={customError}

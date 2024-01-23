@@ -63,7 +63,7 @@ export default function EditJobOffer() {
                 <FormSelect
                   options={industries}
                   label="Industry"
-                  name="category"
+                  name="industry"
                   mandatory={true}
                   placeholder="Select Industry"
                   divClass=" w-1/2 flex-grow"

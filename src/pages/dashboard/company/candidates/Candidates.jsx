@@ -16,6 +16,7 @@ import { useUpdateStatusMutation } from "../../../../redux/api/application";
 import { catchAsync } from "../../../../helpers/catchAsync";
 import { ENUM_APPLICATION_STATUS } from "../../../../enums/applicationStatus";
 import { useDeboune } from "../../../../hooks/useDebounce";
+import { userFormatText } from "../../../../utils/userFormatText";
 
 export default function Candidates() {
   const columns = [
@@ -78,7 +79,7 @@ export default function Candidates() {
             </Link>
             <div className="main_row_subtitle">
               <FaGlobeAsia />{" "}
-              {application?.candidate?.location || "No Location"}
+              {userFormatText(application?.candidate?.location) || "No Location"}
             </div>
           </div>
         </div>

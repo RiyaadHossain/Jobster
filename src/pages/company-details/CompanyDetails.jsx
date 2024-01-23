@@ -3,6 +3,7 @@ import CompanyInfo from "./components/CompanyInfo";
 import CompanySidebar from "./components/CompanySidebar";
 import { useParams } from "react-router-dom";
 import { useGetCompanyQuery } from "../../redux/api/company";
+import { userFormatText } from "../../utils/userFormatText";
 
 export default function CompanyDetails() {
   const { id } = useParams();
@@ -22,11 +23,14 @@ export default function CompanyDetails() {
             title={companyInfo?.name}
             banner={companyInfo?.banner}
             brandImg={companyInfo?.logo}
-            subtitle={companyInfo?.location}
+            subtitle={userFormatText(companyInfo?.location)}
           />
 
           {/* +++ Comapany Info +++ */}
-          <CompanyInfo companyInfo={companyInfo} availableJobs={availableJobs} />
+          <CompanyInfo
+            companyInfo={companyInfo}
+            availableJobs={availableJobs}
+          />
         </div>
 
         {/* --------------- Sidebar Content --------------- */}

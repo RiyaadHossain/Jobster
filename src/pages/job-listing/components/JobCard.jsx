@@ -24,7 +24,7 @@ export default function JobCard({ company, jobInfo }) {
           <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
         </div>
         <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
-          {userFormatText(jobInfo?.category)}
+          {userFormatText(jobInfo?.industry)}
         </span>
       </div>
 
@@ -36,7 +36,7 @@ export default function JobCard({ company, jobInfo }) {
         <div className="flex items-center gap-1 hover:text-primary transition-colors">
           <BiGlobe />
           <p className="text-[14px] font-medium leading-5">
-            {jobInfo?.location || "Location"}
+            {userFormatText(jobInfo?.location) || "Location"}
           </p>
         </div>
         <span className="text-[15px]  font-light leading-5">

@@ -9,7 +9,7 @@ export default function AddSkill({ skills, setSkills }) {
   const { control } = useFormContext();
 
   const { fields, append, remove } = useFieldArray({
-    name: "skillsCustom",
+    name: "skills",
     control,
   });
 

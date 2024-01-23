@@ -14,7 +14,7 @@ export default function CandidateInfo({ candidateInfo }) {
         <h1 className="page_section_header">Skills</h1>
         <div className="flex gap-4 flex-wrap">
           {candidateInfo?.skills?.map((item, i) => (
-            <Badge key={i}>{item}</Badge>
+            <Badge key={i}>{item?.title}</Badge>
           ))}
         </div>
       </div>

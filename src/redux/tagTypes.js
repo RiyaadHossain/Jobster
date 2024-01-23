@@ -8,6 +8,7 @@ export const tagTypes = {
   notification: "Notification",
   wishlist: "Wishlist",
   dashboard: "Dashboard",
+  industry: "Industry",
 };
 
 export const tagTypesArray = [
@@ -20,4 +21,5 @@ export const tagTypesArray = [
   "Notification",
   "Wishlist",
   "Dashboard",
+  "Industry",
 ];

@@ -1,6 +1,7 @@
 import { FaGlobeAmericas } from "react-icons/fa";
 import LinkWithArrow from "@/components/ui/LinkWithArrow";
 import NameLogo from "../../../components/ui/NameLogo";
+import { userFormatText } from "../../../utils/userFormatText";
 
 export default function CandidateCard({ candidateInfo }) {
   return (
@@ -28,7 +29,7 @@ export default function CandidateCard({ candidateInfo }) {
         <div className="flex items-center gap-2">
           <FaGlobeAmericas />
           <span className="text-sm font-semibold leading-5">
-            {candidateInfo.location || "No Location"}
+            {userFormatText(candidateInfo.location) || "No Location"}
           </span>
         </div>
         <LinkWithArrow

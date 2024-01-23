@@ -8,13 +8,13 @@ import { useFieldState } from "@/hooks/useFieldState";
 export default function AddExperience({ setExperience }) {
   const { control } = useFormContext();
 
-  const jobTitleRef = useRef(null);
-  const companyNameRef = useRef(null);
+  const positionRef = useRef(null);
+  const companyRef = useRef(null);
   const timePeriodRef = useRef(null);
   const desciptionRef = useRef(null);
 
   const { fields, append, remove } = useFieldArray({
-    name: "experience",
+    name: "workExperience",
     control,
   });
 
@@ -22,7 +22,7 @@ export default function AddExperience({ setExperience }) {
     setExperience(fields);
   }, [fields, setExperience]);
 
-  const refs = [jobTitleRef, companyNameRef, timePeriodRef, desciptionRef];
+  const refs = [positionRef, companyRef, timePeriodRef, desciptionRef];
   const { appendData, customError, onChange, isFormOpen, openForm, closeForm } =
     useFieldState(refs, append);
 
@@ -40,26 +40,26 @@ export default function AddExperience({ setExperience }) {
             <div className="col-span-1">
               <FormInput
                 mandatory
-                id="jobTitle"
-                name="jobTitle"
+                id="position"
+                name="position"
                 label="Job Title"
                 placeholder="E.g. Web Developer"
                 handleOnChange={onChange}
                 type="text"
-                inputRef={jobTitleRef}
+                inputRef={positionRef}
                 customError={customError}
               />
             </div>
             <div className="col-span-1">
               <FormInput
                 mandatory
-                id="companyName"
-                name="companyName"
+                id="company"
+                name="company"
                 label="Company Name"
                 placeholder="E.g. Apple"
                 handleOnChange={onChange}
                 type="text"
-                inputRef={companyNameRef}
+                inputRef={companyRef}
                 customError={customError}
               />
             </div>
@@ -81,10 +81,10 @@ export default function AddExperience({ setExperience }) {
           <FormTextarea
             mandatory
             rows={6}
-            id="description"
-            name="description"
-            label="Description"
-            placeholder="Type a short description..."
+            id="details"
+            name="details"
+            label="Details"
+            placeholder="Type a short details..."
             handleOnChange={onChange}
             inputClass="resize-none"
             inputRef={desciptionRef}

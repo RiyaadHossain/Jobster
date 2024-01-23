@@ -49,13 +49,13 @@ export default function RecentApplicationsTable() {
             </td>
 
             <td className="w-[25%] text-sm font-light leading-5 opacity-[0.8]">
-              {application?.job?.category}
+              {userFormatText(application?.job?.industry)}
             </td>
 
             <td className="w-[25%] gap-2">
               <div className="flex items-center gap-2 text-[13px] font-medium leading-5 text-grayColor">
                 <FaGlobeAmericas />
-                <span>{application?.job?.location || "No Location"}</span>
+                <span>{userFormatText(application?.job?.location) || "No Location"}</span>
               </div>
             </td>
 

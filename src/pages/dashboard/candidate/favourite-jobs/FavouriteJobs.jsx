@@ -20,7 +20,7 @@ export default function FavouriteJobs() {
     { className: "w-[1%]", title: "" },
     { className: "w-[25%]", title: "Job" },
     { className: "w-[15%]", title: "Company" },
-    { className: "w-[20%]", title: "Category" },
+    { className: "w-[20%]", title: "Industry" },
     { className: "w-[12%]", title: "Type" },
     { className: "", title: "Date" },
     { className: "", title: "" },
@@ -55,7 +55,7 @@ export default function FavouriteJobs() {
           {item?.job?.title}
         </Link>
         <div className="main_row_subtitle">
-          <FaGlobeAsia /> {item?.job?.location || "No Location"}
+          <FaGlobeAsia /> {userFormatText(item?.job?.location) || "No Location"}
         </div>
       </td>
       <td className="font_var_thin_pri">
@@ -63,7 +63,7 @@ export default function FavouriteJobs() {
           {item?.job?.company?.name}
         </Link>
       </td>
-      <td className="font_var_medium">{userFormatText(item?.job?.category)}</td>
+      <td className="font_var_medium">{userFormatText(item?.job?.industry)}</td>
       <td className="font_var_thin">
         {userFormatText(item?.job?.employmentType)}
       </td>

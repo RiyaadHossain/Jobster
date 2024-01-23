@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SocialIcons from "@/components/ui/SocialIcons";
 import DetailsPageSidebar from "@/components/other/details-page-sidebar/DetailsPageSidebar";
+import { userFormatText } from "../../../utils/userFormatText";
 
 export default function CompanySidebar({ companyInfo }) {
   const [showNum, setShowNum] = useState(false);
@@ -13,7 +14,7 @@ export default function CompanySidebar({ companyInfo }) {
       <div className="">
         <div className="sidebar_item_title">Industry</div>
         <div className="sidebar_content_info">
-          {companyInfo?.industry || "N/A"}
+          {userFormatText(companyInfo?.industry) || "N/A"}
         </div>
       </div>
       <div className="">
@@ -53,7 +54,7 @@ export default function CompanySidebar({ companyInfo }) {
       <div className="">
         <div className="sidebar_item_title">Location</div>
         <div className="sidebar_content_info ">
-          {companyInfo?.location || "N/A"}
+          {userFormatText(companyInfo?.location) || "N/A"}
         </div>
       </div>
 

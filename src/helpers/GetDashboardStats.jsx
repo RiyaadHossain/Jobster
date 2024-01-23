@@ -42,7 +42,7 @@ export default function GetDashboardStats() {
       {cardItems?.map((item, i) => (
         <DashboardHomeCard
           key={i}
-          title={item.title}
+          type={item.type}
           quantity={item.quantity}
           icon={item.icon}
           bg={item.bg}
