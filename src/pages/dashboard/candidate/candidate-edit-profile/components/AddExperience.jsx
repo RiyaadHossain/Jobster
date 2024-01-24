@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import FormInput from "@/components/form/FormInput";
 import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import FormTableRow from "./FormTableRow";
 import { useFieldState } from "@/hooks/useFieldState";
 
-export default function AddExperience({ setExperience }) {
+export default function AddExperience() {
   const { control } = useFormContext();
 
   const positionRef = useRef(null);
@@ -17,10 +17,6 @@ export default function AddExperience({ setExperience }) {
     name: "workExperience",
     control,
   });
-
-  useEffect(() => {
-    setExperience(fields);
-  }, [fields, setExperience]);
 
   const refs = [positionRef, companyRef, timePeriodRef, desciptionRef];
   const { appendData, customError, onChange, isFormOpen, openForm, closeForm } =

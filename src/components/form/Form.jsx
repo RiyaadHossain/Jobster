@@ -18,7 +18,7 @@ export default function Form({
 
   const onSubmit = (data) => {
     submitHandler(data);
-    reset();
+    // reset();
     // When clicking on submit button default values are not being removed
   };
 

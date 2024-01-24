@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import {  useRef } from "react";
 import FormInput from "@/components/form/FormInput";
 import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import EducationRow from "./FormTableRow";
+import FormTableRow from "./FormTableRow";
 import { useFieldState } from "@/hooks/useFieldState";
 import { ENUM_EDU_EXP } from "../../../../../enums/candidate";
 
@@ -19,19 +19,15 @@ export default function AddEducation({ setEducation }) {
     control,
   });
 
-  useEffect(() => {
-    setEducation(fields);
-  }, [fields, setEducation]);
-
   const refs = [courseNameRef, institutionRef, timePeriodRef, desciptionRef];
   const { appendData, customError, onChange, openForm, closeForm, isFormOpen } =
-    useFieldState(refs, append, setEducation);
+    useFieldState(refs, append);
 
   return (
     <div className="mt-2">
       {fields.length ? (
         <div className="mb-5">
-          <EducationRow
+          <FormTableRow
             fields={fields}
             remove={remove}
             type={ENUM_EDU_EXP.EDU}

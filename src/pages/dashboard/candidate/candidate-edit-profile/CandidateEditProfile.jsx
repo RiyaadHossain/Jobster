@@ -21,14 +21,11 @@ import { useMeQuery } from "../../../../redux/api/user";
 
 export default function CandidateEditProfile() {
   const [skills, setSkills] = useState([]);
-  const [education, setEducation] = useState([]);
-  const [experience, setExperience] = useState([]);
 
   const { data, isLoading: meLoading } = useMeQuery();
   const [editProfile, { isLoading }] = useEditProfileMutation();
 
   const onSubmit = catchAsync(async (data) => {
-
     console.log(data);
     const res = await editProfile(data).unwrap();
     toast.success(res?.message);
@@ -138,12 +135,12 @@ export default function CandidateEditProfile() {
 
           <div className="mt-12">
             <h2 className="heading_2">Work Experience</h2>
-            <AddExperience setExperience={setExperience} />
+            <AddExperience />
           </div>
 
           <div className="mt-12">
             <h2 className="heading_2">Education & Training</h2>
-            <AddEducation setEducation={setEducation} />
+            <AddEducation />
           </div>
 
           <div className="mt-12">
