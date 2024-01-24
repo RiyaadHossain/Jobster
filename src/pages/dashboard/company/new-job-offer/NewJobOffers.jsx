@@ -19,16 +19,21 @@ import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
 import toast from "react-hot-toast";
 import AddSkill from "./components/AddSkill";
 import { useNavigate } from "react-router-dom";
+import { selectTab } from "../../../../redux/slices/sidebarItemSlice";
+import { ENUM_SIDEBAR_ITEM } from "../../../../enums/sidebarItems";
+import { useDispatch } from "react-redux";
 
 export default function NewJobOffers() {
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [createJob, { isLoading }] = usePostJobMutation();
 
   const onSubmit = catchAsync(async (data) => {
     const res = await createJob(data).unwrap();
     toast.success(res?.message);
 
-    navigate('/dashboard/company/manage-jobs')
+    navigate("/dashboard/company/manage-jobs");
+    dispatch(selectTab(ENUM_SIDEBAR_ITEM.COMP_MANAGE_JOBS));
   });
 
   return (

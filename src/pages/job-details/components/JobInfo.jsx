@@ -8,10 +8,21 @@ import { getUserInfo } from "../../../services/auth.services";
 import { ENUM_USER_ROLE } from "../../../enums/userRole";
 import { Link } from "react-router-dom";
 import { userFormatText } from "../../../utils/userFormatText";
+import { ENUM_JOB_STATUS } from "../../../enums/jobOffer";
 
 export default function JobInfo({ jobInfo }) {
   const { role } = getUserInfo();
   const candidateRole = role === ENUM_USER_ROLE.candidate;
+
+  const JobStatusBadge = (
+    <span
+      className={`bg-${
+        jobInfo?.status === ENUM_JOB_STATUS.CLOSED ? "red" : "green"
+      }-700 px-2 py-[1px] rounded-full text-xs text-white font-normal`}
+    >
+      {userFormatText(jobInfo?.status)}
+    </span>
+  );
 
   return (
     <>
@@ -28,9 +39,10 @@ export default function JobInfo({ jobInfo }) {
                 {jobInfo?.company?.name}
               </Link>
               in{" "}
-              <span className="text-primary font-light">
+              <span className="text-primary font-light mr-3">
                 {userFormatText(jobInfo?.location) || "Location"}
               </span>
+              {JobStatusBadge}
             </h5>
           </div>
 

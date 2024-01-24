@@ -3,17 +3,18 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import JobsterTable from "@/components/dashboard/JobsterTable";
 import { FaEye, FaGlobeAsia } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { IoTrashOutline } from "react-icons/io5";
 import { RiEdit2Fill } from "react-icons/ri";
 import DashboardBadge from "@/components/dashboard/DashboardBadge";
 import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useMyJobsQuery } from "../../../../redux/api/company";
 import { formatDate } from "../../../../utils/formatDate";
 import { userFormatText } from "../../../../utils/userFormatText";
-import { useDeleteJobMutation } from "../../../../redux/api/jobApi";
+import { useUpdateJobMutation } from "../../../../redux/api/jobApi";
 import { catchAsync } from "../../../../helpers/catchAsync";
 import toast from "react-hot-toast";
 import { useDeboune } from "../../../../hooks/useDebounce";
+import { MdBlock } from "react-icons/md";
+import { ENUM_JOB_STATUS } from "../../../../enums/jobOffer";
 
 export default function ManageJobs() {
   const columns = [
@@ -33,15 +34,16 @@ export default function ManageJobs() {
   if (debounceTerm) query["searchTerm"] = debounceTerm;
 
   const { data } = useMyJobsQuery({ ...query });
-  const [deleteJob] = useDeleteJobMutation();
+  const [updateJob] = useUpdateJobMutation();
 
   const dashboardJobsData = data?.data;
 
-  const onDeleteJob = catchAsync(async (id) => {
-    const res = await deleteJob(id).unwrap();
-    toast.success(res?.message);
+  const onCloseJob = catchAsync(async (id) => {
+    const data = { status: ENUM_JOB_STATUS.CLOSED };
+    await updateJob({ id, data });
+    toast.success("Job Offer closed successfully");
   });
-
+  console.log(dashboardJobsData);
   const dataSource = dashboardJobsData?.map((data, i) => (
     <tr
       key={i}
@@ -83,10 +85,10 @@ export default function ManageJobs() {
             <FaEye />
           </Link>
           <button
-            onClick={() => onDeleteJob(data?.job?._id)}
+            onClick={() => onCloseJob(data?.job?._id)}
             className="btn_icon"
           >
-            <IoTrashOutline />
+            <MdBlock />
           </button>
         </div>
       </td>

@@ -6,6 +6,7 @@ import SidebarFilter from "./components/SidebarFilter";
 import { useGetAllJobsQuery } from "../../redux/api/jobApi";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { ENUM_MODULE } from "../../enums/module";
 
 const JobListing = () => {
   const { search } = useLocation();
@@ -52,7 +53,7 @@ const JobListing = () => {
           <div>
             <SidebarSearch
               onhandleSubmit={onSearchSubmit}
-              moduleName="Job"
+              moduleName={ENUM_MODULE.JOB}
               bg="bg-primaryLight"
             />
             <SidebarFilter
@@ -68,7 +69,7 @@ const JobListing = () => {
         cards={jobsData?.map((job, i) => (
           <JobCard key={i} jobInfo={job} />
         ))}
-        moduleName="Job"
+        moduleName={ENUM_MODULE.JOB}
         total={totalJobs}
         page={page}
         setPage={setPage}

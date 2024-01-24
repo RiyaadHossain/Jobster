@@ -9,8 +9,12 @@ import {
   useMarkAsReadAllMutation,
 } from "../../redux/api/notification";
 import { timeAgoCreated } from "../../utils/timeAgoCreated";
+import { selectTab } from "../../redux/slices/sidebarItemSlice";
+import { ENUM_SIDEBAR_ITEM } from "../../enums/sidebarItems";
+import { useDispatch } from "react-redux";
 
 export default function NotificationToltip() {
+  const dispatch = useDispatch();
   const notificationRef = useRef(null);
   const { openTooltip, toggleTooltip } = useTooltip(notificationRef);
 
@@ -27,6 +31,11 @@ export default function NotificationToltip() {
     refetch();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const onClickReadAll = () => {
+    toggleTooltip()
+    dispatch(selectTab(ENUM_SIDEBAR_ITEM.NOTIFICATIONS));
+  }
 
   return (
     <div className="relative" ref={notificationRef}>
@@ -53,7 +62,7 @@ export default function NotificationToltip() {
           <div className="w-full h-[1px] bg-grayColor"></div>
 
           <Link
-            onClick={toggleTooltip}
+            onClick={onClickReadAll}
             to={`/dashboard/notifications`}
             className="text-primary font-semibold inline-block px-5 py-3 hover:text-opacity-70"
           >

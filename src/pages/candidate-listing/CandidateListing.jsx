@@ -4,6 +4,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import CandidateCard from "./components/CandidateCard";
 import { useGetAllCandidatesQuery } from "../../redux/api/candidate";
 import { useState } from "react";
+import { ENUM_MODULE } from "../../enums/module";
 
 export default function CandidateListing() {
   const [name, setName] = useState("");
@@ -41,7 +42,7 @@ export default function CandidateListing() {
           <div>
             <SidebarSearch
               onhandleSubmit={onSearchSubmit}
-              moduleName="Candidate"
+              moduleName={ENUM_MODULE.CANDIDATE}
               bg="bg-secondaryLight"
             />
           </div>
@@ -49,7 +50,7 @@ export default function CandidateListing() {
         cards={candidatesData?.map((candidate, i) => (
           <CandidateCard candidateInfo={candidate} key={i} />
         ))}
-        moduleName="Candidate"
+        moduleName={ENUM_MODULE.CANDIDATE}
         total={totalCandidates}
       />
     </div>

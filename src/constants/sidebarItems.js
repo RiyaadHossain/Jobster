@@ -3,6 +3,7 @@ import { RiEdit2Fill } from "react-icons/ri";
 import { FaRegHeart } from "react-icons/fa";
 import { IoIosLock, IoMdMail, IoMdNotifications } from "react-icons/io";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { ENUM_SIDEBAR_ITEM } from "../enums/sidebarItems";
 
 export const candidateSidebardItems = [
   {
@@ -12,7 +13,7 @@ export const candidateSidebardItems = [
         <span>Dashboard</span>
       </div>
     ),
-    link: "/dashboard",
+    link: ENUM_SIDEBAR_ITEM.DASHBOARD,
   },
   {
     display: (
@@ -21,7 +22,7 @@ export const candidateSidebardItems = [
         <span>Edit Profile</span>
       </div>
     ),
-    link: "candidate/edit-profile",
+    link: ENUM_SIDEBAR_ITEM.CAND_EDIT_PROFILE,
   },
   {
     display: (
@@ -30,7 +31,7 @@ export const candidateSidebardItems = [
         <span>Applications</span>
       </div>
     ),
-    link: "candidate/applications",
+    link: ENUM_SIDEBAR_ITEM.CAND_APPLICATION,
   },
   {
     display: (
@@ -39,7 +40,7 @@ export const candidateSidebardItems = [
         <span>Favourite Jobs</span>
       </div>
     ),
-    link: "candidate/favourite-jobs",
+    link: ENUM_SIDEBAR_ITEM.CAND_FAVOURITE_JOBS,
   },
   {
     display: (
@@ -48,7 +49,7 @@ export const candidateSidebardItems = [
         <span>Change Password</span>
       </div>
     ),
-    link: "change-password",
+    link: ENUM_SIDEBAR_ITEM.CHANGE_PASSWORD,
   },
 ];
 
@@ -60,7 +61,7 @@ export const companySidebardItems = [
         <span>Dashboard</span>
       </div>
     ),
-    link: "/dashboard",
+    link: ENUM_SIDEBAR_ITEM.DASHBOARD,
   },
   {
     display: (
@@ -69,7 +70,7 @@ export const companySidebardItems = [
         <span>Edit Profile</span>
       </div>
     ),
-    link: "company/edit-profile",
+    link: ENUM_SIDEBAR_ITEM.COMP_EDIT_PROFILE,
   },
   {
     display: (
@@ -78,7 +79,7 @@ export const companySidebardItems = [
         <span>New Job Offers</span>
       </div>
     ),
-    link: "company/new-job-offers",
+    link: ENUM_SIDEBAR_ITEM.COMP_NEW_JOB_OFFER,
   },
   {
     display: (
@@ -87,7 +88,7 @@ export const companySidebardItems = [
         <span>Manage Jobs</span>
       </div>
     ),
-    link: "company/manage-jobs",
+    link: ENUM_SIDEBAR_ITEM.COMP_MANAGE_JOBS,
   },
   {
     display: (
@@ -96,7 +97,7 @@ export const companySidebardItems = [
         <span>Candidates</span>
       </div>
     ),
-    link: "company/candidates",
+    link: ENUM_SIDEBAR_ITEM.COMP_CANDIDATES,
   },
   {
     display: (
@@ -105,7 +106,7 @@ export const companySidebardItems = [
         <span>Change Password</span>
       </div>
     ),
-    link: "change-password",
+    link: ENUM_SIDEBAR_ITEM.CHANGE_PASSWORD,
   },
 ];
 
@@ -117,7 +118,7 @@ export const dashboardSidebardItemInsights = [
         <span>Inbox</span>
       </div>
     ),
-    link: "/dashboard/inbox",
+    link: ENUM_SIDEBAR_ITEM.INBOX,
   },
   {
     display: (
@@ -126,6 +127,6 @@ export const dashboardSidebardItemInsights = [
         <span>Notification</span>
       </div>
     ),
-    link: "/dashboard/notifications",
+    link: ENUM_SIDEBAR_ITEM.NOTIFICATIONS,
   },
 ];

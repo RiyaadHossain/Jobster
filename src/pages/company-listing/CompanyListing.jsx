@@ -4,6 +4,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import CompanyCard from "./components/CompanyCard";
 import { useGetAllCompaniesQuery } from "../../redux/api/company";
 import { useState } from "react";
+import { ENUM_MODULE } from "../../enums/module";
 
 export default function CompanyListing() {
   const [name, setName] = useState("");
@@ -40,7 +41,7 @@ export default function CompanyListing() {
           <div>
             <SidebarSearch
               onhandleSubmit={onSearchSubmit}
-              moduleName="Company"
+              moduleName={ENUM_MODULE.COMPANY}
               bg="bg-secondaryLight"
             />
           </div>
@@ -48,7 +49,7 @@ export default function CompanyListing() {
         cards={companiesData?.map((company, i) => (
           <CompanyCard key={i} company={company} />
         ))}
-        moduleName="Company"
+        moduleName={ENUM_MODULE.COMPANY}
         total={totalCompanies}
       />
     </div>

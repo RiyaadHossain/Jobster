@@ -2,10 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { industries, location } from "../../../constants/jobInfo";
 import { useLocation } from "react-router-dom";
+import { ENUM_MODULE } from "../../../enums/module";
 
 export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
   const { register, handleSubmit } = useForm();
-  const inputName = moduleName === "Job" ? "title" : "name";
+  const inputName = moduleName === ENUM_MODULE.JOB ? "title" : "name";
 
   const { search } = useLocation();
   const searchIndustry = search.split("=")[1];
@@ -21,7 +22,9 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
           className="w-full border-0 text-base"
           type="text"
           placeholder={`${
-            moduleName === "Job" ? `${moduleName} Title` : `${moduleName} Name`
+            moduleName === ENUM_MODULE.JOB
+              ? `${moduleName} Title`
+              : `${moduleName} Name`
           } or Keyword`}
           {...register(inputName)}
         />

@@ -9,8 +9,12 @@ import NameLogo from "@/components/ui/NameLogo";
 import { removeUserInfo } from "../../services/auth.services";
 import { useRefetchMe } from "../../hooks/useRefetchMe";
 import toast from "react-hot-toast";
+import { selectTab } from "../../redux/slices/sidebarItemSlice";
+import { useDispatch } from "react-redux";
+import { ENUM_SIDEBAR_ITEM } from "../../enums/sidebarItems";
 
 export default function ProfileMenu() {
+  const dispatch = useDispatch();
   const refetch = useRefetchMe();
   const navigate = useNavigate();
   const profileMenuRef = useRef(null);
@@ -28,6 +32,20 @@ export default function ProfileMenu() {
     refetch();
     navigate("/");
     toast.success("Sign Out successfully", { id: "signout" });
+  };
+
+  const onClickEditProfile = () => {
+    toggleTooltip();
+    const route =
+      role === ENUM_USER_ROLE.company
+        ? ENUM_SIDEBAR_ITEM.COMP_EDIT_PROFILE
+        : ENUM_SIDEBAR_ITEM.CAND_EDIT_PROFILE;
+    dispatch(selectTab(route));
+  };
+
+  const onClickDashboard = () => {
+    toggleTooltip();
+    dispatch(selectTab(ENUM_SIDEBAR_ITEM.DASHBOARD));
   };
 
   return (
@@ -50,13 +68,13 @@ export default function ProfileMenu() {
         <div className="absolute p-4 bg-slate-50 rounded-xl -right-1 border top-[50px] shadow-md w-52">
           <ul className="flex flex-col gap-5">
             <li
-              onClick={toggleTooltip}
+              onClick={onClickEditProfile}
               className="hover:text-primary hover:tracking-wider transition-all cursor-pointer"
             >
               <Link to={`/dashboard/${role}/edit-profile`}>Edit Profile</Link>
             </li>
             <li
-              onClick={toggleTooltip}
+              onClick={onClickDashboard}
               className="hover:text-primary hover:tracking-wider transition-all cursor-pointer"
             >
               <Link to={`/dashboard`}>Dashboard</Link>

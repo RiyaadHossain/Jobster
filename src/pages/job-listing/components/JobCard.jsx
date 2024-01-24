@@ -3,29 +3,34 @@ import { Link } from "react-router-dom";
 import { AiOutlineLineChart } from "react-icons/ai";
 import { formatDate } from "@/utils/formatDate";
 import { userFormatText } from "../../../utils/userFormatText";
+import NameLogo from "../../../components/ui/NameLogo";
+import { ENUM_JOB_STATUS } from "../../../enums/jobOffer";
 
 export default function JobCard({ company, jobInfo }) {
   const companyName = jobInfo?.company?.name || company?.name;
   const companyLogo = jobInfo?.company?.logo || company?.logo;
   const companyId = jobInfo?.company?._id || company?._id;
 
-  const NameLogo = (
-    <div
-      className={`w-20 h-20 rounded-2xl border border-primaryLight flex_cen bg-primary font-bold text-white text-4xl`}
-    >
-      {companyName?.substr(0, 1)?.toUpperCase()}
-    </div>
-  );
-
   return (
     <div className="border hover:shadow-lg transition-all rounded-[30px] p-8 text-black h-fit">
-      <div className="flex items-center gap-2 group transition-all">
-        <div className="bg-primary/20 group-hover:bg-primary transition-all p-[3px] rounded-md">
-          <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
+      <div className="flex justify-between">
+        <div className="flex items-center gap-2 group transition-all">
+          <div className="bg-primary/20 group-hover:bg-primary transition-all p-[3px] rounded-md">
+            <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
+          </div>
+          <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
+            {userFormatText(jobInfo?.industry)}
+          </span>
         </div>
-        <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
-          {userFormatText(jobInfo?.industry)}
-        </span>
+        <div>
+          <span
+            className={`bg-${
+              jobInfo?.status === ENUM_JOB_STATUS.PUBLISHED ? "green" : "red"
+            }-700 px-2 rounded-full text-xs text-white`}
+          >
+            {userFormatText(jobInfo?.status)}
+          </span>
+        </div>
       </div>
 
       <p className="text-[20px] font-semibold leading-7 mt-8 mb-2 hover:text-primary transition-colors">
@@ -61,7 +66,7 @@ export default function JobCard({ company, jobInfo }) {
               alt=""
             />
           ) : (
-            NameLogo
+            <NameLogo name={companyName} width={20} rounded="2xl" text="4xl" />
           )}
         </Link>
       </div>
