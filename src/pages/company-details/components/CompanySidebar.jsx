@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SocialIcons from "@/components/ui/SocialIcons";
 import DetailsPageSidebar from "@/components/other/details-page-sidebar/DetailsPageSidebar";
-import { userFormatText } from "../../../utils/userFormatText";
+import { userFormatText } from "@/utils/userFormatText";
 
 export default function CompanySidebar({ companyInfo }) {
   const [showNum, setShowNum] = useState(false);

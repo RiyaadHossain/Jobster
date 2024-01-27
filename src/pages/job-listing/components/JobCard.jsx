@@ -1,10 +1,10 @@
 import { BiGlobe } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { formatDate } from "@/utils/formatDate";
-import { userFormatText } from "../../../utils/userFormatText";
-import NameLogo from "../../../components/ui/NameLogo";
-import { ENUM_JOB_STATUS } from "../../../enums/jobOffer";
-import GetCategoryIcon from "../../../helpers/GetIndustryIcon";
+import { userFormatText } from "@/utils/userFormatText";
+import NameLogo from "@/components/ui/NameLogo";
+import { ENUM_JOB_STATUS } from "@/enums/jobOffer";
+import GetCategoryIcon from "@/helpers/GetIndustryIcon";
 
 export default function JobCard({ company, jobInfo }) {
   const companyName = jobInfo?.company?.name || company?.name;

@@ -1,6 +1,6 @@
 import DotBadge from "@/components/ui/DotBadge";
-import { useGetTypeSpecifiJobsQuery } from "../../../redux/api/jobApi";
-import { userFormatText } from "../../../utils/userFormatText";
+import { useGetTypeSpecifiJobsQuery } from "@/redux/api/jobApi";
+import { userFormatText } from "@/utils/userFormatText";
 import { onSetFilterValue } from "../utils/onSetFilterValue";
 
 export default function SidebarFilter({ props }) {

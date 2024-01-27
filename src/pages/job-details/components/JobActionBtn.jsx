@@ -1,12 +1,9 @@
 import toast from "react-hot-toast";
 import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
 import ButtonPrimary from "@/components/ui/ButtonPrimary";
-import { useApplyMutation } from "../../../redux/api/application";
-import { catchAsync } from "../../../helpers/catchAsync";
-import {
-  useAddMutation,
-  useAlreadyAddedQuery,
-} from "../../../redux/api/whishlist";
+import { useApplyMutation } from "@/redux/api/application";
+import { catchAsync } from "@/helpers/catchAsync";
+import { useAddMutation, useAlreadyAddedQuery } from "@/redux/api/whishlist";
 
 export default function JobActionBtn({ jobId }) {
   const [apply] = useApplyMutation();

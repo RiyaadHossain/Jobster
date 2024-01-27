@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DetailsPageSidebar from "@/components/other/details-page-sidebar/DetailsPageSidebar";
-import { userFormatText } from "../../../utils/userFormatText";
+import { userFormatText } from "@/utils/userFormatText";
 
 export default function CandidateSidebar({ candidateInfo }) {
   const [showNum, setShowNum] = useState(false);

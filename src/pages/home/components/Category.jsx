@@ -1,7 +1,7 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 import CategoryCard from "@/components/other/category-card/CategoryCard";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
-import { useJobOpeningsQuery } from "../../../redux/api/industryApi";
+import { useJobOpeningsQuery } from "@/redux/api/industryApi";
 
 export default function Category() {
   const { data } = useJobOpeningsQuery();

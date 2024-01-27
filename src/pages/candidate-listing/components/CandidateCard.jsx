@@ -1,7 +1,7 @@
 import { FaGlobeAmericas } from "react-icons/fa";
 import LinkWithArrow from "@/components/ui/LinkWithArrow";
-import NameLogo from "../../../components/ui/NameLogo";
-import { userFormatText } from "../../../utils/userFormatText";
+import NameLogo from "@/components/ui/NameLogo";
+import { userFormatText } from "@/utils/userFormatText";
 
 export default function CandidateCard({ candidateInfo }) {
   return (

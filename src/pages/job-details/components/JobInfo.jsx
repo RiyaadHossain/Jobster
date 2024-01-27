@@ -1,13 +1,13 @@
 import PreviousBtn from "@/components/ui/PreviousBtn";
 
-import { formatDate } from "../../../utils/formatDate";
+import { formatDate } from "@/utils/formatDate";
 import JobActionBtn from "./JobActionBtn";
-import { getUserInfo } from "../../../services/auth.services";
-import { ENUM_USER_ROLE } from "../../../enums/userRole";
+import { getUserInfo } from "@/services/auth.services";
+import { ENUM_USER_ROLE } from "@/enums/userRole";
 import { Link } from "react-router-dom";
-import { userFormatText } from "../../../utils/userFormatText";
-import { ENUM_JOB_STATUS } from "../../../enums/jobOffer";
-import GetIndustryIcon from "../../../helpers/GetIndustryIcon";
+import { userFormatText } from "@/utils/userFormatText";
+import { ENUM_JOB_STATUS } from "@/enums/jobOffer";
+import GetIndustryIcon from "@/helpers/GetIndustryIcon";
 
 export default function JobInfo({ jobInfo }) {
   const { role } = getUserInfo();

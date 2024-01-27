@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { userFormatText } from "../../../utils/userFormatText";
-import GetIndustryIcon from "../../../helpers/GetIndustryIcon";
+import { userFormatText } from "@/utils/userFormatText";
+import GetIndustryIcon from "@/helpers/GetIndustryIcon";
 
 export default function CategoryCard({ category }) {
   const icon = <GetIndustryIcon type={category?.industry} />;

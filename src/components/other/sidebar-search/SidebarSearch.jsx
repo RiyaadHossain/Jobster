@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { industries, location } from "../../../constants/jobInfo";
+import { industries, location } from "@/constants/jobInfo";
 import { useLocation } from "react-router-dom";
-import { ENUM_MODULE } from "../../../enums/module";
+import { ENUM_MODULE } from "@/enums/module";
 
 export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
   const { register, handleSubmit } = useForm();

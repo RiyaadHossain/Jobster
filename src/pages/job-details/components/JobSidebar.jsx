@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import SocialIcons from "@/components/ui/SocialIcons";
 import DetailsPageSidebar from "@/components/other/details-page-sidebar/DetailsPageSidebar";
-import { userFormatText } from "../../../utils/userFormatText";
-import NameLogo from "../../../components/ui/NameLogo";
+import { userFormatText } from "@/utils/userFormatText";
+import NameLogo from "@/components/ui/NameLogo";
 
 export default function JobSidebar({ jobInfo }) {
   return (

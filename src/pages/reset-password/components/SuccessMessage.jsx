@@ -1,11 +1,11 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import ButtonPrimary from "../../../components/ui/ButtonPrimary";
+import ButtonPrimary from "@/components/ui/ButtonPrimary";
 import { useNavigate } from "react-router-dom";
 
 export default function SuccessMessage() {
-    const navigate = useNavigate();
-    
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col justify-center items-center gap-5">
       <FaCheckCircle

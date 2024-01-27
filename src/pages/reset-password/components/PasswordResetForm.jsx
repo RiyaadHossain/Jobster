@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Form from "../../../components/form/Form";
-import FormInput from "../../../components/form/FormInput";
+import Form from "@/components/form/Form";
+import FormInput from "@/components/form/FormInput";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { resetPasswordSchema } from "../../../schema/resetPassword";
-import { catchAsync } from "../../../helpers/catchAsync";
+import { resetPasswordSchema } from "@/schema/resetPassword";
+import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
-import { useResetPasswordMutation } from "../../../redux/api/auth";
-import ButtonPrimary from "../../../components/ui/ButtonPrimary";
+import { useResetPasswordMutation } from "@/redux/api/auth";
+import ButtonPrimary from "@/components/ui/ButtonPrimary";
 
 export default function PasswordResetForm({ token, setPasswordReset }) {
   const [newPasswordValue, setNewPasswordValue] = useState("");
