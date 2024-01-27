@@ -7,7 +7,7 @@ import "./styles/typography.style.css";
 
 function App() {
   return (
-    <div className="">
+    <div >
       <Toaster />
       <RouterProvider router={routes} />
     </div>

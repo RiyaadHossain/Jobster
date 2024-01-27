@@ -86,7 +86,7 @@ export default function Applications() {
       </td>
       <td>
         <div className="flex gap-2">
-          <Link to={`/jobs/${application?._id}`} className="btn_icon">
+          <Link to={`/jobs/${application?.job?._id}`} className="btn_icon">
             <FaEye />
           </Link>
           <button

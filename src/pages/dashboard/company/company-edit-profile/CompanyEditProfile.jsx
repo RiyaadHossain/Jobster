@@ -61,7 +61,7 @@ export default function CompanyEditProfile() {
                   name="phoneNumber"
                   label="Phone"
                   placeholder="(+880) 1703790978"
-                  type="number"
+                  type="text"
                   mandatory={true}
                   divClass=" w-1/2 flex-grow"
                 />

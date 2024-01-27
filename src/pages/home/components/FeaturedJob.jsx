@@ -6,7 +6,6 @@ import { useGetAllJobsQuery } from "../../../redux/api/jobApi";
 
 export default function FeaturedJob() {
   const { data } = useGetAllJobsQuery();
-  console.log(data?.data);
   const jobsData = data?.data?.data;
 
   return (

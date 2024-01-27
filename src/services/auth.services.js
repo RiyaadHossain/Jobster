@@ -7,14 +7,11 @@ import {
 import { authToken } from "@/constants/localStorage";
 import axiosInstance from "../config/axios/axiosInstance";
 import { baseUrl } from "@/config/envConfig";
-import { refreshTokenKey } from "@/constants/cookie";
-import { getFromCookie, removeFromCookie, setToCookie } from "@/utils/cookie";
 
-export const storeUserInfo = (accessToken, refreshToken) => {
-  if (!refreshToken || !accessToken) return "";
+export const storeUserInfo = (accessToken) => {
+  if (!accessToken) return "";
 
   setToLocalStorage(authToken, accessToken);
-  setRefreshToken(refreshToken);
 };
 
 export const getUserInfo = () => {
@@ -25,7 +22,6 @@ export const getUserInfo = () => {
 };
 
 export const removeUserInfo = () => {
-  removeRefreshToken(refreshTokenKey);
   return removeFromLocalStorage(authToken);
 };
 
@@ -42,16 +38,4 @@ export const getNewAccessToken = async () => {
     withCredentials: true,
     sent: true,
   });
-};
-
-export const setRefreshToken = (token) => {
-  setToCookie(refreshTokenKey, token);
-};
-
-export const getRefreshToken = () => {
-  return getFromCookie(refreshTokenKey);
-};
-
-export const removeRefreshToken = () => {
-  removeFromCookie(refreshTokenKey);
 };

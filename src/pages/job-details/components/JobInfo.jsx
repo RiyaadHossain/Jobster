@@ -1,5 +1,3 @@
-import { AiOutlineLineChart } from "react-icons/ai";
-
 import PreviousBtn from "@/components/ui/PreviousBtn";
 
 import { formatDate } from "../../../utils/formatDate";
@@ -9,6 +7,7 @@ import { ENUM_USER_ROLE } from "../../../enums/userRole";
 import { Link } from "react-router-dom";
 import { userFormatText } from "../../../utils/userFormatText";
 import { ENUM_JOB_STATUS } from "../../../enums/jobOffer";
+import GetIndustryIcon from "../../../helpers/GetIndustryIcon";
 
 export default function JobInfo({ jobInfo }) {
   const { role } = getUserInfo();
@@ -52,7 +51,10 @@ export default function JobInfo({ jobInfo }) {
         <div className="flex justify-between items-center mt-6">
           <div className="flex items-center gap-2 group transition-all">
             <div className="bg-primaryLight group-hover:bg-primary transition-all p-[3px] rounded-md">
-              <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
+              <GetIndustryIcon
+                type={jobInfo?.industry}
+                className="text-[20px] group-hover:text-white transition-all"
+              />
             </div>
             <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
               {userFormatText(jobInfo?.industry)}

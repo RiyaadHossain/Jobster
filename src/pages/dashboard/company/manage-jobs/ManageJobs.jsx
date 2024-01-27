@@ -43,7 +43,7 @@ export default function ManageJobs() {
     await updateJob({ id, data });
     toast.success("Job Offer closed successfully");
   });
-  console.log(dashboardJobsData);
+
   const dataSource = dashboardJobsData?.map((data, i) => (
     <tr
       key={i}

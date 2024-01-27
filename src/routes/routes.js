@@ -30,6 +30,7 @@ import ManageJobs from "@/pages/dashboard/company/manage-jobs/ManageJobs";
 import Candidates from "@/pages/dashboard/company/candidates/Candidates";
 import EditJobOffer from "@/pages/dashboard/company/manage-jobs/edit-job-offer/EditJobOffer";
 import ForgetPassword from "@/pages/reset-password/ResetPassword";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -76,7 +77,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute> 
+    ),
     children: [
       {
         path: "",

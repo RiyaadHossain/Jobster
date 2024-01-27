@@ -8,13 +8,14 @@ import "./style/module.style.css";
 import JobCard from "../../job-listing/components/JobCard";
 
 export default function CompanyInfo({ companyInfo, availableJobs }) {
-  console.log(availableJobs);
+  const firstName = companyInfo?.name?.split(" ")[0];
+
   return (
     <div className="mt-8">
       {/* +++ About +++ */}
       <div>
         <h1 className="text-4xl font-bold leading-10 tracking-tight mb-5">
-          About {companyInfo?.name}
+          About {firstName}
         </h1>
         <p className="text_accent">{companyInfo?.about}</p>
       </div>
@@ -95,7 +96,7 @@ export default function CompanyInfo({ companyInfo, availableJobs }) {
           Available Jobs
         </h2>
         <p className="text-base font-light leading-6 mt-2 opacity-[0.7]">
-          Jobs posted by Artistre Studio
+          Jobs posted by {companyInfo?.name}
         </p>
         <div className="grid grid-cols-12 gap-5 mt-8">
           {availableJobs?.map((job, i) => (

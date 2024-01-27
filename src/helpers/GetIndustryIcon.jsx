@@ -10,8 +10,10 @@ import { FaAddressCard } from "react-icons/fa";
 import { MdCategory } from "react-icons/md";
 import { TbStethoscope } from "react-icons/tb";
 
-export default function GetCategoryIcon({ type, className }) {
-  className = "text-[42px] group-hover:text-white transition-all duration-500";
+export default function GetIndustryIcon({ type, className }) {
+  if (!className)
+    className =
+      "text-[42px] group-hover:text-white transition-all duration-500";
 
   let icon = <MdCategory className={className} />;
 

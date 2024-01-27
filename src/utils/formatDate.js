@@ -14,7 +14,7 @@ export const months = [
 ];
 
 export const formatDate = (date, time) => {
-  if (!date) return "N/A";
+  if (!date) return "Not Added";
 
   date = new Date(date);
   const day = date.getDate();
@@ -28,7 +28,7 @@ export const formatDate = (date, time) => {
     var minutes = date.getMinutes();
     var ampm = hours >= 12 ? "pm" : "am";
     hours = hours % 12;
-    hours = hours ? hours : 12; 
+    hours = hours ? hours : 12;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     var strTime = hours + ":" + minutes + " " + ampm;
     formattedDate += " at " + strTime;

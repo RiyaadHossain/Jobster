@@ -97,7 +97,7 @@ export default function GetRecentNotficationContent({ notification }) {
           your application for
         </span>
         <Link
-          to={`jobs/${notification?.job?._id}`}
+          to={`/jobs/${notification?.job?._id}`}
           className={`ml-1 ${highlighted_text}`}
         >
           {notification?.job?.title}

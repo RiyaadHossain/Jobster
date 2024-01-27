@@ -26,7 +26,6 @@ export default function CandidateEditProfile() {
   const [editProfile, { isLoading }] = useEditProfileMutation();
 
   const onSubmit = catchAsync(async (data) => {
-    console.log(data);
     const res = await editProfile(data).unwrap();
     toast.success(res?.message);
   });
@@ -68,7 +67,7 @@ export default function CandidateEditProfile() {
                   name="phoneNumber"
                   label="Phone Number"
                   placeholder="Your Phone"
-                  type="number"
+                  type="text"
                   mandatory={true}
                   divClass=" w-1/2 flex-grow"
                 />

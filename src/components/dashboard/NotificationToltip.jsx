@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { IoMdNotifications } from "react-icons/io";
 import { Link } from "react-router-dom";
 import GetTooltipNotificaitonContent from "@/helpers/GetTooltipNotificaitonContent";
@@ -26,20 +26,20 @@ export default function NotificationToltip() {
   const notificationsData = data?.data?.notifications;
   const unreadItems = unreadData?.data?.unreadItems;
 
-  useEffect(() => {
+  const onClickReadAll = () => {
+    toggleTooltip();
+    dispatch(selectTab(ENUM_SIDEBAR_ITEM.NOTIFICATIONS));
+  };
+
+  const onClickNotification = () => {
+    toggleTooltip();
     markAsReadAll();
     refetch();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const onClickReadAll = () => {
-    toggleTooltip()
-    dispatch(selectTab(ENUM_SIDEBAR_ITEM.NOTIFICATIONS));
-  }
+  };
 
   return (
     <div className="relative" ref={notificationRef}>
-      <div onClick={toggleTooltip} className="cursor-pointer">
+      <div onClick={onClickNotification} className="cursor-pointer">
         <IoMdNotifications className="text-2xl" />
         {unreadItems > 0 && (
           <div className="absolute -right-[7px] -bottom-[7px] w-[18px] h-[18px] bg-primary text-white text-xs font-semibold rounded-full flex_cen">

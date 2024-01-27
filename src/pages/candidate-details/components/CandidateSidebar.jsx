@@ -19,7 +19,7 @@ export default function CandidateSidebar({ candidateInfo }) {
       <div className="">
         <div className="sidebar_item_title">Location</div>
         <div className="sidebar_content_info">
-          {userFormatText(candidateInfo?.location) || "N/A"}
+          {userFormatText(candidateInfo?.location) || "Not Added"}
         </div>
       </div>
       <div className="">
@@ -35,7 +35,7 @@ export default function CandidateSidebar({ candidateInfo }) {
             )}
           </div>
         ) : (
-          <p className="sidebar_content_info">N/A</p>
+          <p className="sidebar_content_info">Not Added</p>
         )}
       </div>
       <div>

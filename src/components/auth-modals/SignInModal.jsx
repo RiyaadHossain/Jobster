@@ -27,8 +27,7 @@ export default function SignInModal({ openAuthModal, setOpenAuthModal }) {
     onModalClose();
     toast.success(res?.message);
     const accessToken = res?.data?.accessToken;
-    const refreshToken = res?.data?.refreshToken;
-    storeUserInfo(accessToken, refreshToken);
+    storeUserInfo(accessToken);
   });
 
   return (

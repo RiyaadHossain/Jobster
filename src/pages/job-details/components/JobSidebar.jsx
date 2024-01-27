@@ -11,31 +11,31 @@ export default function JobSidebar({ jobInfo }) {
         <div className="">
           <p className="sidebar_item_title">Experience</p>
           <h1 className="sidebar_content_info">
-            {userFormatText(jobInfo?.experience) || "N/A"}
+            {userFormatText(jobInfo?.experience) || "Not Added"}
           </h1>
         </div>
         <div>
           <p className="sidebar_item_title">Work Level</p>
           <h1 className="sidebar_content_info">
-            {userFormatText(jobInfo?.workLevel) || "N/A"}
+            {userFormatText(jobInfo?.workLevel) || "Not Added"}
           </h1>
         </div>
         <div>
           <p className="sidebar_item_title">Employment Type</p>
           <h1 className="sidebar_content_info">
-            {userFormatText(jobInfo?.employmentType) || "N/A"}
+            {userFormatText(jobInfo?.employmentType) || "Not Added"}
           </h1>
         </div>
         <div>
           <p className="sidebar_item_title">Salary Range</p>
           <h1 className="sidebar_content_info">
-            {jobInfo?.salaryRange || "N/A"}
+            {jobInfo?.salaryRange || "Not Added"}
           </h1>
         </div>
         <div>
           <p className="sidebar_item_title">Location</p>
           <h1 className="sidebar_content_info">
-            {userFormatText(jobInfo?.location) || "N/A"}
+            {userFormatText(jobInfo?.location) || "Not Added"}
           </h1>
         </div>
       </DetailsPageSidebar>
@@ -73,13 +73,13 @@ export default function JobSidebar({ jobInfo }) {
         <div>
           <p className="sidebar_item_title">Company Size</p>
           <h1 className="sidebar_content_info">
-            {jobInfo?.company?.companySize || "N/A"}
+            {jobInfo?.company?.companySize || "Not Added"}
           </h1>
         </div>
         <div>
           <p className="sidebar_item_title">Founded</p>
           <h1 className="sidebar_content_info">
-            {jobInfo?.company?.founded || "N/A"}
+            {jobInfo?.company?.founded || "Not Added"}
           </h1>
         </div>
         <div>
@@ -91,13 +91,13 @@ export default function JobSidebar({ jobInfo }) {
         <div>
           <p className="sidebar_item_title">Company Location</p>
           <h1 className="sidebar_content_info">
-            {userFormatText(jobInfo?.company?.location) || "N/A"}
+            {userFormatText(jobInfo?.company?.location) || "Not Added"}
           </h1>
         </div>
         <div>
           <p className="sidebar_item_title">Website</p>
           <a className="font-semibold text-sm text-primary" href="#d">
-            {jobInfo?.company?.website || "N/A"}
+            {jobInfo?.company?.website || "Not Added"}
           </a>
         </div>
 

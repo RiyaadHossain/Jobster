@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import GetCategoryIcon from "@/pages/home/helpers/GetCategoryIcon";
 import { userFormatText } from "../../../utils/userFormatText";
+import GetIndustryIcon from "../../../helpers/GetIndustryIcon";
 
 export default function CategoryCard({ category }) {
-  const icon = <GetCategoryIcon type={category?.industry} />;
+  const icon = <GetIndustryIcon type={category?.industry} />;
 
   return (
     <Link

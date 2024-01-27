@@ -3,13 +3,13 @@ import CandidateInfo from "./components/CandidateInfo";
 import CandidateSidebar from "./components/CandidateSidebar";
 import { useParams } from "react-router-dom";
 import { useGetCandidateQuery } from "../../redux/api/candidate";
+import { ENUM_MODULE } from "../../enums/module";
 
 export default function CandidateDetails() {
   const { id } = useParams();
 
   const { data } = useGetCandidateQuery(id);
   const candidateInfo = data?.data;
-  console.log(candidateInfo);
 
   return (
     <div className="my-20 max_container">
@@ -23,6 +23,7 @@ export default function CandidateDetails() {
             banner={candidateInfo?.banner}
             brandImg={candidateInfo?.avatar}
             subtitle={candidateInfo?.title}
+            module={ENUM_MODULE.CANDIDATE}
           />
 
           {/* +++ Candidate Info +++ */}

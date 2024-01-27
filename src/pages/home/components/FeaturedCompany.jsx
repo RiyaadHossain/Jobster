@@ -6,7 +6,7 @@ import { useGetAllCompaniesQuery } from "../../../redux/api/company";
 export default function FeaturedCompany() {
   const { data } = useGetAllCompaniesQuery();
   const companiesData = data?.data;
-  console.log(data?.data);
+
   return (
     <section className="bg-primaryLight">
       <SectionHeader

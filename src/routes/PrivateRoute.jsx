@@ -1,21 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-import Loading from "@/components/loader/Loading";
+import { useMeQuery } from "../redux/api/user";
+import { removeUserInfo } from "../services/auth.services";
 
 const PrivateRoute = ({ children }) => {
   const { pathname } = useLocation();
-  const {
-    user: { email },
-    isLoading,
-  } = useSelector((state) => state.auth);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  const { isError } = useMeQuery();
 
-  if (!isLoading && !email) {
-    return <Navigate to="/login" state={{ path: pathname }} />;
+  if (isError) {
+    removeUserInfo();
+    return <Navigate to="/" state={{ path: pathname }} />;
   }
 
   return children;

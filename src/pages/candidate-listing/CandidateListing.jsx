@@ -19,7 +19,6 @@ export default function CandidateListing() {
   const { data } = useGetAllCandidatesQuery({ ...query });
   const candidatesData = data?.data;
   const totalCandidates = data?.meta?.total;
-  console.log(data);
 
   const onSearchSubmit = (data) => {
     const { name, location, industry } = data;

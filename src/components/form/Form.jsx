@@ -18,8 +18,7 @@ export default function Form({
 
   const onSubmit = (data) => {
     submitHandler(data);
-    // reset();
-    // When clicking on submit button default values are not being removed
+    reset();
   };
 
   useEffect(() => reset(defaultValues), [defaultValues, reset, methods]);

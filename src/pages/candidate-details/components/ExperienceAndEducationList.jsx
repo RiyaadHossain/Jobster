@@ -8,7 +8,7 @@ const ExperienceAndEducationList = ({ title, data, type }) => {
       <h1 className="page_section_header">{title}</h1>
       {data?.length ? (
         data?.map((item, index) => (
-          <div key={index} className="flex gap-3 relative">
+          <div key={index} className="flex relative">
             <div
               className={`exp_disk mt-1 ${
                 index + 1 === data?.length
@@ -26,9 +26,9 @@ const ExperienceAndEducationList = ({ title, data, type }) => {
               <div className="text_graish mb-2">
                 {type === "work" ? item?.company : item?.institution}
               </div>
-              <p className="text_accent">
-                { item?.details}
-              </p>
+              {type === "work" && (
+                <p className="text_accent">{item?.details}</p>
+              )}
             </div>
           </div>
         ))

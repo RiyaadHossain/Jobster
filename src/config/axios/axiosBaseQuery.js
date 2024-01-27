@@ -3,7 +3,7 @@ import axiosInstance from "./axiosInstance";
 export const axiosBaseQuery =
   ({ baseUrl }) =>
   async ({ url, method, params, body, contentType }) => {
-    console.log(body);
+
     try {
       const result = await axiosInstance({
         url: baseUrl + url,
@@ -13,6 +13,7 @@ export const axiosBaseQuery =
         headers: {
           "Content-Type": contentType || "application/json",
         },
+        withCredentials: true,
       });
       return result;
     } catch (err) {

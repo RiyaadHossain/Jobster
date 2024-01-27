@@ -57,12 +57,18 @@ export default function CompanyDashbaord() {
       <div className="grid grid-cols-12 gap-7 mt-12">
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Notifications</h2>
-          <div>
-            {notificationsData?.slice(0, 5)?.map((notification, i) => (
-              <RecentNotificationRow key={i} notification={notification} />
-            ))}
-          </div>
-          <LinkWithArrow display="Read all" link="notifications" />
+          {notificationsData?.length ? (
+            <>
+              <div>
+                {notificationsData?.slice(0, 5)?.map((notification, i) => (
+                  <RecentNotificationRow key={i} notification={notification} />
+                ))}
+              </div>
+              <LinkWithArrow display="Read all" link="notifications" />
+            </>
+          ) : (
+            <p className="opacity-[0.8]">No recent Messages</p>
+          )}
         </div>
         <div className="col-span-6">
           <h2 className="home_section_title">Recent Messages</h2>

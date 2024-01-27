@@ -9,14 +9,15 @@ const {
 } = require("../../utils/localStorage");
 const { authToken } = require("../../constants/localStorage");
 
-
 const axiosInstance = axios.create({});
 axiosInstance.defaults.headers.post["Content-Type"] = "application/json";
 axiosInstance.defaults.headers["Accept"] = "application/json";
+axiosInstance.defaults.headers["Access-Control-Allow-Credentials"] = "true";
 axiosInstance.defaults.timeout = 60000;
-axiosInstance.defaults.headers["Access-Control-Allow-Origin"] = "*";
-axiosInstance.defaults.headers["Access-Control-Allow-Methods"] =
-  "GET,PUT,POST,DELETE,PATCH,OPTIONS";
+
+// axiosInstance.defaults.headers["Access-Control-Allow-Origin"] = "*";
+// axiosInstance.defaults.headers["Access-Control-Allow-Methods"] =
+//   "GET,PUT,POST,DELETE,PATCH,OPTIONS";
 
 // Request Intercepter
 axiosInstance.interceptors.request.use(
@@ -43,6 +44,7 @@ axiosInstance.interceptors.response.use(
       error?.response?.data?.type === "TokenExpired" &&
       !config.sent
     ) {
+      config.sent = true;
       const response = await getNewAccessToken();
       const accessToken = response?.data?.data?.accessToken;
       config.headers["Authorization"] = accessToken;
@@ -50,7 +52,6 @@ axiosInstance.interceptors.response.use(
       return axiosInstance(config);
     }
 
-    console.log(error?.response?.data, config.sent);
     const errType = error?.response?.data?.type;
     if (errType === "TokenExpired" && config.sent) {
       removeUserInfo();

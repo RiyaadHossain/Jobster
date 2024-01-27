@@ -21,7 +21,10 @@ export default function ProfileMenu() {
   const { openTooltip, toggleTooltip } = useTooltip(profileMenuRef);
   const userInfo = getUserInfo();
 
-  const { data } = useMeQuery();
+  const { data, isError } = useMeQuery();
+  if (isError) {
+    removeUserInfo()
+  }
 
   const role = userInfo?.role;
   let profileIcon = data?.data?.avatar;

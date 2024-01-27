@@ -3,10 +3,12 @@ import Badge from "@/components/ui/Badge";
 import ExperienceAndEducationList from "./ExperienceAndEducationList";
 
 export default function CandidateInfo({ candidateInfo }) {
+  const firstName = candidateInfo?.name?.split(" ")[0];
+
   return (
     <>
       <div className="mb-6 lg:mb-12">
-        <h1 className="page_section_header">About {candidateInfo?.name}</h1>
+        <h1 className="page_section_header">About {firstName}</h1>
         <p className="text_accent">{candidateInfo?.about}</p>
       </div>
 

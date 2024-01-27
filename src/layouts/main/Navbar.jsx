@@ -1,5 +1,5 @@
 import "./style/module.style.css";
-import React, { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import Sidebar from "./Sidebar";
 import { navbarItems } from "@/constants/navbarItems";
@@ -12,33 +12,17 @@ import Logo from "@/components/ui/Logo";
 import SignInButton from "./components/SignInButton";
 import ProfileMenu from "../components/ProfileMenu";
 import { isLoggedIn } from "../../services/auth.services";
+import { useScrollDown } from "../../hooks/useScrollDownl";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navbarRef = useRef(null);
   const { pathname } = useLocation();
-
   const [openAuthModal, setOpenAuthModal] = useState(null);
 
-  const userLoggedIn = isLoggedIn();
+  const userLoggedIn = isLoggedIn()
 
-  useEffect(() => {
-    // Show Navbar background when scroll down
-    const handleScroll = () => {
-      if (window.scrollY >= 100) {
-        navbarRef.current.classList.add("nav_white");
-      } else {
-        navbarRef.current.classList.remove("nav_white");
-      }
-    };
-
-    // Listen for scroll down
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      // Remove the event listener on component unmount
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // Handle Scroll Down Event
+  useScrollDown(navbarRef, 100);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -57,7 +41,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
     <nav>
       <div
         ref={navbarRef}
-        className={`h-20 fixed top-0 w-full z-20 `} /* ${!isHomeRoute && "border-b"} */
+        className={`h-20 fixed top-0 w-full z-20 `}
       >
         <ul className="max_container mx-auto justify-between flex gap-3 h-full items-center">
           <li className=" font-bold text-2xl">

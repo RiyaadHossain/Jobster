@@ -1,10 +1,10 @@
 import { BiGlobe } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { AiOutlineLineChart } from "react-icons/ai";
 import { formatDate } from "@/utils/formatDate";
 import { userFormatText } from "../../../utils/userFormatText";
 import NameLogo from "../../../components/ui/NameLogo";
 import { ENUM_JOB_STATUS } from "../../../enums/jobOffer";
+import GetCategoryIcon from "../../../helpers/GetIndustryIcon";
 
 export default function JobCard({ company, jobInfo }) {
   const companyName = jobInfo?.company?.name || company?.name;
@@ -16,7 +16,10 @@ export default function JobCard({ company, jobInfo }) {
       <div className="flex justify-between">
         <div className="flex items-center gap-2 group transition-all">
           <div className="bg-primary/20 group-hover:bg-primary transition-all p-[3px] rounded-md">
-            <AiOutlineLineChart className="text-[20px] group-hover:text-white transition-all" />
+            <GetCategoryIcon
+              type={jobInfo?.industry}
+              className="text-[20px] group-hover:text-white transition-all"
+            />
           </div>
           <span className="text-[16px] font-light leading-[21px] group-hover:text-primary transition-all">
             {userFormatText(jobInfo?.industry)}

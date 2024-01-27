@@ -1,3 +1,4 @@
+import { ENUM_MODULE } from "../../enums/module";
 import { isHttpValid } from "../../utils/isValidUrl";
 
 export default function PageBanner({
@@ -6,17 +7,20 @@ export default function PageBanner({
   rounded,
   title,
   subtitle,
+  module,
   insideIcon = true,
 }) {
+  const isCandidate = module === ENUM_MODULE.CANDIDATE;
+
   const NameLogo = (
     <div
-      className={`w-full h-full rounded-2xl border border-primaryLight flex_cen bg-primary font-bold text-white text-4xl`}
+      className={`w-full h-full ${
+        isCandidate ? "rounded-full" : "rounded-2xl"
+      } border border-primaryLight flex_cen bg-primary font-bold text-white text-4xl`}
     >
       {title?.substr(0, 1)?.toUpperCase()}
     </div>
   );
-
-  console.log({ banner });
 
   return (
     <div className="relative mb-12">
@@ -51,7 +55,11 @@ export default function PageBanner({
       ) : (
         <div className="p-[2px] bg-white absolute left-[6%] bottom-[-16%] w-[120px] h-[120px] rounded-2xl">
           {brandImg ? (
-            <img src={brandImg} alt="" className="rounded-2xl w-full h-full object-cover" />
+            <img
+              src={brandImg}
+              alt=""
+              className="rounded-2xl w-full h-full object-cover"
+            />
           ) : (
             NameLogo
           )}

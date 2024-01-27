@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import resetPassSVG from "../../assets/svgs/undraw_my_password_re_ydq7.svg";
+import resetPassSVG from "../../assets/svgs/forget-pass.svg";
 import Logo from "../../components/ui/Logo";
 import ButtonPrimary from "../../components/ui/ButtonPrimary";
 import PasswordResetForm from "./components/PasswordResetForm";

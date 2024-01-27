@@ -18,7 +18,7 @@ export default function RecentCandidateTable() {
               key={i}
               className="border-b hover:bg-secondaryLight transition-colors [&>*]:p-2"
             >
-              <td className="w-[55%]">
+              <td className="w-[50%]">
                 <div className="flex items-center gap-3">
                   <div>
                     {application?.candidate?.avatar ? (
@@ -44,18 +44,18 @@ export default function RecentCandidateTable() {
                   </div>
                 </div>
               </td>
-              <td className="w-[25%] text-sm font-light leading-5">
+              <td className="w-[15%] text-sm font-light leading-5">
                 <div className="opacity-[0.7] flex items-center gap-1 text-[13px] font-medium leading-5 ">
                   <FaGlobeAsia />{" "}
                   {userFormatText(application?.candidate?.location) || "No Location"}
                 </div>
               </td>
-              <td className="w-[20%]">
+              <td className="w-[35%]">
                 <div className="flex justify-end">
                   <div className="text-sm font-light leading-5 opacity-[0.8] flex items-center gap-2">
                     Applied for
                     <Link
-                      to={`/jobs/${application?.candidate?._id}`}
+                      to={`/jobs/${application?.job?._id}`}
                       className="opacity-100 ml-1 font-medium hover:text-grayColor"
                     >
                       {application?.job?.title}

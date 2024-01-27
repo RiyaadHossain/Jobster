@@ -14,19 +14,19 @@ export default function CompanySidebar({ companyInfo }) {
       <div className="">
         <div className="sidebar_item_title">Industry</div>
         <div className="sidebar_content_info">
-          {userFormatText(companyInfo?.industry) || "N/A"}
+          {userFormatText(companyInfo?.industry) || "Not Added"}
         </div>
       </div>
       <div className="">
         <div className="sidebar_item_title">Company size</div>
         <div className="sidebar_content_info ">
-          {companyInfo?.companySize || "N/A"}
+          {companyInfo?.companySize || "Not Added"}
         </div>
       </div>
       <div className="">
         <div className="sidebar_item_title">Founded in</div>
         <div className="sidebar_content_info ">
-          {companyInfo?.founded || "N/A"}
+          {companyInfo?.founded || "Not Added"}
         </div>
       </div>
       <div className="">
@@ -42,7 +42,7 @@ export default function CompanySidebar({ companyInfo }) {
             )}
           </div>
         ) : (
-          <p className="sidebar_content_info">N/A</p>
+          <p className="sidebar_content_info">Not Added</p>
         )}
       </div>
       <div className="">
@@ -54,7 +54,13 @@ export default function CompanySidebar({ companyInfo }) {
       <div className="">
         <div className="sidebar_item_title">Location</div>
         <div className="sidebar_content_info ">
-          {userFormatText(companyInfo?.location) || "N/A"}
+          {userFormatText(companyInfo?.location) || "Not Added"}
+        </div>
+      </div>
+      <div className="">
+        <div className="sidebar_item_title">Website</div>
+        <div className="sidebar_content_info text-primary">
+          {userFormatText(companyInfo?.website) || "Not Added"}
         </div>
       </div>
 

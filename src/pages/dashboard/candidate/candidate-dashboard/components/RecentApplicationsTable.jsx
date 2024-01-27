@@ -36,7 +36,7 @@ export default function RecentApplicationsTable() {
                 <div>
                   <Link to={`/jobs/${application?._id}`}>
                     <h3 className="text-base font-semibold leading-6 hover:opacity-[0.5] transition-colors">
-                      {application?.title}
+                      {application?.job?.title}
                     </h3>
                   </Link>
                   <Link to={`/companies/${application?.job?.company?._id}`}>

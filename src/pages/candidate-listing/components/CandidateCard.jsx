@@ -23,7 +23,7 @@ export default function CandidateCard({ candidateInfo }) {
             {candidateInfo.name}
           </h3>
           <p className="text-[15px] font-light leading-5">
-            {candidateInfo.title || "N/A"}
+            {candidateInfo.title || "Not Added"}
           </p>
         </div>
         <div className="flex items-center gap-2">
