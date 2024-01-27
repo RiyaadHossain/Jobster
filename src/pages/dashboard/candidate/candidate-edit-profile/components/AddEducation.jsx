@@ -1,10 +1,10 @@
-import {  useRef } from "react";
+import { useRef } from "react";
 import FormInput from "@/components/form/FormInput";
 import FormTextarea from "@/components/form/FormTextarea";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import FormTableRow from "./FormTableRow";
 import { useFieldState } from "@/hooks/useFieldState";
-import { ENUM_EDU_EXP } from "../../../../../enums/candidate";
+import { ENUM_EDU_EXP } from "@/enums/candidate";
 
 export default function AddEducation({ setEducation }) {
   const { control } = useFormContext();

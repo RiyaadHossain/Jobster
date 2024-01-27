@@ -1,2 +1,2 @@
 export const baseUrl =
-  process.env.REACT_APP_DEV_URL || "http://localhost:5001/api/v1";
+  process.env.REACT_APP_DEV_URL || "https://jobster-server.vercel.app/api/v1";

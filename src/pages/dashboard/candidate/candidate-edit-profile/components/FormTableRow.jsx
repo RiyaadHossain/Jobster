@@ -1,6 +1,6 @@
 import React from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import { ENUM_EDU_EXP } from "../../../../../enums/candidate";
+import { ENUM_EDU_EXP } from "@/enums/candidate";
 
 export default function FormTableRow({ fields, remove, type }) {
   const renderFieldData = (field, index) => {
@@ -13,9 +13,7 @@ export default function FormTableRow({ fields, remove, type }) {
         </td>
         <td className="w-[30%]">
           <div className="leading-5 font-light text-sm">
-            {type === ENUM_EDU_EXP.EDU
-              ? field?.institution
-              : field?.company}
+            {type === ENUM_EDU_EXP.EDU ? field?.institution : field?.company}
           </div>
         </td>
         <td className="w-[30%]">

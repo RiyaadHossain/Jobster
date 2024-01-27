@@ -8,14 +8,14 @@ import { useState } from "react";
 import {
   useMyApplicationsQuery,
   useRemoveApplicationMutation,
-} from "../../../../redux/api/application";
-import { formatDate } from "../../../../utils/formatDate";
-import { userFormatText } from "../../../../utils/userFormatText";
-import DashboardBadge from "../../../../components/dashboard/DashboardBadge";
-import { catchAsync } from "../../../../helpers/catchAsync";
+} from "@/redux/api/application";
+import { formatDate } from "@/utils/formatDate";
+import { userFormatText } from "@/utils/userFormatText";
+import DashboardBadge from "@/components/dashboard/DashboardBadge";
+import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
-import { ENUM_APPLICATION_STATUS } from "../../../../enums/applicationStatus";
-import { useDeboune } from "../../../../hooks/useDebounce";
+import { ENUM_APPLICATION_STATUS } from "@/enums/applicationStatus";
+import { useDeboune } from "@/hooks/useDebounce";
 
 export default function Applications() {
   const columns = [

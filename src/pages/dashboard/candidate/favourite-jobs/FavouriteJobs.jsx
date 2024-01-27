@@ -5,15 +5,12 @@ import { Link } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
 import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import {
-  useMyListQuery,
-  useRemoveMutation,
-} from "../../../../redux/api/whishlist";
-import { userFormatText } from "../../../../utils/userFormatText";
-import { formatDate } from "../../../../utils/formatDate";
-import { catchAsync } from "../../../../helpers/catchAsync";
+import { useMyListQuery, useRemoveMutation } from "@/redux/api/whishlist";
+import { userFormatText } from "@/utils/userFormatText";
+import { formatDate } from "@/utils/formatDate";
+import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
-import { useDeboune } from "../../../../hooks/useDebounce";
+import { useDeboune } from "@/hooks/useDebounce";
 
 export default function FavouriteJobs() {
   const columns = [

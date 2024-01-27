@@ -13,11 +13,11 @@ import AddEducation from "./components/AddEducation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { candidateProfileSchema } from "@/schema/candidateProfile";
 import AddResume from "./components/AddResume";
-import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
-import { catchAsync } from "../../../../helpers/catchAsync";
-import { useEditProfileMutation } from "../../../../redux/api/candidate";
+import ButtonPrimary from "@/components/ui/ButtonPrimary";
+import { catchAsync } from "@/helpers/catchAsync";
+import { useEditProfileMutation } from "@/redux/api/candidate";
 import toast from "react-hot-toast";
-import { useMeQuery } from "../../../../redux/api/user";
+import { useMeQuery } from "@/redux/api/user";
 
 export default function CandidateEditProfile() {
   const [skills, setSkills] = useState([]);

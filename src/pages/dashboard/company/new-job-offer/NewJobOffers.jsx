@@ -15,12 +15,12 @@ import AddResponsiblity from "./components/AddResponsiblity";
 import AddRequirement from "./components/AddRequirements";
 import { catchAsync } from "@/helpers/catchAsync";
 import { usePostJobMutation } from "@/redux/api/jobApi";
-import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
+import ButtonPrimary from "@/components/ui/ButtonPrimary";
 import toast from "react-hot-toast";
 import AddSkill from "./components/AddSkill";
 import { useNavigate } from "react-router-dom";
-import { selectTab } from "../../../../redux/slices/sidebarItemSlice";
-import { ENUM_SIDEBAR_ITEM } from "../../../../enums/sidebarItems";
+import { selectTab } from "@/redux/slices/sidebarItemSlice";
+import { ENUM_SIDEBAR_ITEM } from "@/enums/sidebarItems";
 import { useDispatch } from "react-redux";
 
 export default function NewJobOffers() {

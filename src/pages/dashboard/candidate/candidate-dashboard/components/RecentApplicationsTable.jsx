@@ -1,8 +1,8 @@
 import { FaEye, FaGlobeAmericas } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useMyApplicationsQuery } from "../../../../../redux/api/application";
-import { userFormatText } from "../../../../../utils/userFormatText";
-import NameLogo from "../../../../../components/ui/NameLogo";
+import { useMyApplicationsQuery } from "@/redux/api/application";
+import { userFormatText } from "@/utils/userFormatText";
+import NameLogo from "@/components/ui/NameLogo";
 
 export default function RecentApplicationsTable() {
   const { data } = useMyApplicationsQuery();

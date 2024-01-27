@@ -2,13 +2,13 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import JobsterAreaChart from "@/components/dashboard/JobsterAreaChart";
 import RecentCandidateTable from "./components/RecentCandidateTable";
 import LinkWithArrow from "@/components/ui/LinkWithArrow";
-import RecentNotificationRow from "../../../../components/dashboard/RecentNotificationRow";
-import { useGetAllNotificationsQuery } from "../../../../redux/api/notification";
-import GetDashboardStats from "../../../../helpers/GetDashboardStats";
+import RecentNotificationRow from "@/components/dashboard/RecentNotificationRow";
+import { useGetAllNotificationsQuery } from "@/redux/api/notification";
+import GetDashboardStats from "@/helpers/GetDashboardStats";
 import {
   useApplicationStatQuery,
   useProfileViewStatQuery,
-} from "../../../../redux/api/dashboard";
+} from "@/redux/api/dashboard";
 
 export default function CompanyDashbaord() {
   const { data } = useGetAllNotificationsQuery();

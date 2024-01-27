@@ -8,15 +8,15 @@ import { IoMdCheckmark } from "react-icons/io";
 import DashboardBadge from "@/components/dashboard/DashboardBadge";
 import TableSearchBar from "@/components/dashboard/TableSearchBar";
 import { useState } from "react";
-import { useAppliedCandidatesQuery } from "../../../../redux/api/company";
-import { formatDate } from "../../../../utils/formatDate";
-import NameLogo from "../../../../components/ui/NameLogo";
+import { useAppliedCandidatesQuery } from "@/redux/api/company";
+import { formatDate } from "@/utils/formatDate";
+import NameLogo from "@/components/ui/NameLogo";
 import toast from "react-hot-toast";
-import { useUpdateStatusMutation } from "../../../../redux/api/application";
-import { catchAsync } from "../../../../helpers/catchAsync";
-import { ENUM_APPLICATION_STATUS } from "../../../../enums/applicationStatus";
-import { useDeboune } from "../../../../hooks/useDebounce";
-import { userFormatText } from "../../../../utils/userFormatText";
+import { useUpdateStatusMutation } from "@/redux/api/application";
+import { catchAsync } from "@/helpers/catchAsync";
+import { ENUM_APPLICATION_STATUS } from "@/enums/applicationStatus";
+import { useDeboune } from "@/hooks/useDebounce";
+import { userFormatText } from "@/utils/userFormatText";
 
 export default function Candidates() {
   const columns = [
@@ -79,7 +79,8 @@ export default function Candidates() {
             </Link>
             <div className="main_row_subtitle">
               <FaGlobeAsia />{" "}
-              {userFormatText(application?.candidate?.location) || "No Location"}
+              {userFormatText(application?.candidate?.location) ||
+                "No Location"}
             </div>
           </div>
         </div>

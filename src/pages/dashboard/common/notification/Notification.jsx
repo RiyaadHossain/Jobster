@@ -5,7 +5,7 @@ import {
   useGetAllNotificationsQuery,
   useGetUnReadItemsCountQuery,
   useMarkAsReadAllMutation,
-} from "../../../../redux/api/notification";
+} from "@/redux/api/notification";
 import { useEffect } from "react";
 
 export default function Notification() {

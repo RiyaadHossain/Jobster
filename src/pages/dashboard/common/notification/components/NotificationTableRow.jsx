@@ -1,9 +1,9 @@
 import { IoTrashOutline } from "react-icons/io5";
 import GetNotificationContent from "../helpers/GetNotificationContent";
-import { useDeleteNotificaitonMutation } from "../../../../../redux/api/notification";
-import { catchAsync } from "../../../../../helpers/catchAsync";
+import { useDeleteNotificaitonMutation } from "@/redux/api/notification";
+import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
-import { timeAgoCreated } from "../../../../../utils/timeAgoCreated";
+import { timeAgoCreated } from "@/utils/timeAgoCreated";
 
 export default function NotificationTableRow({ notification }) {
   const [deleteNotification] = useDeleteNotificaitonMutation();

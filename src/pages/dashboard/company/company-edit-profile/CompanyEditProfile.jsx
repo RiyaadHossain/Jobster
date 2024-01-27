@@ -8,11 +8,11 @@ import FormCheckbox from "@/components/form/FormCheckbox";
 import Form from "@/components/form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { companyProfileSchema } from "@/schema/companyProfile";
-import { catchAsync } from "../../../../helpers/catchAsync";
-import { useEditCompanyProfileMutation } from "../../../../redux/api/company";
-import { useMeQuery } from "../../../../redux/api/user";
+import { catchAsync } from "@/helpers/catchAsync";
+import { useEditCompanyProfileMutation } from "@/redux/api/company";
+import { useMeQuery } from "@/redux/api/user";
 import toast from "react-hot-toast";
-import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
+import ButtonPrimary from "@/components/ui/ButtonPrimary";
 
 export default function CompanyEditProfile() {
   const { data } = useMeQuery();

@@ -3,12 +3,12 @@ import JobsterAreaChart from "@/components/dashboard/JobsterAreaChart";
 import LinkWithArrow from "@/components/ui/LinkWithArrow";
 import RecentApplicationsTable from "./components/RecentApplicationsTable";
 import GetDashboardStats from "@/helpers/GetDashboardStats";
-import { useGetAllNotificationsQuery } from "../../../../redux/api/notification";
-import RecentNotificationRow from "../../../../components/dashboard/RecentNotificationRow";
+import { useGetAllNotificationsQuery } from "@/redux/api/notification";
+import RecentNotificationRow from "@/components/dashboard/RecentNotificationRow";
 import {
   useApplicationStatQuery,
   useProfileViewStatQuery,
-} from "../../../../redux/api/dashboard";
+} from "@/redux/api/dashboard";
 
 export default function CandidateDashboard() {
   const { data } = useGetAllNotificationsQuery();

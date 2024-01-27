@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import FormInput from "@/components/form/FormInput";
 import Form from "@/components/form/Form";
-import { useChangePasswordMutation } from "../../../../redux/api/auth";
-import { catchAsync } from "../../../../helpers/catchAsync";
+import { useChangePasswordMutation } from "@/redux/api/auth";
+import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
-import ButtonPrimary from "../../../../components/ui/ButtonPrimary";
+import ButtonPrimary from "@/components/ui/ButtonPrimary";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { changePasswordSchema } from "../../../../schema/changePassword";
+import { changePasswordSchema } from "@/schema/changePassword";
 
 export default function ChangePassword() {
   const [newPassword, setNewPassword] = useState("");
