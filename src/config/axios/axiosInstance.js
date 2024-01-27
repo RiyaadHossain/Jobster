@@ -1,13 +1,10 @@
 import axios from "axios";
-import {
-  getNewAccessToken,
-  removeUserInfo,
-} from "../../services/auth.services";
+import { getNewAccessToken, removeUserInfo } from "@/services/auth.services";
 const {
   getFromLocalStorage,
   setToLocalStorage,
-} = require("../../utils/localStorage");
-const { authToken } = require("../../constants/localStorage");
+} = require("@/utils/localStorage");
+const { authToken } = require("@/constants/localStorage");
 
 const axiosInstance = axios.create({});
 axiosInstance.defaults.headers.post["Content-Type"] = "application/json";

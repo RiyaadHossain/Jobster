@@ -1,5 +1,5 @@
-import { ENUM_MODULE } from "../../enums/module";
-import { isHttpValid } from "../../utils/isValidUrl";
+import { ENUM_MODULE } from "@/enums/module";
+import { isHttpValid } from "@/utils/isValidUrl";
 
 export default function PageBanner({
   banner,

@@ -7,9 +7,9 @@ import { ENUM_AUTH_MODAL } from "@/enums/authModal";
 import FormInputIcon from "../form/FormInputIcon";
 import { IoLockClosed, IoMail } from "react-icons/io5";
 import Form from "../form/Form";
-import { useSignUpMutation } from "../../redux/api/user";
-import { catchAsync } from "../../helpers/catchAsync";
-import { ENUM_USER_ROLE } from "../../enums/userRole";
+import { useSignUpMutation } from "@/redux/api/user";
+import { catchAsync } from "@/helpers/catchAsync";
+import { ENUM_USER_ROLE } from "@/enums/userRole";
 import toast from "react-hot-toast";
 import ButtonPrimary from "../ui/ButtonPrimary";
 
@@ -74,10 +74,7 @@ export default function SignUpModal({ openAuthModal, setOpenAuthModal }) {
         </div>
       </div>
 
-      <Form
-        className="w-full mt-6"
-        submitHandler={onSubmit}
-      >
+      <Form className="w-full mt-6" submitHandler={onSubmit}>
         {role === ENUM_USER_ROLE.company ? (
           <FormInput
             id="companyName"

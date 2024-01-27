@@ -3,7 +3,7 @@ import JobSidebar from "./components/JobSidebar";
 import JobInfo from "./components/JobInfo";
 import PageBanner from "@/components/ui/PageBanner";
 import "./module.style.css";
-import { useGetSingleJobQuery } from "../../redux/api/jobApi";
+import { useGetSingleJobQuery } from "@/redux/api/jobApi";
 
 const JobDetails = () => {
   const { id } = useParams();

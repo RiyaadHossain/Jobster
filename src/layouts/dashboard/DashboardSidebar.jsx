@@ -7,9 +7,9 @@ import {
   dashboardSidebardItemInsights,
 } from "@/constants/sidebarItems";
 import "./style/style.css";
-import { getUserInfo } from "../../services/auth.services";
+import { getUserInfo } from "@/services/auth.services";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTab } from "../../redux/slices/sidebarItemSlice";
+import { selectTab } from "@/redux/slices/sidebarItemSlice";
 
 export const DashboardSidebar = () => {
   const dispatch = useDispatch();

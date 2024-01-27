@@ -7,8 +7,8 @@ import { IoMail } from "react-icons/io5";
 import Form from "../form/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { forgetPassSchema } from "@/schema/forgetPass";
-import { catchAsync } from "../../helpers/catchAsync";
-import { useForgetPasswordMutation } from "../../redux/api/auth";
+import { catchAsync } from "@/helpers/catchAsync";
+import { useForgetPasswordMutation } from "@/redux/api/auth";
 import toast from "react-hot-toast";
 import ButtonPrimary from "../ui/ButtonPrimary";
 

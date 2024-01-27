@@ -1,8 +1,5 @@
-import {
-  useGetImageUrlQuery,
-  useUploadImageMutation,
-} from "../../redux/api/user";
-import { catchAsync } from "../../helpers/catchAsync";
+import { useGetImageUrlQuery, useUploadImageMutation } from "@/redux/api/user";
+import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
 import { FadeLoader } from "react-spinners";
 import { useState } from "react";

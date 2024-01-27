@@ -2,9 +2,9 @@ import ListingPageContainer from "@/components/other/listing-page-container/List
 import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
 import PageHeader from "@/components/ui/PageHeader";
 import CompanyCard from "./components/CompanyCard";
-import { useGetAllCompaniesQuery } from "../../redux/api/company";
+import { useGetAllCompaniesQuery } from "@/redux/api/company";
 import { useState } from "react";
-import { ENUM_MODULE } from "../../enums/module";
+import { ENUM_MODULE } from "@/enums/module";
 
 export default function CompanyListing() {
   const [name, setName] = useState("");

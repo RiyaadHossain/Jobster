@@ -1,6 +1,5 @@
-import GetRecentNotficationContent from "../../helpers/GetRecentNotficationContent";
-import { timeAgoCreated } from "../../utils/timeAgoCreated";
-
+import GetRecentNotficationContent from "@/helpers/GetRecentNotficationContent";
+import { timeAgoCreated } from "@/utils/timeAgoCreated";
 
 export default function RecentNotificationRow({ notification }) {
   return (

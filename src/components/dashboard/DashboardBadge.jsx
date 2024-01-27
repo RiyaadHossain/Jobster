@@ -1,6 +1,6 @@
 import { ENUM_APPLICATION_STATUS } from "@/enums/applicationStatus";
 import { capitalizeFirstLetter } from "@/utils/capitalizeLetter";
-import { ENUM_JOB_STATUS } from "../../enums/jobOffer";
+import { ENUM_JOB_STATUS } from "@/enums/jobOffer";
 
 export default function DashboardBadge({ display, bg, type, classes }) {
   if (display === ENUM_APPLICATION_STATUS.ACCEPTED) bg = "bg-green-700";

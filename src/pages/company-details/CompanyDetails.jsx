@@ -2,8 +2,8 @@ import PageBanner from "@/components/ui/PageBanner";
 import CompanyInfo from "./components/CompanyInfo";
 import CompanySidebar from "./components/CompanySidebar";
 import { useParams } from "react-router-dom";
-import { useGetCompanyQuery } from "../../redux/api/company";
-import { userFormatText } from "../../utils/userFormatText";
+import { useGetCompanyQuery } from "@/redux/api/company";
+import { userFormatText } from "@/utils/userFormatText";
 
 export default function CompanyDetails() {
   const { id } = useParams();

@@ -12,13 +12,13 @@ import Form from "@/components/form/Form";
 import ButtonPrimary from "@/components/ui/ButtonPrimary";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { jobOfferSchema } from "@/schema/jobOffer";
-import AddSkill from "../../new-job-offer/components/AddSkill";
-import AddResponsiblity from "../../new-job-offer/components/AddResponsiblity";
-import AddRequirement from "../../new-job-offer/components/AddRequirements";
 import { catchAsync } from "@/helpers/catchAsync";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetSingleJobQuery, useUpdateJobMutation } from "@/redux/api/jobApi";
 import toast from "react-hot-toast";
+import AddSkill from "../../new-job-offer/components/AddSkill";
+import AddResponsiblity from "../../new-job-offer/components/AddResponsiblity";
+import AddRequirement from "../../new-job-offer/components/AddRequirements";
 
 export default function EditJobOffer() {
   const { id } = useParams();

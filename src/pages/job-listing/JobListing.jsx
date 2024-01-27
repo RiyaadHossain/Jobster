@@ -3,10 +3,10 @@ import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
 import PageHeader from "@/components/ui/PageHeader";
 import JobCard from "./components/JobCard";
 import SidebarFilter from "./components/SidebarFilter";
-import { useGetAllJobsQuery } from "../../redux/api/jobApi";
+import { useGetAllJobsQuery } from "@/redux/api/jobApi";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { ENUM_MODULE } from "../../enums/module";
+import { ENUM_MODULE } from "@/enums/module";
 
 const JobListing = () => {
   const { search } = useLocation();

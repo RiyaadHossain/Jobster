@@ -7,10 +7,10 @@ import {
   useGetAllNotificationsQuery,
   useGetUnReadItemsCountQuery,
   useMarkAsReadAllMutation,
-} from "../../redux/api/notification";
-import { timeAgoCreated } from "../../utils/timeAgoCreated";
-import { selectTab } from "../../redux/slices/sidebarItemSlice";
-import { ENUM_SIDEBAR_ITEM } from "../../enums/sidebarItems";
+} from "@/redux/api/notification";
+import { timeAgoCreated } from "@/utils/timeAgoCreated";
+import { selectTab } from "@/redux/slices/sidebarItemSlice";
+import { ENUM_SIDEBAR_ITEM } from "@/enums/sidebarItems";
 import { useDispatch } from "react-redux";
 
 export default function NotificationToltip() {

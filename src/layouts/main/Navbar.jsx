@@ -11,15 +11,15 @@ import ForgetPassModal from "@/components/auth-modals/ForgetPassModal";
 import Logo from "@/components/ui/Logo";
 import SignInButton from "./components/SignInButton";
 import ProfileMenu from "../components/ProfileMenu";
-import { isLoggedIn } from "../../services/auth.services";
-import { useScrollDown } from "../../hooks/useScrollDownl";
+import { isLoggedIn } from "@/services/auth.services";
+import { useScrollDown } from "@/hooks/useScrollDownl";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const navbarRef = useRef(null);
   const { pathname } = useLocation();
   const [openAuthModal, setOpenAuthModal] = useState(null);
 
-  const userLoggedIn = isLoggedIn()
+  const userLoggedIn = isLoggedIn();
 
   // Handle Scroll Down Event
   useScrollDown(navbarRef, 100);
@@ -39,10 +39,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
 
   return (
     <nav>
-      <div
-        ref={navbarRef}
-        className={`h-20 fixed top-0 w-full z-20 `}
-      >
+      <div ref={navbarRef} className={`h-20 fixed top-0 w-full z-20 `}>
         <ul className="max_container mx-auto justify-between flex gap-3 h-full items-center">
           <li className=" font-bold text-2xl">
             <div className="flex items-center gap-6">

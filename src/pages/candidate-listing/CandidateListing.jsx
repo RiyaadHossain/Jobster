@@ -2,9 +2,9 @@ import ListingPageContainer from "@/components/other/listing-page-container/List
 import SidebarSearch from "@/components/other/sidebar-search/SidebarSearch";
 import PageHeader from "@/components/ui/PageHeader";
 import CandidateCard from "./components/CandidateCard";
-import { useGetAllCandidatesQuery } from "../../redux/api/candidate";
+import { useGetAllCandidatesQuery } from "@/redux/api/candidate";
 import { useState } from "react";
-import { ENUM_MODULE } from "../../enums/module";
+import { ENUM_MODULE } from "@/enums/module";
 
 export default function CandidateListing() {
   const [name, setName] = useState("");

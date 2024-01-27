@@ -6,12 +6,12 @@ import { getUserInfo } from "@/services/auth.services";
 import { useMeQuery } from "@/redux/api/user";
 import { ENUM_USER_ROLE } from "@/enums/userRole";
 import NameLogo from "@/components/ui/NameLogo";
-import { removeUserInfo } from "../../services/auth.services";
-import { useRefetchMe } from "../../hooks/useRefetchMe";
+import { removeUserInfo } from "@/services/auth.services";
+import { useRefetchMe } from "@/hooks/useRefetchMe";
 import toast from "react-hot-toast";
-import { selectTab } from "../../redux/slices/sidebarItemSlice";
+import { selectTab } from "@/redux/slices/sidebarItemSlice";
 import { useDispatch } from "react-redux";
-import { ENUM_SIDEBAR_ITEM } from "../../enums/sidebarItems";
+import { ENUM_SIDEBAR_ITEM } from "@/enums/sidebarItems";
 
 export default function ProfileMenu() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function ProfileMenu() {
 
   const { data, isError } = useMeQuery();
   if (isError) {
-    removeUserInfo()
+    removeUserInfo();
   }
 
   const role = userInfo?.role;

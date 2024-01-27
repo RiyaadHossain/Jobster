@@ -2,8 +2,8 @@ import PageBanner from "@/components/ui/PageBanner";
 import CandidateInfo from "./components/CandidateInfo";
 import CandidateSidebar from "./components/CandidateSidebar";
 import { useParams } from "react-router-dom";
-import { useGetCandidateQuery } from "../../redux/api/candidate";
-import { ENUM_MODULE } from "../../enums/module";
+import { useGetCandidateQuery } from "@/redux/api/candidate";
+import { ENUM_MODULE } from "@/enums/module";
 
 export default function CandidateDetails() {
   const { id } = useParams();

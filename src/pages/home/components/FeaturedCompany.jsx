@@ -1,7 +1,7 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
-import CompanyCard from "../../company-listing/components/CompanyCard";
 import { useGetAllCompaniesQuery } from "@/redux/api/company";
+import CompanyCard from "../../company-listing/components/CompanyCard";
 
 export default function FeaturedCompany() {
   const { data } = useGetAllCompaniesQuery();

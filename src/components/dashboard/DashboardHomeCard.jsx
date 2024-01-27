@@ -1,4 +1,4 @@
-import { userFormatText } from "../../utils/userFormatText";
+import { userFormatText } from "@/utils/userFormatText";
 
 export default function DashboardHomeCard({ type, quantity, icon, bg }) {
   return (

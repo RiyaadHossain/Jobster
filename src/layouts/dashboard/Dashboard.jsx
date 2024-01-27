@@ -4,8 +4,8 @@ import { Outlet } from "react-router-dom";
 import ProfileMenu from "../components/ProfileMenu";
 import { DashboardSidebar } from "./DashboardSidebar";
 import NotificationToltip from "@/components/dashboard/NotificationToltip";
-import { removeUserInfo } from "../../services/auth.services";
-import { useRefetchMe } from "../../hooks/useRefetchMe";
+import { removeUserInfo } from "@/services/auth.services";
+import { useRefetchMe } from "@/hooks/useRefetchMe";
 
 const Dashboard = () => {
   const refetch = useRefetchMe();
@@ -15,7 +15,6 @@ const Dashboard = () => {
     refetch();
     toast.success("Sign Out successfully", { id: "signout" });
   };
-
 
   return (
     <div className="grid grid-cols-12">

@@ -1,8 +1,8 @@
 import React from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
-import JobCard from "../../job-listing/components/JobCard";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
 import { useGetAllJobsQuery } from "@/redux/api/jobApi";
+import JobCard from "../../job-listing/components/JobCard";
 
 export default function FeaturedJob() {
   const { data } = useGetAllJobsQuery();
