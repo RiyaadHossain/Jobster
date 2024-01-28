@@ -1,2 +1,1 @@
-export const baseUrl =
-  "https://jobster-server-git-main-riyaadhossain.vercel.app/api/v1";
+export const baseUrl = "https://jobster-server.vercel.app/api/v1";
