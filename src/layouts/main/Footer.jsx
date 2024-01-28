@@ -1,5 +1,7 @@
 import SocialIcons from "@/components/ui/SocialIcons";
 import "./style/module.style.css";
+import { Link } from "react-router-dom";
+import { footerData } from "@/constants/footer";
 
 export default function Footer() {
   return (
@@ -23,15 +25,15 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-wrap gap-20 lg:justify-end">
-            {[1, 2, 3, 4, 5].map((el) => (
-              <div key={el}>
-                <h3 className="footer_item_header mb-6">For Candidates</h3>
+            {footerData.map((el, i) => (
+              <div key={i}>
+                <h3 className="footer_item_header mb-6">{el.title}</h3>
                 <ul className="footer_sub_items">
-                  <li>Find Jobs</li>
-                  <li>Candidate Dashboard</li>
-                  <li>My Applications</li>
-                  <li>Favourite Jobs</li>
-                  <li>My Inbox</li>
+                  {el.links.map((link, j) => (
+                    <li key={j}>
+                      <Link to={link.link}>{link.display}</Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}

@@ -9,7 +9,9 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
   const inputName = moduleName === ENUM_MODULE.JOB ? "title" : "name";
 
   const { search } = useLocation();
-  const searchIndustry = search.split("=")[1];
+  const searchTitle = search.includes("title") && search.split("=")[1];
+  const searchIndustry = search.includes("industry") && search.split("=")[1];
+  const searchLocation = search.includes("location") && search.split("=")[1];
 
   return (
     <form
@@ -27,6 +29,7 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
               : `${moduleName} Name`
           } or Keyword`}
           {...register(inputName)}
+          defaultValue={searchTitle || ""}
         />
       </div>
       <div className="mb-6">
@@ -34,7 +37,9 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
         <select className="w-full border-0 text-base" {...register("location")}>
           <option value="">Select Location</option>
           {location.map((item) => (
-            <option value={item.value}>{item.display}</option>
+            <option selected={item.value === searchLocation} value={item.value}>
+              {item.display}
+            </option>
           ))}
         </select>
       </div>

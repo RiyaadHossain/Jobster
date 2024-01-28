@@ -7,21 +7,24 @@ import { useGetAllJobsQuery } from "@/redux/api/jobApi";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ENUM_MODULE } from "@/enums/module";
+import { userFormatText } from "../../utils/userFormatText";
 
 const JobListing = () => {
   const { search } = useLocation();
-  const searchIndustry = search.split("=")[1];
+  const searchTitle = search.includes("title") && search.split("=")[1];
+  const searchIndustry = search.includes("industry") && search.split("=")[1];
+  const searchLocation = search.includes("location") && search.split("=")[1];
 
   const [page, setPage] = useState(1);
-  const [title, setTitle] = useState("");
-  const [location, setLocation] = useState("");
+  const [title, setTitle] = useState(searchTitle || "");
+  const [location, setLocation] = useState(searchLocation || "");
   const [industry, setIndustry] = useState(searchIndustry || "");
   const [workLevel, setWorkLevel] = useState("");
   const [employmentType, setEmployemploymentType] = useState("");
 
   const query = {};
   if (page) query["page"] = page;
-  if (title) query["title"] = title;
+  if (title) query["title"] = userFormatText(title);
   if (location) query["location"] = location;
   if (industry) query["industry"] = industry;
   if (workLevel) query["workLevel"] = workLevel;

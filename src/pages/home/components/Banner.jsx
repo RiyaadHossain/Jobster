@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import hero_logo_1 from "@/assets/brands/hero/hero-logo-1.png";
 import hero_logo_2 from "@/assets/brands/hero/hero-logo-2.png";
 import hero_logo_3 from "@/assets/brands/hero/hero-logo-3.png";
@@ -11,6 +11,7 @@ import hero3 from "@/assets/images/hero/hero-03.jpg";
 import { BiSearchAlt } from "react-icons/bi";
 import Badge from "@/components/ui/Badge";
 import { gsap } from "gsap";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
   const keywords = [
@@ -79,6 +80,14 @@ const Landing = () => {
     };
   }, []);
 
+  const [searchParam, setSearchParam] = useState("");
+  const navigate = useNavigate();
+
+  const handleOnSearch = () => {
+    const searchText = searchParam.split(" ").join("_");
+    navigate(`/job-listing/?title=${searchText}`);
+  };
+
   return (
     <div ref={el} className="h-screen max_container">
       <div className="hidden md_lg:block max-w-2xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden -z-10">
@@ -120,10 +129,12 @@ const Landing = () => {
                 name="search"
                 id="search"
                 placeholder="Job title or Keyword"
+                onChange={(e) => setSearchParam(e.target.value)}
               />
               <button
                 id="search-button"
                 className="p-2 rounded-full bg-primary  h-14 w-14 grid place-items-center"
+                onClick={handleOnSearch}
               >
                 <BiSearchAlt size="23" color="white" />
               </button>

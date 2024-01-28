@@ -1,12 +1,3 @@
-export const employmentType = [
-  { type: "Contract", jobs: 3 },
-  { type: "Full Time", jobs: 2 },
-  { type: "Internship", jobs: 6 },
-  { type: "Part Time", jobs: 2 },
-  { type: "Remote", jobs: 1 },
-  { type: "Training", jobs: 0 },
-];
-
 export const industries = [
   { display: "Busines Development", value: "business_development" },
   { display: "Customer Service", value: "customer_service" },
@@ -29,15 +20,6 @@ export const location = [
   { value: "australia", display: "Australia" },
 ];
 
-export const expLevel = [
-  { type: "Entry-Level", jobs: 3 },
-  { type: "Manager", jobs: 2 },
-  { type: "Executive", jobs: 6 },
-  { type: "Mid-Level", jobs: 2 },
-  { type: "Fresher", jobs: 1 },
-  { type: "Senior-Level", jobs: 0 },
-];
-
 export const employmentTypeOpt = [
   { value: "contract", display: "Contract" },
   { value: "full_time", display: "Full Time" },
@@ -55,3 +37,4 @@ export const expLevelOpt = [
   { value: "fresher", display: "Fresher" },
   { value: "senior_level", display: "Senior-Level" },
 ];
+
