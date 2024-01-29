@@ -3,9 +3,10 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
 import { useGetAllJobsQuery } from "@/redux/api/jobApi";
 import JobCard from "../../job-listing/components/JobCard";
+import Loader from "../../../components/ui/Loader";
 
 export default function FeaturedJob() {
-  const { data } = useGetAllJobsQuery();
+  const { data, isLoading } = useGetAllJobsQuery();
   const jobsData = data?.data?.data;
 
   return (
@@ -15,6 +16,11 @@ export default function FeaturedJob() {
         subtitle="Search your career opportunity through 12,800 jobs"
       />
       <div className="grid grid-cols-12 gap-6">
+        {isLoading && (
+          <div className="col-span-12 my-10">
+            <Loader />
+          </div>
+        )}
         {jobsData?.slice(0, 6)?.map((job, i) => (
           <div
             key={i}

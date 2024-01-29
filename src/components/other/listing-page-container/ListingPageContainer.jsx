@@ -2,6 +2,7 @@ import React from "react";
 import Pagination from "@/components/ui/Pagination";
 import "./module.style.css";
 import { BiSad } from "react-icons/bi";
+import Loader from "../../ui/Loader";
 
 export default function ListingPageContainer({
   sidebar,
@@ -27,9 +28,9 @@ export default function ListingPageContainer({
         </h3>
         <div className="grid gap-5 listing_page_card_container">{cards}</div>
         {isLoading && (
-          <p className="text-center font-light text-3xl mt-20">
-            Loading....
-          </p>
+          <div className="text-center mt-20">
+            <Loader />
+          </div>
         )}
         {!isLoading && !cards?.length && (
           <p className="flex_cen gap-3 text-3xl font-semibold mt-20">
