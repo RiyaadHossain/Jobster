@@ -1,0 +1,25 @@
+/* Tooltip.css */
+.tooltip-container {
+    @apply relative w-full h-full;
+  }
+  
+  .tooltip {
+    @apply absolute text-sm w-[250px] -top-[100px] left-1/2 transform -translate-x-1/2 p-2 bg-gray-900 text-white rounded opacity-0 transition-opacity duration-300 ease-in-out invisible z-50;
+  }
+  
+  .tooltip::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: #111827;
+    padding: 10px;
+    border-radius: 2px;
+    z-index: -1;
+    bottom: -10%;
+    left: 45%;
+  }
+  
+  .tooltip-container:hover .tooltip {
+    @apply opacity-100 visible;
+  }
+  

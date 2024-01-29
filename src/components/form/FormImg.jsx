@@ -3,6 +3,7 @@ import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
 import { FadeLoader } from "react-spinners";
 import { useState } from "react";
+import Tooltip from "../ui/Tooltip";
 
 export default function FormImg({ label, id, name, height, width }) {
   const [imgUrl, setImgUrl] = useState("");
@@ -29,12 +30,16 @@ export default function FormImg({ label, id, name, height, width }) {
 
   return (
     <div className={`rounded-3xl mt-6 relative ${height} ${width}`}>
-      <label
-        htmlFor={id}
-        className="w-full border border-accent border-dashed h-full rounded-3xl inline-block"
-      >
-        <span className="flex_cen h-full text-[13px] font-medium">{label}</span>
-      </label>
+      <Tooltip text="Uploading files does not support on production as Server application is hosted in vercel">
+        <label
+          htmlFor={id}
+          className="w-full border border-accent border-dashed h-full rounded-3xl inline-block"
+        >
+          <span className="flex_cen h-full text-[13px] font-medium">
+            {label}
+          </span>
+        </label>
+      </Tooltip>
       <input
         type="file"
         name={name}
@@ -48,7 +53,7 @@ export default function FormImg({ label, id, name, height, width }) {
           alt="Img"
           className={`absolute top-0 w-full h-full rounded-3xl object-cover ${
             !imgUrl && !dbImgUrl && "hidden"
-          }`}
+          } `}
         />
       </label>
       {isLoading && (

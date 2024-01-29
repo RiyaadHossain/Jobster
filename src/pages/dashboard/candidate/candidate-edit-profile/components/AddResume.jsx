@@ -7,6 +7,7 @@ import {
 } from "@/redux/api/candidate";
 import { FadeLoader } from "react-spinners";
 import { catchAsync } from "@/helpers/catchAsync";
+import Tooltip from "../../../../../components/ui/Tooltip";
 
 export default function AddResume({ resumeData, meLoading }) {
   const [uploadError, setUploadError] = useState("");
@@ -67,10 +68,15 @@ export default function AddResume({ resumeData, meLoading }) {
           </span>
         </div>
         <div>
-          {!newFileName ? (
-            <label className="btn_accent" htmlFor="upload_resume">
-              Upload PDF
-            </label>
+          {!!newFileName ? (
+            <Tooltip
+              text="Uploading files does not support on production as Server application is hosted in vercel"
+              children={
+                <label className="btn_accent" htmlFor="upload_resume">
+                  Upload PDF
+                </label>
+              }
+            />
           ) : (
             <div className="flex gap-2">
               <a
