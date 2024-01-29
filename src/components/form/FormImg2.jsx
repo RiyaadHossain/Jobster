@@ -2,7 +2,7 @@ import { useGetImageUrlQuery } from "@/redux/api/user";
 import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
 import { FadeLoader } from "react-spinners";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { useEditProfileMutation } from "../../redux/api/candidate";
 import { useEditCompanyProfileMutation } from "../../redux/api/company";
@@ -12,6 +12,7 @@ import { userFormatText } from "../../utils/userFormatText";
 
 export default function FormImg2({ label, id, name, height, width }) {
   const [imgUrl, setImgUrl] = useState("");
+  const imgRef = useRef();
   const role = getUserInfo().role;
 
   const { data } = useGetImageUrlQuery({ field: id });
@@ -48,6 +49,10 @@ export default function FormImg2({ label, id, name, height, width }) {
 
     toast.success(`${userFormatText(id)} Uploaded successfully`);
     setImgUrl(imgUrl);
+
+    if (imgRef.current) {
+      imgRef.current.value = null;
+    }
   });
 
   const dbImgUrl = data?.data?.imageUrl;
@@ -61,6 +66,7 @@ export default function FormImg2({ label, id, name, height, width }) {
         <span className="flex_cen h-full text-[13px] font-medium">{label}</span>
       </label>
       <input
+        ref={imgRef}
         type="file"
         name={name}
         id={id}

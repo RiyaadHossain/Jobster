@@ -2,9 +2,10 @@ import { useGetImageUrlQuery, useUploadImageMutation } from "@/redux/api/user";
 import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
 import { FadeLoader } from "react-spinners";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function FormImg({ label, id, name, height, width }) {
+  const imgRef = useRef();
   const [imgUrl, setImgUrl] = useState("");
   const [uploadImage, { isLoading }] = useUploadImageMutation();
 
@@ -23,6 +24,9 @@ export default function FormImg({ label, id, name, height, width }) {
 
     toast.success(res?.message);
     setImgUrl(res?.data?.imageUrl);
+    if (imgRef.current) {
+      imgRef.current.value = null;
+    }
   });
 
   const dbImgUrl = data?.data?.imageUrl;
@@ -36,6 +40,7 @@ export default function FormImg({ label, id, name, height, width }) {
         <span className="flex_cen h-full text-[13px] font-medium">{label}</span>
       </label>
       <input
+        ref={imgRef}
         type="file"
         name={name}
         id={id}

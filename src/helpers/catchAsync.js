@@ -6,7 +6,6 @@ export const catchAsync =
     try {
       await fn(arg, ...rest);
     } catch (error) {
-      console.log(error);
       if (error?.data?.message === "Validation Error")
         toast.error(error.data?.errorMessages[0]?.message, { id: "err" });
       else

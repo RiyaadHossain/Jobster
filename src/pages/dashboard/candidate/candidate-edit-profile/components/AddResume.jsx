@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { FaDownload, FaFilePdf, FaTrashAlt } from "react-icons/fa";
 import {
@@ -9,6 +9,7 @@ import { FadeLoader } from "react-spinners";
 import { catchAsync } from "@/helpers/catchAsync";
 
 export default function AddResume({ resumeData, meLoading }) {
+  const inputRef = useRef();
   const [uploadError, setUploadError] = useState("");
 
   const [uploadResume, { isLoading }] = useUploadResumeMutation();
@@ -37,6 +38,9 @@ export default function AddResume({ resumeData, meLoading }) {
     }
 
     toast.success(res?.data?.message);
+    if (inputRef.current) {
+      inputRef.current.value = null;
+    }
   };
 
   const onDeleteResume = catchAsync(async () => {
@@ -49,6 +53,7 @@ export default function AddResume({ resumeData, meLoading }) {
   return (
     <div>
       <input
+        ref={inputRef}
         onChange={handleFileUpload}
         className="hidden"
         type="file"
