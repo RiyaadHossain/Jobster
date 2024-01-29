@@ -8,6 +8,6 @@ export const ENUM_SIDEBAR_ITEM = {
   COMP_NEW_JOB_OFFER: "company/new-job-offers",
   COMP_MANAGE_JOBS: "company/manage-jobs",
   COMP_CANDIDATES: "company/candidates",
-  INBOX: "/dashboard/inbox",
-  NOTIFICATIONS: "/dashboard/notifications",
+  INBOX: "inbox",
+  NOTIFICATIONS: "notifications",
 };

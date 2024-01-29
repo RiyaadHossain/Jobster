@@ -1,14 +1,27 @@
 import "./style/style.css";
 import toast from "react-hot-toast";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import ProfileMenu from "../components/ProfileMenu";
 import { DashboardSidebar } from "./DashboardSidebar";
 import NotificationToltip from "@/components/dashboard/NotificationToltip";
 import { removeUserInfo } from "@/services/auth.services";
 import { useRefetchMe } from "@/hooks/useRefetchMe";
+import { ENUM_SIDEBAR_ITEM } from "../../enums/sidebarItems";
+import { useDispatch } from "react-redux";
+import { selectTab } from "../../redux/slices/sidebarItemSlice";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
   const refetch = useRefetchMe();
+
+  const currentRoute = location.pathname.split("/dashboard/")[1];
+  const routes = Object.values(ENUM_SIDEBAR_ITEM);
+  routes.forEach((route) => {
+    if (route === currentRoute) {
+      dispatch(selectTab(route));
+    }
+  });
 
   const handleLogOut = () => {
     removeUserInfo();
