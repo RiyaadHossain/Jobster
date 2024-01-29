@@ -1,5 +1,5 @@
 import FormSelect from "@/components/form/FormSelect";
-import FormImg from "@/components/form/FormImg";
+import FormImg2 from "@/components/form/FormImg2";
 import FormTextarea from "@/components/form/FormTextarea";
 import FormInput from "@/components/form/FormInput";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
@@ -84,7 +84,7 @@ export default function CompanyEditProfile() {
             </div>
 
             <div className="col-span-4">
-              <FormImg
+              <FormImg2
                 label="Upload cover photo"
                 id="banner"
                 name="banner"
@@ -92,7 +92,7 @@ export default function CompanyEditProfile() {
                 width="w-full"
               />
 
-              <FormImg
+              <FormImg2
                 label="Upload Image"
                 id="logo"
                 name="logo"

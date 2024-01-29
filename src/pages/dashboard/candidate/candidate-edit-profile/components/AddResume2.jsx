@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaDownload, FaFilePdf, FaTrashAlt } from "react-icons/fa";
-import {
-  useDeleteResumeMutation,
-  useUploadResumeMutation,
-} from "@/redux/api/candidate";
+import { useDeleteResumeMutation } from "@/redux/api/candidate";
 import { FadeLoader } from "react-spinners";
 import { catchAsync } from "@/helpers/catchAsync";
-import Tooltip from "../../../../../components/ui/Tooltip";
+import axios from "axios";
+import { useEditProfileMutation } from "../../../../../redux/api/candidate";
 
-export default function AddResume({ resumeData, meLoading }) {
+export default function AddResume2({ resumeData, meLoading }) {
   const [uploadError, setUploadError] = useState("");
 
-  const [uploadResume, { isLoading }] = useUploadResumeMutation();
+  const [editProfile, { isLoading }] = useEditProfileMutation();
   const [deleteResume, { isLoading: deleteLoading }] =
     useDeleteResumeMutation();
 
@@ -26,18 +24,23 @@ export default function AddResume({ resumeData, meLoading }) {
     }
 
     const formData = new FormData();
-    formData.append("resume", file);
+    formData.append("file", file);
+    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
 
-    const res = await uploadResume(formData);
+    const uploaded = await axios.post(
+      process.env.REACT_APP_CLOUDINARY_URL,
+      formData
+    );
 
-    if (!res?.data) {
-      const error = res?.error?.data?.message;
-      toast.error(error);
-      setUploadError(error);
-      return;
-    }
+    const data = {
+      resume: {
+        fileName: uploaded.data.original_filename,
+        fileURL: uploaded.data.secure_url,
+      },
+    };
 
-    toast.success(res?.data?.message);
+    await editProfile(data).unwrap();
+    toast.success("Resume Uploaded successfully");
   };
 
   const onDeleteResume = catchAsync(async () => {
@@ -69,14 +72,9 @@ export default function AddResume({ resumeData, meLoading }) {
         </div>
         <div>
           {!newFileName ? (
-            <Tooltip
-              text="Uploading files does not support on production as Server application is hosted in vercel"
-              children={
-                <label className="btn_accent" htmlFor="upload_resume">
-                  Upload PDF
-                </label>
-              }
-            />
+            <label className="btn_accent" htmlFor="upload_resume">
+              Upload PDF
+            </label>
           ) : (
             <div className="flex gap-2">
               <a
