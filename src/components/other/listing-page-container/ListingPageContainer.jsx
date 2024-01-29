@@ -11,7 +11,10 @@ export default function ListingPageContainer({
   page,
   setPage,
   totalPages,
+  isLoading,
 }) {
+  console.log(isLoading);
+
   return (
     <div className="flex flex-col lg:flex-row mt-28 px-8 gap-6 max_container">
       {/* SideBar */}
@@ -23,7 +26,12 @@ export default function ListingPageContainer({
           Showing <span className="text-primary">{total}</span> {moduleName}
         </h3>
         <div className="grid gap-5 listing_page_card_container">{cards}</div>
-        {!cards?.length && (
+        {isLoading && (
+          <p className="text-center font-light text-3xl mt-20">
+            Loading....
+          </p>
+        )}
+        {!isLoading && !cards?.length && (
           <p className="flex_cen gap-3 text-3xl font-semibold mt-20">
             No {moduleName} Found!
             <BiSad />

@@ -16,7 +16,7 @@ export default function CompanyListing() {
   if (location) query["location"] = location;
   if (industry) query["industry"] = industry;
 
-  const { data } = useGetAllCompaniesQuery({ ...query });
+  const { data, isLoading } = useGetAllCompaniesQuery({ ...query });
   const companiesData = data?.data;
   const totalCompanies = data?.meta?.total;
 
@@ -49,6 +49,7 @@ export default function CompanyListing() {
         cards={companiesData?.map((company, i) => (
           <CompanyCard key={i} company={company} />
         ))}
+        isLoading={isLoading}
         moduleName={ENUM_MODULE.COMPANY}
         total={totalCompanies}
       />

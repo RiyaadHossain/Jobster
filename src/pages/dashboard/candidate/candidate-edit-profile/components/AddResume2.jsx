@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { FaDownload, FaFilePdf, FaTrashAlt } from "react-icons/fa";
 import { useDeleteResumeMutation } from "@/redux/api/candidate";
 import { FadeLoader } from "react-spinners";
 import { catchAsync } from "@/helpers/catchAsync";
-import axios from "axios";
 import { useEditProfileMutation } from "../../../../../redux/api/candidate";
+import { fileUploader } from "../../../../../helpers/fileUploader";
 
 export default function AddResume2({ resumeData, meLoading }) {
+  const inputRef = useRef();
+  const [loading, setLoading] = useState(false);
   const [uploadError, setUploadError] = useState("");
 
   const [editProfile, { isLoading }] = useEditProfileMutation();
@@ -23,24 +25,25 @@ export default function AddResume2({ resumeData, meLoading }) {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+    setLoading(true);
 
-    const uploaded = await axios.post(
-      process.env.REACT_APP_CLOUDINARY_URL,
-      formData
-    );
+    const { fileName, fileURL } = await fileUploader(file);
 
     const data = {
       resume: {
-        fileName: uploaded.data.original_filename,
-        fileURL: uploaded.data.secure_url,
+        fileName,
+        fileURL,
       },
     };
 
     await editProfile(data).unwrap();
     toast.success("Resume Uploaded successfully");
+
+    setLoading(false);
+    
+    if (inputRef.current) {
+      inputRef.current.value = null;
+    }
   };
 
   const onDeleteResume = catchAsync(async () => {
@@ -53,6 +56,7 @@ export default function AddResume2({ resumeData, meLoading }) {
   return (
     <div>
       <input
+        ref={inputRef}
         onChange={handleFileUpload}
         className="hidden"
         type="file"
@@ -96,7 +100,7 @@ export default function AddResume2({ resumeData, meLoading }) {
             </div>
           )}
         </div>
-        {(meLoading || isLoading || deleteLoading) && (
+        {(loading || meLoading || isLoading || deleteLoading) && (
           <div className="absolute left-0 w-full h-full bg-gray-300 rounded-3xl flex_cen">
             <FadeLoader color="#44195D" />
           </div>

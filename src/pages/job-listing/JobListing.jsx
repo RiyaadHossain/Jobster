@@ -30,7 +30,7 @@ const JobListing = () => {
   if (workLevel) query["workLevel"] = workLevel;
   if (employmentType) query["employmentType"] = employmentType;
 
-  const { data } = useGetAllJobsQuery({ ...query, limit: 6 });
+  const { data, isLoading } = useGetAllJobsQuery({ ...query, limit: 6 });
   const jobsData = data?.data?.data;
   const totalJobs = data?.data?.meta?.total;
   const totalPages = data?.data?.meta?.totalPages;
@@ -72,6 +72,7 @@ const JobListing = () => {
         cards={jobsData?.map((job, i) => (
           <JobCard key={i} jobInfo={job} />
         ))}
+        isLoading={isLoading}
         moduleName={ENUM_MODULE.JOB}
         total={totalJobs}
         page={page}

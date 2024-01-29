@@ -16,7 +16,7 @@ export default function CandidateListing() {
   if (location) query["location"] = location;
   if (industry) query["industry"] = industry;
 
-  const { data } = useGetAllCandidatesQuery({ ...query });
+  const { data, isLoading } = useGetAllCandidatesQuery({ ...query });
   const candidatesData = data?.data;
   const totalCandidates = data?.meta?.total;
 
@@ -49,6 +49,7 @@ export default function CandidateListing() {
         cards={candidatesData?.map((candidate, i) => (
           <CandidateCard candidateInfo={candidate} key={i} />
         ))}
+        isLoading={isLoading}
         moduleName={ENUM_MODULE.CANDIDATE}
         total={totalCandidates}
       />

@@ -3,14 +3,15 @@ import { catchAsync } from "@/helpers/catchAsync";
 import toast from "react-hot-toast";
 import { FadeLoader } from "react-spinners";
 import { useRef, useState } from "react";
-import axios from "axios";
 import { useEditProfileMutation } from "../../redux/api/candidate";
 import { useEditCompanyProfileMutation } from "../../redux/api/company";
 import { getUserInfo } from "../../services/auth.services";
 import { ENUM_USER_ROLE } from "../../enums/userRole";
 import { userFormatText } from "../../utils/userFormatText";
+import { fileUploader } from "../../helpers/fileUploader";
 
 export default function FormImg2({ label, id, name, height, width }) {
+  const [loading, setLoading] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
   const imgRef = useRef();
   const role = getUserInfo().role;
@@ -27,19 +28,12 @@ export default function FormImg2({ label, id, name, height, width }) {
 
     if (!file) return;
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+    setLoading(true);
 
-    const uploaded = await axios.post(
-      process.env.REACT_APP_CLOUDINARY_URL,
-      formData
-    );
-
-    const imgUrl = uploaded?.data?.secure_url;
+    const { fileURL } = await fileUploader(file);
 
     const data = {
-      [id]: imgUrl,
+      [id]: fileURL,
     };
 
     if (role === ENUM_USER_ROLE.candidate)
@@ -53,6 +47,7 @@ export default function FormImg2({ label, id, name, height, width }) {
     if (imgRef.current) {
       imgRef.current.value = null;
     }
+    setLoading(false);
   });
 
   const dbImgUrl = data?.data?.imageUrl;
@@ -82,7 +77,7 @@ export default function FormImg2({ label, id, name, height, width }) {
           } `}
         />
       </label>
-      {(candLoading || compLoading) && (
+      {(candLoading || compLoading || loading) && (
         <div className="absolute top-0 rounded-3xl w-full h-full flex_cen bg-primaryLight">
           <FadeLoader color="#44195D" />
         </div>
