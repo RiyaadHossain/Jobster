@@ -6,7 +6,7 @@ import {
 } from "@/utils/localStorage";
 import { authToken } from "@/constants/localStorage";
 import axiosInstance from "../config/axios/axiosInstance";
-import { baseUrl } from "@/config/envConfig";
+import { BASE_URL } from "@/config/envConfig";
 
 export const storeUserInfo = (accessToken) => {
   if (!accessToken) return "";
@@ -32,7 +32,7 @@ export const isLoggedIn = () => {
 
 export const getNewAccessToken = async () => {
   return await axiosInstance({
-    url: `${baseUrl}/auth/access-token`,
+    url: `${BASE_URL}/auth/access-token`,
     method: "POST",
     headers: { "Content-Type": "application/json" },
     withCredentials: true,

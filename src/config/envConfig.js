@@ -1,1 +1,1 @@
-export const baseUrl = "https://jobster-server.vercel.app/api/v1";
+export const BASE_URL = process.env.REACT_APP_BASE_URL
