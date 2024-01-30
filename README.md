@@ -45,7 +45,7 @@ Jobster - a platform which brings together companies and candidates in one place
 
 ## Technologies Used
 
-> Frontend: React, TailwindCSS, React Router Dom, React Hook Form
+> Frontend: React, TailwindCSS, React Router Dom, React Hook Form, Redux Toolkit, RTQ Query, Axios
 
 > Backend: Node, Express.js
 
