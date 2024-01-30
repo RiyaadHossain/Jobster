@@ -9,9 +9,11 @@ import {
   useApplicationStatQuery,
   useProfileViewStatQuery,
 } from "@/redux/api/dashboard";
+import { useMeQuery } from "../../../../redux/api/user";
 
 export default function CandidateDashboard() {
   const { data } = useGetAllNotificationsQuery();
+  const {data: meData} = useMeQuery()
   const notificationsData = data?.data?.notifications;
 
   const { data: applicationData } = useApplicationStatQuery();
@@ -22,9 +24,11 @@ export default function CandidateDashboard() {
   const applicationCount = applicationData?.data?.total;
   const profileViewCount = profileViewData?.data?.total;
 
+  const name = meData?.data?.name
+
   return (
     <div className="">
-      <DashboardHeader title="Dashboard" subtitle="Welcome, Riyad Hossain!" />
+      <DashboardHeader title="Dashboard" subtitle={`Welcome, ${name}!`} />
 
       {/* Stats Cards */}
       <GetDashboardStats />

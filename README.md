@@ -1,44 +1,79 @@
-![alt text](/screenshots/Home-Page.png)
+![alt text](screenshots/jobster-home.png)
 
-# Jobster 🧑‍💼
+# Jobster 💼
 
-<p>Jobster - a job hiring website. In this site, recruiter can post their jobs attaching all the details about the job. Moreover, a candidate can find their desired job based on their preference. Besides, Candidate can ask any question related to any posted Job and the Employee who posted the job can reply.</p>
+Jobster - a platform which brings together companies and candidates in one place. Companies can easily post jobs, review applications, and manage candidate interactions, while candidates can apply jobs, track applications. User-friendly dashboards for both company and candidate users provide easy profile management, analytics, and instant notifications, making the entire recruitment experience smooth and efficient.
 
-Live Site: https://elite-recruiting.netlify.app/
-</br>
-Server Code: https://github.com/RiyaadHossain/Jobster-Server
-</br>
-Medium Blog: https://cutt.ly/w3t9vVk
-</br>
+##### Live Site: https://jobsterr.vercel.app/
 
-### Features
+##### Server Code: https://github.com/RiyaadHossain/Jobster-Server
 
-- Developed User Authentication using Firebase
-- Build Role Based Authorization
-- Employee can post Job attaching all the details
-- Candidate can apply for any preferred Job
-- Candidate can visualize his applied jobs
-- Candidate can see his profile
-- Employee can see applied candidates List and Candidate Details
-- Employee can visualize his posted Job
-- In 'Job Details' page, Questions can be asked by Candidate
-- Employee can answer those Questions asked by Candidate
+## Features
 
-### Technologies
+### Authentication and Authorization
 
-- HTML
-- CSS
-- Tailwind
-- JavaScript
-- React.js
-- DaisyUI
-- Redux
-- React-Redux
-- Redux-Toolkit
-- RTK Query
-- Node.js
-- Express.js
-- MongoDB
-- React Hook Form
-- React Hot Toast
-- Firebase Authentication
+- Email-based authorization ensures secure user registration and login.
+- Cookie-based authentication enhances user security and maintains session persistence.
+
+### User Roles
+
+- **Company User:**
+
+  - Register and log in as a company.
+  - Post job openings with detailed job descriptions.
+  - Access a dashboard displaying a list of posted jobs and the corresponding list of candidates who applied.
+
+- **Candidate User:**
+  - Register and log in as a candidate.
+  - Apply for available jobs through a user-friendly interface.
+  - Access a dashboard displaying a list of applications and favorite jobs.
+
+### Dashboards
+
+- **Company Dashboard:**
+
+  - Create, update, and Update job status.
+  - Monitor the list of posted jobs and applicants.
+  - Review and manage applications received from candidates.
+  - View applications, accept or reject candidates, and manage the hiring process.
+  - Edit company profile and track profile views, application counts, and notifications.
+
+- **Candidate Dashboard:**
+  - View applications and favorite jobs.
+  - Review the status of previous job applications.
+  - Edit candidate profile and monitor profile views, application counts, and notifications.
+
+## Technologies Used
+
+> Frontend: React, TailwindCSS, React Router Dom, React Hook Form
+
+> Backend: Node, Express.js
+
+> Database: MongoDB, Mongoose
+
+> Authentication: Jwt, Bcrypt, Cookie
+
+> Tools: Multer, Nodemailer, EJS, Cloudinary
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/RiyaadHossain/Jobster`
+2. Install dependencies: `npm install` or `yarn install`
+3. Set up the database and configure the backend.
+4. Run the application: `npm start` or `yarn start`
+
+## Future Enhancements
+
+- Implement additional features such as real-time notifications and chat functionality.
+- Enhance the user interface for a more intuitive experience.
+- Expand the platform to support multiple languages and regions.
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## License
+
+This project is licensed under the LicenseName - see the [LICENSE.md](LICENSE.md) file for details.
