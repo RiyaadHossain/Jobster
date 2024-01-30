@@ -25,6 +25,7 @@ export default function FormImg2({ label, id, name, height, width }) {
   const onUploadImage = catchAsync(async (e) => {
     const id = e.target.id;
     const file = e.target.files[0];
+    imgRef.current.value = null;
 
     if (!file) return;
 
@@ -44,9 +45,6 @@ export default function FormImg2({ label, id, name, height, width }) {
     toast.success(`${userFormatText(id)} Uploaded successfully`);
     setImgUrl(imgUrl);
 
-    if (imgRef.current) {
-      imgRef.current.value = null;
-    }
     setLoading(false);
   });
 

@@ -20,10 +20,9 @@ export const userApi = baseApi.injectEndpoints({
       }),
     }),
     confirmAccount: builder.query({
-      query: (params) => ({
-        url: `${USER_URL}/confirm-account`,
+      query: ({ name, token }) => ({
+        url: `${USER_URL}/confirm-account/${name}/${token}`,
         method: "GET",
-        params,
       }),
     }),
     uploadImage: builder.mutation({

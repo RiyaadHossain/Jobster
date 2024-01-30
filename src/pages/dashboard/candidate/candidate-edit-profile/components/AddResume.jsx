@@ -19,6 +19,7 @@ export default function AddResume({ resumeData, meLoading }) {
   const handleFileUpload = async (event) => {
     setUploadError("");
     const file = event.target.files[0];
+    inputRef.current.value = null;
 
     if (file.type !== "application/pdf") {
       setUploadError("Resume must be a pdf file");
@@ -38,9 +39,6 @@ export default function AddResume({ resumeData, meLoading }) {
     }
 
     toast.success(res?.data?.message);
-    if (inputRef.current) {
-      inputRef.current.value = null;
-    }
   };
 
   const onDeleteResume = catchAsync(async () => {

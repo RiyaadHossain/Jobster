@@ -14,6 +14,7 @@ export default function FormImg({ label, id, name, height, width }) {
   const setPreviewImage = catchAsync(async (e) => {
     const id = e.target.id;
     const file = e.target.files[0];
+    imgRef.current.value = null;
 
     if (!file) return;
 
@@ -24,9 +25,6 @@ export default function FormImg({ label, id, name, height, width }) {
 
     toast.success(res?.message);
     setImgUrl(res?.data?.imageUrl);
-    if (imgRef.current) {
-      imgRef.current.value = null;
-    }
   });
 
   const dbImgUrl = data?.data?.imageUrl;

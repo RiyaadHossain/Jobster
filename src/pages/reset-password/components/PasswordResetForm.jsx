@@ -25,7 +25,7 @@ export default function PasswordResetForm({ token, setPasswordReset }) {
   const passwordMatched = newPasswordValue === confirmPasswordValue;
 
   return (
-    <div className="py-16 px-8 rounded-3xl shadow-md col-span-2 md:col-span-1">
+    <div className="py-16 px-8 max-w-xl rounded-3xl shadow-md col-span-2 md:col-span-1">
       <h1 className="text-2xl font-semibold mb-5">Reset Your Password</h1>
       <Form
         submitHandler={onSubmit}

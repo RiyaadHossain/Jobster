@@ -3,7 +3,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import ButtonPrimary from "@/components/ui/ButtonPrimary";
 import { useNavigate } from "react-router-dom";
 
-export default function SuccessMessage() {
+export default function SuccessState() {
   const navigate = useNavigate();
 
   return (
@@ -13,7 +13,7 @@ export default function SuccessMessage() {
         size={26}
       />
       <p className="text-xl">
-        Password has been reset Succesfully. <br /> Please signin now.
+        Congratulations, your account has been activated. Please signin now.
       </p>
       <ButtonPrimary onClickFunc={() => navigate("/")} display="Sign In" />
     </div>

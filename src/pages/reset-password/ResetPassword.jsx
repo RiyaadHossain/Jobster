@@ -13,7 +13,7 @@ export default function ForgetPassword() {
   const [passwordReset, setPasswordReset] = useState(false);
 
   return (
-    <div className="">
+    <div>
       <div className="border-b">
         <div className="flex justify-between items-center max_container my-4">
           <Logo />

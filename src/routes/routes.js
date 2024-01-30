@@ -31,6 +31,7 @@ import Candidates from "@/pages/dashboard/company/candidates/Candidates";
 import EditJobOffer from "@/pages/dashboard/company/manage-jobs/edit-job-offer/EditJobOffer";
 import ForgetPassword from "@/pages/reset-password/ResetPassword";
 import PrivateRoute from "./PrivateRoute";
+import ConfirmAccount from "../pages/confirm-account/ConfirmAccount";
 
 const routes = createBrowserRouter([
   {
@@ -80,7 +81,7 @@ const routes = createBrowserRouter([
     element: (
       <PrivateRoute>
         <Dashboard />
-      </PrivateRoute> 
+      </PrivateRoute>
     ),
     children: [
       {
@@ -146,6 +147,10 @@ const routes = createBrowserRouter([
   {
     path: "/reset-password/:token",
     element: <ForgetPassword />,
+  },
+  {
+    path: "/confirm-account/:name/:token",
+    element: <ConfirmAccount />,
   },
 ]);
 
