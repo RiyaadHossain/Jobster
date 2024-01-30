@@ -24,6 +24,7 @@ export default function ProfileMenu() {
   const { data, isError } = useMeQuery();
   if (isError) {
     removeUserInfo();
+    window.location.reload()
   }
 
   const role = userInfo?.role;
