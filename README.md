@@ -8,6 +8,8 @@ Jobster - a platform which brings together companies and candidates in one place
 
 ##### Server Code: https://github.com/RiyaadHossain/Jobster-Server
 
+##### Project Vidoe: https://www.youtube.com/watch?v=5QwWXbfgmdM
+
 ## Features
 
 ### Authentication and Authorization
