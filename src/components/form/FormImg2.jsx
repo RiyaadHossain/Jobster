@@ -43,7 +43,7 @@ export default function FormImg2({ label, id, name, height, width }) {
       await editCompanyProfile(data).unwrap();
 
     toast.success(`${userFormatText(id)} Uploaded successfully`);
-    setImgUrl(imgUrl);
+    setImgUrl(fileURL);
 
     setLoading(false);
   });
