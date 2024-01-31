@@ -1,5 +1,5 @@
 .max_container {
-  @apply max-w-[1600px] mx-auto w-full px-3;
+  @apply max-w-[1600px] mx-auto w-full px-6;
 }
 
 .flex_cen {

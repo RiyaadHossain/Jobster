@@ -41,7 +41,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
     <nav>
       <div ref={navbarRef} className={`h-20 fixed top-0 w-full z-20 `}>
         <ul className="max_container mx-auto justify-between flex gap-3 h-full items-center">
-          <li className=" font-bold text-2xl">
+          <li className="font-bold text-2xl">
             <div className="flex items-center gap-6">
               <Logo />
               {(isHomeRoute || mediumDevice) && (

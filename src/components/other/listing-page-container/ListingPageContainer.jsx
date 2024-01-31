@@ -14,7 +14,6 @@ export default function ListingPageContainer({
   totalPages,
   isLoading,
 }) {
-  console.log(isLoading);
 
   return (
     <div className="flex flex-col lg:flex-row mt-28 px-8 gap-6 max_container">
