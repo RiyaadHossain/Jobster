@@ -64,7 +64,7 @@ export default function JobSidebar({ jobInfo }) {
             <h1 className="sidebar_content_info font-bold">
               {jobInfo?.company?.name}
             </h1>
-            <Link className="text-primary mt-1 font-light block">
+            <Link to={jobInfo?.company?._id} className="text-primary mt-1 font-light block">
               View Profile
             </Link>
           </div>
