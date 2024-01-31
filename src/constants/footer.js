@@ -6,7 +6,7 @@ export const footerData = [
       { display: "Candidate Dashboard", link: "/dashboard" },
       {
         display: "My Applications",
-        link: "/dashboard/candidate/applcations",
+        link: "/dashboard/candidate/applications",
       },
       {
         display: "Favourite Jobs",
@@ -20,8 +20,8 @@ export const footerData = [
     links: [
       { display: "Find Candidates", link: "/job-listing" },
       { display: "Company Dashboard", link: "/dashboard" },
-      { display: "Post a Job", link: "/dashboard/new-job-offers" },
-      { display: "Manage Jobs", link: "/dashboard/manage-jobs" },
+      { display: "Post a Job", link: "/dashboard/company/new-job-offers" },
+      { display: "Manage Jobs", link: "/dashboard/company/manage-jobs" },
       { display: "My Inbox", link: "/dashboard/inbox" },
     ],
   },
@@ -30,8 +30,11 @@ export const footerData = [
     links: [
       { display: "Find Jobs", link: "/job-listing" },
       { display: "Candidate Dashboard", link: "/dashboard" },
-      { display: "My Applications", link: "/dashboard/applcations" },
-      { display: "Favourite Jobs", link: "/dashboard/favourite-jobs" },
+      {
+        display: "My Applications",
+        link: "/dashboard/candidate/applications",
+      },
+      { display: "Manage Jobs", link: "/dashboard/company/manage-jobs" },
       { display: "My Inbox", link: "/dashboard/inbox" },
     ],
   },
