@@ -14,6 +14,7 @@ Jobster - a platform which brings together companies and candidates in one place
 
 - Email-based authorization ensures secure user registration and login.
 - Cookie-based authentication enhances user security and maintains session persistence.
+- Reset password feature allows to securely reset password by requesting a password reset link via registered email.
 
 ### User Roles
 
