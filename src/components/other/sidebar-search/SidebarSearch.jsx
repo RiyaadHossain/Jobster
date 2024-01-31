@@ -38,8 +38,12 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
         <p className="font-semibold mb-3">Location</p>
         <select className="w-full border-0 text-base" {...register("location")}>
           <option value="">Select Location</option>
-          {location.map((item) => (
-            <option selected={item.value === searchLocation} value={item.value}>
+          {location.map((item, i) => (
+            <option
+              key={i}
+              selected={item.value === searchLocation}
+              value={item.value}
+            >
               {item.display}
             </option>
           ))}
@@ -49,8 +53,12 @@ export default function SidebarSearch({ bg, onhandleSubmit, moduleName }) {
         <p className="font-semibold mb-3">Industry</p>
         <select className="w-full border-0 text-base" {...register("industry")}>
           <option value="">Select Industry</option>
-          {industries.map((item) => (
-            <option selected={item.value === searchIndustry} value={item.value}>
+          {industries.map((item, i) => (
+            <option
+              key={i}
+              selected={item.value === searchIndustry}
+              value={item.value}
+            >
               {item.display}
             </option>
           ))}

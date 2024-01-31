@@ -6,9 +6,10 @@ import { DashboardSidebar } from "./DashboardSidebar";
 import NotificationToltip from "@/components/dashboard/NotificationToltip";
 import { removeUserInfo } from "@/services/auth.services";
 import { useRefetchMe } from "@/hooks/useRefetchMe";
-import { ENUM_SIDEBAR_ITEM } from "../../enums/sidebarItems";
+import { ENUM_SIDEBAR_ITEM } from "@/enums/sidebarItems";
 import { useDispatch } from "react-redux";
-import { selectTab } from "../../redux/slices/sidebarItemSlice";
+import { selectTab } from "@/redux/slices/sidebarItemSlice";
+import ScrollToTop from "@/helpers/ScrollToTop";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Dashboard = () => {
 
   return (
     <div className="grid grid-cols-12">
+      <ScrollToTop/>
       <DashboardSidebar />
       <div className=" col-span-12 ml-80">
         <div className=" h-full w-full mx-auto">
